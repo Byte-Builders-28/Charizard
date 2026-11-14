@@ -1,0 +1,132 @@
+{
+  "files": {
+    "PK4_Campaign01_Report_final.pdf": {
+      "s3_key": "pk4/To_NASA_team/Campaign_Reports/PK4_Campaign01_Report_final.pdf",
+      "s3_bucket": "nasa-psi",
+      "retrieved_at": "2026-11-14T09:34:05.931097+00:00",
+      "size_bytes": 376725,
+      "sha256": "bd50e17b13c9fb1abdde85b261ac1e4b2456048e695f6c92254e3067953e0d1c",
+      "category": "s3_archive_file"
+    },
+    "PK4_Campaign01_Report_final_extracted.txt": {
+      "source_url": "extracted_from:PK4_Campaign01_Report_final.pdf",
+      "retrieved_at": "2026-11-14T09:34:06.048694+00:00",
+      "size_bytes": 2858,
+      "sha256": "49d3f1efbb2e837a44fa8e393b63e57a6934079c8077874828510c550516cf95",
+      "category": "extracted_pdf_text"
+    },
+    "PK4_Campaign02_Report.pdf": {
+      "s3_key": "pk4/To_NASA_team/Campaign_Reports/PK4_Campaign02_Report.pdf",
+      "s3_bucket": "nasa-psi",
+      "retrieved_at": "2026-11-14T09:34:07.383034+00:00",
+      "size_bytes": 379589,
+      "sha256": "82dd9da0e45bb14c0d3c005d4a13255f625b9bd549801e9863726db451106567",
+      "category": "s3_archive_file"
+    },
+    "PK4_Campaign02_Report_extracted.txt": {
+      "source_url": "extracted_from:PK4_Campaign02_Report.pdf",
+      "retrieved_at": "2026-11-14T09:34:07.456205+00:00",
+      "size_bytes": 2716,
+      "sha256": "e743318b8f727e33c4b95eab8373b17973ca4aba3e13b1b1e95aa58acb9cc573",
+      "category": "extracted_pdf_text"
+    },
+    "PK4_Campaign03_Report.pdf": {
+      "s3_key": "pk4/To_NASA_team/Campaign_Reports/PK4_Campaign03_Report.pdf",
+      "s3_bucket": "nasa-psi",
+      "retrieved_at": "2026-11-14T09:34:08.486277+00:00",
+      "size_bytes": 370130,
+      "sha256": "a0e385cbbc6aa5e2d75c2da81daf7161b666f1296a0ee61c3e3e6c72d52a25c8",
+      "category": "s3_archive_file"
+    },
+    "PK4_Campaign03_Report_extracted.txt": {
+      "source_url": "extracted_from:PK4_Campaign03_Report.pdf",
+      "retrieved_at": "2026-11-14T09:34:08.603770+00:00",
+      "size_bytes": 1391,
+      "sha256": "fad2699a873cc8a8a51c059c823ab15fc83b70d65b71951829a93cb9a3f6b1d5",
+      "category": "extracted_pdf_text"
+    },
+    "PK4_Campaign04_Report.pdf": {
+      "s3_key": "pk4/To_NASA_team/Campaign_Reports/PK4_Campaign04_Report.pdf",
+      "s3_bucket": "nasa-psi",
+      "retrieved_at": "2026-11-14T09:34:09.642036+00:00",
+      "size_bytes": 376036,
+      "sha256": "e32addfda9679c079191e348312f178c423e89e8fe3f9c0c07be50343171221c",
+      "category": "s3_archive_file"
+    },
+    "PK4_Campaign04_Report_extracted.txt": {
+      "source_url": "extracted_from:PK4_Campaign04_Report.pdf",
+      "retrieved_at": "2026-11-14T09:34:09.747043+00:00",
+      "size_bytes": 2354,
+      "sha256": "a5a6782a5b4a0fe01cb239efd44f0455418aab44280dbd172679dbcea0633837",
+      "category": "extracted_pdf_text"
+    },
+    "PK4_Campaign05_Report.pdf": {
+      "s3_key": "pk4/To_NASA_team/Campaign_Reports/PK4_Campaign05_Report.pdf",
+      "s3_bucket": "nasa-psi",
+      "retrieved_at": "2026-11-14T09:34:10.792602+00:00",
+      "size_bytes": 84136,
+      "sha256": "ce3e5eaf2a98f0f6764761539892fe6a10aa3c6e2421a5961cfc3c7b9c15b826",
+      "category": "s3_archive_file"
+    },
+    "PK4_Campaign05_Report_extracted.txt": {
+      "source_url": "extracted_from:PK4_Campaign05_Report.pdf",
+      "retrieved_at": "2026-11-14T09:34:10.830666+00:00",
+      "size_bytes": 2430,
+      "sha256": "e26ff63be0aa5b9043354d121dcc621584a766f7534f136351ce5ffb3d63837e",
+      "category": "extracted_pdf_text"
+    },
+    "PK4_Campaign06_Report_1.pdf": {
+      "s3_key": "pk4/To_NASA_team/Campaign_Reports/PK4_Campaign06_Report_1.pdf",
+      "s3_bucket": "nasa-psi",
+      "retrieved_at": "2026-11-14T09:34:11.771462+00:00",
+      "size_bytes": 29103,
+      "sha256": "4fac3f14b0d83d6f17572ac4c9e27f6feeb9374010b30749646c0f3e2bdcf19a",
+      "category": "s3_archive_file"
+    },
+    "PK4_Campaign06_Report_1_extracted.txt": {
+      "source_url": "extracted_from:PK4_Campaign06_Report_1.pdf",
+      "retrieved_at": "2026-11-14T09:34:11.848907+00:00",
+      "size_bytes": 2159,
+      "sha256": "4b95145874f3948b620a3d1e956da204235e1e64602fa834dd52e83568ecfee8",
+      "category": "extracted_pdf_text"
+    },
+    "PK4_Campaign07_Report_1_update.pdf": {
+      "s3_key": "pk4/To_NASA_team/Campaign_Reports/PK4_Campaign07_Report_1_update.pdf",
+      "s3_bucket": "nasa-psi",
+      "retrieved_at": "2026-11-14T09:34:12.882946+00:00",
+      "size_bytes": 97328,
+      "sha256": "bb18f2d49fa051f2c84c7090c240fd6ddb1f2147caa39ccd4a6dd456e8a7c3ea",
+      "category": "s3_archive_file"
+    },
+    "PK4_Campaign07_Report_1_update_extracted.txt": {
+      "source_url": "extracted_from:PK4_Campaign07_Report_1_update.pdf",
+      "retrieved_at": "2026-11-14T09:34:12.949898+00:00",
+      "size_bytes": 2125,
+      "sha256": "3124e685e6bc9e5792112a147962051135438c6b70cb0be77cf616b18e4dd139",
+      "category": "extracted_pdf_text"
+    },
+    "PK4_Campaign08_Report_1.pdf": {
+      "s3_key": "pk4/To_NASA_team/Campaign_Reports/PK4_Campaign08_Report_1.pdf",
+      "s3_bucket": "nasa-psi",
+      "retrieved_at": "2026-11-14T09:34:13.990083+00:00",
+      "size_bytes": 115190,
+      "sha256": "5a8af5063fddffea9e10ed93d3774d63644d4d4fb6f0c31fde0852e4148cafad",
+      "category": "s3_archive_file"
+    },
+    "PK4_Campaign08_Report_1_extracted.txt": {
+      "source_url": "extracted_from:PK4_Campaign08_Report_1.pdf",
+      "retrieved_at": "2026-11-14T09:34:14.048241+00:00",
+      "size_bytes": 1696,
+      "sha256": "e2c25d75bc0a40d57cd32c54c73e6cf02393633161429382772a60b2a737eb00",
+      "category": "extracted_pdf_text"
+    },
+    "Sensor_ID_strings_&_characters.txt": {
+      "s3_key": "pk4/To_NASA_team/Campaign_Reports/Sensor_ID_strings_&_characters.txt",
+      "s3_bucket": "nasa-psi",
+      "retrieved_at": "2026-11-14T09:34:15.030079+00:00",
+      "size_bytes": 1193,
+      "sha256": "4d898b9f3f161e7adadea6e1e44391befd49848d4580e4bf3d38f4f0bf6d4ba7",
+      "category": "s3_archive_file"
+    }
+  }
+}

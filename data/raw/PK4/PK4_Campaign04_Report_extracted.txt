@@ -1,0 +1,73 @@
+--- Page 1 ---
+Campaign 04 Start 
+date 12.02.2017 End date 17.02.2017 
+ Cosmonaut Oleg Novitzky 
+Express report 
+Science attendees 
+CADMOS MCC-M  DLR-CP Externalization 
+M. Pustylnik 
+T. Hagl 
+T. Antonova (SD-1) 
+M. Kretschmer (SD-2) 
+A. Lipaev 
+V. Naumkin 
+A. Usachev 
+A. Zobnin 
+V. Molotkov 
+  
+General 
+comments 
+All experiments were performed in time segments of 20-30 minutes to avoid the 
+development of temperature gradients. 
+Initialisation No science issues 
+Scientific sequence 
+Science 
+day Date Experiment Comment 
+Data 
+postprocessing 
+status 
+Shear flow 
+Immediately after the manipulation 
+laser action, we have observed a 
+bright stripe (i.e. increased 
+microparticle density) in the central 
+cross-section of the cloud. This 
+stripe slowly disappeared later on. 
+The reason is not yet completely 
+clear. Apart from that, the 
+experiment ran without problems. 
+Laser Wave 
+Excitation Same as Shear flow 
+1 14.02.2017 
+Test of dispenser 4 
+Leakage of the IQF flow controller 
+increase during the test. Not 
+successful. 
+OK 
+String fluid Experiment ran without problems 
+2 15.02.2017 
+Lane formation 
+Experiment ran without major 
+problems. Dispenser parameters 
+and FoV have to be adjusted for the 
+next trials. 
+OK 
+3 16.02.2017 Microparticle Charge and Ion Drag 
+Experiments at 0.4, 0.6 and 1.0 
+mbar were performed. Instead of 
+the run with 1.5 mbar, we decided 
+to try 0.4 mbar again with dispenser 
+4 (1.31 µm microparticles) 
+OK 
+Other issues 
+At the end of Day 1, the leak rate through the IQF suddenly doubled. Injection of 
+microparticles became practically impossible. On days 2 and 3 the experiments were 
+performed with the flexhose disconnected from the gas bottle and pumped down to achieve 
+the acceptable leak rate. Air (nitrogen) admixture was seen in the plasma emission spectra. 
+Reason: unavoidable air inclusion during the flexhose connection. Polluted gas needs to be 
+pumped out before the experiment. On science day 3, the fourth run of Microparticle Charge 
+and Ion Drag had to be interupted due to the wrong gas in the plasma chamber (no neon
+
+--- Page 2 ---
+images visible in PGO at all). The most probable reason is the faulty flexhose connection: 
+touching some surface with the flexhose connector stem (could be reproduced on ground).

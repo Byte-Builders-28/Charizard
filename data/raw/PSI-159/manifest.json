@@ -1,0 +1,29 @@
+{
+  "files": {
+    "investigation_metadata.json": {
+      "source_url": "https://psi.nasa.gov/geode-py/ws/repo/investigations/PSI-159",
+      "retrieved_at": "2026-11-14T09:33:48.363322+00:00",
+      "size_bytes": 3670268,
+      "sha256": "18b751eb6e79866795ff8f2887f6a3f81756aff5f68ff93105bf71966db65d7a",
+      "type": "investigation_metadata"
+    },
+    "PSI-159_Experimental table_CFI-G_Normal Flames.csv": {
+      "source_url": "https://psi-repo-prod.s3.amazonaws.com/psi-data/PSI-159/Experimental%20table/PSI-159_Experimental%20table_CFI-G_Normal%20Flames.csv?versionId=e2yKIZ6mbgJrKJZoJn0VH.iv5SXkad52&response-content-disposition=inline%3B%20filename%3D%22PSI-159_Experimental%20table_CFI-G_Normal%20Flames.csv%22&AWSAccessKeyId=ASIAQKGGXEZEW5JQHIO4&Signature=FsZLoHJ9QZNdKkmK%2Bfbvnh5cE3o%3D&x-amz-security-token=IQoJb3JpZ2luX2VjENL%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FwEaCXVzLXdlc3QtMiJHMEUCIQDcbUEKRRq6s500ieyBx%2BKAtyJdL6LvWG4T49CmpUZB0QIgCDBHrHdqhxTIpaTpDuJQ6avjB0mBeGVlAcyP5A4Hr%2FsqxgUIm%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FARAAGgwwMjE4OTE1ODk3MDUiDHZYS0rhTi%2B7rpjw3iqaBZiQ0JEpFhYJvhS3akI2wQNQ8ug0bcqcr5g1TKJHVF4p3YByyRUsp3LMa7Zja%2BzCe4J6sPjg82TglgL9qfEDwoL5NYRKzUYE5SsE%2FLmfWdl1dnykK4m5zdIvwsueMZrM5iCJPYe%2BgPGpdxUlJ7598xAgA0%2B%2B9h%2FOVEtF3KD3lTCsZg3ngU08mgMURXlQ6d%2FX51zNbwndjueXnLdWIZtm5eg7UwaGdEZwe29RqFFWGjThYKWkHzrwwqmdhJGNuH%2FEaj0OIsKOufgJEtG2xWGtcqChwTc%2FCvWZQ8WW3AVi%2FiTvKGqaYu2ob70Zgl6uge7PBEb1FS%2Be7Zp8H7ICcNpsGH%2BsY%2BqTJqM3UEjNY9jpRVXuWmkPtpx9G3phB5IcNGZzjr8%2BduruiGt5QylEM5XQwkR%2Bnpy1%2Bl%2BeaSbumXAU4U3dnfugQ%2B%2BCcUy4xx6%2FsJt8uGHpeyr28AHSmOVWR67LYR61lQ%2BKiP8XU57CN1O8M7FIq%2BhJD9RF2X8fIWT1vtLZ9S4PsLZTMo7dxXCnYXmcBMg5Tq4h2twEHa28S5%2BQl7qj286wkVn0IGgbY2t13oUiz6tdBJMDYkcqXajAEbwdEI%2FD1eeaOyw91r1Zxsq%2ByGNqy2fFDX48kxvd0ig4QhN9u3Kpx5WlgxEemc%2BkTzdYhTb7xyowWwawjeobPxqnJcMO3uk67WQCOqPeUKqpuZ7LQUZrprPQefNvQ7HA0TaUK8BhKeCqWJEQBEoMa01VUGW%2BZI2XlpmU1zVMn3hQlb2Z2WVzn7B0fghQfd%2F6hXVJu85pUmauT3BnRuzTeWX0Tdsxt0dQIQdJ%2FFwJXbLT9ZdNp931%2FmtLmYIkwfAePoJcOI6ziIQ6sUoGIZyJku4ghXfpPXXaFzCseUQ0cTDk0eDXBjqxAQ67e6AlSIvTV%2FFORuj4CuaM9468aFRvexdNMjTXMAiniFL7%2B9lDq5xeHlzJxPn%2FiazSSiZE8QliY6hH7O30mDtBavMkrRpv8%2BIMyupEZoO66ixu4SDpLAH5lDyfQjrlV8lXyuBqiZBgPxLva1ret1XghyarUS9D%2BmrX8ClNVTnb9wPsCvD9BNTKzsF612sYlkohvzTC9h7iRy5ZX4cQhlHQOnIZPGiDc2ZMHyQ5LQsi9Q%3D%3D&Expires=1794652430",
+      "s3_path": "psi-data/PSI-159/Experimental table/PSI-159_Experimental table_CFI-G_Normal Flames.csv",
+      "retrieved_at": "2026-11-14T09:33:51.583771+00:00",
+      "size_bytes": 22166,
+      "sha256": "d95a621c3fbd27d204dd32ed29fa17d68f2b779d6a523cde8479ed7ebaa5251a",
+      "category": "experimental_table",
+      "version": 1
+    },
+    "PSI-159_Experimental table_CFI-G_Inverse Flames.csv": {
+      "source_url": "https://psi-repo-prod.s3.amazonaws.com/psi-data/PSI-159/Experimental%20table/PSI-159_Experimental%20table_CFI-G_Inverse%20Flames.csv?versionId=n3Zpkz..GSnB2jgO4PjIOmXhx_AbOG.5&response-content-disposition=inline%3B%20filename%3D%22PSI-159_Experimental%20table_CFI-G_Inverse%20Flames.csv%22&AWSAccessKeyId=ASIAQKGGXEZEW5JQHIO4&Signature=IlcTaItnxaz5Y41eD0i6UgrCgJA%3D&x-amz-security-token=IQoJb3JpZ2luX2VjENL%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FwEaCXVzLXdlc3QtMiJHMEUCIQDcbUEKRRq6s500ieyBx%2BKAtyJdL6LvWG4T49CmpUZB0QIgCDBHrHdqhxTIpaTpDuJQ6avjB0mBeGVlAcyP5A4Hr%2FsqxgUIm%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FARAAGgwwMjE4OTE1ODk3MDUiDHZYS0rhTi%2B7rpjw3iqaBZiQ0JEpFhYJvhS3akI2wQNQ8ug0bcqcr5g1TKJHVF4p3YByyRUsp3LMa7Zja%2BzCe4J6sPjg82TglgL9qfEDwoL5NYRKzUYE5SsE%2FLmfWdl1dnykK4m5zdIvwsueMZrM5iCJPYe%2BgPGpdxUlJ7598xAgA0%2B%2B9h%2FOVEtF3KD3lTCsZg3ngU08mgMURXlQ6d%2FX51zNbwndjueXnLdWIZtm5eg7UwaGdEZwe29RqFFWGjThYKWkHzrwwqmdhJGNuH%2FEaj0OIsKOufgJEtG2xWGtcqChwTc%2FCvWZQ8WW3AVi%2FiTvKGqaYu2ob70Zgl6uge7PBEb1FS%2Be7Zp8H7ICcNpsGH%2BsY%2BqTJqM3UEjNY9jpRVXuWmkPtpx9G3phB5IcNGZzjr8%2BduruiGt5QylEM5XQwkR%2Bnpy1%2Bl%2BeaSbumXAU4U3dnfugQ%2B%2BCcUy4xx6%2FsJt8uGHpeyr28AHSmOVWR67LYR61lQ%2BKiP8XU57CN1O8M7FIq%2BhJD9RF2X8fIWT1vtLZ9S4PsLZTMo7dxXCnYXmcBMg5Tq4h2twEHa28S5%2BQl7qj286wkVn0IGgbY2t13oUiz6tdBJMDYkcqXajAEbwdEI%2FD1eeaOyw91r1Zxsq%2ByGNqy2fFDX48kxvd0ig4QhN9u3Kpx5WlgxEemc%2BkTzdYhTb7xyowWwawjeobPxqnJcMO3uk67WQCOqPeUKqpuZ7LQUZrprPQefNvQ7HA0TaUK8BhKeCqWJEQBEoMa01VUGW%2BZI2XlpmU1zVMn3hQlb2Z2WVzn7B0fghQfd%2F6hXVJu85pUmauT3BnRuzTeWX0Tdsxt0dQIQdJ%2FFwJXbLT9ZdNp931%2FmtLmYIkwfAePoJcOI6ziIQ6sUoGIZyJku4ghXfpPXXaFzCseUQ0cTDk0eDXBjqxAQ67e6AlSIvTV%2FFORuj4CuaM9468aFRvexdNMjTXMAiniFL7%2B9lDq5xeHlzJxPn%2FiazSSiZE8QliY6hH7O30mDtBavMkrRpv8%2BIMyupEZoO66ixu4SDpLAH5lDyfQjrlV8lXyuBqiZBgPxLva1ret1XghyarUS9D%2BmrX8ClNVTnb9wPsCvD9BNTKzsF612sYlkohvzTC9h7iRy5ZX4cQhlHQOnIZPGiDc2ZMHyQ5LQsi9Q%3D%3D&Expires=1794652433",
+      "s3_path": "psi-data/PSI-159/Experimental table/PSI-159_Experimental table_CFI-G_Inverse Flames.csv",
+      "retrieved_at": "2026-11-14T09:33:54.873490+00:00",
+      "size_bytes": 39422,
+      "sha256": "d4d44f8b9896936728748e34d1b6ad0812032a92fa5289599b708c138e3a9b39",
+      "category": "experimental_table",
+      "version": 1
+    }
+  }
+}

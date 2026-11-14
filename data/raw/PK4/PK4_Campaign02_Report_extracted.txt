@@ -1,0 +1,97 @@
+--- Page 1 ---
+Campaign 02 Start 
+date 12.06.2016 End date 17.06.2016 
+ Cosmonaut Alexei Ovchinin 
+Express report 
+Science attendees 
+CADMOS MCC-M  DLR-CP Externalization 
+M. Fink 
+M. Pustylnik 
+V. Molotkov 
+A. Usachev 
+ A. Lipaev 
+ A. Zobnin 
+V. Naumkin 
+  
+First science campaign with crew. No more “watchdog” issues. The issue seems to be 
+solved. 
+The issue of the residual gas flow seems to be possible to mitigate by setting the respective 
+offset in the polarity-switching. 
+General 
+comments 
+Situation with the copying of data to the transport hard drives seems to be improved (at 
+least, in orbit) compared to previous campaigns.  
+Initialisation 
+No science issues. Spectra of the discharge in the gas, accumulating in the plasma 
+chamber over two missions could not be taken. No breakdown. In “plasma burning”, 
+spectrometer showed a buffer overflow error. To be investigated. 
+Scientific sequence 
+Science 
+day Date Experiment Comment 
+Data 
+postprocessing 
+status 
+1 14.06.2016 
+Dispenser 1 (10.41 
+µm) and 2 (2.64 µm) 
+test 
+All runs performed. Dispensers 
+work unstable. Number of injected 
+microparticles seems to reduce 
+from injection to injection at the 
+same dispenser parametrization. 
+The residual gas flow seems to 
+significantly disturb the trapping by 
+rf plasma. 
+Copying – no issues. 
+CRC errors during 
+verification. 
+2 15.06.2016 
+Microparticle 
+trapping and 
+manipulation 
+19 out of 20 runs completed. 
+Trapping by a cosmonaut works. At 
+1.5 mbar pressure trapping could 
+be even performed from ground. 
+Compensation of residual drift also 
+works.  
+No issues 
+Accumulation of 1.3 
+µm particles 
+The dispenser works. Particles 
+were always observed after rf 
+trapping procedure. However, 
+transport by the dc field does not 
+work (presumably because of the 
+residual gas flow). The particles 
+even do not appear in the PGO 
+camera. Amount of microparticles 
+from the rf trapping is not enough 
+for reasonable experimentation. 
+3 16.06.2016 
+Waves near EM 
+electrode 
+Pressure of 0.22 mbar turned out to 
+be too close to the offset to be set 
+correctly. At the two other 
+pressures reasonable clouds were 
+No issues
+
+--- Page 2 ---
+Waves near EM 
+electrode 
+Pressure of 0.22 mbar turned out to 
+be too close to the offset to be set 
+correctly. At the two other 
+pressures reasonable clouds were 
+trapped. Hey were, however, lost in 
+an attempt to bring them closer to 
+the EM electrode. Re-running the 
+script allowed to perform one 
+successful run at 0.3 mbar. This 
+pressure seems, however, to be too 
+large for obtaining waves with 3.4 
+µm microparticles. 
+ 
+Other issues

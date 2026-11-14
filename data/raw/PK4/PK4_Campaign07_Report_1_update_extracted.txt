@@ -1,0 +1,62 @@
+--- Page 1 ---
+Campaign 07Start
+date 22.07.2019 End date 28.07.2019
+Cosmonaut Alexei Ovchinin
+Science attendees
+CADMOS MCC-M DLR-CP Externalization
+M. Pustylnik
+M. Rubin-Zuzic (SD-1)
+M. Thoma (SD-1)
+V. Nosenko (SD-2)
+Bin Liu (SD-2, SD-3, SD-4)
+E. Thomas (SD-1, SD-3)
+J. Williams (SD-1, SD-3)
+L. Scott (SD-1, SD-3)
+A. Lipaev
+V. Naumkin
+A. Usachev (SD-2, SD-3, SD-4)
+A. Zobnin
+General
+comments
+This is the first campaign with the new CVU system hard drives. The performance of the apparatus during the
+experiments as well as during the data post processing was normal. 
+During the campaign some relay satellites started to exhibit problems in transmitting the Ku-band. This resulted in
+the appearance of unexpected LOS, which had some effect on the campaign workflow. 
+Initialization No science issues
+Scientific sequence
+Science 
+day
+Date Experiment Comment Data
+postprocessing
+status
+1 24.07.2019 Structure formation Experiment ran without problems OK
+2 25.07.2019 Dispersion relation, shocks and solitons Experiment ran without problems Due to the poor Ku-band coverage, the commands 
+sequence for postprocessing
+could not be finalized. 
+Analysis of the log-files 
+showed that all the files were
+successfully copied.
+Shear flow Experiment ran without problems
+Structure formation 
+for 1.31 mm 
+microparticles
+Experiment ran without problems
+3 26.07.2019 Measurement of 
+charges,  energies 
+and microparticle 
+chains
+Experiment ran without problems OK
+Pulsed shear 
+motion
+Experiment ran without problems
+4 27.07.2019 Shear flow There were two executions of this experiment on 
+this day. First one had to be started about 30 min 
+in advance of microparticle trapping, resulting in 
+the strong distrosion of the microparticle clouds by
+thermophoretic forces. The second execution did 
+not exhibit any problems.
+Structure formation 
+for 1.31 mm 
+microparticles
+Experiment ran without problems
+Other issues The PK-4 Core Team devotes this campaign to a passionate enthusiast of complex plasma research in space, Dr. Vladimir Molotkov, who passed away on 11.07.2019.

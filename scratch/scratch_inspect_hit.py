@@ -8,3 +8,4 @@ with urllib.request.urlopen(req, timeout=10) as res:
     hit = d['hits']['hits'][0]
     print("Hit keys:", list(hit.keys()))
     print("Hit content:\n", json.dumps(hit, indent=2))
+

@@ -1,0 +1,82 @@
+--- Page 1 ---
+Campaign 05 Express report
+Start
+date 04.11.2018 End date 10.11.2018
+Cosmonaut Sergey Prokopiev
+Science attendees
+CADMOS MCC-M DLR-CP Externalization
+M. Pustylnik
+H. Thomas
+B. Liu
+M. Kretschmer (SD-1)
+A. Lipaev
+V. Naumkin
+A. Usachev
+A. Zobnin
+V. Molotkov
+General
+comments
+The first scientific campaign with the experiment interface
+Initialisation No science issues
+Scientific sequence
+Science 
+day
+Date Experiment Comment Data
+postprocessing
+status
+1 06.11.2018 Compatibility with ICE 
+Cubes
+Experiment ran without problems. The 
+influence of ICE Cubes on the 
+microparticle cloud was not visible.
+MD5 sums are absent 
+from videos copied to 
+CVU1 Data disk
+Lane formation Experiment ran without problems.
+Transverse oscillations 
+instability
+The script was interrupted due to 
+software problems in the CSL libraries 
+and restarted again. Two of the three 
+dispenser settings were performed.  
+2 07.11.2018 Dust acoustic waves: 
+dispersion relation, 
+shocks and dark 
+solitons
+Experiment ran without problems. MD5 sums are absent 
+from videos copied to 
+CVU1 Data disk
+Synchronization of dust
+acoustic waves
+Unexpectedly, the modulation of the EM
+electrode current did not lead to the 
+agitation of the microparticle cloud 
+trapped in the dc discharge.  
+Accumultion of 1.3 mm 
+microparticles
+Experiment ran without problems. It 
+was possible to inject, transport and 
+accumulate 1.3 mm microparticles.
+3 08.11.2018 Waves at varied electric 
+field
+Experiment ran without problems. OK
+4 09.11.2018 Dust acoustic waves: 
+dispersion relation, 
+shocks and dark solitons
+Experiment ran without problems. All Videos with destination 
+CVU1 Data hat to be copied
+manually. All MD5 present.
+Transverse oscillations 
+instability 
+The script was interrupted due to software 
+problems in the CSL libraries and 
+restarted again. For the first dispenser 
+setting only one (out of three) current 
+value could be performed. For the last 
+dispenser setting, the script had to be 
+interrupted  because of the crash of the 
+Master software in the CVU. Only one 
+current setting (out of three) could be 
+performed.
+Other issues Video in the data externalization could not run properly on more than one station. That caused problems with the coordination during real-time operations since the Russian team 
+at MCC-M was sometimes unable to see the video.
