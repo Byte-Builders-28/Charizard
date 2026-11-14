@@ -1,0 +1,21 @@
+# FlameScope - Core Combustion & Fire Safety Investigations
+
+Catalog of 15 core microgravity combustion and spacecraft fire safety investigations from NASA PSI.
+
+| Investigation ID | Acronym | Title | Sub-Research Area | DOI | Source URL | File Types |
+|---|---|---|---|---|---|---|
+| **PSI-69** | FLEX | Flame Extinguishment Experiment | Spacecraft Fire Safety | [https://doi.org/10.60555/mbq8-0451](https://doi.org/10.60555/mbq8-0451) | [PSI Link](https://psi.nasa.gov/physci/repo/data/investigations/PSI-69) | CSV |
+| **PSI-68** | FLEX-2 | Flame Extinguishment Experiment - 2 | Spacecraft Fire Safety | [https://doi.org/10.60555/byp8-h018](https://doi.org/10.60555/byp8-h018) | [PSI Link](https://psi.nasa.gov/physci/repo/data/investigations/PSI-68) | CSV |
+| **PSI-98** | SAFFIRE-I | Spacecraft Fire Safety Experiment-I | Spacecraft Fire, Smoke Distribution | [https://doi.org/10.60555/0t15-1z43](https://doi.org/10.60555/0t15-1z43) | [PSI Link](https://psi.nasa.gov/physci/repo/data/investigations/PSI-98) | CSV |
+| **PSI-99** | SAFFIRE-II | Spacecraft Fire Experiment-II | Surface Combustion | [https://doi.org/10.60555/2chp-m469](https://doi.org/10.60555/2chp-m469) | [PSI Link](https://psi.nasa.gov/physci/repo/data/investigations/PSI-99) | CSV |
+| **PSI-100** | SAFFIRE-III | Spacecraft Fire Experiment-III | Spacecraft Fire Safety | [https://doi.org/10.60555/040q-4h36](https://doi.org/10.60555/040q-4h36) | [PSI Link](https://psi.nasa.gov/physci/repo/data/investigations/PSI-100) | CSV |
+| **PSI-25** | BASS-II | Burning and Suppression of Solids - II | Spacecraft Fire Safety | [https://doi.org/10.60555/4qc4-de67](https://doi.org/10.60555/4qc4-de67) | [PSI Link](https://psi.nasa.gov/physci/repo/data/investigations/PSI-25) | CSV, JPG |
+| **PSI-26** | BASS | Burning and Suppression of Solids | Spacecraft Fire Safety | [https://doi.org/10.60555/58h4-dy80](https://doi.org/10.60555/58h4-dy80) | [PSI Link](https://psi.nasa.gov/physci/repo/data/investigations/PSI-26) | CSV |
+| **PSI-60** | PSI-60 | Computational and Experimental Analysis of SPICE Data Sets | Gaseous | [https://doi.org/10.60555/mzjm-yv57](https://doi.org/10.60555/mzjm-yv57) | [PSI Link](https://psi.nasa.gov/physci/repo/data/investigations/PSI-60) | CSV, PDF, TXT |
+| **PSI-107** | SPICE | Smoke Point In Co-flow Experiment | Fire Safety | [https://doi.org/10.60555/9kbh-e962](https://doi.org/10.60555/9kbh-e962) | [PSI Link](https://psi.nasa.gov/physci/repo/data/investigations/PSI-107) | CSV |
+| **PSI-101** | SAME-R | Smoke Aerosol Measurement Experiment-Reflight | Spacecraft Fire Safety | [https://doi.org/10.60555/2np7-jv14](https://doi.org/10.60555/2np7-jv14) | [PSI Link](https://psi.nasa.gov/physci/repo/data/investigations/PSI-101) | CSV |
+| **PSI-102** | SAME | Smoke and Aerosol Measurement Experiment | Spacecraft Fire Safety | [https://doi.org/10.60555/gd4k-8h62](https://doi.org/10.60555/gd4k-8h62) | [PSI Link](https://psi.nasa.gov/physci/repo/data/investigations/PSI-102) | CSV |
+| **PSI-115** | PSI-115 | Utilization of the Smoke Aerosol Measurement Experiment Data for Advanced Modeling and Simulation of Smoke Generation in Micro-Gravity | Smoke Aerosol, Combustion Simulation | [https://doi.org/10.60555/q0v5-1v28](https://doi.org/10.60555/q0v5-1v28) | [PSI Link](https://psi.nasa.gov/physci/repo/data/investigations/PSI-115) | CSV, PDF, TXT |
+| **PSI-159** | ACME CFI-G | Advanced Combustion via Microgravity Experiments / Cool Flames Investigation with Gases | Flames of Gaseous Fuels | [https://doi.org/10.60555/cyt1-kh64](https://doi.org/10.60555/cyt1-kh64) | [PSI Link](https://psi.nasa.gov/physci/repo/data/investigations/PSI-159) | CSV, JPG, PNG |
+| **PSI-10** | ACME/Flame Design | Advanced Combustion via Microgravity Experiments / Flame Design | Flames of Gaseous Fuels | [https://doi.org/10.60555/w4zy-bt45](https://doi.org/10.60555/w4zy-bt45) | [PSI Link](https://psi.nasa.gov/physci/repo/data/investigations/PSI-10) | CSV, JPG, PNG |
+| **PSI-20** | ACME BRE | Advanced Combustion via Microgravity Experiments - Burning Rate Emulator | Flames of Gaseous Fuels | [https://doi.org/10.60555/vb93-3y72](https://doi.org/10.60555/vb93-3y72) | [PSI Link](https://psi.nasa.gov/physci/repo/data/investigations/PSI-20) | CSV |

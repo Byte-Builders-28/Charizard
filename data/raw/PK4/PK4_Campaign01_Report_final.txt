@@ -1,0 +1,91 @@
+--- Page 1 ---
+ 
+Campaign 01 Start 
+date 25.10.2015 End date 30.10.2015 
+ Cosmonaut Oleg Kononenko 
+Express report 
+Science attendees 
+CADMOS MCC-M  DLR-CP Externalization 
+M. Fink 
+M. Pustylnik 
+A. Zobnin 
+A. Lipaev 
+V. Molokov  
+A. Usachev 
+  
+Campaign without crew participation due to EPM FCC problem. Particle trapping with RF 
+discharge or combination of DC and RF discharges. 
+All the experiments affected by approx. 0.08 sccm leak through the IQF200  needle valve. 
+See Initialisation for details. General comments Huge (longer than 30 seconds) delay of the experiment video in MCC-M made the 
+participation of the scientists in the experiment from MCC-M very hard and sometimes 
+impossible. 
+Initialisation 
+After plasma burning procedure, the base pressure did not go down to the expected value 
+of 2x10-5 mbar. Troubleshooting measures revealed that the plasma chamber is vacuum 
+tight with respect to the container atmosphere. However, a leak of the order of 0.08 sccm 
+through the nominally closed IQF200 needle valve was discovered. Gas flow to be taken 
+into account in preparation of the next campaign. Other troubleshooting/corrective 
+measures in discussion. 
+Scientific sequence 
+Science 
+day Date Experiment Comment 
+Data 
+postprocessing 
+status 
+Microparticle charge 
+and ion drag force 
+backup 
+Argon gas. 30 out of 30 runs 
+completed. 1 27.10.2015 
+Reference 
+experiment block Run completely without problems 
+Automated data 
+postprocessing failed. 
+Data copied to internal 
+disk 
+Microparticle charge 
+and ion drag force 
+backup 
+Neon gas. Stopped after a couple 
+of runs due to lack of gas. See 
+Other issues for details.  
+Accumulation of 1.3 
+µm particles 
+Run completely. RF discharge 
+trapping worked well, but no 
+particles came when transporting 
+by the DC discharge. To be cleared 
+in the next campaign if injection or 
+transport do not work. 
+2 28.10.2015 
+Illumination exposure 
+variation for 3.4 µm 
+particles backup 
+Re-run three times in attempts to 
+fight back the residual gas flow. 
+Automated data 
+postprocessing 
+succesful. Internal 
+copied files from 
+previous day manually 
+copied to transport 
+disks 
+3 29.10.2015 
+Microparticle charge 
+and ion drag force 
+backup 
+Neon gas. 21 out of 30 runs 
+completed because of the 
+accidental loss of CVU2 SSD drive. 
+Reason unclear. The drive 
+recovered later. Data saved. 
+Automated 
+postprocessing 
+successful.  
+Other issues 
+On science day 2, during the “Microparticle charge and ion drag force backup” experiment it 
+was noticed that no gas is supplied to the plasma chamber. Oleg was called back to the 
+experiment, and after the reconnection of the flexhose, the experiments could be continued. 
+Improvements to the procedures and/or cosmonaut training lesson in discussion. 
+
+
