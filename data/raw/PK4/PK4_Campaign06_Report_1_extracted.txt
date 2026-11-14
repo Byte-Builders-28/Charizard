@@ -1,0 +1,73 @@
+--- Page 1 ---
+Campaign 06 
+Express report Start date 03.03.2019 End date 09.03.2019 
+Cosmonaut Oleg Kononenko 
+Science attendees 
+CADMOS MCC-M  DLR-CP Externalization 
+A. Lipaev 
+M. Pustylnik (SD-2, SD-3, SD-4) 
+M. Rubin-Zuzic (SD-1, SD-2) 
+V. Nosenko (SD-3, SD-4) 
+M. Schwabe (SD-4) 
+V. Naumkin 
+A. Usachev 
+A. Zobnin (SD-3, SD-4) 
+  
+General 
+comments 
+ 
+Initialization No science issues 
+Scientific sequence 
+Science 
+day Date Experiment Comment 
+Data 
+postprocessing 
+status 
+1 05.03.2019 Structure formation Experiment ran without problems OK 
+2 06.03.2019 Structure formation Experiment ran without problems All videos copied without problems; md5 were 
+calculated but no md5 
+verify after copying 
+CVU2 HK data (logs and 
+timetags); md5 were 
+calculated but no md5 
+verify after copying 
+CVU1 HK data (logs and 
+dat) were manually 
+copied were possible. 
+Some files, including 
+CAN_TH, could not be 
+copied - presumably due 
+to partial hardware 
+malfunctioning of the 
+system HD. 
+System HD must be 
+downloaded to ground for 
+the data recovery. 
+3 07.03.2019 
+Transverse 
+oscillations 
+instability 
+Experiment ran without problems 
+Shear flow 
+First experiment was aborted in the 
+Laser intensity profile measurement 
+block by the CAN-Bus communication 
+loss. Second experiment was aborted 
+by the same problem in the start-up 
+phase. It could be however restarted 
+and successfully completed. 
+4 08.03.2019 
+Slow waves 
+First experiment was aborted in the CP 
+3 due to the power cut by the EPM rack 
+(reason unknown, recovery took more 
+than 40 min) and therefore lost.  
+Second experiment was successfully 
+completed.  
+Shear flow Experiment ran without problems 
+Other issues 
+The Core Team acknowledges the enthusiasm of O. Kononenko in performing PK-4. 
+Second Shear flow experiment was possible due to the fact, that he agreed to exchange PK-
+4 execution with the other activity. Also, for the lost Slow Waves experiment, he proposed to 
+perform it during his midday meal. However, in order to keep the timeline of the experiment 
+day, this kind offer had to be rejected.

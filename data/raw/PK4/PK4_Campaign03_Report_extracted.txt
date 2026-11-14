@@ -1,0 +1,49 @@
+--- Page 1 ---
+Campaign 03 Start 
+date 09.10.2016 End date 14.10.2016 
+ Cosmonaut Anatoly Ivanishin 
+Express report 
+Science attendees 
+CADMOS MCC-M  DLR-CP Externalization 
+M. Pustylnik 
+H. Thomas 
+V. Nosenko (SD 1) 
+M. Thoma (SD 2,3) 
+A. Lipaev 
+A. Zobnin 
+A. Usachev 
+V. Naumkin 
+V. Molotkov 
+  
+General 
+comments 
+In all the experiments, a slow radial symmetry degradation of the shapes of the 
+microparticle clouds was observed. Most probable reason – thermophoretic forces 
+associated with the non-uniform heating of the plasma chamber. 
+Initialisation No science issues. Spectra of the discharge in the gas, accumulating in the plasma chamber over two missions were taken, however are apparantly very weak. 
+Scientific sequence 
+Science 
+day Date Experiment Comment 
+Data 
+postprocessing 
+status 
+1 11.10.2016 Shear flow All three discharge current cycles  performed No issues 
+Microparticle charge 
+and ion drag 
+measurement 
+16 runs out of 20 performed 
+2 12.10.2016 
+Test of dispensers 4 
+and 6 Not performed 
+No issues 
+String fluid 
+2 out of 3 pressure cycles 
+performed. Microparticles are being 
+quickly lost during the experiments.  3 13.10.2016 Test of dispensers 4 
+(1.3 µm) and 6 (6.68 
+µm) 
+5 runs performed. Dispenser 6 
+works properly. Functionality of 
+dispenser 4 is still under question.  
+No issues 
+Other issues

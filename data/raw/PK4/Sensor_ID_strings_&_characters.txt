@@ -1,0 +1,17 @@
+Description of the ID characters of sensor output files:
+
+
+; ID_Name                   ID_String   
+; mks910_act_pres_pirani    '1080050'   actual pressure measured by pirani gauge (units: mbar)
+; mks640_act_pressure       '1080060'   actual pressure of the chamber measured by mks640 sensor (units: mbar)
+; mks640_set_pressure       '108000A'   set pressure on mks640 sensor (units: mbar)
+; hv_rtn_current_value      '1020088'   high voltage system return current (units: mA) 
+; hv_set_voltage            '102000E'   set high voltage value (units: kV)
+; om_set_diode_current      '106000A'   set diode current (units: A)
+; on_off_dp4                '1070020'   vacuum pump dp4 (0 = ON, 1 = OFF)
+; on_off_dp5                '1070028'   vacuum pump dp5 (0 = ON, 1 = OFF)
+; on_off_dp6                '1070030'   vacuum pump dp6 (0 = ON, 1 = OFF)
+; hv_act_voltage            '1020080'   actual high voltage value (units: kV)
+; hv_ch0_voltage_value      '1020088'   active electrode volltage (units: kV)
+; hv_ch1_voltage_value      '102008E'   elecrode voltage of electrical maipulation system (units: kV)
+; iqf200_actual_value       '1070068'   gas flow actual value (units: sccm)

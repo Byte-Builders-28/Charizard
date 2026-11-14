@@ -40,3 +40,4 @@ for h in hits:
 print(f"\nFound {len(all_combustion)} combustion / fire-safety investigations:")
 for c in sorted(all_combustion, key=lambda x: int(x['Accession'].replace('PSI-', '')) if x['Accession'].startswith('PSI-') else 999):
     print(f"  {c['Accession']}: [{c['Acronym']}] {c['Title']} | Area: {c['Research Area']} / {c['SubResearch Area']}")
+

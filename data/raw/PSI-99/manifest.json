@@ -1,0 +1,20 @@
+{
+  "files": {
+    "investigation_metadata.json": {
+      "source_url": "https://psi.nasa.gov/geode-py/ws/repo/investigations/PSI-99",
+      "retrieved_at": "2026-11-14T09:32:48.882041+00:00",
+      "size_bytes": 12514,
+      "sha256": "f2783207ab51db55f93bf68bf4fc66d172091a405dc44868b3a63661a7f36913",
+      "type": "investigation_metadata"
+    },
+    "PSI-99_Experimental table_SAFFIRE-2.csv": {
+      "source_url": "https://psi-repo-prod.s3.amazonaws.com/psi-data/PSI-99/Experimental%20table/PSI-99_Experimental%20table_SAFFIRE-2.csv?versionId=Kudy6.is5OaNybLt0PRcLA6qMj57Pcxl&response-content-disposition=inline%3B%20filename%3D%22PSI-99_Experimental%20table_SAFFIRE-2.csv%22&AWSAccessKeyId=ASIAQKGGXEZEZMCRJZOF&Signature=s4nBxG4993n9uv819p7J40kXEX0%3D&x-amz-security-token=IQoJb3JpZ2luX2VjENH%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FwEaCXVzLXdlc3QtMiJIMEYCIQCRq8Lt6vsuQsusxe9fZ150UaDm6CPHalLryzZGbwbjIwIhALD%2F0CeQHyuOwR1AJK4OnApQrLo7WSD526rcNDum786QKsYFCJr%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FwEQABoMMDIxODkxNTg5NzA1IgzaMaAsRn1A0w9kYsoqmgXPU5Hz4H3jxM%2F7eBPVnhKhBwS8QjPKJhZWVjrAWnVnYfdNOZ6tip2cQkbgNVwQ9NZJCo%2Bs9Dcp%2BGyB27MioGiivKZdg4ZyW3ljWq4sYVdR2S4Ppf9ffK48ASrKnikJ22IxybZLgphcSmK%2F5PLIMgDUHQQbwUbe4%2F1RTXmx6T9jkg%2Bm5Vt3G%2F7SDEfmGSgtCSphfQNwiO1AO56ERqTi9z1FuzZxEuxvnlD7Uw%2B0KKrV9tTbJkUYkN0DJ52FfdKLRfefwPLt0VcqEVKXWyQk%2FNAxlIEzRwrpNilogEdOz5Au4LJvvfArphmrec2fXh%2FDB4VgnGmomRnNEvRS%2Bh0VE3xMjzsBX6P0R9yj5QXJsZCNHhb%2BNKzXWyYilBQUiORT3dN5DOK3caRgqJtfbqIu6tUc6MxOC4EXT4WiM3ge1pYQ9IxYLpgDef64SQj5PmAP5EjcoFDRCqlIXBcM5OzH4tbQMHf%2BB71Nlh9o3ZFTpYo5bKbpCl3QlVaUo8kjGTl8uFNPlnOMBVUMiFkR8ypGNrtf8JfKf8AcJdftgQHEsOoX7YE4qyYCFPq7qy3Ffapno1tXLuodbFK%2BK%2BNGFembvnMgFcDHctmnvMStgAQFWtJehoclzj1tSpZ%2BeWMNG9YI1Sywe%2FryCC2Fcejrx4NlxP%2BHp7lxxqZx16EwoaJbycIyVjlEGzZ5MM3YMfmzb7YtXUQF9QRVQ0yPnf5hRYW0BAzv7biSBGNeZvOzoCxKZw07zzZjanhsbCiMkfeFu1JdvxxD5mm9MOzDTyHmrfPnU%2BVUmVi7DCH2Z5JTSCu30yygTgkgW07tMB%2Fr0y7N1wktvPaAieOLJ0SpQdzq6wfKNOOahmkn6XDXCc0soJMgZzNPRH1Srn4V7kM7R5cw9rXg1wY6sAG3HbNIu1OzcCmcK7rqs3Gl754WWU3R7xANExrNJL4R9iP3x9zKzJm3pjsWQtMeKEyesAr2FbUJEG%2BubSo9%2FzJAz5cPx1H0Co%2B5gfCsZWtBU%2B34rX%2Bb02aFI9EFrxGnNJs7H3DaazserhVYs9NKisQhZyJI5ExvTG4wDAOerHXy8XZL6pWFJV3I4l7o%2FJHwuIw4yQ8Rvrxd%2BHGsjcKvCns7x5jgcodUAwDszxHBQmbhYg%3D%3D&Expires=1794652370",
+      "s3_path": "psi-data/PSI-99/Experimental table/PSI-99_Experimental table_SAFFIRE-2.csv",
+      "retrieved_at": "2026-11-14T09:32:51.446751+00:00",
+      "size_bytes": 1973,
+      "sha256": "3c24390b9ef86f3d1ebaab911a1a3cc95a8759aebf42062371370e6d4b31b8ac",
+      "category": "experimental_table",
+      "version": 1
+    }
+  }
+}

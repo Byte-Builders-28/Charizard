@@ -31,3 +31,4 @@ for h in hits:
 print(f"Total Combustion / Fire Safety investigations found: {len(combustion_invs)}")
 for c in combustion_invs:
     print(f"[{c['id']}] {c['acronym']} - {c['title']} ({c['subResearchArea']}) DOI: {c['doi']}")
+

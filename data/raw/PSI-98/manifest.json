@@ -2,7 +2,7 @@
   "files": {
     "investigation_metadata.json": {
       "source_url": "https://psi.nasa.gov/geode-py/ws/repo/investigations/PSI-98",
-      "retrieved_at": "2026-11-14T09:17:08.451377+00:00",
+      "retrieved_at": "2026-11-14T09:32:47.249958+00:00",
       "size_bytes": 175518,
       "sha256": "a77368c273e72b82730ae26fdb29d54788068a31e5425effaa94cbfb0b09e021",
       "type": "investigation_metadata"

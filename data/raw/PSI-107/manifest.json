@@ -1,0 +1,20 @@
+{
+  "files": {
+    "investigation_metadata.json": {
+      "source_url": "https://psi.nasa.gov/geode-py/ws/repo/investigations/PSI-107",
+      "retrieved_at": "2026-11-14T09:33:16.315629+00:00",
+      "size_bytes": 422846,
+      "sha256": "3658723d536f085c81a2baaf0d08b1794bf13306d283427292d53708a5f78d38",
+      "type": "investigation_metadata"
+    },
+    "PSI-107_Experimental table_Spice.csv": {
+      "source_url": "https://psi-repo-prod.s3.amazonaws.com/psi-data/PSI-107/Experimental%20table/PSI-107_Experimental%20table_Spice.csv?versionId=m6.SddOXpvfDvWSuuJDaYXuZi6aJd7do&response-content-disposition=inline%3B%20filename%3D%22PSI-107_Experimental%20table_Spice.csv%22&AWSAccessKeyId=ASIAQKGGXEZEW5JQHIO4&Signature=T0u%2FerVf05U2OvpDXiQWmJ%2FQAow%3D&x-amz-security-token=IQoJb3JpZ2luX2VjENL%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FwEaCXVzLXdlc3QtMiJHMEUCIQDcbUEKRRq6s500ieyBx%2BKAtyJdL6LvWG4T49CmpUZB0QIgCDBHrHdqhxTIpaTpDuJQ6avjB0mBeGVlAcyP5A4Hr%2FsqxgUIm%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FARAAGgwwMjE4OTE1ODk3MDUiDHZYS0rhTi%2B7rpjw3iqaBZiQ0JEpFhYJvhS3akI2wQNQ8ug0bcqcr5g1TKJHVF4p3YByyRUsp3LMa7Zja%2BzCe4J6sPjg82TglgL9qfEDwoL5NYRKzUYE5SsE%2FLmfWdl1dnykK4m5zdIvwsueMZrM5iCJPYe%2BgPGpdxUlJ7598xAgA0%2B%2B9h%2FOVEtF3KD3lTCsZg3ngU08mgMURXlQ6d%2FX51zNbwndjueXnLdWIZtm5eg7UwaGdEZwe29RqFFWGjThYKWkHzrwwqmdhJGNuH%2FEaj0OIsKOufgJEtG2xWGtcqChwTc%2FCvWZQ8WW3AVi%2FiTvKGqaYu2ob70Zgl6uge7PBEb1FS%2Be7Zp8H7ICcNpsGH%2BsY%2BqTJqM3UEjNY9jpRVXuWmkPtpx9G3phB5IcNGZzjr8%2BduruiGt5QylEM5XQwkR%2Bnpy1%2Bl%2BeaSbumXAU4U3dnfugQ%2B%2BCcUy4xx6%2FsJt8uGHpeyr28AHSmOVWR67LYR61lQ%2BKiP8XU57CN1O8M7FIq%2BhJD9RF2X8fIWT1vtLZ9S4PsLZTMo7dxXCnYXmcBMg5Tq4h2twEHa28S5%2BQl7qj286wkVn0IGgbY2t13oUiz6tdBJMDYkcqXajAEbwdEI%2FD1eeaOyw91r1Zxsq%2ByGNqy2fFDX48kxvd0ig4QhN9u3Kpx5WlgxEemc%2BkTzdYhTb7xyowWwawjeobPxqnJcMO3uk67WQCOqPeUKqpuZ7LQUZrprPQefNvQ7HA0TaUK8BhKeCqWJEQBEoMa01VUGW%2BZI2XlpmU1zVMn3hQlb2Z2WVzn7B0fghQfd%2F6hXVJu85pUmauT3BnRuzTeWX0Tdsxt0dQIQdJ%2FFwJXbLT9ZdNp931%2FmtLmYIkwfAePoJcOI6ziIQ6sUoGIZyJku4ghXfpPXXaFzCseUQ0cTDk0eDXBjqxAQ67e6AlSIvTV%2FFORuj4CuaM9468aFRvexdNMjTXMAiniFL7%2B9lDq5xeHlzJxPn%2FiazSSiZE8QliY6hH7O30mDtBavMkrRpv8%2BIMyupEZoO66ixu4SDpLAH5lDyfQjrlV8lXyuBqiZBgPxLva1ret1XghyarUS9D%2BmrX8ClNVTnb9wPsCvD9BNTKzsF612sYlkohvzTC9h7iRy5ZX4cQhlHQOnIZPGiDc2ZMHyQ5LQsi9Q%3D%3D&Expires=1794652397",
+      "s3_path": "psi-data/PSI-107/Experimental table/PSI-107_Experimental table_Spice.csv",
+      "retrieved_at": "2026-11-14T09:33:19.231834+00:00",
+      "size_bytes": 31205,
+      "sha256": "fb0d7e60cf5367afb429089e9901d27288f78038efd26c8de1db4fbe04117136",
+      "category": "experimental_table",
+      "version": 1
+    }
+  }
+}

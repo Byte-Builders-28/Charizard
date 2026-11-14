@@ -1,0 +1,62 @@
+--- Page 1 ---
+Campaign 08 Express report 
+Start 
+date 08.11.2019 End date 15.11.2019  
+Cosmonaut Alexander Skvortzov  
+Science attendees 
+CADMOS MCC-M  DLR-CP Externalization 
+M. Pustylnik 
+H. Thomas 
+M. Schwabe (SD-1) 
+A. Lipaev 
+V. Naumkin 
+A. Usachev (SD-1) 
+A. Zobnin 
+  
+General 
+comments 
+  
+Initialization No science issues 
+Scientific sequence 
+Science 
+day Date Experiment Comment 
+Data 
+postprocessing 
+status 
+1 11.11.2019 
+Shear flow Experiment ran without problems 
+OK 
+Shear flow with 1.31 
+m particles 
+It seems that the 1.31 m microparticles form 
+suspensions which are very thin for the Shear 
+Flow experiment.  
+Compression of the 
+self-excited waves 
+by the RF discharge 
+Experiment ran without problems 
+“Slow” dust density 
+waves Experiment ran without problems 
+2 12.11.2019 
+“Slow” dust density 
+waves Experiment ran without problems 
+Waves at varied 
+electric field Microparticles (1.31 m) exhibited a strong unexplained drift from the active to the passive 
+electrode. Waves at varied electric field 
+Recrystallization 
+Used as a substitution to Waves at varied electric 
+field. Attempts to trap the microparticles without 
+crew not very successful. 
+3 13.11.2019 Recrystallization 
+First of the three runs was cancelled due to the 
+problem with the solid-state drive. The problem 
+has self-healed later on. Two other experiment 
+runs were performed without problems 
+4 14.11.2019 
+Shear flow with 1.31 
+m particles 
+It seems that the 1.31 m microparticles form 
+suspensions which are very thin for the Shear 
+Flow experiment. 
+Shear flow Experiment ran without problems 
+Other issues

@@ -15,3 +15,4 @@ for q in ["q=Combustion", "q=FLEX", "q=Saffire", "q=BASS", "q=SPICE", "q=&size=5
                 print(f"   [{src.get('accession')}] {src.get('investigationAcronym')} - {src.get('title')}")
     except Exception as e:
         print(f"Query {q} error: {e}")
+

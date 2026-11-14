@@ -33,3 +33,4 @@ try:
         print("Content sample:\n", content[:200].decode('utf-8', errors='ignore'))
 except Exception as e:
     print("Error:", e)
+

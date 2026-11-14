@@ -1,0 +1,20 @@
+{
+  "files": {
+    "investigation_metadata.json": {
+      "source_url": "https://psi.nasa.gov/geode-py/ws/repo/investigations/PSI-26",
+      "retrieved_at": "2026-11-14T09:33:10.026847+00:00",
+      "size_bytes": 251646,
+      "sha256": "8a424160302f1fc3aeffc82895961f739e6d1efe5d9a95b4d4fe4097bc85751e",
+      "type": "investigation_metadata"
+    },
+    "PSI-26_Experimental table_BASS.csv": {
+      "source_url": "https://psi-repo-prod.s3.amazonaws.com/psi-data/PSI-26/Experimental%20table/PSI-26_Experimental%20table_BASS.csv?versionId=R1UsWo0ifZNvvIVOOPLjSGA21CjBoE4I&response-content-disposition=inline%3B%20filename%3D%22PSI-26_Experimental%20table_BASS.csv%22&AWSAccessKeyId=ASIAQKGGXEZEW5JQHIO4&Signature=FokI7cp1vQxJFuzo2%2BdM7DakimU%3D&x-amz-security-token=IQoJb3JpZ2luX2VjENL%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FwEaCXVzLXdlc3QtMiJHMEUCIQDcbUEKRRq6s500ieyBx%2BKAtyJdL6LvWG4T49CmpUZB0QIgCDBHrHdqhxTIpaTpDuJQ6avjB0mBeGVlAcyP5A4Hr%2FsqxgUIm%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FARAAGgwwMjE4OTE1ODk3MDUiDHZYS0rhTi%2B7rpjw3iqaBZiQ0JEpFhYJvhS3akI2wQNQ8ug0bcqcr5g1TKJHVF4p3YByyRUsp3LMa7Zja%2BzCe4J6sPjg82TglgL9qfEDwoL5NYRKzUYE5SsE%2FLmfWdl1dnykK4m5zdIvwsueMZrM5iCJPYe%2BgPGpdxUlJ7598xAgA0%2B%2B9h%2FOVEtF3KD3lTCsZg3ngU08mgMURXlQ6d%2FX51zNbwndjueXnLdWIZtm5eg7UwaGdEZwe29RqFFWGjThYKWkHzrwwqmdhJGNuH%2FEaj0OIsKOufgJEtG2xWGtcqChwTc%2FCvWZQ8WW3AVi%2FiTvKGqaYu2ob70Zgl6uge7PBEb1FS%2Be7Zp8H7ICcNpsGH%2BsY%2BqTJqM3UEjNY9jpRVXuWmkPtpx9G3phB5IcNGZzjr8%2BduruiGt5QylEM5XQwkR%2Bnpy1%2Bl%2BeaSbumXAU4U3dnfugQ%2B%2BCcUy4xx6%2FsJt8uGHpeyr28AHSmOVWR67LYR61lQ%2BKiP8XU57CN1O8M7FIq%2BhJD9RF2X8fIWT1vtLZ9S4PsLZTMo7dxXCnYXmcBMg5Tq4h2twEHa28S5%2BQl7qj286wkVn0IGgbY2t13oUiz6tdBJMDYkcqXajAEbwdEI%2FD1eeaOyw91r1Zxsq%2ByGNqy2fFDX48kxvd0ig4QhN9u3Kpx5WlgxEemc%2BkTzdYhTb7xyowWwawjeobPxqnJcMO3uk67WQCOqPeUKqpuZ7LQUZrprPQefNvQ7HA0TaUK8BhKeCqWJEQBEoMa01VUGW%2BZI2XlpmU1zVMn3hQlb2Z2WVzn7B0fghQfd%2F6hXVJu85pUmauT3BnRuzTeWX0Tdsxt0dQIQdJ%2FFwJXbLT9ZdNp931%2FmtLmYIkwfAePoJcOI6ziIQ6sUoGIZyJku4ghXfpPXXaFzCseUQ0cTDk0eDXBjqxAQ67e6AlSIvTV%2FFORuj4CuaM9468aFRvexdNMjTXMAiniFL7%2B9lDq5xeHlzJxPn%2FiazSSiZE8QliY6hH7O30mDtBavMkrRpv8%2BIMyupEZoO66ixu4SDpLAH5lDyfQjrlV8lXyuBqiZBgPxLva1ret1XghyarUS9D%2BmrX8ClNVTnb9wPsCvD9BNTKzsF612sYlkohvzTC9h7iRy5ZX4cQhlHQOnIZPGiDc2ZMHyQ5LQsi9Q%3D%3D&Expires=1794652391",
+      "s3_path": "psi-data/PSI-26/Experimental table/PSI-26_Experimental table_BASS.csv",
+      "retrieved_at": "2026-11-14T09:33:12.654390+00:00",
+      "size_bytes": 4726,
+      "sha256": "ccfc3c54d948b64a1c5d2596a63c7c8019e51df0c91a1d62f039f48fa28c300f",
+      "category": "experimental_table",
+      "version": 1
+    }
+  }
+}
