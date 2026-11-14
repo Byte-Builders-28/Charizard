@@ -297,7 +297,7 @@ def call_llm(model: genai.GenerativeModel, prompt: str, system: str) -> str:
         [prompt],
         generation_config=genai.types.GenerationConfig(
             temperature=0.0,
-            max_output_tokens=4096,
+            # max_output_tokens=4096,
         ),
     )
     return response.text.strip()
@@ -525,8 +525,8 @@ def main() -> None:
         help="PSI investigation IDs to process (default: all found in data/raw/)",
     )
     parser.add_argument(
-        "--model", default="gemini-2.5-flash",
-        help="Gemini model name (default: gemini-2.5-flash)",
+        "--model", default="gemini-3.5-flash",
+        help="Gemini model name (default: gemini-3.5-flash)",
     )
     parser.add_argument(
         "--dry-run", action="store_true",

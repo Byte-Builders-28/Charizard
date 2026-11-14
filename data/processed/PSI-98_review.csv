@@ -1,0 +1,16 @@
+field_name,value,unit,status,evidence_quote,evidence_location
+objective,Determine how rapidly a large scale fire grows in low-gravity and investigate the low-g flammability limits compared to normal gravity material flammability screening tests.,,extracted,(1) determine how rapidly a large scale fire grows in low-gravity and (2) investigate the low-g flammability limits compared to those obtained in NASA’s normal gravity material flammability screening test.,[Objective]
+hardware,Saffire 1 enclosure in Cygnus,,extracted,Saffire 1 enclosure in Cygnus,[Hardware]
+fuel_type,SIBAL Fabric,,extracted,"The sample material for Saffire-I is a composite fabric called Sibal consisting of cotton on a fiberglass substrate (75% cotton, 25% fiberglass by weight).",[Approach]
+fuel_state,solid,,inferred,The sample material for Saffire-I is a composite fabric called Sibal,[Approach]
+sample_shape,fabric,,extracted,The sample material for Saffire-I is a composite fabric called Sibal,[Approach]
+sample_size,40.6 cm x 94 cm x 0.37 cm,cm,extracted,"S1, SIBAL Fabric, 0.37, 40.6, 94",PSI-98_Experimental table_SAFFIRE-1.csv
+oxygen_percent_min,21.5,%,extracted,21.5 - 21.7,PSI-98_Experimental table_SAFFIRE-1.csv
+oxygen_percent_max,21.7,%,extracted,21.5 - 21.7,PSI-98_Experimental table_SAFFIRE-1.csv
+pressure_psi,,,unavailable,,
+airflow_speed_min,20,cm/s,extracted,Saffire-I was conducted at an air flow velocity of 20 cm/s.,[Approach]
+airflow_speed_max,20,cm/s,extracted,Saffire-I was conducted at an air flow velocity of 20 cm/s.,[Approach]
+diluents,,,unavailable,,
+gravity_condition,microgravity,,extracted,Results determine microgravity flammability limits for several spacecraft materials,[Research Impacts]
+sensors_and_measurements,"[""thermocouples (flow, flame, plume temperatures)"", ""radiometers (flame radiation)"", ""solid state sensors (pressure, CO2, O2 mole fraction)"", ""anemometers (flow velocity)"", ""cameras (flame images)""]",,extracted,"thermocouples provided flow, flame, and plume temperatures, two radiometers recorded flame radiation, solid state sensors were used to measure pressure, CO2 and O2 mole faction, and two anemometer tracked flow velocity.",[Approach]
+safety_category,"[""prevention""]",,inferred,"Results determine microgravity flammability limits for several spacecraft materials, help to validate NASA’s material selection criteria",[Research Impacts]

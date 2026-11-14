@@ -1,0 +1,16 @@
+field_name,value,unit,status,evidence_quote,evidence_location
+objective,Quantify the sizes that liquid smoke particulate achieves in low gravity and relate droplet size distribution to smoke generation and transport conditions.,,extracted,One of the major goals of this investigation was to quantify the sizes that the liquid smoke particulate achieves in low gravity and to relate the droplet size distribution to the smoke generation and smoke transport conditions in the experiment.,METADATA (PSI-102) -> Objective
+hardware,Comparitive Soot Diagnostic Hardware,,extracted,Comparitive Soot Diagnostic Hardware,METADATA (PSI-102) -> Hardware
+fuel_type,"[""Teflon"", ""Kapton"", ""Silicone Rubber"", ""Lampwick"", ""Dibutyl Phthalate""]",,extracted,"1, Teflon... 5, Kapton... 6, Silicone Rubber... 7, Lampwick... 8, Dibutyl Phthalate",CSV: PSI-102_Experimental table_SAME.csv
+fuel_state,solid,,inferred,"Teflon, Kapton, Silicone Rubber, Lampwick",CSV: PSI-102_Experimental table_SAME.csv
+sample_shape,,,unavailable,,
+sample_size,,,unavailable,,
+oxygen_percent_min,,,unavailable,,
+oxygen_percent_max,,,unavailable,,
+pressure_psi,,,unavailable,,
+airflow_speed_min,5.0,cm/s,extracted,"Air Flow (cm/s): min=5.0, max=10.0",CSV: PSI-102_Experimental table_SAME.csv
+airflow_speed_max,10.0,cm/s,extracted,"Air Flow (cm/s): min=5.0, max=10.0",CSV: PSI-102_Experimental table_SAME.csv
+diluents,,,unavailable,,
+gravity_condition,microgravity,,extracted,"In a μg environment, with the absence of the strong buoyancy-induced flows",METADATA (PSI-102) -> Hypothesis
+sensors_and_measurements,"[""video cameras"", ""smoke detectors"", ""thermophoretic soot samplers"", ""Transmission Electron microscope (TEM)""]",,extracted,positioned the video cameras... diagnostic procedures on the two smoke detectors... initiated the thermophoretic soot samplers... analyzed using a Transmission Electron microscope (TEM),METADATA (PSI-102) -> Approach
+safety_category,"[""detection""]",,extracted,The SAME experiment will provide technology for an advanced fire detector for future spacecraft that will be used for long duration missions.,METADATA (PSI-102) -> Research Impacts

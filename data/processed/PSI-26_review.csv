@@ -1,0 +1,16 @@
+field_name,value,unit,status,evidence_quote,evidence_location
+objective,"Begin to bridge the gap between normal gravity NASA-STD-6001 Test#1 method, ground-based microgravity tests, and actual material flammability in microgravity, and assess the effectiveness of an inert, gaseous extinguishing agent in putting out flames over different materials, geometries, preheating, and flow.",,extracted,"The two main objectives for BASS are to: 1.) Begin to bridge the gap between the normal gravity NASA-STD-6001 Test#1 method, ground-based microgravity tests, and actual material flammability in microgravity... 2.) Assess the effectiveness of an inert, gaseous extinguishing agent (similar to that used on ISS) in putting out flames over different materials, geometries, preheating, and flow.","METADATA (PSI-26), Objective"
+hardware,Microgravity Science Glovebox,,extracted,The experiment was conducted aboard the International Space Station (ISS) inside the Microgravity Glove Box (MSG).,"METADATA (PSI-26), Approach"
+fuel_type,"[""cotton"", ""fiberglass"", ""Nomex fabric"", ""Ultem"", ""SIBAL"", ""PMMA""]",,extracted,Custom-made fabric samples consisting of 75% cotton and 25% fiberglass (by mass) measuring were used as a fuel source as well as Nomex fabric and Ultem.,"METADATA (PSI-26), Approach"
+fuel_state,solid,,extracted,Burning and Suppression of Solids,"METADATA (PSI-26), Title"
+sample_shape,"[""fabric"", ""spheres"", ""cylinders""]",,extracted,Other sample shapes were utilized as well including spheres and cylinders.,"METADATA (PSI-26), Approach"
+sample_size,"[""1"", ""2""]",cm,extracted,PMMA sphere 1 cm,"CSV: PSI-26_Experimental table_BASS.csv, Sample rows"
+oxygen_percent_min,,,unavailable,,
+oxygen_percent_max,,,unavailable,,
+pressure_psi,,,unavailable,,
+airflow_speed_min,,,unavailable,,
+airflow_speed_max,40,cm/s,extracted,airflow speeds reaching as high as 40 cm/s.,"METADATA (PSI-26), Approach"
+diluents,"[""nitrogen""]",,extracted,Using nitrogen as a flame suppressant in microgravity provides a direct link to current and planned extinguishment techniques.,"METADATA (PSI-26), Research Impacts"
+gravity_condition,microgravity,,extracted,The experiment was conducted aboard the International Space Station (ISS) inside the Microgravity Glove Box (MSG).,"METADATA (PSI-26), Approach"
+sensors_and_measurements,"[""flame size"", ""flame shape"", ""flame color"", ""spread rate"", ""flame quenching""]",,extracted,"data was collected on flame size, shape, color, spread rate, and potential flame quenching.","METADATA (PSI-26), Approach"
+safety_category,"[""suppression""]",,extracted,"Assess the effectiveness of an inert, gaseous extinguishing agent (similar to that used on ISS) in putting out flames over different materials, geometries, preheating, and flow.","METADATA (PSI-26), Objective"

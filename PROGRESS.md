@@ -2,8 +2,8 @@
 
 **Project:** NASA PSI Microgravity Combustion & Spacecraft Fire Safety Data Connector  
 **Repo:** `c:\cpp0pw\CODING\NASA\Charizard`  
-**Last updated:** 2026-11-14 18:02 IST  
-**Overall completion:** █████████░░░░░ ~65% (Steps 0-2 done; Steps 3-5 remain)
+**Last updated:** 2026-11-14 20:15 IST  
+**Overall completion:** ██████████░░░░░ ~60% (Steps 0-2 done; Step 3 in progress; Steps 4-5 remain)
 
 ---
 
@@ -49,7 +49,10 @@ Charizard/
 │   │   ├── PSI-20/   (ACME BRE)     investigation_metadata.json + ACME BRE.csv
 │   │   └── PK4/                     8 campaign PDFs + extracted TXTs + sensor IDs
 │   │
-│   ├── processed/                   ← READY — waiting for GEMINI_API_KEY to populate
+│   ├── processed/                   ← POPULATED — 11 investigation JSON records + review CSVs
+│   │   ├── investigations.json     (combined array of 11 validated records)
+│   │   ├── PSI-*.json              (11 per-investigation structured records)
+│   │   ├── PSI-*_review.csv        (11 human verification sheets)
 │   │   └── .gitignore
 │   │
 │   └── combustion/                  ← 11 CSVs, summary_report.md, summary_report.json
@@ -198,7 +201,7 @@ PK4     dusty plasma  8 PDFs, campaign reports 1-8, extracted text
 
 ## ✅ Step 2 — Scientific Extraction Pipeline
 
-**Status: COMPLETE — awaiting `GEMINI_API_KEY` to execute**
+**Status: COMPLETE — all 11 investigations extracted**
 
 ### What was built
 
@@ -261,7 +264,7 @@ Pydantic validate()
 | `data/processed/investigations.json` | Combined array — direct feed for the app                 |
 | `<PSI-ID>.REVIEW_NEEDED.json`        | Raw LLM output + error (only on double-failure)          |
 
-**To run Step 2:**
+**To run Step 2 (if re-extraction is needed):**
 
 ```powershell
 $env:GEMINI_API_KEY = "your_key_here"   # get free at aistudio.google.com/apikey
@@ -270,17 +273,32 @@ python src/extract/extract_investigations.py
 python src/extract/extract_investigations.py --investigations PSI-69 PSI-98 PSI-25
 # test pipeline structure without LLM (no API key needed):
 python src/extract/extract_investigations.py --dry-run
+# override model (if gemini-2.5-flash is deprecated):
+python src/extract/extract_investigations.py --model gemini-3.8-flash
 ```
+
+**Note:** The default `gemini-2.5-flash` model returned a 404 for new users; use `--model gemini-3.8-flash` if needed.
 
 ---
 
 ## 🔄 Remaining Steps
 
 ```
-Step 3  Database & API Layer       ░░░░░░░░░░  NOT STARTED
+Step 3  Database & API Layer       ███░░░░░░░░  IN PROGRESS (data ready)
 Step 4  Fire-Safety Web App        ░░░░░░░░░░  NOT STARTED
 Step 5  Validation & Reporting     ░░░░░░░░░░  NOT STARTED
 ```
+
+### Step 3 — Database & API Layer
+
+FastAPI + SQLite backend serving extracted data. **All 11 investigation records are already in `data/processed/investigations.json`**, so the DB can be populated immediately on startup.
+
+- `GET /investigations` — filterable list (fuel_type, safety_category, gravity_condition)
+- `GET /investigations/{id}` — full record with all FieldValues
+- `GET /investigations/{id}/telemetry` — raw CSV rows as JSON
+- OpenAPI docs, CORS, error handling
+
+**Est. effort:** 1-2 hours | **Target files:** `src/api/main.py`, `src/api/db.py`
 
 ### Step 3 — Database & API Layer
 
@@ -346,14 +364,13 @@ Interactive frontend in `app/`:
 
 ## ⚠️ Known Issues & Blockers
 
-| Issue                                                         | Status                                                                                          |
-| ------------------------------------------------------------- | ----------------------------------------------------------------------------------------------- |
-| `GEMINI_API_KEY` not set — Step 2 LLM extraction blocked      | **Blocking** — get free key at [aistudio.google.com/apikey](https://aistudio.google.com/apikey) |
-| PSI-60 has no experimental CSV (`experimentalTable` is empty) | Known — metadata-only record; extraction will fill what's available                             |
-| PSI-25 metadata is 890 KB — context truncated to 28,000 chars | Mitigated — CSV stats + narrative fields fit well within budget                                 |
-| PK4 PDF text is sparse (1-3 KB extracted from 350 KB PDFs)    | Known — PDFs are image-heavy; OCR not implemented                                               |
-| `nasa-psi` S3 bucket has no combustion data                   | Resolved — combustion data lives in private `psi-repo-prod`, accessed via PSI API               |
+| Issue                                                         | Status                                                                            |
+| ------------------------------------------------------------- | --------------------------------------------------------------------------------- |
+| PSI-60 has no experimental CSV (`experimentalTable` is empty) | Known — metadata-only record; extraction filled what was available                |
+| PSI-25 metadata is 890 KB — context truncated to 28,000 chars | Mitigated — CSV stats + narrative fields fit well within budget                   |
+| PK4 PDF text is sparse (1-3 KB extracted from 350 KB PDFs)    | Known — PDFs are image-heavy; OCR not implemented                                 |
+| `nasa-psi` S3 bucket has no combustion data                   | Resolved — combustion data lives in private `psi-repo-prod`, accessed via PSI API |
 
 ---
 
-_Generated automatically from live workspace state — 2026-11-14 18:02 IST_
+_Generated automatically from live workspace state — 2026-11-14 20:15 IST_
