@@ -1,5 +1,5 @@
 """
-FlameScope – Step 2  |  src/extract/extract_investigations.py
+FlameScope - Step 2  |  src/extract/extract_investigations.py
 =============================================================
 
 Reads each data/raw/<PSI-ID>/ folder, builds structured text chunks,
@@ -89,26 +89,26 @@ SCHEMA_DESCRIPTION = textwrap.dedent("""\
     a FieldValue object: { "value": ..., "unit": ..., "status": "verified"|"extracted"|"inferred"|"unavailable", "evidence_quote": "...", "evidence_location": "..." }
 
     Top-level keys:
-      investigation_id   – string (provided)
-      title              – string (provided)
-      acronym            – string or null
-      doi                – string or null
-      source_url         – string (provided)
-      objective          – FieldValue  (short plain-text summary of science goal)
-      hardware           – FieldValue  (experiment hardware name, e.g. CIR, MDCA)
-      fuel_type          – FieldValue  (e.g. methanol, ethanol, PMMA, cotton)
-      fuel_state         – FieldValue  (value MUST be one of: solid, liquid, gas)
-      sample_shape       – FieldValue  (droplet, slab, cylinder, fabric, sphere …)
-      sample_size        – FieldValue  (numeric; include unit mm or cm)
-      oxygen_percent_min – FieldValue  (numeric 0–100; if CSV col is mole fraction, multiply × 100)
-      oxygen_percent_max – FieldValue  (numeric 0–100)
-      pressure_psi       – FieldValue  (numeric; convert mmHg → psi by dividing by 51.715)
-      airflow_speed_min  – FieldValue  (numeric cm/s)
-      airflow_speed_max  – FieldValue  (numeric cm/s)
-      diluents           – FieldValue  (list of diluent names, e.g. ["He","CO2"])
-      gravity_condition  – FieldValue  (value MUST be one of: microgravity, normal_gravity, partial_gravity)
-      sensors_and_measurements – FieldValue  (list of sensor / measurement types)
-      safety_category    – FieldValue  (value MUST be a list from: prevention, detection, suppression)
+      investigation_id   - string (provided)
+      title              - string (provided)
+      acronym            - string or null
+      doi                - string or null
+      source_url         - string (provided)
+      objective          - FieldValue  (short plain-text summary of science goal)
+      hardware           - FieldValue  (experiment hardware name, e.g. CIR, MDCA)
+      fuel_type          - FieldValue  (e.g. methanol, ethanol, PMMA, cotton)
+      fuel_state         - FieldValue  (value MUST be one of: solid, liquid, gas)
+      sample_shape       - FieldValue  (droplet, slab, cylinder, fabric, sphere …)
+      sample_size        - FieldValue  (numeric; include unit mm or cm)
+      oxygen_percent_min - FieldValue  (numeric 0-100; if CSV col is mole fraction, multiply × 100)
+      oxygen_percent_max - FieldValue  (numeric 0-100)
+      pressure_psi       - FieldValue  (numeric; convert mmHg → psi by dividing by 51.715)
+      airflow_speed_min  - FieldValue  (numeric cm/s)
+      airflow_speed_max  - FieldValue  (numeric cm/s)
+      diluents           - FieldValue  (list of diluent names, e.g. ["He","CO2"])
+      gravity_condition  - FieldValue  (value MUST be one of: microgravity, normal_gravity, partial_gravity)
+      sensors_and_measurements - FieldValue  (list of sensor / measurement types)
+      safety_category    - FieldValue  (value MUST be a list from: prevention, detection, suppression)
 
     Rules:
     • For oxygen: the CSV column "O initial ambient composition; mole fraction" must be multiplied by 100 to get percent.

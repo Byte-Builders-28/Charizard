@@ -18,7 +18,7 @@ V. Molotkov
 General 
 comments 
 In all the experiments, a slow radial symmetry degradation of the shapes of the 
-microparticle clouds was observed. Most probable reason – thermophoretic forces 
+microparticle clouds was observed. Most probable reason - thermophoretic forces 
 associated with the non-uniform heating of the plasma chamber. 
 Initialisation No science issues. Spectra of the discharge in the gas, accumulating in the plasma chamber over two missions were taken, however are apparantly very weak. 
 Scientific sequence 

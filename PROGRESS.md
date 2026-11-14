@@ -1,24 +1,25 @@
 # 🔥 FlameScope — Technical Progress Report
+
 **Project:** NASA PSI Microgravity Combustion & Spacecraft Fire Safety Data Connector  
 **Repo:** `c:\cpp0pw\CODING\NASA\Charizard`  
 **Last updated:** 2026-11-14 18:02 IST  
-**Overall completion:** █████████░░░░░ ~65% (Steps 0–2 done; Steps 3–5 remain)
+**Overall completion:** █████████░░░░░ ~65% (Steps 0-2 done; Steps 3-5 remain)
 
 ---
 
 ## 📊 At a Glance
 
-| Metric | Value |
-|--------|-------|
-| Production source files | **6** |
-| Total production lines of code | **1,952 lines** |
-| Scratch / exploration scripts | **22** |
-| Investigations targeted | **11 PSI IDs + PK4** |
-| Raw data ingested | **7.43 MB** across 12 folders |
-| Combustion telemetry CSVs | **11 files, 190 KB, 2,241 rows total** |
-| Pydantic schema fields | **15 FieldValue + 5 identity fields** |
-| Validation tests passing | **6 / 6** |
-| Steps completed | **0, 1, 2 of 5** |
+| Metric                         | Value                                  |
+| ------------------------------ | -------------------------------------- |
+| Production source files        | **6**                                  |
+| Total production lines of code | **1,952 lines**                        |
+| Scratch / exploration scripts  | **22**                                 |
+| Investigations targeted        | **11 PSI IDs + PK4**                   |
+| Raw data ingested              | **7.43 MB** across 12 folders          |
+| Combustion telemetry CSVs      | **11 files, 190 KB, 2,241 rows total** |
+| Pydantic schema fields         | **15 FieldValue + 5 identity fields**  |
+| Validation tests passing       | **6 / 6**                              |
+| Steps completed                | **0, 1, 2 of 5**                       |
 
 ---
 
@@ -80,31 +81,35 @@ Charizard/
 │       └── generate_investigation_catalog.py (109 lines)
 │
 └── scratch/                         (22 exploration scripts — temporary)
-    ├── api/           (scratch_api.py – scratch_api4.py)
-    ├── chunk/         (scratch_chunk.py – scratch_chunk3.py)
+    ├── api/           (scratch_api.py - scratch_api4.py)
+    ├── chunk/         (scratch_chunk.py - scratch_chunk3.py)
     └── *.py           (15 other exploratory scripts)
 ```
 
 ---
 
 ## ✅ Step 0 — S3 Exploration & Investigation Catalog
+
 **Status: COMPLETE**
 
 ### What was done
+
 - Reverse-engineered the NASA PSI Angular SPA to find the hidden `/geode-py/ws/` REST backend
 - Discovered the public `nasa-psi` S3 bucket (unsigned, us-west-2) has only 3 non-combustion prefixes (`DSI/`, `OASIS/`, `pk4/`) — combustion data is in the private `psi-repo-prod` bucket behind presigned URLs
 - Identified the PSI search API: `GET https://psi.nasa.gov/geode-py/ws/repo/search` → 133 total investigations
 - Selected **15 core combustion investigations** (FLEX, FLEX-2, SAFFIRE-I/II, BASS, BASS-II, SPICE, SAME, ACME CFI-G, ACME BRE, ACME FD, ACME Flame Design)
 
 ### Output files
-| File | Description |
-|------|-------------|
-| `inventory.csv` | 300-row S3 file listing (key, size, extension) |
-| `docs/core_investigations.csv` | 15 investigations with DOI, source URL, file types |
-| `docs/core_investigations.md` | Same as Markdown table |
-| `src/ingest/s3_inventory.py` | 186-line CLI tool — `--prefix`, `--max-keys`, `--output` |
+
+| File                           | Description                                              |
+| ------------------------------ | -------------------------------------------------------- |
+| `inventory.csv`                | 300-row S3 file listing (key, size, extension)           |
+| `docs/core_investigations.csv` | 15 investigations with DOI, source URL, file types       |
+| `docs/core_investigations.md`  | Same as Markdown table                                   |
+| `src/ingest/s3_inventory.py`   | 186-line CLI tool — `--prefix`, `--max-keys`, `--output` |
 
 ### Key API discovery
+
 ```
 GET https://psi.nasa.gov/geode-py/ws/repo/investigations/<PSI-ID>
   → returns: title, doi, description, objective, approach, hypothesis,
@@ -118,9 +123,11 @@ GET https://psi.nasa.gov/geode-py/ws/studies/<PSI-ID>/download?file=<name>&redir
 ---
 
 ## ✅ Step 1 — Raw Data Ingestion with Provenance
+
 **Status: COMPLETE**
 
 ### What was done
+
 - Built a full provenance-tracked ingestion engine targeting 11 PSI investigations
 - Downloaded investigation metadata JSON + experimental CSVs for all 11 IDs
 - Ingested 8 campaign PDFs from the public `pk4/` S3 prefix
@@ -129,16 +136,17 @@ GET https://psi.nasa.gov/geode-py/ws/studies/<PSI-ID>/download?file=<name>&redir
 
 ### `src/ingest/ingest_psi.py` — 443 lines
 
-| Feature | Implementation |
-|---------|----------------|
-| Idempotency | Skips files matching existing size + SHA-256 |
-| Retry logic | Exponential backoff on network errors (3 attempts) |
-| File size guard | Hard skip for files > 25 MB |
-| PDF text extraction | `pypdf` → companion `_extracted.txt` with page markers |
-| Failure logging | `ingest_failures.log` with timestamp + URL |
-| Manifest format | `source_url`, `s3_key`, `retrieved_at` (UTC ISO-8601), `size_bytes`, `sha256`, `category` |
+| Feature             | Implementation                                                                            |
+| ------------------- | ----------------------------------------------------------------------------------------- |
+| Idempotency         | Skips files matching existing size + SHA-256                                              |
+| Retry logic         | Exponential backoff on network errors (3 attempts)                                        |
+| File size guard     | Hard skip for files > 25 MB                                                               |
+| PDF text extraction | `pypdf` → companion `_extracted.txt` with page markers                                    |
+| Failure logging     | `ingest_failures.log` with timestamp + URL                                                |
+| Manifest format     | `source_url`, `s3_key`, `retrieved_at` (UTC ISO-8601), `size_bytes`, `sha256`, `category` |
 
 ### Data ingested
+
 ```
 PSI-69  FLEX          40 KB metadata + 24 KB CSV (274 runs)
 PSI-68  FLEX-2        39 KB metadata + 1 KB CSV  (8 runs)
@@ -151,7 +159,7 @@ PSI-60  SPICE Anal.   8 KB metadata only
 PSI-102 SAME          178 KB metadata + 331 B CSV (8 aerosol runs)
 PSI-159 ACME CFI-G    metadata + 22 KB + 39 KB CSV (1,194 flame runs)
 PSI-20  ACME BRE      21 KB metadata + 1 KB CSV  (18 runs)
-PK4     dusty plasma  8 PDFs, campaign reports 1–8, extracted text
+PK4     dusty plasma  8 PDFs, campaign reports 1-8, extracted text
 ```
 
 **Total raw data on disk: 7.43 MB**
@@ -159,58 +167,63 @@ PK4     dusty plasma  8 PDFs, campaign reports 1–8, extracted text
 ---
 
 ## ✅ Combustion Telemetry Fetcher
-**Status: COMPLETE** *(bonus deliverable)*
+
+**Status: COMPLETE** _(bonus deliverable)_
 
 ### `fetch_combustion_data.py` — 440 lines
+
 - Targeted scanner for FLEX, Saffire, ACME, BASS, SPICE, SAME experiments
 - Filters: downloads `.csv/.xlsx/.json/.txt/.pdf` under 25 MB; skips `.mp4/.avi/.bmp` raw video
 - Downloaded all 11 structured telemetry CSVs into `data/combustion/`
 - Auto-generated `summary_report.md` and `summary_report.json` with column names, units, row counts, and sample values for every file
 
 ### Telemetry coverage
-| Investigation | Rows | Key measurement columns |
-|---------------|------|------------------------|
-| FLEX (PSI-69) | 274 | Ambient pressure (mmHg), O₂ mole fraction, He/N₂/CO₂ composition, droplet diameter (mm), burning rate (mm/s), burn time (s) |
-| FLEX-2 (PSI-68) | 8 | Fuel, pressure, oxygen, droplet size |
-| SAFFIRE-I (PSI-98) | 4 | % O₂, airflow (cm/s), sample dimensions (cm), heat release rate |
-| SAFFIRE-II (PSI-99) | 15 | O₂ %, airflow, mass loss rate, spread rate |
-| BASS-II (PSI-25) | 129 | Air flow, O₂ %, fuel type, burning rate |
-| BASS (PSI-26) | 122 | Airflow (cm/s), fuel, test conditions |
-| SPICE (PSI-107) | 469 | Fuel flow, O₂ %, smoke point height |
-| SAME (PSI-102) | 8 | Particle size, aerosol concentration |
-| ACME CFI-G Normal (PSI-159) | 179 | Flame temperature (K), pressure (bar), fuel mass flow (mg/s) |
-| ACME CFI-G Inverse (PSI-159) | 1,015 | Flame temperature (K), pressure, fuel flow |
-| ACME BRE (PSI-20) | 18 | Fuel type, burning rate, droplet diameter |
-| **TOTAL** | **2,241** | |
+
+| Investigation                | Rows      | Key measurement columns                                                                                                     |
+| ---------------------------- | --------- | --------------------------------------------------------------------------------------------------------------------------- |
+| FLEX (PSI-69)                | 274       | Ambient pressure (mmHg), O₂ mole fraction, He/N₂/CO₂ composition, droplet diameter (mm), burning rate (mm/s), burn time (s) |
+| FLEX-2 (PSI-68)              | 8         | Fuel, pressure, oxygen, droplet size                                                                                        |
+| SAFFIRE-I (PSI-98)           | 4         | % O₂, airflow (cm/s), sample dimensions (cm), heat release rate                                                             |
+| SAFFIRE-II (PSI-99)          | 15        | O₂ %, airflow, mass loss rate, spread rate                                                                                  |
+| BASS-II (PSI-25)             | 129       | Air flow, O₂ %, fuel type, burning rate                                                                                     |
+| BASS (PSI-26)                | 122       | Airflow (cm/s), fuel, test conditions                                                                                       |
+| SPICE (PSI-107)              | 469       | Fuel flow, O₂ %, smoke point height                                                                                         |
+| SAME (PSI-102)               | 8         | Particle size, aerosol concentration                                                                                        |
+| ACME CFI-G Normal (PSI-159)  | 179       | Flame temperature (K), pressure (bar), fuel mass flow (mg/s)                                                                |
+| ACME CFI-G Inverse (PSI-159) | 1,015     | Flame temperature (K), pressure, fuel flow                                                                                  |
+| ACME BRE (PSI-20)            | 18        | Fuel type, burning rate, droplet diameter                                                                                   |
+| **TOTAL**                    | **2,241** |                                                                                                                             |
 
 ---
 
 ## ✅ Step 2 — Scientific Extraction Pipeline
+
 **Status: COMPLETE — awaiting `GEMINI_API_KEY` to execute**
 
 ### What was built
 
 #### `src/extract/schema.py` — 152 lines
+
 Full Pydantic v2 data model with 20 fields per investigation. Every non-identity field is a `FieldValue`:
 
 ```json
 {
-  "value": "methanol",
-  "unit": null,
-  "status": "extracted",
-  "evidence_quote": "Fuel: Methanol",
-  "evidence_location": "PSI-69_Experimental table_FLEX.csv, header row"
+	"value": "methanol",
+	"unit": null,
+	"status": "extracted",
+	"evidence_quote": "Fuel: Methanol",
+	"evidence_location": "PSI-69_Experimental table_FLEX.csv, header row"
 }
 ```
 
 **Validated enums (Pydantic enforced — 6/6 boundary tests pass ✅):**
 
-| Field | Allowed values |
-|-------|---------------|
-| `fuel_state` | `solid` \| `liquid` \| `gas` |
-| `gravity_condition` | `microgravity` \| `normal_gravity` \| `partial_gravity` |
-| `safety_category` | list from `prevention` \| `detection` \| `suppression` |
-| `oxygen_percent_min/max` | numeric, **0–100 strictly enforced** |
+| Field                    | Allowed values                                          |
+| ------------------------ | ------------------------------------------------------- |
+| `fuel_state`             | `solid` \| `liquid` \| `gas`                            |
+| `gravity_condition`      | `microgravity` \| `normal_gravity` \| `partial_gravity` |
+| `safety_category`        | list from `prevention` \| `detection` \| `suppression`  |
+| `oxygen_percent_min/max` | numeric, **0-100 strictly enforced**                    |
 
 #### `src/extract/extract_investigations.py` — 622 lines
 
@@ -241,14 +254,15 @@ Pydantic validate()
 
 **Output files per investigation:**
 
-| File | Purpose |
-|------|---------|
-| `data/processed/<PSI-ID>.json` | Validated structured record (20 fields) |
+| File                                 | Purpose                                                  |
+| ------------------------------------ | -------------------------------------------------------- |
+| `data/processed/<PSI-ID>.json`       | Validated structured record (20 fields)                  |
 | `data/processed/<PSI-ID>_review.csv` | 15 rows, one per schema field — human verification sheet |
-| `data/processed/investigations.json` | Combined array — direct feed for the app |
-| `<PSI-ID>.REVIEW_NEEDED.json` | Raw LLM output + error (only on double-failure) |
+| `data/processed/investigations.json` | Combined array — direct feed for the app                 |
+| `<PSI-ID>.REVIEW_NEEDED.json`        | Raw LLM output + error (only on double-failure)          |
 
 **To run Step 2:**
+
 ```powershell
 $env:GEMINI_API_KEY = "your_key_here"   # get free at aistudio.google.com/apikey
 python src/extract/extract_investigations.py
@@ -269,72 +283,77 @@ Step 5  Validation & Reporting     ░░░░░░░░░░  NOT STARTED
 ```
 
 ### Step 3 — Database & API Layer
+
 FastAPI + SQLite backend serving extracted data:
+
 - `GET /investigations` — filterable list (fuel_type, safety_category, gravity_condition)
 - `GET /investigations/{id}` — full record with all FieldValues
 - `GET /investigations/{id}/telemetry` — raw CSV rows as JSON
 - OpenAPI docs, CORS, error handling
 
-**Est. effort:** 1–2 hours | **Target files:** `src/api/main.py`, `src/api/db.py`
+**Est. effort:** 1-2 hours | **Target files:** `src/api/main.py`, `src/api/db.py`
 
 ### Step 4 — Fire-Safety Web App
+
 Interactive frontend in `app/`:
+
 - Investigation cards with safety classification badges (prevention / detection / suppression)
 - Telemetry scatter plots (O₂ % vs. burn time, pressure vs. extinction diameter)
 - Cross-investigation comparison view
 - Filter sidebar (fuel type, gravity condition, hardware)
 
-**Est. effort:** 2–3 hours | **Target files:** `app/index.html`, `app/main.js`, `app/style.css`
+**Est. effort:** 2-3 hours | **Target files:** `app/index.html`, `app/main.js`, `app/style.css`
 
 ### Step 5 — Validation & Reporting
+
 - Automated cross-check: extracted O₂/pressure values vs. raw CSV `min/max` stats
 - Manual spot-check: PSI-69 (FLEX), PSI-98 (SAFFIRE-I), PSI-25 (BASS-II)
 - Final `docs/validation_report.md`
 
-**Est. effort:** 30–60 min
+**Est. effort:** 30-60 min
 
 ---
 
 ## 🧪 Exploration Work (scratch/ — 22 scripts)
 
-| Script | Discovery |
-|--------|-----------|
-| `scratch_geode.py` | Found `/geode-py/ws/` REST backend by parsing minified Angular JS |
-| `scratch_api.py – api4.py` | Tested PSI search, download, and presigned URL flow |
-| `scratch_search_combustion.py` | Identified 11 target PSI IDs from 133-investigation corpus |
-| `scratch_psi69.py` | First inspection of PSI-69 metadata structure and CSV headers |
-| `scratch_parse_all_combustion.py` | Extracted min/max O₂, pressure, airflow across all CSVs |
-| `scratch_test_download_api.py` | Reverse-engineered presigned URL download mechanism |
-| `scratch_chunk.py – chunk3.py` | Prototyped context chunking strategies for the LLM |
+| Script                            | Discovery                                                         |
+| --------------------------------- | ----------------------------------------------------------------- |
+| `scratch_geode.py`                | Found `/geode-py/ws/` REST backend by parsing minified Angular JS |
+| `scratch_api.py - api4.py`        | Tested PSI search, download, and presigned URL flow               |
+| `scratch_search_combustion.py`    | Identified 11 target PSI IDs from 133-investigation corpus        |
+| `scratch_psi69.py`                | First inspection of PSI-69 metadata structure and CSV headers     |
+| `scratch_parse_all_combustion.py` | Extracted min/max O₂, pressure, airflow across all CSVs           |
+| `scratch_test_download_api.py`    | Reverse-engineered presigned URL download mechanism               |
+| `scratch_chunk.py - chunk3.py`    | Prototyped context chunking strategies for the LLM                |
 
 ---
 
 ## 🛠️ Technical Stack
 
-| Layer | Technology |
-|-------|-----------|
-| Language | Python 3.13.5 |
-| S3 access | `boto3` (unsigned/anonymous) |
-| HTTP client | `requests` with retry + backoff |
-| PDF extraction | `pypdf` |
-| Data manipulation | `pandas`, `csv` stdlib |
-| Schema validation | `pydantic` v2.13.4 |
-| LLM | Google Gemini 2.5 Flash (`google-generativeai`) |
-| Data format | JSON (manifests, extracted records), CSV (telemetry) |
-| Docs | Markdown |
+| Layer             | Technology                                           |
+| ----------------- | ---------------------------------------------------- |
+| Language          | Python 3.13.5                                        |
+| S3 access         | `boto3` (unsigned/anonymous)                         |
+| HTTP client       | `requests` with retry + backoff                      |
+| PDF extraction    | `pypdf`                                              |
+| Data manipulation | `pandas`, `csv` stdlib                               |
+| Schema validation | `pydantic` v2.13.4                                   |
+| LLM               | Google Gemini 2.5 Flash (`google-generativeai`)      |
+| Data format       | JSON (manifests, extracted records), CSV (telemetry) |
+| Docs              | Markdown                                             |
 
 ---
 
 ## ⚠️ Known Issues & Blockers
 
-| Issue | Status |
-|-------|--------|
-| `GEMINI_API_KEY` not set — Step 2 LLM extraction blocked | **Blocking** — get free key at [aistudio.google.com/apikey](https://aistudio.google.com/apikey) |
-| PSI-60 has no experimental CSV (`experimentalTable` is empty) | Known — metadata-only record; extraction will fill what's available |
-| PSI-25 metadata is 890 KB — context truncated to 28,000 chars | Mitigated — CSV stats + narrative fields fit well within budget |
-| PK4 PDF text is sparse (1–3 KB extracted from 350 KB PDFs) | Known — PDFs are image-heavy; OCR not implemented |
-| `nasa-psi` S3 bucket has no combustion data | Resolved — combustion data lives in private `psi-repo-prod`, accessed via PSI API |
+| Issue                                                         | Status                                                                                          |
+| ------------------------------------------------------------- | ----------------------------------------------------------------------------------------------- |
+| `GEMINI_API_KEY` not set — Step 2 LLM extraction blocked      | **Blocking** — get free key at [aistudio.google.com/apikey](https://aistudio.google.com/apikey) |
+| PSI-60 has no experimental CSV (`experimentalTable` is empty) | Known — metadata-only record; extraction will fill what's available                             |
+| PSI-25 metadata is 890 KB — context truncated to 28,000 chars | Mitigated — CSV stats + narrative fields fit well within budget                                 |
+| PK4 PDF text is sparse (1-3 KB extracted from 350 KB PDFs)    | Known — PDFs are image-heavy; OCR not implemented                                               |
+| `nasa-psi` S3 bucket has no combustion data                   | Resolved — combustion data lives in private `psi-repo-prod`, accessed via PSI API               |
 
 ---
 
-*Generated automatically from live workspace state — 2026-11-14 18:02 IST*
+_Generated automatically from live workspace state — 2026-11-14 18:02 IST_
