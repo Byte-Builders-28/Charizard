@@ -2,8 +2,8 @@
 
 **Project:** NASA PSI Microgravity Combustion & Spacecraft Fire Safety Data Connector  
 **Repo:** `c:\cpp0pw\CODING\NASA\Charizard`  
-**Last updated:** 2026-11-14 20:15 IST  
-**Overall completion:** ██████████░░░░░ ~60% (Steps 0-2 done; Step 3 in progress; Steps 4-5 remain)
+**Last updated:** 2026-11-14 20:30 IST  
+**Overall completion:** ███████████░░░░ ~80% (Steps 0-3 done; Steps 4-5 remain)
 
 ---
 
@@ -75,6 +75,10 @@ Charizard/
 │   └── core_investigations.md       (Markdown table)
 │
 ├── src/
+│   ├── api/
+│   │   ├── __init__.py              (package marker)
+│   │   ├── db.py                    (SQLite data access layer)
+│   │   └── main.py                  (FastAPI app + routes)
 │   ├── ingest/
 │   │   ├── s3_inventory.py          (186 lines — S3 scanner)
 │   │   └── ingest_psi.py            (443 lines — provenance ingestion engine)
@@ -284,32 +288,36 @@ python src/extract/extract_investigations.py --model gemini-3.8-flash
 ## 🔄 Remaining Steps
 
 ```
-Step 3  Database & API Layer       ███░░░░░░░░  IN PROGRESS (data ready)
+Step 3  Database & API Layer       ██████████████  CODE COMPLETE (needs testing)
 Step 4  Fire-Safety Web App        ░░░░░░░░░░  NOT STARTED
 Step 5  Validation & Reporting     ░░░░░░░░░░  NOT STARTED
 ```
 
 ### Step 3 — Database & API Layer
 
-FastAPI + SQLite backend serving extracted data. **All 11 investigation records are already in `data/processed/investigations.json`**, so the DB can be populated immediately on startup.
+**Status: CODE COMPLETE** — FastAPI + SQLite backend implemented in `src/api/`. All 11 investigation records load from `data/processed/investigations.json` into `data/flamescope.db` on startup.
 
-- `GET /investigations` — filterable list (fuel_type, safety_category, gravity_condition)
-- `GET /investigations/{id}` — full record with all FieldValues
-- `GET /investigations/{id}/telemetry` — raw CSV rows as JSON
-- OpenAPI docs, CORS, error handling
+**Files:**
 
-**Est. effort:** 1-2 hours | **Target files:** `src/api/main.py`, `src/api/db.py`
+- `src/api/__init__.py` — package marker
+- `src/api/db.py` — SQLite data access layer (schema, load, query)
+- `src/api/main.py` — FastAPI app with all routes
 
-### Step 3 — Database & API Layer
+**Endpoints:**
 
-FastAPI + SQLite backend serving extracted data:
+- `GET /health` — health check + record count
+- `GET /investigations` — filterable, paginated list (`fuel_type`, `fuel_state`, `gravity_condition`, `safety_category`, `oxygen_min/max`, `pressure_min/max`, `limit`, `offset`)
+- `GET /investigations/{id}` — full record with all 20 fields + `FieldValue` objects
+- `GET /investigations/{id}/telemetry` — raw CSV rows as JSON from `data/combustion/`
+- `POST /reload` — re-load records from JSON without restart
+- `GET /docs` — interactive Swagger/OpenAPI UI
 
-- `GET /investigations` — filterable list (fuel_type, safety_category, gravity_condition)
-- `GET /investigations/{id}` — full record with all FieldValues
-- `GET /investigations/{id}/telemetry` — raw CSV rows as JSON
-- OpenAPI docs, CORS, error handling
+**Run:**
 
-**Est. effort:** 1-2 hours | **Target files:** `src/api/main.py`, `src/api/db.py`
+```powershell
+$env:PYTHONPATH = "src"
+python -m uvicorn api.main:app --reload --port 8000
+```
 
 ### Step 4 — Fire-Safety Web App
 
@@ -356,6 +364,8 @@ Interactive frontend in `app/`:
 | PDF extraction    | `pypdf`                                              |
 | Data manipulation | `pandas`, `csv` stdlib                               |
 | Schema validation | `pydantic` v2.13.4                                   |
+| API framework     | `fastapi` + `uvicorn`                                |
+| Database          | `sqlite3` (stdlib)                                   |
 | LLM               | Google Gemini 2.5 Flash (`google-generativeai`)      |
 | Data format       | JSON (manifests, extracted records), CSV (telemetry) |
 | Docs              | Markdown                                             |
@@ -373,4 +383,4 @@ Interactive frontend in `app/`:
 
 ---
 
-_Generated automatically from live workspace state — 2026-11-14 20:15 IST_
+_Generated automatically from live workspace state — 2026-11-14 20:30 IST_
