@@ -11,7 +11,10 @@ GET  /health                      Health check (alias)
 GET  /investigations              Filterable, paginated list
 GET  /investigations/{id}         Full record with all FieldValues
 GET  /investigations/{id}/telemetry Raw CSV rows as JSON
-POST  /reload                     Re-load records from data/processed/investigations.json
+POST /compare                     Compare 2-3 investigations
+GET  /search                      Search investigations with filters
+POST /chat?user={id}              Research assistant chatbot (Gemini agent)
+POST /reload                      Re-load records from data/processed/investigations.json
 """
 
 from __future__ import annotations
@@ -27,6 +30,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 from fastapi import FastAPI, HTTPException, Query
 from fastapi.middleware.cors import CORSMiddleware
 
+from api.chat import ChatRequest, ChatResponse, process_chat_message
 from api.db import (  # noqa: E402
     COMBINED_JSON,
     DB_PATH,
@@ -391,6 +395,19 @@ def reload_records() -> Dict[str, Any]:
         )
     n = load_records(DB_PATH, COMBINED_JSON)
     return {"status": "reloaded", "records": n}
+
+
+@app.post("/chat", response_model=ChatResponse, tags=["chat"])
+def chat(
+    user: str = Query(..., description="Per-user identifier (required, string, non-empty, max 100 chars)"),
+    body: ChatRequest = ...,
+) -> ChatResponse:
+    """
+    Research assistant chatbot translating natural language queries to FlameScope API calls.
+    Maintains minimal per-user context (last_query and default_limit).
+    """
+    reply = process_chat_message(user_id=user, msg=body.msg)
+    return ChatResponse(status="success", response=reply)
 
 
 def _read_csv_rows(csv_path: Path, limit: Optional[int] = None) -> Dict[str, Any]:

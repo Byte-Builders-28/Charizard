@@ -286,6 +286,33 @@ Lightweight text search across investigation fields, with optional structured fi
 }
 ```
 
+### `POST /chat`
+
+Natural language research assistant bot translating user queries into FlameScope API calls via Gemini agent with minimal per-user context tracking.
+
+**Query parameters:**
+
+| Parameter | Type | Description | Example |
+|-----------|------|-------------|---------|
+| `user` | string | **Required.** Per-user identifier (1-100 characters) | `?user=researcher_01` |
+
+**Request body:**
+```json
+{
+  "msg": "search liquid oxygen experiments"
+}
+```
+
+**Response:**
+```json
+{
+  "status": "success",
+  "response": "Found 5 experiments involving liquid oxygen: PSI-69 (Flame Extinguishment Experiment)... Would you like details on any?"
+}
+```
+
+For complete bot behavior, context isolation, and tool calling documentation, see [docs/CHAT_BOT.md](file:///D:/CODE/byte_builders/Charizard/docs/CHAT_BOT.md).
+
 ---
 
 ### `POST /reload`
