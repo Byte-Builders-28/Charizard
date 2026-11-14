@@ -1,0 +1,11 @@
+{
+  "files": {
+    "investigation_metadata.json": {
+      "source_url": "https://psi.nasa.gov/geode-py/ws/repo/investigations/PSI-60",
+      "retrieved_at": "2026-11-14T09:17:06.085383+00:00",
+      "size_bytes": 7949,
+      "sha256": "5265e3b9c914b6fb794fc5195b9fa36670151cfa73c2abc995c97d84f3717e96",
+      "type": "investigation_metadata"
+    }
+  }
+}

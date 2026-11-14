@@ -1,0 +1,16 @@
+investigation_id,acronym,title,sub_research_area,doi,source_url,file_types,tables_count
+PSI-69,FLEX,Flame Extinguishment Experiment,Spacecraft Fire Safety,https://doi.org/10.60555/mbq8-0451,https://psi.nasa.gov/physci/repo/data/investigations/PSI-69,CSV,1
+PSI-68,FLEX-2,Flame Extinguishment Experiment - 2,Spacecraft Fire Safety,https://doi.org/10.60555/byp8-h018,https://psi.nasa.gov/physci/repo/data/investigations/PSI-68,CSV,1
+PSI-98,SAFFIRE-I,Spacecraft Fire Safety Experiment-I,"Spacecraft Fire, Smoke Distribution",https://doi.org/10.60555/0t15-1z43,https://psi.nasa.gov/physci/repo/data/investigations/PSI-98,CSV,1
+PSI-99,SAFFIRE-II,Spacecraft Fire Experiment-II,Surface Combustion,https://doi.org/10.60555/2chp-m469,https://psi.nasa.gov/physci/repo/data/investigations/PSI-99,CSV,1
+PSI-100,SAFFIRE-III,Spacecraft Fire Experiment-III,Spacecraft Fire Safety,https://doi.org/10.60555/040q-4h36,https://psi.nasa.gov/physci/repo/data/investigations/PSI-100,CSV,1
+PSI-25,BASS-II,Burning and Suppression of Solids - II,Spacecraft Fire Safety,https://doi.org/10.60555/4qc4-de67,https://psi.nasa.gov/physci/repo/data/investigations/PSI-25,"CSV, JPG",1
+PSI-26,BASS,Burning and Suppression of Solids,Spacecraft Fire Safety,https://doi.org/10.60555/58h4-dy80,https://psi.nasa.gov/physci/repo/data/investigations/PSI-26,CSV,1
+PSI-60,PSI-60,Computational and Experimental Analysis of SPICE Data Sets,Gaseous,https://doi.org/10.60555/mzjm-yv57,https://psi.nasa.gov/physci/repo/data/investigations/PSI-60,"CSV, PDF, TXT",0
+PSI-107,SPICE,Smoke Point In Co-flow Experiment,Fire Safety,https://doi.org/10.60555/9kbh-e962,https://psi.nasa.gov/physci/repo/data/investigations/PSI-107,CSV,1
+PSI-101,SAME-R,Smoke Aerosol Measurement Experiment-Reflight,Spacecraft Fire Safety,https://doi.org/10.60555/2np7-jv14,https://psi.nasa.gov/physci/repo/data/investigations/PSI-101,CSV,1
+PSI-102,SAME,Smoke and Aerosol Measurement Experiment,Spacecraft Fire Safety,https://doi.org/10.60555/gd4k-8h62,https://psi.nasa.gov/physci/repo/data/investigations/PSI-102,CSV,1
+PSI-115,PSI-115,Utilization of the Smoke Aerosol Measurement Experiment Data for Advanced Modeling and Simulation of Smoke Generation in Micro-Gravity,"Smoke Aerosol, Combustion Simulation",https://doi.org/10.60555/q0v5-1v28,https://psi.nasa.gov/physci/repo/data/investigations/PSI-115,"CSV, PDF, TXT",0
+PSI-159,ACME CFI-G,Advanced Combustion via Microgravity Experiments / Cool Flames Investigation with Gases,Flames of Gaseous Fuels,https://doi.org/10.60555/cyt1-kh64,https://psi.nasa.gov/physci/repo/data/investigations/PSI-159,"CSV, JPG, PNG",2
+PSI-10,ACME/Flame Design,Advanced Combustion via Microgravity Experiments / Flame Design,Flames of Gaseous Fuels,https://doi.org/10.60555/w4zy-bt45,https://psi.nasa.gov/physci/repo/data/investigations/PSI-10,"CSV, JPG, PNG",2
+PSI-20,ACME BRE,Advanced Combustion via Microgravity Experiments - Burning Rate Emulator,Flames of Gaseous Fuels,https://doi.org/10.60555/vb93-3y72,https://psi.nasa.gov/physci/repo/data/investigations/PSI-20,CSV,1

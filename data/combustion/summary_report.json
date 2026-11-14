@@ -1,0 +1,1214 @@
+[
+  {
+    "filename": "PSI-69_Experimental table_FLEX.csv",
+    "investigation_id": "PSI-69",
+    "investigation_name": "FLEX",
+    "sub_area": "Spacecraft Fire Safety",
+    "size_bytes": 24776,
+    "extension": ".csv",
+    "row_count": 274,
+    "column_count": 15,
+    "columns": [
+      {
+        "raw_header": "FLEX Test #",
+        "clean_name": "FLEX Test #",
+        "unit": "dimensionless / unspecified",
+        "data_type": "int64",
+        "non_null_count": 274,
+        "sample_value": "1"
+      },
+      {
+        "raw_header": "FLEX Identifier",
+        "clean_name": "FLEX Identifier",
+        "unit": "dimensionless / unspecified",
+        "data_type": "object",
+        "non_null_count": 274,
+        "sample_value": "20CAL08"
+      },
+      {
+        "raw_header": "Test Date",
+        "clean_name": "Test Date",
+        "unit": "dimensionless / unspecified",
+        "data_type": "object",
+        "non_null_count": 274,
+        "sample_value": "3/5/2009"
+      },
+      {
+        "raw_header": "Test GMT",
+        "clean_name": "Test GMT",
+        "unit": "dimensionless / unspecified",
+        "data_type": "object",
+        "non_null_count": 273,
+        "sample_value": "17:22:03"
+      },
+      {
+        "raw_header": "Fuel",
+        "clean_name": "Fuel",
+        "unit": "dimensionless / unspecified",
+        "data_type": "object",
+        "non_null_count": 274,
+        "sample_value": "Methanol"
+      },
+      {
+        "raw_header": "Ambient pressure; mmHg",
+        "clean_name": "Ambient pressure",
+        "unit": "mmHg",
+        "data_type": "float64",
+        "non_null_count": 274,
+        "sample_value": "757.7"
+      },
+      {
+        "raw_header": "O initial ambient composition; mole fraction",
+        "clean_name": "O initial ambient composition",
+        "unit": "mole fraction",
+        "data_type": "float64",
+        "non_null_count": 274,
+        "sample_value": "0.21"
+      },
+      {
+        "raw_header": "N initial ambient composition; mole fraction",
+        "clean_name": "N initial ambient composition",
+        "unit": "mole fraction",
+        "data_type": "float64",
+        "non_null_count": 274,
+        "sample_value": "0.79"
+      },
+      {
+        "raw_header": "CO initial ambient composition; mole fraction",
+        "clean_name": "CO initial ambient composition",
+        "unit": "mole fraction",
+        "data_type": "float64",
+        "non_null_count": 274,
+        "sample_value": "0.0"
+      },
+      {
+        "raw_header": "He initial ambient composition; mole fraction",
+        "clean_name": "He initial ambient composition",
+        "unit": "mole fraction",
+        "data_type": "float64",
+        "non_null_count": 274,
+        "sample_value": "0.0"
+      },
+      {
+        "raw_header": "Droplet initial diameter; mm",
+        "clean_name": "Droplet initial diameter",
+        "unit": "mm",
+        "data_type": "object",
+        "non_null_count": 268,
+        "sample_value": "1.69"
+      },
+      {
+        "raw_header": "Visible flame extinction diameter; mm",
+        "clean_name": "Visible flame extinction diameter",
+        "unit": "mm",
+        "data_type": "object",
+        "non_null_count": 225,
+        "sample_value": "0.89"
+      },
+      {
+        "raw_header": "Burning rate; mm",
+        "clean_name": "Burning rate",
+        "unit": "mm",
+        "data_type": "float64",
+        "non_null_count": 258,
+        "sample_value": "0.52"
+      },
+      {
+        "raw_header": "Burn time; s",
+        "clean_name": "Burn time",
+        "unit": "s",
+        "data_type": "object",
+        "non_null_count": 268,
+        "sample_value": "4.3"
+      },
+      {
+        "raw_header": "Test end",
+        "clean_name": "Test end",
+        "unit": "dimensionless / unspecified",
+        "data_type": "object",
+        "non_null_count": 274,
+        "sample_value": "Disruption"
+      }
+    ]
+  },
+  {
+    "filename": "PSI-68_Experimental table_Flex2.csv",
+    "investigation_id": "PSI-68",
+    "investigation_name": "FLEX-2",
+    "sub_area": "Spacecraft Fire Safety",
+    "size_bytes": 1029,
+    "extension": ".csv",
+    "row_count": 8,
+    "column_count": 7,
+    "columns": [
+      {
+        "raw_header": "Sample (Fuel Type)",
+        "clean_name": "Sample",
+        "unit": "Fuel Type",
+        "data_type": "object",
+        "non_null_count": 8,
+        "sample_value": "IsoOctane (pure)"
+      },
+      {
+        "raw_header": "Initial Droplet Diameter (mm)",
+        "clean_name": "Initial Droplet Diameter",
+        "unit": "mm",
+        "data_type": "object",
+        "non_null_count": 8,
+        "sample_value": "1.5 - 5"
+      },
+      {
+        "raw_header": "Ambient Gas Mixture ",
+        "clean_name": "Ambient Gas Mixture",
+        "unit": "dimensionless / unspecified",
+        "data_type": "object",
+        "non_null_count": 8,
+        "sample_value": "O2/N2 or O2/He"
+      },
+      {
+        "raw_header": "Oxygen Mole Fraction",
+        "clean_name": "Oxygen Mole Fraction",
+        "unit": "dimensionless / unspecified",
+        "data_type": "object",
+        "non_null_count": 8,
+        "sample_value": "0.17; 0.21;0.25; 0.3"
+      },
+      {
+        "raw_header": "Ambient Pressure (atm)",
+        "clean_name": "Ambient Pressure",
+        "unit": "atm",
+        "data_type": "object",
+        "non_null_count": 8,
+        "sample_value": "0.5; 1.0; 1.5; 2.0; or 3.0 "
+      },
+      {
+        "raw_header": " Ambient Temperature (C)",
+        "clean_name": "Ambient Temperature",
+        "unit": "C",
+        "data_type": "int64",
+        "non_null_count": 8,
+        "sample_value": "25"
+      },
+      {
+        "raw_header": "Flow Velocity (cm/s)",
+        "clean_name": "Flow Velocity",
+        "unit": "cm/s",
+        "data_type": "object",
+        "non_null_count": 8,
+        "sample_value": "0.1 - 5"
+      }
+    ]
+  },
+  {
+    "filename": "PSI-98_Experimental table_SAFFIRE-1.csv",
+    "investigation_id": "PSI-98",
+    "investigation_name": "SAFFIRE-I",
+    "sub_area": "Spacecraft Fire, Smoke Distribution",
+    "size_bytes": 469,
+    "extension": ".csv",
+    "row_count": 4,
+    "column_count": 13,
+    "columns": [
+      {
+        "raw_header": "Sample Number ",
+        "clean_name": "Sample Number",
+        "unit": "dimensionless / unspecified",
+        "data_type": "object",
+        "non_null_count": 4,
+        "sample_value": "S1"
+      },
+      {
+        "raw_header": "Material",
+        "clean_name": "Material",
+        "unit": "dimensionless / unspecified",
+        "data_type": "object",
+        "non_null_count": 4,
+        "sample_value": "SIBAL Fabric"
+      },
+      {
+        "raw_header": "Sample Thickness (cm)",
+        "clean_name": "Sample Thickness",
+        "unit": "cm",
+        "data_type": "float64",
+        "non_null_count": 2,
+        "sample_value": "0.37"
+      },
+      {
+        "raw_header": "Sample Length (cm)",
+        "clean_name": "Sample Length",
+        "unit": "cm",
+        "data_type": "float64",
+        "non_null_count": 2,
+        "sample_value": "40.6"
+      },
+      {
+        "raw_header": "Sample Width (cm)",
+        "clean_name": "Sample Width",
+        "unit": "cm",
+        "data_type": "float64",
+        "non_null_count": 2,
+        "sample_value": "94.0"
+      },
+      {
+        "raw_header": "Air Flow (cm/s)",
+        "clean_name": "Air Flow",
+        "unit": "cm/s",
+        "data_type": "float64",
+        "non_null_count": 2,
+        "sample_value": "20.0"
+      },
+      {
+        "raw_header": "Percent O2",
+        "clean_name": "Percent O2",
+        "unit": "%",
+        "data_type": "object",
+        "non_null_count": 2,
+        "sample_value": "21.5 - 21.7"
+      },
+      {
+        "raw_header": "Ignition Power (W)",
+        "clean_name": "Ignition Power",
+        "unit": "W",
+        "data_type": "float64",
+        "non_null_count": 2,
+        "sample_value": "182.0"
+      },
+      {
+        "raw_header": "Ignition Time (s)",
+        "clean_name": "Ignition Time",
+        "unit": "s",
+        "data_type": "float64",
+        "non_null_count": 2,
+        "sample_value": "8.0"
+      },
+      {
+        "raw_header": "Burn Time (s)",
+        "clean_name": "Burn Time",
+        "unit": "s",
+        "data_type": "float64",
+        "non_null_count": 2,
+        "sample_value": "420.0"
+      },
+      {
+        "raw_header": "Flow Direction ",
+        "clean_name": "Flow Direction",
+        "unit": "dimensionless / unspecified",
+        "data_type": "object",
+        "non_null_count": 2,
+        "sample_value": "Concurrent"
+      },
+      {
+        "raw_header": "Camera 1",
+        "clean_name": "Camera 1",
+        "unit": "dimensionless / unspecified",
+        "data_type": "object",
+        "non_null_count": 2,
+        "sample_value": "S1C1"
+      },
+      {
+        "raw_header": "Camera 2",
+        "clean_name": "Camera 2",
+        "unit": "dimensionless / unspecified",
+        "data_type": "object",
+        "non_null_count": 2,
+        "sample_value": "S1C2"
+      }
+    ]
+  },
+  {
+    "filename": "PSI-99_Experimental table_SAFFIRE-2.csv",
+    "investigation_id": "PSI-99",
+    "investigation_name": "SAFFIRE-II",
+    "sub_area": "Surface Combustion",
+    "size_bytes": 1973,
+    "extension": ".csv",
+    "row_count": 15,
+    "column_count": 17,
+    "columns": [
+      {
+        "raw_header": "Sample Number",
+        "clean_name": "Sample Number",
+        "unit": "dimensionless / unspecified",
+        "data_type": "object",
+        "non_null_count": 15,
+        "sample_value": "2-1"
+      },
+      {
+        "raw_header": "Material",
+        "clean_name": "Material",
+        "unit": "dimensionless / unspecified",
+        "data_type": "object",
+        "non_null_count": 9,
+        "sample_value": "Silicone"
+      },
+      {
+        "raw_header": "Samle Thickness ",
+        "clean_name": "Samle Thickness",
+        "unit": "dimensionless / unspecified",
+        "data_type": "object",
+        "non_null_count": 9,
+        "sample_value": "0.27 mm"
+      },
+      {
+        "raw_header": "Sample Length ",
+        "clean_name": "Sample Length",
+        "unit": "dimensionless / unspecified",
+        "data_type": "object",
+        "non_null_count": 9,
+        "sample_value": "29 cm"
+      },
+      {
+        "raw_header": "Sample Width (cm)",
+        "clean_name": "Sample Width",
+        "unit": "cm",
+        "data_type": "object",
+        "non_null_count": 9,
+        "sample_value": "5 cm"
+      },
+      {
+        "raw_header": "Air Flow (cm/s)",
+        "clean_name": "Air Flow",
+        "unit": "cm/s",
+        "data_type": "object",
+        "non_null_count": 9,
+        "sample_value": "20 cm/s"
+      },
+      {
+        "raw_header": "Percent O2 (Note 1)",
+        "clean_name": "Percent O2",
+        "unit": "Note 1",
+        "data_type": "object",
+        "non_null_count": 9,
+        "sample_value": "~ 21.5"
+      },
+      {
+        "raw_header": "Ignition Power (W)",
+        "clean_name": "Ignition Power",
+        "unit": "W",
+        "data_type": "object",
+        "non_null_count": 9,
+        "sample_value": "80 W"
+      },
+      {
+        "raw_header": "Ignition Time (s)",
+        "clean_name": "Ignition Time",
+        "unit": "s",
+        "data_type": "object",
+        "non_null_count": 9,
+        "sample_value": "9.2 s"
+      },
+      {
+        "raw_header": "Burn Time (s)",
+        "clean_name": "Burn Time",
+        "unit": "s",
+        "data_type": "object",
+        "non_null_count": 9,
+        "sample_value": "Insignificant"
+      },
+      {
+        "raw_header": "Flow Direction",
+        "clean_name": "Flow Direction",
+        "unit": "dimensionless / unspecified",
+        "data_type": "object",
+        "non_null_count": 9,
+        "sample_value": "Concurrent"
+      },
+      {
+        "raw_header": "?-g Burn Length",
+        "clean_name": "?-g Burn Length",
+        "unit": "dimensionless / unspecified",
+        "data_type": "object",
+        "non_null_count": 9,
+        "sample_value": "~ 0"
+      },
+      {
+        "raw_header": "?-g Spread Length",
+        "clean_name": "?-g Spread Length",
+        "unit": "dimensionless / unspecified",
+        "data_type": "object",
+        "non_null_count": 5,
+        "sample_value": "2.1 mm/s"
+      },
+      {
+        "raw_header": "1-g Burn Length",
+        "clean_name": "1-g Burn Length",
+        "unit": "dimensionless / unspecified",
+        "data_type": "object",
+        "non_null_count": 9,
+        "sample_value": "Complete"
+      },
+      {
+        "raw_header": "1-g Spread Rate",
+        "clean_name": "1-g Spread Rate",
+        "unit": "dimensionless / unspecified",
+        "data_type": "object",
+        "non_null_count": 8,
+        "sample_value": "Acceleratory"
+      },
+      {
+        "raw_header": "Camera 1",
+        "clean_name": "Camera 1",
+        "unit": "dimensionless / unspecified",
+        "data_type": "object",
+        "non_null_count": 7,
+        "sample_value": "S1C1"
+      },
+      {
+        "raw_header": "Camera 2",
+        "clean_name": "Camera 2",
+        "unit": "dimensionless / unspecified",
+        "data_type": "object",
+        "non_null_count": 6,
+        "sample_value": "S1C2"
+      }
+    ]
+  },
+  {
+    "filename": "PSI-25_Experimental table_BASS-II.csv",
+    "investigation_id": "PSI-25",
+    "investigation_name": "BASS-II",
+    "sub_area": "Spacecraft Fire Safety",
+    "size_bytes": 16590,
+    "extension": ".csv",
+    "row_count": 129,
+    "column_count": 17,
+    "columns": [
+      {
+        "raw_header": "PI",
+        "clean_name": "PI",
+        "unit": "dimensionless / unspecified",
+        "data_type": "object",
+        "non_null_count": 129,
+        "sample_value": "Bhattacharjee"
+      },
+      {
+        "raw_header": "Test #",
+        "clean_name": "Test #",
+        "unit": "dimensionless / unspecified",
+        "data_type": "object",
+        "non_null_count": 129,
+        "sample_value": "B1"
+      },
+      {
+        "raw_header": "Date",
+        "clean_name": "Date",
+        "unit": "dimensionless / unspecified",
+        "data_type": "object",
+        "non_null_count": 129,
+        "sample_value": "2/19/2014"
+      },
+      {
+        "raw_header": "GMT",
+        "clean_name": "GMT",
+        "unit": "dimensionless / unspecified",
+        "data_type": "int64",
+        "non_null_count": 129,
+        "sample_value": "50"
+      },
+      {
+        "raw_header": "Sample #",
+        "clean_name": "Sample #",
+        "unit": "dimensionless / unspecified",
+        "data_type": "object",
+        "non_null_count": 129,
+        "sample_value": "147"
+      },
+      {
+        "raw_header": "Fuel Sample Material",
+        "clean_name": "Fuel Sample Material",
+        "unit": "dimensionless / unspecified",
+        "data_type": "object",
+        "non_null_count": 129,
+        "sample_value": "100 micron PMMA film   2 cm wide"
+      },
+      {
+        "raw_header": "Flow restrictor",
+        "clean_name": "Flow restrictor",
+        "unit": "dimensionless / unspecified",
+        "data_type": "int64",
+        "non_null_count": 129,
+        "sample_value": "2"
+      },
+      {
+        "raw_header": "Fan display",
+        "clean_name": "Fan display",
+        "unit": "dimensionless / unspecified",
+        "data_type": "object",
+        "non_null_count": 116,
+        "sample_value": "62"
+      },
+      {
+        "raw_header": "Air display",
+        "clean_name": "Air display",
+        "unit": "dimensionless / unspecified",
+        "data_type": "object",
+        "non_null_count": 125,
+        "sample_value": "5"
+      },
+      {
+        "raw_header": "Radiometer gain   (1000   250   50   10)",
+        "clean_name": "Radiometer gain   (1000   250   50   10)",
+        "unit": "dimensionless / unspecified",
+        "data_type": "object",
+        "non_null_count": 129,
+        "sample_value": "50"
+      },
+      {
+        "raw_header": "Total Frames Shot",
+        "clean_name": "Total Frames Shot",
+        "unit": "dimensionless / unspecified",
+        "data_type": "object",
+        "non_null_count": 129,
+        "sample_value": "57"
+      },
+      {
+        "raw_header": "Calibrated  initial O2 % by vol ",
+        "clean_name": "Calibrated  initial O2 % by vol",
+        "unit": "%",
+        "data_type": "float64",
+        "non_null_count": 129,
+        "sample_value": "22.2"
+      },
+      {
+        "raw_header": "Calibrated final O2 % by vol",
+        "clean_name": "Calibrated final O2 % by vol",
+        "unit": "%",
+        "data_type": "object",
+        "non_null_count": 129,
+        "sample_value": "22.2"
+      },
+      {
+        "raw_header": "Initial CO2 % by vol",
+        "clean_name": "Initial CO2 % by vol",
+        "unit": "%",
+        "data_type": "object",
+        "non_null_count": 129,
+        "sample_value": "0.44"
+      },
+      {
+        "raw_header": "Final CO2 % by vol",
+        "clean_name": "Final CO2 % by vol",
+        "unit": "%",
+        "data_type": "object",
+        "non_null_count": 128,
+        "sample_value": "0.44"
+      },
+      {
+        "raw_header": "Initial CO (ppm)",
+        "clean_name": "Initial CO",
+        "unit": "ppm",
+        "data_type": "object",
+        "non_null_count": 129,
+        "sample_value": "0"
+      },
+      {
+        "raw_header": "Final CO (ppm)",
+        "clean_name": "Final CO",
+        "unit": "ppm",
+        "data_type": "object",
+        "non_null_count": 128,
+        "sample_value": "6"
+      }
+    ]
+  },
+  {
+    "filename": "PSI-26_Experimental table_BASS.csv",
+    "investigation_id": "PSI-26",
+    "investigation_name": "BASS",
+    "sub_area": "Spacecraft Fire Safety",
+    "size_bytes": 4726,
+    "extension": ".csv",
+    "row_count": 122,
+    "column_count": 6,
+    "columns": [
+      {
+        "raw_header": "Date",
+        "clean_name": "Date",
+        "unit": "dimensionless / unspecified",
+        "data_type": "object",
+        "non_null_count": 122,
+        "sample_value": "3/30/2012"
+      },
+      {
+        "raw_header": "GMT",
+        "clean_name": "GMT",
+        "unit": "dimensionless / unspecified",
+        "data_type": "int64",
+        "non_null_count": 122,
+        "sample_value": "90"
+      },
+      {
+        "raw_header": "As Run Test #",
+        "clean_name": "As Run Test #",
+        "unit": "dimensionless / unspecified",
+        "data_type": "float64",
+        "non_null_count": 121,
+        "sample_value": "1.0"
+      },
+      {
+        "raw_header": "Test #",
+        "clean_name": "Test #",
+        "unit": "dimensionless / unspecified",
+        "data_type": "object",
+        "non_null_count": 121,
+        "sample_value": "1"
+      },
+      {
+        "raw_header": "Sample #",
+        "clean_name": "Sample #",
+        "unit": "dimensionless / unspecified",
+        "data_type": "float64",
+        "non_null_count": 121,
+        "sample_value": "4.0"
+      },
+      {
+        "raw_header": "Fuel Sample Material",
+        "clean_name": "Fuel Sample Material",
+        "unit": "dimensionless / unspecified",
+        "data_type": "object",
+        "non_null_count": 122,
+        "sample_value": "SIBAL 2 cm"
+      }
+    ]
+  },
+  {
+    "filename": "PSI-107_Experimental table_Spice.csv",
+    "investigation_id": "PSI-107",
+    "investigation_name": "SPICE",
+    "sub_area": "Fire Safety",
+    "size_bytes": 31205,
+    "extension": ".csv",
+    "row_count": 469,
+    "column_count": 9,
+    "columns": [
+      {
+        "raw_header": "GMT date",
+        "clean_name": "GMT date",
+        "unit": "dimensionless / unspecified",
+        "data_type": "int64",
+        "non_null_count": 469,
+        "sample_value": "45"
+      },
+      {
+        "raw_header": "GMT ignition",
+        "clean_name": "GMT ignition",
+        "unit": "dimensionless / unspecified",
+        "data_type": "object",
+        "non_null_count": 468,
+        "sample_value": "14:37:08"
+      },
+      {
+        "raw_header": "GMT  Flame Off ",
+        "clean_name": "GMT  Flame Off",
+        "unit": "dimensionless / unspecified",
+        "data_type": "object",
+        "non_null_count": 457,
+        "sample_value": "14:48:03"
+      },
+      {
+        "raw_header": "Fuel",
+        "clean_name": "Fuel",
+        "unit": "dimensionless / unspecified",
+        "data_type": "object",
+        "non_null_count": 469,
+        "sample_value": "Ethylene"
+      },
+      {
+        "raw_header": "Nozzle (mm)",
+        "clean_name": "Nozzle",
+        "unit": "mm",
+        "data_type": "float64",
+        "non_null_count": 469,
+        "sample_value": "1.6002"
+      },
+      {
+        "raw_header": "Fuel Rate (sccm)",
+        "clean_name": "Fuel Rate",
+        "unit": "sccm",
+        "data_type": "float64",
+        "non_null_count": 457,
+        "sample_value": "103.8"
+      },
+      {
+        "raw_header": "Fuel Rate (mg/s)",
+        "clean_name": "Fuel Rate",
+        "unit": "mg/s",
+        "data_type": "float64",
+        "non_null_count": 457,
+        "sample_value": "1.971"
+      },
+      {
+        "raw_header": "HC Fuel Rate (mg/s)",
+        "clean_name": "HC Fuel Rate",
+        "unit": "mg/s",
+        "data_type": "float64",
+        "non_null_count": 469,
+        "sample_value": "1.971"
+      },
+      {
+        "raw_header": "Air Rate (cm/s)",
+        "clean_name": "Air Rate",
+        "unit": "cm/s",
+        "data_type": "float64",
+        "non_null_count": 444,
+        "sample_value": "36.39"
+      }
+    ]
+  },
+  {
+    "filename": "PSI-102_Experimental table_SAME.csv",
+    "investigation_id": "PSI-102",
+    "investigation_name": "SAME",
+    "sub_area": "Spacecraft Fire Safety",
+    "size_bytes": 331,
+    "extension": ".csv",
+    "row_count": 8,
+    "column_count": 5,
+    "columns": [
+      {
+        "raw_header": "Sample #",
+        "clean_name": "Sample #",
+        "unit": "dimensionless / unspecified",
+        "data_type": "int64",
+        "non_null_count": 8,
+        "sample_value": "1"
+      },
+      {
+        "raw_header": "Sample Material  ",
+        "clean_name": "Sample Material",
+        "unit": "dimensionless / unspecified",
+        "data_type": "object",
+        "non_null_count": 8,
+        "sample_value": "Teflon"
+      },
+      {
+        "raw_header": "Air Flow (cm/s)",
+        "clean_name": "Air Flow",
+        "unit": "cm/s",
+        "data_type": "float64",
+        "non_null_count": 4,
+        "sample_value": "5.0"
+      },
+      {
+        "raw_header": "Weight loss rate (mg/min)",
+        "clean_name": "Weight loss rate",
+        "unit": "mg/min",
+        "data_type": "float64",
+        "non_null_count": 4,
+        "sample_value": "2.0"
+      },
+      {
+        "raw_header": "Aging Duration (minutes)",
+        "clean_name": "Aging Duration",
+        "unit": "minutes",
+        "data_type": "float64",
+        "non_null_count": 4,
+        "sample_value": "1.0"
+      }
+    ]
+  },
+  {
+    "filename": "PSI-159_Experimental table_CFI-G_Normal Flames.csv",
+    "investigation_id": "PSI-159",
+    "investigation_name": "ACME CFI-G",
+    "sub_area": "Flames of Gaseous Fuels",
+    "size_bytes": 22166,
+    "extension": ".csv",
+    "row_count": 179,
+    "column_count": 18,
+    "columns": [
+      {
+        "raw_header": "Flame Type",
+        "clean_name": "Flame Type",
+        "unit": "dimensionless / unspecified",
+        "data_type": "object",
+        "non_null_count": 179,
+        "sample_value": "Normal"
+      },
+      {
+        "raw_header": "Day",
+        "clean_name": "Day",
+        "unit": "dimensionless / unspecified",
+        "data_type": "int64",
+        "non_null_count": 179,
+        "sample_value": "1"
+      },
+      {
+        "raw_header": "Fuel",
+        "clean_name": "Fuel",
+        "unit": "dimensionless / unspecified",
+        "data_type": "object",
+        "non_null_count": 179,
+        "sample_value": "ethane"
+      },
+      {
+        "raw_header": "Test",
+        "clean_name": "Test",
+        "unit": "dimensionless / unspecified",
+        "data_type": "object",
+        "non_null_count": 179,
+        "sample_value": "21088A1"
+      },
+      {
+        "raw_header": "Cool flame?",
+        "clean_name": "Cool flame?",
+        "unit": "dimensionless / unspecified",
+        "data_type": "object",
+        "non_null_count": 8,
+        "sample_value": "no, PCI-hot"
+      },
+      {
+        "raw_header": " XO2 before test",
+        "clean_name": "XO2 before test",
+        "unit": "dimensionless / unspecified",
+        "data_type": "float64",
+        "non_null_count": 179,
+        "sample_value": "0.3939"
+      },
+      {
+        "raw_header": "XO2  after test",
+        "clean_name": "XO2  after test",
+        "unit": "dimensionless / unspecified",
+        "data_type": "float64",
+        "non_null_count": 179,
+        "sample_value": "0.389822946"
+      },
+      {
+        "raw_header": "approx p (bar)",
+        "clean_name": "approx p",
+        "unit": "bar",
+        "data_type": "float64",
+        "non_null_count": 179,
+        "sample_value": "0.9443956"
+      },
+      {
+        "raw_header": "Xf",
+        "clean_name": "Xf",
+        "unit": "dimensionless / unspecified",
+        "data_type": "float64",
+        "non_null_count": 179,
+        "sample_value": "1.0"
+      },
+      {
+        "raw_header": "mHC (mg/s)",
+        "clean_name": "mHC",
+        "unit": "mg/s",
+        "data_type": "float64",
+        "non_null_count": 179,
+        "sample_value": "2.0"
+      },
+      {
+        "raw_header": "TFP",
+        "clean_name": "TFP",
+        "unit": "dimensionless / unspecified",
+        "data_type": "object",
+        "non_null_count": 179,
+        "sample_value": "No"
+      },
+      {
+        "raw_header": "Tad (K)",
+        "clean_name": "Tad",
+        "unit": "K",
+        "data_type": "object",
+        "non_null_count": 179,
+        "sample_value": "2719.323211"
+      },
+      {
+        "raw_header": "Zst",
+        "clean_name": "Zst",
+        "unit": "dimensionless / unspecified",
+        "data_type": "object",
+        "non_null_count": 179,
+        "sample_value": "0.102651783"
+      },
+      {
+        "raw_header": "Hot ignition",
+        "clean_name": "Hot ignition",
+        "unit": "dimensionless / unspecified",
+        "data_type": "object",
+        "non_null_count": 179,
+        "sample_value": "Yes"
+      },
+      {
+        "raw_header": "burn time (sec)",
+        "clean_name": "burn time",
+        "unit": "sec",
+        "data_type": "float64",
+        "non_null_count": 175,
+        "sample_value": "50.0"
+      },
+      {
+        "raw_header": "Self-ext or flow term",
+        "clean_name": "Self-ext or flow term",
+        "unit": "dimensionless / unspecified",
+        "data_type": "object",
+        "non_null_count": 179,
+        "sample_value": "SE"
+      },
+      {
+        "raw_header": "Peak burner T (C )",
+        "clean_name": "Peak burner T",
+        "unit": "C",
+        "data_type": "object",
+        "non_null_count": 179,
+        "sample_value": "290.617198"
+      },
+      {
+        "raw_header": "Comments",
+        "clean_name": "Comments",
+        "unit": "dimensionless / unspecified",
+        "data_type": "object",
+        "non_null_count": 44,
+        "sample_value": "hit burner T limit"
+      }
+    ]
+  },
+  {
+    "filename": "PSI-159_Experimental table_CFI-G_Inverse Flames.csv",
+    "investigation_id": "PSI-159",
+    "investigation_name": "ACME CFI-G",
+    "sub_area": "Flames of Gaseous Fuels",
+    "size_bytes": 39422,
+    "extension": ".csv",
+    "row_count": 1015,
+    "column_count": 20,
+    "columns": [
+      {
+        "raw_header": "Flame Type",
+        "clean_name": "Flame Type",
+        "unit": "dimensionless / unspecified",
+        "data_type": "object",
+        "non_null_count": 154,
+        "sample_value": "Inverse"
+      },
+      {
+        "raw_header": "Day",
+        "clean_name": "Day",
+        "unit": "dimensionless / unspecified",
+        "data_type": "float64",
+        "non_null_count": 154,
+        "sample_value": "1.0"
+      },
+      {
+        "raw_header": "Fuel",
+        "clean_name": "Fuel",
+        "unit": "dimensionless / unspecified",
+        "data_type": "object",
+        "non_null_count": 154,
+        "sample_value": "ethane"
+      },
+      {
+        "raw_header": "Test",
+        "clean_name": "Test",
+        "unit": "dimensionless / unspecified",
+        "data_type": "object",
+        "non_null_count": 154,
+        "sample_value": "21196 A1"
+      },
+      {
+        "raw_header": "Xf  before test",
+        "clean_name": "Xf  before test",
+        "unit": "dimensionless / unspecified",
+        "data_type": "float64",
+        "non_null_count": 154,
+        "sample_value": "0.2981"
+      },
+      {
+        "raw_header": "Xf  after test",
+        "clean_name": "Xf  after test",
+        "unit": "dimensionless / unspecified",
+        "data_type": "float64",
+        "non_null_count": 154,
+        "sample_value": "0.2981"
+      },
+      {
+        "raw_header": "approx p (bar)",
+        "clean_name": "approx p",
+        "unit": "bar",
+        "data_type": "float64",
+        "non_null_count": 154,
+        "sample_value": "1.1"
+      },
+      {
+        "raw_header": "XO2",
+        "clean_name": "XO2",
+        "unit": "dimensionless / unspecified",
+        "data_type": "float64",
+        "non_null_count": 154,
+        "sample_value": "0.21"
+      },
+      {
+        "raw_header": "HC burnrate (mg/s)",
+        "clean_name": "HC burnrate",
+        "unit": "mg/s",
+        "data_type": "float64",
+        "non_null_count": 154,
+        "sample_value": "1.5"
+      },
+      {
+        "raw_header": "O2 flow rate (mg/s)",
+        "clean_name": "O2 flow rate",
+        "unit": "mg/s",
+        "data_type": "float64",
+        "non_null_count": 154,
+        "sample_value": "5.59"
+      },
+      {
+        "raw_header": "TFP",
+        "clean_name": "TFP",
+        "unit": "dimensionless / unspecified",
+        "data_type": "object",
+        "non_null_count": 154,
+        "sample_value": "No"
+      },
+      {
+        "raw_header": "Tad (K)",
+        "clean_name": "Tad",
+        "unit": "K",
+        "data_type": "float64",
+        "non_null_count": 154,
+        "sample_value": "2120.0"
+      },
+      {
+        "raw_header": "Zst",
+        "clean_name": "Zst",
+        "unit": "dimensionless / unspecified",
+        "data_type": "float64",
+        "non_null_count": 154,
+        "sample_value": "0.1665"
+      },
+      {
+        "raw_header": "Hot ignition",
+        "clean_name": "Hot ignition",
+        "unit": "dimensionless / unspecified",
+        "data_type": "object",
+        "non_null_count": 154,
+        "sample_value": "No"
+      },
+      {
+        "raw_header": "burn time (sec)",
+        "clean_name": "burn time",
+        "unit": "sec",
+        "data_type": "float64",
+        "non_null_count": 154,
+        "sample_value": "0.0"
+      },
+      {
+        "raw_header": "Self -ext or flow term",
+        "clean_name": "Self -ext or flow term",
+        "unit": "dimensionless / unspecified",
+        "data_type": "object",
+        "non_null_count": 154,
+        "sample_value": "-"
+      },
+      {
+        "raw_header": "Peak burner Temp (C)",
+        "clean_name": "Peak burner Temp",
+        "unit": "C",
+        "data_type": "object",
+        "non_null_count": 153,
+        "sample_value": "27.1"
+      },
+      {
+        "raw_header": "Peak burner temp (K)",
+        "clean_name": "Peak burner temp",
+        "unit": "K",
+        "data_type": "object",
+        "non_null_count": 154,
+        "sample_value": "300.25"
+      },
+      {
+        "raw_header": "Color",
+        "clean_name": "Color",
+        "unit": "dimensionless / unspecified",
+        "data_type": "object",
+        "non_null_count": 144,
+        "sample_value": "-"
+      },
+      {
+        "raw_header": "Comments",
+        "clean_name": "Comments",
+        "unit": "dimensionless / unspecified",
+        "data_type": "object",
+        "non_null_count": 39,
+        "sample_value": "Failed to ignite"
+      }
+    ]
+  },
+  {
+    "filename": "PSI-20_Experimental table_ACME BRE.csv",
+    "investigation_id": "PSI-20",
+    "investigation_name": "ACME BRE",
+    "sub_area": "Flames of Gaseous Fuels",
+    "size_bytes": 1113,
+    "extension": ".csv",
+    "row_count": 18,
+    "column_count": 8,
+    "columns": [
+      {
+        "raw_header": "Year",
+        "clean_name": "Year",
+        "unit": "dimensionless / unspecified",
+        "data_type": "int64",
+        "non_null_count": 18,
+        "sample_value": "2019"
+      },
+      {
+        "raw_header": "Month",
+        "clean_name": "Month",
+        "unit": "dimensionless / unspecified",
+        "data_type": "object",
+        "non_null_count": 18,
+        "sample_value": "Feb"
+      },
+      {
+        "raw_header": "Date",
+        "clean_name": "Date",
+        "unit": "dimensionless / unspecified",
+        "data_type": "int64",
+        "non_null_count": 18,
+        "sample_value": "8"
+      },
+      {
+        "raw_header": "Burner Size (mm)",
+        "clean_name": "Burner Size",
+        "unit": "mm",
+        "data_type": "int64",
+        "non_null_count": 18,
+        "sample_value": "25"
+      },
+      {
+        "raw_header": "Fuel Bottle",
+        "clean_name": "Fuel Bottle",
+        "unit": "dimensionless / unspecified",
+        "data_type": "object",
+        "non_null_count": 18,
+        "sample_value": "100% C2H4"
+      },
+      {
+        "raw_header": "Oxygen Conc (percent)",
+        "clean_name": "Oxygen Conc",
+        "unit": "percent",
+        "data_type": "object",
+        "non_null_count": 18,
+        "sample_value": "21; 26.5; 40"
+      },
+      {
+        "raw_header": "Flames Ignited",
+        "clean_name": "Flames Ignited",
+        "unit": "dimensionless / unspecified",
+        "data_type": "int64",
+        "non_null_count": 18,
+        "sample_value": "10"
+      },
+      {
+        "raw_header": "Notes",
+        "clean_name": "Notes",
+        "unit": "dimensionless / unspecified",
+        "data_type": "object",
+        "non_null_count": 2,
+        "sample_value": "Oxygen Conc. (as diluted with nitroge..."
+      }
+    ]
+  }
+]

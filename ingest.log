@@ -1,0 +1,13 @@
+2026-11-14 14:46:55,015 [INFO] Starting FlameScope Ingestion for 3 investigations: ['PSI-69', 'PSI-60', 'PSI-98']
+2026-11-14 14:46:55,015 [INFO] Starting ingestion for investigation: PSI-69 -> data/raw\PSI-69
+2026-11-14 14:47:01,518 [INFO] PSI-69: Found 1 file candidate(s) in repository.
+2026-11-14 14:47:03,683 [INFO] Downloading PSI-69_Experimental table_FLEX.csv (24776 bytes)...
+2026-11-14 14:47:04,946 [INFO] Finished PSI-69. Manifest saved with 2 entries.
+2026-11-14 14:47:04,947 [INFO] Starting ingestion for investigation: PSI-60 -> data/raw\PSI-60
+2026-11-14 14:47:06,085 [INFO] PSI-60: Found 0 file candidate(s) in repository.
+2026-11-14 14:47:06,087 [INFO] Finished PSI-60. Manifest saved with 1 entries.
+2026-11-14 14:47:06,088 [INFO] Starting ingestion for investigation: PSI-98 -> data/raw\PSI-98
+2026-11-14 14:47:08,451 [INFO] PSI-98: Found 1 file candidate(s) in repository.
+2026-11-14 14:47:11,023 [INFO] Downloading PSI-98_Experimental table_SAFFIRE-1.csv (469 bytes)...
+2026-11-14 14:47:11,980 [INFO] Finished PSI-98. Manifest saved with 2 entries.
+2026-11-14 14:47:11,980 [INFO] Ingestion completed successfully.
