@@ -197,3 +197,105 @@ python src/ingest/ingest_psi.py --s3-prefixes pk4/To_NASA_team/Campaign_Reports/
 ## 📄 License
 
 Apache License 2.0. Open-access NASA microgravity research data.
+
+
+---
+
+## 🧬 Step 2: Scientific Extraction Pipeline (`src/extract/extract_investigations.py`)
+
+Reads every `data/raw/<PSI-ID>/` folder, builds structured text chunks, and
+calls the **Gemini LLM** to populate a strict, Pydantic-validated JSON schema
+per investigation.  Results land in `data/processed/`.
+
+### Pre-requisite: API Key
+
+```powershell
+# Windows PowerShell
+$env:GEMINI_API_KEY = "your_gemini_api_key_here"
+
+# Linux / macOS
+export GEMINI_API_KEY="your_gemini_api_key_here"
+```
+
+Get a free key at <https://aistudio.google.com/apikey>.
+
+### How to Run
+
+```bash
+# Process all PSI investigations found in data/raw/
+python src/extract/extract_investigations.py
+
+# Process a specific subset
+python src/extract/extract_investigations.py --investigations PSI-69 PSI-98 PSI-25
+
+# Dry-run: build context chunks, write empty validated records (no LLM calls)
+python src/extract/extract_investigations.py --dry-run
+
+# Use a different Gemini model
+python src/extract/extract_investigations.py --model gemini-2.0-flash
+```
+
+### Output Files
+
+| File | Description |
+|------|-------------|
+| `data/processed/<PSI-ID>.json` | Validated `InvestigationExtracted` record |
+| `data/processed/<PSI-ID>_review.csv` | Human-review sheet — one row per field with value, unit, status, quote, location |
+| `data/processed/investigations.json` | Combined array of all extracted records |
+| `data/processed/<PSI-ID>.REVIEW_NEEDED.json` | Raw LLM output + error for records that failed both parse attempts |
+| `extraction_failures.log` | Timestamped failure log |
+
+### Extracted Schema (per investigation)
+
+Every field (except the five identity fields) is a **FieldValue** object:
+
+```json
+{
+  "value": "methanol",
+  "unit": null,
+  "status": "extracted",
+  "evidence_quote": "Fuel: Methanol",
+  "evidence_location": "CSV header row, PSI-69_Experimental table_FLEX.csv"
+}
+```
+
+| Field | Type | Enum / Rule |
+|-------|------|-------------|
+| `investigation_id` | string | — |
+| `title` | string | — |
+| `acronym` | string \| null | — |
+| `doi` | string \| null | — |
+| `source_url` | string | — |
+| `objective` | FieldValue | — |
+| `hardware` | FieldValue | — |
+| `fuel_type` | FieldValue | list if multiple fuels |
+| `fuel_state` | FieldValue | **solid \| liquid \| gas** |
+| `sample_shape` | FieldValue | — |
+| `sample_size` | FieldValue | unit: mm or cm |
+| `oxygen_percent_min` | FieldValue | **0–100**; mole fractions × 100 |
+| `oxygen_percent_max` | FieldValue | **0–100** |
+| `pressure_psi` | FieldValue | mmHg ÷ 51.715 |
+| `airflow_speed_min` | FieldValue | unit: cm/s |
+| `airflow_speed_max` | FieldValue | unit: cm/s |
+| `diluents` | FieldValue | list: He, CO₂, SF₆ … |
+| `gravity_condition` | FieldValue | **microgravity \| normal_gravity \| partial_gravity** |
+| `sensors_and_measurements` | FieldValue | — |
+| `safety_category` | FieldValue | list from: **prevention \| detection \| suppression** |
+
+### Key Engineering Features
+
+- **Strict provenance:** every extracted value carries an `evidence_quote` and `evidence_location` from the source document.
+- **No hallucinations:** missing values → `null` with `status: "unavailable"`; model never invents numbers.
+- **Enum validation:** `fuel_state`, `gravity_condition`, and `safety_category` are enforced by Pydantic; invalid values raise immediately.
+- **Oxygen range check:** Pydantic rejects any oxygen value outside \[0, 100\]. The pipeline instructs the model to multiply mole fractions from CSV columns by 100.
+- **Automatic retry:** on JSON parse failure or Pydantic validation error, the pipeline retries once with the error message prepended to the prompt.
+- **Manual-review flag:** a second failure writes `<PSI-ID>.REVIEW_NEEDED.json` and logs to `extraction_failures.log`.
+- **Idempotent:** already-processed investigations are skipped (delete the `.json` file to reprocess).
+- **Context budget:** context is capped at ~28 000 characters to stay within model limits while remaining cost-efficient.
+
+---
+
+## 📄 License
+
+Apache License 2.0. Open-access NASA microgravity research data.
+
