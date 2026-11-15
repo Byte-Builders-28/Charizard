@@ -1,0 +1,49 @@
+@import "tailwindcss";
+
+@theme {
+  --color-canvas: #F3F0E8;
+  --color-surface: #FFFFFF;
+  --color-surface-subtle: #ECE8DE;
+  --color-text: #202421;
+  --color-text-muted: #666B64;
+  --color-primary: #D85A32;
+  --color-secondary: #526B55;
+  --color-border-main: #D8D5CC;
+  --color-border-subtle: #E2DFD6;
+
+  --font-serif: "Newsreader", "Georgia", "Cambria", "Times New Roman", serif;
+  --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --font-mono: "SFMono-Regular", "Menlo", "Consolas", "Liberation Mono", monospace;
+}
+
+:root {
+  --bg-canvas: #F3F0E8;
+  --bg-surface: #FFFFFF;
+  --text-main: #202421;
+  --text-muted: #666B64;
+  --accent-primary: #D85A32;
+  --accent-secondary: #526B55;
+  --border-main: #D8D5CC;
+}
+
+html {
+  background-color: #F3F0E8;
+  color: #202421;
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+}
+
+body {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Scientific publication typographic styling */
+.font-serif-heading {
+  font-family: "Newsreader", "Georgia", "Cambria", "Times New Roman", serif;
+}
+
+.font-mono-data {
+  font-family: "SFMono-Regular", "Menlo", "Consolas", "Liberation Mono", monospace;
+}

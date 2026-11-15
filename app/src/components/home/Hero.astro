@@ -1,0 +1,171 @@
+---
+---
+
+<section
+  id="hero-section"
+  class="relative py-20 md:py-28 border-b border-[#D8D5CC] overflow-hidden bg-cover bg-center"
+  style="background-image: url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=2072&auto=format&fit=crop');"
+>
+  <!-- Background Tint / Overlay Opacity:
+       Adjust the opacity here (e.g., /20 for subtle, /40 for medium, /70 for dark) -->
+  <div class="absolute inset-0 bg-[#0c0e0d]/70 z-0 pointer-events-none"></div>
+
+  <!-- Rising Fire / Ember Canvas Particle Effect floating in space -->
+  <canvas
+    id="fire-canvas"
+    class="absolute inset-0 w-full h-full pointer-events-none z-[1]"
+  ></canvas>
+
+  <div class="relative z-10 max-w-6xl mx-auto px-4 sm:px-6">
+    <div class="max-w-3xl">
+      <!-- Eyebrow -->
+      <div class="inline-flex items-center gap-2 px-2.5 py-1 mb-6 border border-[#526B55] bg-[#121513]/90 backdrop-blur-xs">
+        <span class="w-2 h-2 rounded-full bg-[#fd7907] animate-pulse"></span>
+        <span class="text-[11px] font-mono tracking-widest uppercase font-semibold text-[#E2DFD6]">
+          MICROGRAVITY COMBUSTION RESEARCH
+        </span>
+      </div>
+
+      <!-- Headline -->
+      <h1 class="font-serif-heading text-4xl sm:text-5xl md:text-6xl font-normal text-[#FFFFFF] tracking-tight leading-[1.12] mb-6 drop-shadow-xs">
+        Understanding fire beyond Earth.
+      </h1>
+
+      <!-- Description -->
+      <p class="text-base sm:text-lg text-[#D8D5CC] leading-relaxed mb-10 max-w-2xl font-sans">
+        Explore spacecraft combustion investigations, examine experimental conditions, and compare findings from microgravity research.
+      </p>
+
+      <!-- Main Calls to Action -->
+      <div class="flex flex-wrap items-center gap-4">
+        <a
+          href="/investigations"
+          class="inline-flex items-center justify-center px-6 py-3 bg-[#D85A32] text-[#FFFFFF] text-xs font-mono font-bold uppercase tracking-wider hover:bg-[#b84823] transition-colors border border-[#D85A32] shadow-sm"
+        >
+          Browse Investigations
+          <span class="ml-2 font-mono">&rarr;</span>
+        </a>
+
+        <a
+          href="/agent"
+          class="inline-flex items-center justify-center px-6 py-3 bg-[#FFFFFF]/10 text-[#FFFFFF] text-xs font-mono font-bold uppercase tracking-wider hover:bg-[#FFFFFF]/20 transition-colors border border-[#D8D5CC]/40 backdrop-blur-xs"
+        >
+          Use Research Agent
+          <span class="ml-2 text-[#fd7907]">&bull;</span>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  // Native HTML5 Canvas Fire/Ember Particle System matching fireeffect.md
+  const heroSection = document.getElementById('hero-section');
+  const canvas = document.getElementById('fire-canvas') as HTMLCanvasElement | null;
+
+  if (canvas && heroSection) {
+    const ctx = canvas.getContext('2d');
+
+    interface Particle {
+      x: number;
+      y: number;
+      size: number;
+      baseSize: number;
+      speedY: number;
+      speedX: number;
+      opacity: number;
+      maxOpacity: number;
+      color: string;
+      swayOffset: number;
+    }
+
+    const fireColors = ['#fd7907', '#ffaa33', '#f85817', '#ff5500', '#ffa64d'];
+    let particles: Particle[] = [];
+    let animationFrameId: number;
+    let width = 0;
+    let height = 0;
+
+    function resizeCanvas() {
+      if (!canvas || !heroSection) return;
+      width = heroSection.clientWidth;
+      height = heroSection.clientHeight;
+      canvas.width = width;
+      canvas.height = height;
+      initParticles();
+    }
+
+    function createParticle(startAtBottom = true): Particle {
+      const baseSize = Math.random() * 3.5 + 1; // 1 to 4.5px
+      return {
+        x: Math.random() * width,
+        y: startAtBottom ? height + Math.random() * 20 : Math.random() * height,
+        size: baseSize,
+        baseSize: baseSize,
+        speedY: (Math.random() * 3.2 + 2.2), // Rising upward
+        speedX: (Math.random() - 0.5) * 1.2, // Subtle horizontal drift
+        opacity: Math.random() * 0.5 + 0.2,
+        maxOpacity: Math.random() * 0.5 + 0.35,
+        color: fireColors[Math.floor(Math.random() * fireColors.length)],
+        swayOffset: Math.random() * Math.PI * 2
+      };
+    }
+
+    function initParticles() {
+      // Calculate count proportional to width (100 to 180 particles)
+      const count = Math.min(Math.floor((width * height) / 4500), 160);
+      particles = [];
+      for (let i = 0; i < count; i++) {
+        particles.push(createParticle(false));
+      }
+    }
+
+    let tick = 0;
+    function render() {
+      if (!ctx || !canvas) return;
+      ctx.clearRect(0, 0, width, height);
+      tick += 0.03;
+
+      for (let i = 0; i < particles.length; i++) {
+        const p = particles[i];
+
+        // Move upward
+        p.y -= p.speedY;
+        p.x += p.speedX + Math.sin(tick + p.swayOffset) * 0.45;
+
+        // Size & opacity pulsation/fading as it ascends
+        const progress = p.y / height; // 1 at bottom, 0 at top
+        p.opacity = p.maxOpacity * Math.max(0, Math.min(1, progress * 1.2));
+        p.size = p.baseSize * (0.6 + progress * 0.5);
+
+        // Respawn if moved off top or edges
+        if (p.y < -15 || p.x < -20 || p.x > width + 20) {
+          particles[i] = createParticle(true);
+          continue;
+        }
+
+        // Draw ember circle with soft glow
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, Math.max(0.2, p.size), 0, Math.PI * 2);
+        ctx.fillStyle = p.color;
+        ctx.globalAlpha = p.opacity;
+        ctx.shadowBlur = 6;
+        ctx.shadowColor = '#fd7907';
+        ctx.fill();
+      }
+
+      ctx.shadowBlur = 0;
+      ctx.globalAlpha = 1.0;
+      animationFrameId = requestAnimationFrame(render);
+    }
+
+    window.addEventListener('resize', resizeCanvas);
+    resizeCanvas();
+    render();
+
+    // Cleanup on page unload
+    document.addEventListener('astro:before-swap', () => {
+      cancelAnimationFrame(animationFrameId);
+      window.removeEventListener('resize', resizeCanvas);
+    }, { once: true });
+  }
+</script>

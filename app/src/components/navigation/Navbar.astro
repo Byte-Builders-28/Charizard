@@ -1,0 +1,106 @@
+---
+interface Props {
+  currentPath?: string;
+}
+
+const { currentPath = Astro.url.pathname } = Astro.props;
+
+const navLinks = [
+  { href: '/', label: 'Home' },
+  { href: '/investigations', label: 'Investigations' },
+  { href: '/agent', label: 'Research Agent' },
+  { href: '/dataset', label: 'Dataset' },
+  { href: '/about', label: 'About' },
+];
+
+function isActive(href: string): boolean {
+  if (href === '/') {
+    return currentPath === '/' || currentPath === '';
+  }
+  return currentPath.startsWith(href);
+}
+---
+
+<header class="w-full bg-[#FFFFFF] border-b border-[#D8D5CC] sticky top-0 z-30">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 h-14 flex items-center justify-between">
+    <!-- Brand / Wordmark -->
+    <a href="/" class="flex items-center gap-2 text-decoration-none group">
+      <span class="inline-block w-2.5 h-2.5 bg-[#D85A32]"></span>
+      <span class="font-mono text-sm tracking-widest font-bold text-[#202421] uppercase">CHARIZARD</span>
+      <span class="hidden md:inline-block text-xs font-mono text-[#666B64] border-l border-[#D8D5CC] pl-2 py-0.5">
+        MICROGRAVITY COMBUSTION EXPLORER
+      </span>
+    </a>
+
+    <!-- Desktop Navigation Links -->
+    <nav class="hidden md:flex items-center space-x-1" aria-label="Main Navigation">
+      {navLinks.map((link) => {
+        const active = isActive(link.href);
+        return (
+          <a
+            href={link.href}
+            class:list={[
+              'px-3 py-1.5 text-xs font-mono uppercase tracking-wider transition-colors',
+              active
+                ? 'text-[#D85A32] font-semibold border-b-2 border-[#D85A32] bg-[#F3F0E8]'
+                : 'text-[#666B64] hover:text-[#202421] hover:bg-[#F3F0E8]'
+            ]}
+            aria-current={active ? 'page' : undefined}
+          >
+            {link.label}
+          </a>
+        );
+      })}
+    </nav>
+
+    <!-- Mobile Menu Button -->
+    <div class="md:hidden flex items-center">
+      <button
+        id="mobile-menu-btn"
+        type="button"
+        class="p-1.5 text-[#202421] border border-[#D8D5CC] bg-[#FFFFFF] hover:bg-[#F3F0E8] focus:outline-none focus:ring-1 focus:ring-[#D85A32]"
+        aria-label="Toggle navigation menu"
+        aria-expanded="false"
+      >
+        <span class="font-mono text-xs uppercase px-1">Menu</span>
+      </button>
+    </div>
+  </div>
+
+  <!-- Mobile Dropdown Menu -->
+  <div
+    id="mobile-menu"
+    class="hidden md:hidden border-t border-[#D8D5CC] bg-[#FFFFFF] px-4 py-3 space-y-1"
+  >
+    {navLinks.map((link) => {
+      const active = isActive(link.href);
+      return (
+        <a
+          href={link.href}
+          class:list={[
+            'block px-3 py-2 text-xs font-mono uppercase tracking-wider',
+            active
+              ? 'text-[#D85A32] font-semibold bg-[#F3F0E8]'
+              : 'text-[#666B64] hover:text-[#202421] hover:bg-[#F3F0E8]'
+          ]}
+          aria-current={active ? 'page' : undefined}
+        >
+          {link.label}
+        </a>
+      );
+    })}
+  </div>
+</header>
+
+<script>
+  const menuBtn = document.getElementById('mobile-menu-btn');
+  const mobileMenu = document.getElementById('mobile-menu');
+
+  if (menuBtn && mobileMenu) {
+    menuBtn.addEventListener('click', () => {
+      const isExpanded = menuBtn.getAttribute('aria-expanded') === 'true';
+      menuBtn.setAttribute('aria-expanded', String(!isExpanded));
+      mobileMenu.classList.toggle('hidden');
+    });
+  }
+</script>

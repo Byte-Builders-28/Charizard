@@ -1,0 +1,138 @@
+---
+export interface FeaturedItem {
+  investigation_id: string;
+  title: string;
+  acronym: string;
+  hardware: string;
+  fuel_type: string;
+  gravity_condition: string;
+  fuel_state?: string;
+  has_telemetry?: boolean;
+}
+
+const dummyFeatured: FeaturedItem[] = [
+  {
+    investigation_id: 'PSI-69',
+    title: 'Flame Extinction Experiment - Droplet Extinction in Spaceflight',
+    acronym: 'FLEX',
+    hardware: 'Multi-user Droplet Combustion Apparatus (MDCA)',
+    fuel_type: 'Methanol / n-Decane / n-Heptane',
+    gravity_condition: 'microgravity',
+    fuel_state: 'liquid',
+    has_telemetry: true
+  },
+  {
+    investigation_id: 'PSI-98',
+    title: 'Combustion Integrated Rack Droplet Combustion Experiment 2',
+    acronym: 'FLEX-2',
+    hardware: 'Combustion Integrated Rack (CIR) / MDCA Chamber',
+    fuel_type: 'n-Decane',
+    gravity_condition: 'microgravity',
+    fuel_state: 'liquid',
+    has_telemetry: true
+  },
+  {
+    investigation_id: 'PSI-159',
+    title: 'Bi-Component Droplet Combustion Investigation',
+    acronym: 'B-DCE',
+    hardware: 'Combustion Integrated Rack (CIR)',
+    fuel_type: 'Ethanol / Water Mixtures',
+    gravity_condition: 'microgravity',
+    fuel_state: 'liquid',
+    has_telemetry: true
+  }
+];
+---
+
+<section class="py-14 bg-[#FFFFFF] border-b border-[#D8D5CC]" aria-labelledby="featured-heading">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6">
+    <div class="flex flex-col sm:flex-row sm:items-end justify-between mb-8 pb-4 border-b border-[#D8D5CC]">
+      <div>
+        <h2 id="featured-heading" class="text-xs font-mono uppercase tracking-widest text-[#666B64] font-semibold mb-1">
+          Selected Investigations
+        </h2>
+        <p class="font-serif-heading text-2xl text-[#202421]">
+          Featured Spacecraft Combustion Experiments
+        </p>
+      </div>
+      <a
+        href="/investigations"
+        class="mt-2 sm:mt-0 text-xs font-mono uppercase tracking-wider text-[#D85A32] hover:underline font-semibold flex items-center gap-1"
+      >
+        <span>Explore All 11 Investigations</span>
+        <span>&rarr;</span>
+      </a>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+      {dummyFeatured.map((item) => (
+        <article class="border border-[#D8D5CC] bg-[#FFFFFF] flex flex-col justify-between hover:border-[#202421] transition-colors">
+          <div class="p-6">
+            <!-- Header Badges -->
+            <div class="flex items-center justify-between gap-2 mb-4 pb-3 border-b border-[#D8D5CC]">
+              <div class="flex items-center gap-2">
+                <span class="font-mono text-xs font-bold text-[#D85A32] bg-[#F3F0E8] px-2 py-0.5 border border-[#D8D5CC]">
+                  {item.investigation_id}
+                </span>
+                <span class="font-mono text-xs text-[#202421] font-semibold">
+                  {item.acronym}
+                </span>
+              </div>
+              <span class="font-mono text-[10px] uppercase tracking-wider text-[#526B55] bg-[#F3F0E8] px-2 py-0.5 border border-[#D8D5CC]">
+                {item.gravity_condition}
+              </span>
+            </div>
+
+            <!-- Title -->
+            <h3 class="font-serif-heading text-lg font-medium text-[#202421] leading-snug mb-4">
+              <a href={`/investigations/${item.investigation_id}`} class="hover:text-[#D85A32]">
+                {item.title}
+              </a>
+            </h3>
+
+            <!-- Key Metadata Fields -->
+            <dl class="space-y-2 text-xs font-mono border-t border-[#D8D5CC] pt-4">
+              <div>
+                <dt class="text-[#666B64] uppercase text-[10px] tracking-wider">Hardware</dt>
+                <dd class="text-[#202421] truncate font-medium" title={item.hardware}>
+                  {item.hardware}
+                </dd>
+              </div>
+              <div>
+                <dt class="text-[#666B64] uppercase text-[10px] tracking-wider">Fuel Type</dt>
+                <dd class="text-[#202421] truncate font-medium" title={item.fuel_type}>
+                  {item.fuel_type}
+                </dd>
+              </div>
+              <div>
+                <dt class="text-[#666B64] uppercase text-[10px] tracking-wider">Telemetry Status</dt>
+                <dd class="text-[#526B55] flex items-center gap-1.5 font-medium">
+                  <span class="w-1.5 h-1.5 bg-[#526B55]"></span>
+                  <span>CSV Telemetry Available</span>
+                </dd>
+              </div>
+            </dl>
+          </div>
+
+          <!-- Action Footer -->
+          <div class="p-4 bg-[#F3F0E8] border-t border-[#D8D5CC] flex items-center justify-between">
+            <a
+              href={`/investigations/${item.investigation_id}`}
+              class="text-xs font-mono uppercase tracking-wider text-[#202421] hover:text-[#D85A32] font-semibold inline-flex items-center gap-1"
+            >
+              <span>Inspect Record</span>
+              <span>&rarr;</span>
+            </a>
+            <a
+              href={`/compare?id=${item.investigation_id}`}
+              class="text-[11px] font-mono uppercase text-[#666B64] hover:text-[#202421]"
+              title="Add to comparison"
+            >
+              + Compare
+            </a>
+          </div>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>

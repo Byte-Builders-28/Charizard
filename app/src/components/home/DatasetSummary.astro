@@ -1,0 +1,57 @@
+---
+const metrics = [
+  {
+    value: '11',
+    label: 'Investigations',
+    detail: 'Spacecraft flight and orbital combustion studies'
+  },
+  {
+    value: '2,241',
+    label: 'Telemetry Rows',
+    detail: 'Documented time-series sensor observations'
+  },
+  {
+    value: '10',
+    label: 'With Telemetry',
+    detail: 'Investigations paired with experimental CSV datasets'
+  }
+];
+---
+
+<section class="py-12 border-b border-[#D8D5CC] bg-[#F3F0E8]" aria-labelledby="dataset-summary-heading">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6">
+    <div class="flex flex-col md:flex-row md:items-end justify-between mb-8 pb-4 border-b border-[#D8D5CC]">
+      <div>
+        <h2 id="dataset-summary-heading" class="text-xs font-mono uppercase tracking-widest text-[#666B64] font-semibold mb-1">
+          Catalog Scope &bull; Documented Baseline
+        </h2>
+        <p class="font-serif-heading text-2xl text-[#202421]">
+          Standard Research Dataset Summary
+        </p>
+      </div>
+      <a href="/dataset" class="mt-2 md:mt-0 text-xs font-mono uppercase tracking-wider text-[#526B55] hover:text-[#202421] hover:underline flex items-center gap-1">
+        <span>View Full Dataset Overview</span>
+        <span>&rarr;</span>
+      </a>
+    </div>
+
+    <!-- 3 Metrics Grid -->
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+      {metrics.map((item) => (
+        <div class="bg-[#FFFFFF] border border-[#D8D5CC] p-6 flex flex-col justify-between">
+          <div>
+            <div class="text-xs font-mono text-[#666B64] uppercase tracking-wider mb-2">
+              {item.label}
+            </div>
+            <div class="font-mono text-3xl sm:text-4xl font-bold text-[#202421] tracking-tight">
+              {item.value}
+            </div>
+          </div>
+          <div class="mt-4 pt-4 border-t border-[#D8D5CC] text-xs text-[#666B64] font-sans">
+            {item.detail}
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
