@@ -24,7 +24,7 @@ from api.db import DB_PATH, get_investigation, list_investigations
 log = logging.getLogger("flamescope.api.chat")
 
 # Available Gemini models in priority order for fallback
-DEFAULT_GEMINI_MODEL = os.environ.get("GEMINI_MODEL", "gemini-2.5-flash-lite")
+DEFAULT_GEMINI_MODEL = os.environ.get("GEMINI_MODEL", "gemini-3.5-flash-lite")
 FALLBACK_MODELS = [
     DEFAULT_GEMINI_MODEL,
     "gemini-3.5-flash-lite",
