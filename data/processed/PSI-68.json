@@ -1,0 +1,133 @@
+{
+  "investigation_id": "PSI-68",
+  "title": "Flame Extinguishment Experiment - 2",
+  "acronym": "FLEX-2",
+  "doi": "10.60555/byp8-h018",
+  "source_url": "https://psi.nasa.gov/investigations/PSI-68",
+  "objective": {
+    "value": "Provide benchmark experimental data on bi-component droplet combustion over a wide range of initial conditions in order to validate numerical simulations and to develop new theoretical models.",
+    "unit": null,
+    "status": "extracted",
+    "evidence_quote": "provide benchmark experimental data on bi-component droplet combustion over a wide range of initial conditions in order to validate numerical simulations and to develop new theoretical models.",
+    "evidence_location": "METADATA (PSI-68) -> Objective"
+  },
+  "hardware": {
+    "value": [
+      "Combustion Integrated Rack (CIR)",
+      "Multi-user Droplet Combustion Appartatus (MDCA)"
+    ],
+    "unit": null,
+    "status": "extracted",
+    "evidence_quote": "Combustion Integrated Rack (CIR), Multi-user Droplet Combustion Appartatus (MDCA)",
+    "evidence_location": "METADATA (PSI-68) -> Hardware"
+  },
+  "fuel_type": {
+    "value": [
+      "IsoOctane",
+      "n-Octane",
+      "Heptane",
+      "Decane",
+      "Ethanol",
+      "Propanol",
+      "Glycerol"
+    ],
+    "unit": null,
+    "status": "extracted",
+    "evidence_quote": "IsoOctane (pure), n-Octane (pure), Heptane (pure), Decane (pure), Ethanol (pure), Propanol (95%) Glycerol (5%) (mixture), Heptane (50%) IsoOctane (50%) (mixture), Propanol (80%) Glycerol (20%) (mixture)",
+    "evidence_location": "CSV: PSI-68_Experimental table_Flex2.csv -> Sample (Fuel Type)"
+  },
+  "fuel_state": {
+    "value": "liquid",
+    "unit": null,
+    "status": "extracted",
+    "evidence_quote": "The combustion of liquid fuels is the overwhelming energy source in the transportation sector.",
+    "evidence_location": "METADATA (PSI-68) -> Research Impacts"
+  },
+  "sample_shape": {
+    "value": "droplet",
+    "unit": null,
+    "status": "extracted",
+    "evidence_quote": "Initial Droplet Diameter (mm)",
+    "evidence_location": "CSV: PSI-68_Experimental table_Flex2.csv"
+  },
+  "sample_size": {
+    "value": "1.5 - 5",
+    "unit": "mm",
+    "status": "extracted",
+    "evidence_quote": "1.5 - 5",
+    "evidence_location": "CSV: PSI-68_Experimental table_Flex2.csv -> Initial Droplet Diameter (mm)"
+  },
+  "oxygen_percent_min": {
+    "value": 17,
+    "unit": "%",
+    "status": "extracted",
+    "evidence_quote": "0.17; 0.21;0.25; 0.3",
+    "evidence_location": "CSV: PSI-68_Experimental table_Flex2.csv -> Oxygen Mole Fraction"
+  },
+  "oxygen_percent_max": {
+    "value": 30,
+    "unit": "%",
+    "status": "extracted",
+    "evidence_quote": "0.17; 0.21;0.25; 0.3",
+    "evidence_location": "CSV: PSI-68_Experimental table_Flex2.csv -> Oxygen Mole Fraction"
+  },
+  "pressure_psi": {
+    "value": "7.35 - 44.09",
+    "unit": "psi",
+    "status": "extracted",
+    "evidence_quote": "0.5; 1.0; 1.5; 2.0; or 3.0",
+    "evidence_location": "CSV: PSI-68_Experimental table_Flex2.csv -> Ambient Pressure (atm)"
+  },
+  "airflow_speed_min": {
+    "value": 0.1,
+    "unit": "cm/s",
+    "status": "extracted",
+    "evidence_quote": "0.1 - 5",
+    "evidence_location": "CSV: PSI-68_Experimental table_Flex2.csv -> Flow Velocity (cm/s)"
+  },
+  "airflow_speed_max": {
+    "value": 5,
+    "unit": "cm/s",
+    "status": "extracted",
+    "evidence_quote": "0.1 - 5",
+    "evidence_location": "CSV: PSI-68_Experimental table_Flex2.csv -> Flow Velocity (cm/s)"
+  },
+  "diluents": {
+    "value": [
+      "N2",
+      "He"
+    ],
+    "unit": null,
+    "status": "extracted",
+    "evidence_quote": "O2/N2 or O2/He",
+    "evidence_location": "CSV: PSI-68_Experimental table_Flex2.csv -> Ambient Gas Mixture"
+  },
+  "gravity_condition": {
+    "value": "microgravity",
+    "unit": null,
+    "status": "extracted",
+    "evidence_quote": "comprehensive experimental data collection in microgravity environments.",
+    "evidence_location": "METADATA (PSI-68) -> Objective"
+  },
+  "sensors_and_measurements": {
+    "value": [
+      "color camera video",
+      "pressure data",
+      "temperature data"
+    ],
+    "unit": null,
+    "status": "extracted",
+    "evidence_quote": "A near real-time download of the color camera video was employed in order to verify successful droplet deployment, ignition, and overall progress of the experiment. Pressure and temperature data of the chamber environment was also recorded in near real time.",
+    "evidence_location": "METADATA (PSI-68) -> Approach"
+  },
+  "safety_category": {
+    "value": [
+      "prevention",
+      "suppression"
+    ],
+    "unit": null,
+    "status": "inferred",
+    "evidence_quote": "Sub-research Area: Spacecraft Fire Safety; Study flame extinction mechanisms and their boundaries.",
+    "evidence_location": "METADATA (PSI-68) -> Sub-research Area / Objective (Inferred fire safety prevention and flame suppression goals.)"
+  }
+}

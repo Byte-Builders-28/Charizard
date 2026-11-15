@@ -1,0 +1,1411 @@
+[
+  {
+    "investigation_id": "PSI-102",
+    "title": "Smoke and Aerosol Measurement Experiment",
+    "acronym": "SAME",
+    "doi": "10.60555/gd4k-8h62",
+    "source_url": "https://psi.nasa.gov/investigations/PSI-102",
+    "objective": {
+      "value": "Quantify the sizes that liquid smoke particulate achieves in low gravity and relate droplet size distribution to smoke generation and transport conditions.",
+      "unit": null,
+      "status": "extracted",
+      "evidence_quote": "One of the major goals of this investigation was to quantify the sizes that the liquid smoke particulate achieves in low gravity and to relate the droplet size distribution to the smoke generation and smoke transport conditions in the experiment.",
+      "evidence_location": "METADATA (PSI-102) -> Objective"
+    },
+    "hardware": {
+      "value": "Comparitive Soot Diagnostic Hardware",
+      "unit": null,
+      "status": "extracted",
+      "evidence_quote": "Comparitive Soot Diagnostic Hardware",
+      "evidence_location": "METADATA (PSI-102) -> Hardware"
+    },
+    "fuel_type": {
+      "value": [
+        "Teflon",
+        "Kapton",
+        "Silicone Rubber",
+        "Lampwick",
+        "Dibutyl Phthalate"
+      ],
+      "unit": null,
+      "status": "extracted",
+      "evidence_quote": "1, Teflon... 5, Kapton... 6, Silicone Rubber... 7, Lampwick... 8, Dibutyl Phthalate",
+      "evidence_location": "CSV: PSI-102_Experimental table_SAME.csv"
+    },
+    "fuel_state": {
+      "value": "solid",
+      "unit": null,
+      "status": "inferred",
+      "evidence_quote": "Teflon, Kapton, Silicone Rubber, Lampwick",
+      "evidence_location": "CSV: PSI-102_Experimental table_SAME.csv"
+    },
+    "sample_shape": {
+      "value": null,
+      "unit": null,
+      "status": "unavailable",
+      "evidence_quote": null,
+      "evidence_location": null
+    },
+    "sample_size": {
+      "value": null,
+      "unit": null,
+      "status": "unavailable",
+      "evidence_quote": null,
+      "evidence_location": null
+    },
+    "oxygen_percent_min": {
+      "value": null,
+      "unit": null,
+      "status": "unavailable",
+      "evidence_quote": null,
+      "evidence_location": null
+    },
+    "oxygen_percent_max": {
+      "value": null,
+      "unit": null,
+      "status": "unavailable",
+      "evidence_quote": null,
+      "evidence_location": null
+    },
+    "pressure_psi": {
+      "value": null,
+      "unit": null,
+      "status": "unavailable",
+      "evidence_quote": null,
+      "evidence_location": null
+    },
+    "airflow_speed_min": {
+      "value": 5.0,
+      "unit": "cm/s",
+      "status": "extracted",
+      "evidence_quote": "Air Flow (cm/s): min=5.0, max=10.0",
+      "evidence_location": "CSV: PSI-102_Experimental table_SAME.csv"
+    },
+    "airflow_speed_max": {
+      "value": 10.0,
+      "unit": "cm/s",
+      "status": "extracted",
+      "evidence_quote": "Air Flow (cm/s): min=5.0, max=10.0",
+      "evidence_location": "CSV: PSI-102_Experimental table_SAME.csv"
+    },
+    "diluents": {
+      "value": null,
+      "unit": null,
+      "status": "unavailable",
+      "evidence_quote": null,
+      "evidence_location": null
+    },
+    "gravity_condition": {
+      "value": "microgravity",
+      "unit": null,
+      "status": "extracted",
+      "evidence_quote": "In a μg environment, with the absence of the strong buoyancy-induced flows",
+      "evidence_location": "METADATA (PSI-102) -> Hypothesis"
+    },
+    "sensors_and_measurements": {
+      "value": [
+        "video cameras",
+        "smoke detectors",
+        "thermophoretic soot samplers",
+        "Transmission Electron microscope (TEM)"
+      ],
+      "unit": null,
+      "status": "extracted",
+      "evidence_quote": "positioned the video cameras... diagnostic procedures on the two smoke detectors... initiated the thermophoretic soot samplers... analyzed using a Transmission Electron microscope (TEM)",
+      "evidence_location": "METADATA (PSI-102) -> Approach"
+    },
+    "safety_category": {
+      "value": [
+        "detection"
+      ],
+      "unit": null,
+      "status": "extracted",
+      "evidence_quote": "The SAME experiment will provide technology for an advanced fire detector for future spacecraft that will be used for long duration missions.",
+      "evidence_location": "METADATA (PSI-102) -> Research Impacts"
+    }
+  },
+  {
+    "investigation_id": "PSI-107",
+    "title": "Smoke Point In Co-flow Experiment",
+    "acronym": "SPICE",
+    "doi": "10.60555/9kbh-e962",
+    "source_url": "https://psi.nasa.gov/investigations/PSI-107",
+    "objective": {
+      "value": "Identify the laminar smoke-point properties of non-buoyant jet diffusion flames under various co-flow conditions in microgravity.",
+      "unit": null,
+      "status": "extracted",
+      "evidence_quote": "(1) Identify the laminar smoke-point properties of non-buoyant jet diffusion flames under various co-flow conditions in microgravity.",
+      "evidence_location": "METADATA (PSI-107) -> Objective"
+    },
+    "hardware": {
+      "value": "Microgravity Science Glovebox",
+      "unit": null,
+      "status": "extracted",
+      "evidence_quote": "Microgravity Science Glovebox (MSG)",
+      "evidence_location": "METADATA (PSI-107) -> Hardware"
+    },
+    "fuel_type": {
+      "value": [
+        "methane",
+        "ethylene",
+        "propane",
+        "propylene"
+      ],
+      "unit": null,
+      "status": "extracted",
+      "evidence_quote": "Fuels tested included methane, ethylene, propane, propylene, and propylene mixtures.",
+      "evidence_location": "METADATA (PSI-107) -> Approach"
+    },
+    "fuel_state": {
+      "value": "gas",
+      "unit": null,
+      "status": "inferred",
+      "evidence_quote": "Fuels tested included methane, ethylene, propane, propylene, and propylene mixtures.",
+      "evidence_location": "METADATA (PSI-107) -> Approach"
+    },
+    "sample_shape": {
+      "value": null,
+      "unit": null,
+      "status": "unavailable",
+      "evidence_quote": null,
+      "evidence_location": null
+    },
+    "sample_size": {
+      "value": [
+        "0.41",
+        "0.76",
+        "1.6"
+      ],
+      "unit": "mm",
+      "status": "extracted",
+      "evidence_quote": "burner diameters of 0.41 mm, 0.76 mm, and 1.6 mm",
+      "evidence_location": "METADATA (PSI-107) -> Approach"
+    },
+    "oxygen_percent_min": {
+      "value": null,
+      "unit": null,
+      "status": "unavailable",
+      "evidence_quote": null,
+      "evidence_location": null
+    },
+    "oxygen_percent_max": {
+      "value": null,
+      "unit": null,
+      "status": "unavailable",
+      "evidence_quote": null,
+      "evidence_location": null
+    },
+    "pressure_psi": {
+      "value": null,
+      "unit": null,
+      "status": "unavailable",
+      "evidence_quote": null,
+      "evidence_location": null
+    },
+    "airflow_speed_min": {
+      "value": 5.4,
+      "unit": "cm/s",
+      "status": "extracted",
+      "evidence_quote": "co-flow velocities ranging from 5.4 cm/s to 65 cm/s",
+      "evidence_location": "METADATA (PSI-107) -> Approach"
+    },
+    "airflow_speed_max": {
+      "value": 65.0,
+      "unit": "cm/s",
+      "status": "extracted",
+      "evidence_quote": "co-flow velocities ranging from 5.4 cm/s to 65 cm/s",
+      "evidence_location": "METADATA (PSI-107) -> Approach"
+    },
+    "diluents": {
+      "value": null,
+      "unit": null,
+      "status": "unavailable",
+      "evidence_quote": null,
+      "evidence_location": null
+    },
+    "gravity_condition": {
+      "value": "microgravity",
+      "unit": null,
+      "status": "extracted",
+      "evidence_quote": "observing flames in a microgravity environment aboard the International Space Station (ISS)",
+      "evidence_location": "METADATA (PSI-107) -> Objective"
+    },
+    "sensors_and_measurements": {
+      "value": [
+        "flow duct with integrated nozzles",
+        "cameras",
+        "fuel delivery systems",
+        "still and video cameras"
+      ],
+      "unit": null,
+      "status": "extracted",
+      "evidence_quote": "flow duct with integrated nozzles, cameras, and fuel delivery systems.",
+      "evidence_location": "METADATA (PSI-107) -> Approach"
+    },
+    "safety_category": {
+      "value": [
+        "prevention"
+      ],
+      "unit": null,
+      "status": "inferred",
+      "evidence_quote": "Will improve our understanding of soot formation mechanisms and help design safer spacecraft environments.",
+      "evidence_location": "METADATA (PSI-107) -> Research Impacts"
+    }
+  },
+  {
+    "investigation_id": "PSI-159",
+    "title": "Advanced Combustion via Microgravity Experiments / Cool Flames Investigation with Gases",
+    "acronym": "ACME CFI-G",
+    "doi": "10.60555/cyt1-kh64",
+    "source_url": "https://psi.nasa.gov/investigations/PSI-159",
+    "objective": {
+      "value": "Determine the conditions for which cool diffusion flames occur for propane, n-butane, and n-pentane; normal and inverse flames; and a broad range of Zst, Tad, and fluent flow rate.",
+      "unit": null,
+      "status": "extracted",
+      "evidence_quote": "Determine the conditions for which cool diffusion flames occur for propane, n-butane, and n-pentane; normal and inverse flames; and a broad range of Zst, Tad, and fluent flow rate.",
+      "evidence_location": "metadata section [Objective]"
+    },
+    "hardware": {
+      "value": [
+        "ACME",
+        "Combustion Integrated Rack (CIR)"
+      ],
+      "unit": null,
+      "status": "extracted",
+      "evidence_quote": "[Hardware] ACME, Combustion Integrated Rack (CIR)",
+      "evidence_location": "metadata section [Hardware]"
+    },
+    "fuel_type": {
+      "value": [
+        "propane",
+        "n-butane",
+        "n-pentane",
+        "ethane"
+      ],
+      "unit": null,
+      "status": "extracted",
+      "evidence_quote": "cool diffusion flames occur for propane, n-butane, and n-pentane",
+      "evidence_location": "metadata section [Objective]"
+    },
+    "fuel_state": {
+      "value": "gas",
+      "unit": null,
+      "status": "extracted",
+      "evidence_quote": "Flames of Gaseous Fuels",
+      "evidence_location": "metadata section [Sub-research Area]"
+    },
+    "sample_shape": {
+      "value": "sphere",
+      "unit": null,
+      "status": "extracted",
+      "evidence_quote": "spherical porous burners",
+      "evidence_location": "metadata section [Hypothesis]"
+    },
+    "sample_size": {
+      "value": null,
+      "unit": null,
+      "status": "unavailable",
+      "evidence_quote": null,
+      "evidence_location": null
+    },
+    "oxygen_percent_min": {
+      "value": 12,
+      "unit": "%",
+      "status": "extracted",
+      "evidence_quote": "XO2: min=0.12, max=0.85",
+      "evidence_location": "CSV: PSI-159_Experimental table_CFI-G_Inverse Flames.csv"
+    },
+    "oxygen_percent_max": {
+      "value": 85,
+      "unit": "%",
+      "status": "extracted",
+      "evidence_quote": "XO2: min=0.12, max=0.85",
+      "evidence_location": "CSV: PSI-159_Experimental table_CFI-G_Inverse Flames.csv"
+    },
+    "pressure_psi": {
+      "value": null,
+      "unit": null,
+      "status": "unavailable",
+      "evidence_quote": null,
+      "evidence_location": null
+    },
+    "airflow_speed_min": {
+      "value": null,
+      "unit": null,
+      "status": "unavailable",
+      "evidence_quote": null,
+      "evidence_location": null
+    },
+    "airflow_speed_max": {
+      "value": null,
+      "unit": null,
+      "status": "unavailable",
+      "evidence_quote": null,
+      "evidence_location": null
+    },
+    "diluents": {
+      "value": null,
+      "unit": null,
+      "status": "unavailable",
+      "evidence_quote": null,
+      "evidence_location": null
+    },
+    "gravity_condition": {
+      "value": "microgravity",
+      "unit": null,
+      "status": "extracted",
+      "evidence_quote": "Advanced Combustion via Microgravity Experiments",
+      "evidence_location": "metadata section [Title]"
+    },
+    "sensors_and_measurements": {
+      "value": [
+        "cameras",
+        "radiometers",
+        "photomultiplier tubes",
+        "thermocouples"
+      ],
+      "unit": null,
+      "status": "extracted",
+      "evidence_quote": "Observe the flames with a broad suite of cameras, radiometers, photomultiplier tubes, and thermocouples.",
+      "evidence_location": "metadata section [Approach]"
+    },
+    "safety_category": {
+      "value": null,
+      "unit": null,
+      "status": "unavailable",
+      "evidence_quote": null,
+      "evidence_location": null
+    }
+  },
+  {
+    "investigation_id": "PSI-20",
+    "title": "Advanced Combustion via Microgravity Experiments - Burning Rate Emulator",
+    "acronym": "ACME BRE",
+    "doi": "10.60555/vb93-3y72",
+    "source_url": "https://psi.nasa.gov/investigations/PSI-20",
+    "objective": {
+      "value": "Establish burning conditions in a quiescent microgravity ambient in terms of material properties.",
+      "unit": null,
+      "status": "extracted",
+      "evidence_quote": "The BRE flight program seeks to establish the burning conditions in a quiescent microgravity ambient in terms of material properties.",
+      "evidence_location": "Objective"
+    },
+    "hardware": {
+      "value": "Combustion Integrated Rack (CIR), ACME",
+      "unit": null,
+      "status": "extracted",
+      "evidence_quote": "Combustion Integrated Rack (CIR), ACME",
+      "evidence_location": "Hardware"
+    },
+    "fuel_type": {
+      "value": [
+        "CH4",
+        "C2H4"
+      ],
+      "unit": null,
+      "status": "extracted",
+      "evidence_quote": "CH4/N2 and C2H4/N2mixtures",
+      "evidence_location": "Objective"
+    },
+    "fuel_state": {
+      "value": "gas",
+      "unit": null,
+      "status": "extracted",
+      "evidence_quote": "Flames of Gaseous Fuels",
+      "evidence_location": "Sub-research Area"
+    },
+    "sample_shape": {
+      "value": "circular",
+      "unit": null,
+      "status": "extracted",
+      "evidence_quote": "porous circular burners",
+      "evidence_location": "Objective"
+    },
+    "sample_size": {
+      "value": [
+        "25",
+        "50"
+      ],
+      "unit": "mm",
+      "status": "extracted",
+      "evidence_quote": "porous circular burners of 25  and 50 mm diameter.",
+      "evidence_location": "Objective"
+    },
+    "oxygen_percent_min": {
+      "value": 21.0,
+      "unit": "%",
+      "status": "extracted",
+      "evidence_quote": "14.7 psia, 21 % oxygen",
+      "evidence_location": "Objective"
+    },
+    "oxygen_percent_max": {
+      "value": 40.0,
+      "unit": "%",
+      "status": "extracted",
+      "evidence_quote": "21; 26.5; 40",
+      "evidence_location": "CSV: PSI-20_Experimental table_ACME BRE.csv"
+    },
+    "pressure_psi": {
+      "value": [
+        "8.2",
+        "10.2",
+        "14.7"
+      ],
+      "unit": "psia",
+      "status": "extracted",
+      "evidence_quote": "14.7 psia, 21 % oxygen: 10.2 psia, 26.5 %; and 8.2 psia, 34 % oxygen.",
+      "evidence_location": "Objective"
+    },
+    "airflow_speed_min": {
+      "value": 0.0,
+      "unit": "cm/s",
+      "status": "extracted",
+      "evidence_quote": "quiescent microgravity ambient",
+      "evidence_location": "Objective"
+    },
+    "airflow_speed_max": {
+      "value": 0.0,
+      "unit": "cm/s",
+      "status": "extracted",
+      "evidence_quote": "quiescent microgravity ambient",
+      "evidence_location": "Objective"
+    },
+    "diluents": {
+      "value": [
+        "N2",
+        "CO2"
+      ],
+      "unit": null,
+      "status": "extracted",
+      "evidence_quote": "CH4/N2 and C2H4/N2mixtures",
+      "evidence_location": "Objective"
+    },
+    "gravity_condition": {
+      "value": "microgravity",
+      "unit": null,
+      "status": "extracted",
+      "evidence_quote": "quiescent microgravity ambient",
+      "evidence_location": "Objective"
+    },
+    "sensors_and_measurements": {
+      "value": [
+        "burner surface temperature",
+        "heat flux sensor"
+      ],
+      "unit": null,
+      "status": "extracted",
+      "evidence_quote": "burner surface temperature and heat flux will vary",
+      "evidence_location": "Approach"
+    },
+    "safety_category": {
+      "value": [
+        "suppression"
+      ],
+      "unit": null,
+      "status": "inferred",
+      "evidence_quote": "cessation of ventilation is an established step in putting out spacecraft fires",
+      "evidence_location": "Research Impacts"
+    }
+  },
+  {
+    "investigation_id": "PSI-25",
+    "title": "Burning and Suppression of Solids - II",
+    "acronym": "BASS-II",
+    "doi": "10.60555/4qc4-de67",
+    "source_url": "https://psi.nasa.gov/investigations/PSI-25",
+    "objective": {
+      "value": "Study the ignition, flame growth, flame spread, and extinction limits for solid fuels burning in low-velocity forced flows in microgravity.",
+      "unit": null,
+      "status": "extracted",
+      "evidence_quote": "Study the ignition, flame growth, flame spread, and extinction limits for solid fuels burning in low-velocity forced flows in microgravity.",
+      "evidence_location": "Metadata -> Objective -> Item 1"
+    },
+    "hardware": {
+      "value": "Microgravity Science Glovebox (MSG)",
+      "unit": null,
+      "status": "extracted",
+      "evidence_quote": "Microgravity Science Glovebox (MSG)",
+      "evidence_location": "Metadata -> Hardware"
+    },
+    "fuel_type": {
+      "value": "PMMA",
+      "unit": null,
+      "status": "extracted",
+      "evidence_quote": "100 micron PMMA film   2 cm wide",
+      "evidence_location": "CSV -> Fuel Sample Material column"
+    },
+    "fuel_state": {
+      "value": "solid",
+      "unit": null,
+      "status": "extracted",
+      "evidence_quote": "solid fuels",
+      "evidence_location": "Metadata -> Objective -> Item 1"
+    },
+    "sample_shape": {
+      "value": [
+        "slabs",
+        "cylinders",
+        "spherical sections",
+        "rods",
+        "films",
+        "fabric sheets"
+      ],
+      "unit": null,
+      "status": "extracted",
+      "evidence_quote": "slabs, cylinders, and spherical sections",
+      "evidence_location": "Metadata -> Objective -> Item 4"
+    },
+    "sample_size": {
+      "value": 2,
+      "unit": "cm",
+      "status": "extracted",
+      "evidence_quote": "2 cm wide",
+      "evidence_location": "CSV -> Fuel Sample Material column"
+    },
+    "oxygen_percent_min": {
+      "value": 13.6,
+      "unit": "%",
+      "status": "extracted",
+      "evidence_quote": "Calibrated  initial O2 % by vol : min=13.6, max=22.2",
+      "evidence_location": "CSV -> Numeric column ranges"
+    },
+    "oxygen_percent_max": {
+      "value": 22.2,
+      "unit": "%",
+      "status": "extracted",
+      "evidence_quote": "Calibrated  initial O2 % by vol : min=13.6, max=22.2",
+      "evidence_location": "CSV -> Numeric column ranges"
+    },
+    "pressure_psi": {
+      "value": null,
+      "unit": null,
+      "status": "unavailable",
+      "evidence_quote": null,
+      "evidence_location": null
+    },
+    "airflow_speed_min": {
+      "value": null,
+      "unit": null,
+      "status": "unavailable",
+      "evidence_quote": null,
+      "evidence_location": null
+    },
+    "airflow_speed_max": {
+      "value": 40,
+      "unit": "cm/s",
+      "status": "extracted",
+      "evidence_quote": "impose airflow speeds up to 40 cm/s.",
+      "evidence_location": "Metadata -> Approach"
+    },
+    "diluents": {
+      "value": [
+        "nitrogen"
+      ],
+      "unit": null,
+      "status": "extracted",
+      "evidence_quote": "oxygen varied below 21% by adding nitrogen",
+      "evidence_location": "Metadata -> Approach"
+    },
+    "gravity_condition": {
+      "value": "microgravity",
+      "unit": null,
+      "status": "extracted",
+      "evidence_quote": "microgravity combustion tests were performed aboard the International Space Station.",
+      "evidence_location": "Metadata -> Approach"
+    },
+    "sensors_and_measurements": {
+      "value": [
+        "radiometer",
+        "imaging",
+        "oxygen concentration sensor",
+        "carbon dioxide concentration sensor",
+        "carbon monoxide concentration sensor"
+      ],
+      "unit": null,
+      "status": "extracted",
+      "evidence_quote": "Radiometer gain   (1000   250   50   10), Total Frames Shot, Calibrated  initial O2 % by vol , Calibrated final O2 % by vol, Initial CO2 % by vol, Final CO2 % by vol, Initial CO (ppm), Final CO (ppm)",
+      "evidence_location": "CSV -> Header"
+    },
+    "safety_category": {
+      "value": [
+        "prevention",
+        "detection",
+        "suppression"
+      ],
+      "unit": null,
+      "status": "inferred",
+      "evidence_quote": "BASS-II results contribute to the combustion computational models used in the design of fire detection and suppression systems in microgravity and on Earth.",
+      "evidence_location": "Metadata -> Objective"
+    }
+  },
+  {
+    "investigation_id": "PSI-26",
+    "title": "Burning and Suppression of Solids",
+    "acronym": "BASS",
+    "doi": "10.60555/58h4-dy80",
+    "source_url": "https://psi.nasa.gov/investigations/PSI-26",
+    "objective": {
+      "value": "Begin to bridge the gap between normal gravity NASA-STD-6001 Test#1 method, ground-based microgravity tests, and actual material flammability in microgravity, and assess the effectiveness of an inert, gaseous extinguishing agent in putting out flames over different materials, geometries, preheating, and flow.",
+      "unit": null,
+      "status": "extracted",
+      "evidence_quote": "The two main objectives for BASS are to: 1.) Begin to bridge the gap between the normal gravity NASA-STD-6001 Test#1 method, ground-based microgravity tests, and actual material flammability in microgravity... 2.) Assess the effectiveness of an inert, gaseous extinguishing agent (similar to that used on ISS) in putting out flames over different materials, geometries, preheating, and flow.",
+      "evidence_location": "METADATA (PSI-26), Objective"
+    },
+    "hardware": {
+      "value": "Microgravity Science Glovebox",
+      "unit": null,
+      "status": "extracted",
+      "evidence_quote": "The experiment was conducted aboard the International Space Station (ISS) inside the Microgravity Glove Box (MSG).",
+      "evidence_location": "METADATA (PSI-26), Approach"
+    },
+    "fuel_type": {
+      "value": [
+        "cotton",
+        "fiberglass",
+        "Nomex fabric",
+        "Ultem",
+        "SIBAL",
+        "PMMA"
+      ],
+      "unit": null,
+      "status": "extracted",
+      "evidence_quote": "Custom-made fabric samples consisting of 75% cotton and 25% fiberglass (by mass) measuring were used as a fuel source as well as Nomex fabric and Ultem.",
+      "evidence_location": "METADATA (PSI-26), Approach"
+    },
+    "fuel_state": {
+      "value": "solid",
+      "unit": null,
+      "status": "extracted",
+      "evidence_quote": "Burning and Suppression of Solids",
+      "evidence_location": "METADATA (PSI-26), Title"
+    },
+    "sample_shape": {
+      "value": [
+        "fabric",
+        "spheres",
+        "cylinders"
+      ],
+      "unit": null,
+      "status": "extracted",
+      "evidence_quote": "Other sample shapes were utilized as well including spheres and cylinders.",
+      "evidence_location": "METADATA (PSI-26), Approach"
+    },
+    "sample_size": {
+      "value": [
+        "1",
+        "2"
+      ],
+      "unit": "cm",
+      "status": "extracted",
+      "evidence_quote": "PMMA sphere 1 cm",
+      "evidence_location": "CSV: PSI-26_Experimental table_BASS.csv, Sample rows"
+    },
+    "oxygen_percent_min": {
+      "value": null,
+      "unit": null,
+      "status": "unavailable",
+      "evidence_quote": null,
+      "evidence_location": null
+    },
+    "oxygen_percent_max": {
+      "value": null,
+      "unit": null,
+      "status": "unavailable",
+      "evidence_quote": null,
+      "evidence_location": null
+    },
+    "pressure_psi": {
+      "value": null,
+      "unit": null,
+      "status": "unavailable",
+      "evidence_quote": null,
+      "evidence_location": null
+    },
+    "airflow_speed_min": {
+      "value": null,
+      "unit": null,
+      "status": "unavailable",
+      "evidence_quote": null,
+      "evidence_location": null
+    },
+    "airflow_speed_max": {
+      "value": 40,
+      "unit": "cm/s",
+      "status": "extracted",
+      "evidence_quote": "airflow speeds reaching as high as 40 cm/s.",
+      "evidence_location": "METADATA (PSI-26), Approach"
+    },
+    "diluents": {
+      "value": [
+        "nitrogen"
+      ],
+      "unit": null,
+      "status": "extracted",
+      "evidence_quote": "Using nitrogen as a flame suppressant in microgravity provides a direct link to current and planned extinguishment techniques.",
+      "evidence_location": "METADATA (PSI-26), Research Impacts"
+    },
+    "gravity_condition": {
+      "value": "microgravity",
+      "unit": null,
+      "status": "extracted",
+      "evidence_quote": "The experiment was conducted aboard the International Space Station (ISS) inside the Microgravity Glove Box (MSG).",
+      "evidence_location": "METADATA (PSI-26), Approach"
+    },
+    "sensors_and_measurements": {
+      "value": [
+        "flame size",
+        "flame shape",
+        "flame color",
+        "spread rate",
+        "flame quenching"
+      ],
+      "unit": null,
+      "status": "extracted",
+      "evidence_quote": "data was collected on flame size, shape, color, spread rate, and potential flame quenching.",
+      "evidence_location": "METADATA (PSI-26), Approach"
+    },
+    "safety_category": {
+      "value": [
+        "suppression"
+      ],
+      "unit": null,
+      "status": "extracted",
+      "evidence_quote": "Assess the effectiveness of an inert, gaseous extinguishing agent (similar to that used on ISS) in putting out flames over different materials, geometries, preheating, and flow.",
+      "evidence_location": "METADATA (PSI-26), Objective"
+    }
+  },
+  {
+    "investigation_id": "PSI-60",
+    "title": "Computational and Experimental Analysis of SPICE Data Sets",
+    "acronym": "",
+    "doi": "10.60555/mzjm-yv57",
+    "source_url": "https://psi.nasa.gov/investigations/PSI-60",
+    "objective": {
+      "value": "Integrate computational and experimental methods to derive temperature distributions and soot volume fractions from Smoke Point in Coflow Experiment (SPICE) data to improve understanding of soot formation in microgravity and normal gravity flames.",
+      "unit": null,
+      "status": "extracted",
+      "evidence_quote": "The objective of this investigation was to integrate computational and experimental methods to derive temperature distributions and soot volume fractions from the Smoke Point in Coflow Experiment (SPICE) data available in PSI.",
+      "evidence_location": "[Objective]"
+    },
+    "hardware": {
+      "value": "Yale and ACME burner configurations",
+      "unit": null,
+      "status": "extracted",
+      "evidence_quote": "Simulations were performed for both Yale and ACME burner configurations under normal and microgravity conditions.",
+      "evidence_location": "[Approach]"
+    },
+    "fuel_type": {
+      "value": null,
+      "unit": null,
+      "status": "unavailable",
+      "evidence_quote": null,
+      "evidence_location": null
+    },
+    "fuel_state": {
+      "value": "gas",
+      "unit": null,
+      "status": "extracted",
+      "evidence_quote": "[Sub-research Area] Gaseous",
+      "evidence_location": "[Sub-research Area]"
+    },
+    "sample_shape": {
+      "value": null,
+      "unit": null,
+      "status": "unavailable",
+      "evidence_quote": null,
+      "evidence_location": null
+    },
+    "sample_size": {
+      "value": null,
+      "unit": null,
+      "status": "unavailable",
+      "evidence_quote": null,
+      "evidence_location": null
+    },
+    "oxygen_percent_min": {
+      "value": null,
+      "unit": null,
+      "status": "unavailable",
+      "evidence_quote": null,
+      "evidence_location": null
+    },
+    "oxygen_percent_max": {
+      "value": null,
+      "unit": null,
+      "status": "unavailable",
+      "evidence_quote": null,
+      "evidence_location": null
+    },
+    "pressure_psi": {
+      "value": null,
+      "unit": null,
+      "status": "unavailable",
+      "evidence_quote": null,
+      "evidence_location": null
+    },
+    "airflow_speed_min": {
+      "value": null,
+      "unit": null,
+      "status": "unavailable",
+      "evidence_quote": null,
+      "evidence_location": null
+    },
+    "airflow_speed_max": {
+      "value": null,
+      "unit": null,
+      "status": "unavailable",
+      "evidence_quote": null,
+      "evidence_location": null
+    },
+    "diluents": {
+      "value": null,
+      "unit": null,
+      "status": "unavailable",
+      "evidence_quote": null,
+      "evidence_location": null
+    },
+    "gravity_condition": {
+      "value": "microgravity",
+      "unit": null,
+      "status": "extracted",
+      "evidence_quote": "Simulations were performed for both Yale and ACME burner configurations under normal and microgravity conditions.",
+      "evidence_location": "[Approach]"
+    },
+    "sensors_and_measurements": {
+      "value": [
+        "DSLR camera",
+        "color-ratio pyrometry",
+        "soot temperature fields",
+        "soot volume fractions"
+      ],
+      "unit": null,
+      "status": "extracted",
+      "evidence_quote": "Raw Nikon NEF images were decoded into three color channels and analyzed using color-ratio pyrometry to extract soot temperature fields. Absolute light calibration from SPICE was then used to calculate soot volume fractions.",
+      "evidence_location": "[Approach]"
+    },
+    "safety_category": {
+      "value": [
+        "detection",
+        "suppression"
+      ],
+      "unit": null,
+      "status": "extracted",
+      "evidence_quote": "For space applications, the results support safer fire detection, suppression, and cleaner combustion technologies critical for long-duration missions.",
+      "evidence_location": "[Research Impacts]"
+    }
+  },
+  {
+    "investigation_id": "PSI-68",
+    "title": "Flame Extinguishment Experiment - 2",
+    "acronym": "FLEX-2",
+    "doi": "10.60555/byp8-h018",
+    "source_url": "https://psi.nasa.gov/investigations/PSI-68",
+    "objective": {
+      "value": "Provide benchmark experimental data on bi-component droplet combustion over a wide range of initial conditions in order to validate numerical simulations and to develop new theoretical models.",
+      "unit": null,
+      "status": "extracted",
+      "evidence_quote": "provide benchmark experimental data on bi-component droplet combustion over a wide range of initial conditions in order to validate numerical simulations and to develop new theoretical models.",
+      "evidence_location": "METADATA (PSI-68) -> Objective"
+    },
+    "hardware": {
+      "value": [
+        "Combustion Integrated Rack (CIR)",
+        "Multi-user Droplet Combustion Appartatus (MDCA)"
+      ],
+      "unit": null,
+      "status": "extracted",
+      "evidence_quote": "Combustion Integrated Rack (CIR), Multi-user Droplet Combustion Appartatus (MDCA)",
+      "evidence_location": "METADATA (PSI-68) -> Hardware"
+    },
+    "fuel_type": {
+      "value": [
+        "IsoOctane",
+        "n-Octane",
+        "Heptane",
+        "Decane",
+        "Ethanol",
+        "Propanol",
+        "Glycerol"
+      ],
+      "unit": null,
+      "status": "extracted",
+      "evidence_quote": "IsoOctane (pure), n-Octane (pure), Heptane (pure), Decane (pure), Ethanol (pure), Propanol (95%) Glycerol (5%) (mixture), Heptane (50%) IsoOctane (50%) (mixture), Propanol (80%) Glycerol (20%) (mixture)",
+      "evidence_location": "CSV: PSI-68_Experimental table_Flex2.csv -> Sample (Fuel Type)"
+    },
+    "fuel_state": {
+      "value": "liquid",
+      "unit": null,
+      "status": "extracted",
+      "evidence_quote": "The combustion of liquid fuels is the overwhelming energy source in the transportation sector.",
+      "evidence_location": "METADATA (PSI-68) -> Research Impacts"
+    },
+    "sample_shape": {
+      "value": "droplet",
+      "unit": null,
+      "status": "extracted",
+      "evidence_quote": "Initial Droplet Diameter (mm)",
+      "evidence_location": "CSV: PSI-68_Experimental table_Flex2.csv"
+    },
+    "sample_size": {
+      "value": "1.5 - 5",
+      "unit": "mm",
+      "status": "extracted",
+      "evidence_quote": "1.5 - 5",
+      "evidence_location": "CSV: PSI-68_Experimental table_Flex2.csv -> Initial Droplet Diameter (mm)"
+    },
+    "oxygen_percent_min": {
+      "value": 17,
+      "unit": "%",
+      "status": "extracted",
+      "evidence_quote": "0.17; 0.21;0.25; 0.3",
+      "evidence_location": "CSV: PSI-68_Experimental table_Flex2.csv -> Oxygen Mole Fraction"
+    },
+    "oxygen_percent_max": {
+      "value": 30,
+      "unit": "%",
+      "status": "extracted",
+      "evidence_quote": "0.17; 0.21;0.25; 0.3",
+      "evidence_location": "CSV: PSI-68_Experimental table_Flex2.csv -> Oxygen Mole Fraction"
+    },
+    "pressure_psi": {
+      "value": "7.35 - 44.09",
+      "unit": "psi",
+      "status": "extracted",
+      "evidence_quote": "0.5; 1.0; 1.5; 2.0; or 3.0",
+      "evidence_location": "CSV: PSI-68_Experimental table_Flex2.csv -> Ambient Pressure (atm)"
+    },
+    "airflow_speed_min": {
+      "value": 0.1,
+      "unit": "cm/s",
+      "status": "extracted",
+      "evidence_quote": "0.1 - 5",
+      "evidence_location": "CSV: PSI-68_Experimental table_Flex2.csv -> Flow Velocity (cm/s)"
+    },
+    "airflow_speed_max": {
+      "value": 5,
+      "unit": "cm/s",
+      "status": "extracted",
+      "evidence_quote": "0.1 - 5",
+      "evidence_location": "CSV: PSI-68_Experimental table_Flex2.csv -> Flow Velocity (cm/s)"
+    },
+    "diluents": {
+      "value": [
+        "N2",
+        "He"
+      ],
+      "unit": null,
+      "status": "extracted",
+      "evidence_quote": "O2/N2 or O2/He",
+      "evidence_location": "CSV: PSI-68_Experimental table_Flex2.csv -> Ambient Gas Mixture"
+    },
+    "gravity_condition": {
+      "value": "microgravity",
+      "unit": null,
+      "status": "extracted",
+      "evidence_quote": "comprehensive experimental data collection in microgravity environments.",
+      "evidence_location": "METADATA (PSI-68) -> Objective"
+    },
+    "sensors_and_measurements": {
+      "value": [
+        "color camera video",
+        "pressure data",
+        "temperature data"
+      ],
+      "unit": null,
+      "status": "extracted",
+      "evidence_quote": "A near real-time download of the color camera video was employed in order to verify successful droplet deployment, ignition, and overall progress of the experiment. Pressure and temperature data of the chamber environment was also recorded in near real time.",
+      "evidence_location": "METADATA (PSI-68) -> Approach"
+    },
+    "safety_category": {
+      "value": [
+        "prevention",
+        "suppression"
+      ],
+      "unit": null,
+      "status": "inferred",
+      "evidence_quote": "Sub-research Area: Spacecraft Fire Safety; Study flame extinction mechanisms and their boundaries.",
+      "evidence_location": "METADATA (PSI-68) -> Sub-research Area / Objective (Inferred fire safety prevention and flame suppression goals.)"
+    }
+  },
+  {
+    "investigation_id": "PSI-69",
+    "title": "Flame Extinguishment Experiment",
+    "acronym": "FLEX",
+    "doi": "10.60555/mbq8-0451",
+    "source_url": "https://psi.nasa.gov/investigations/PSI-69",
+    "objective": {
+      "value": "Map the flammability limits of liquid fuels in microgravity environments, measure the effectiveness of various gaseous fire suppressants such as CO2, He, and SF6, and develop reliable predictive models for combustion limits under reduced gravity conditions.",
+      "unit": null,
+      "status": "extracted",
+      "evidence_quote": "The FLEX (Flame Extinguishment Experiment) investigation aims to map the flammability limits of liquid fuels in microgravity environments, measure the effectiveness of various gaseous fire suppressants such as CO2, He, and SF6, and develop reliable predictive models for combustion limits under reduced gravity conditions.",
+      "evidence_location": "METADATA (PSI-69), Objective"
+    },
+    "hardware": {
+      "value": [
+        "Combustion Integrated Rack (CIR)",
+        "Fluids and Combustion Facility (FCF)",
+        "Multi-user Droplet Combustion Appartatus (MDCA)"
+      ],
+      "unit": null,
+      "status": "extracted",
+      "evidence_quote": "Combustion Integrated Rack (CIR)-Fluids and Combustion Facility (FCF), Multi-user Droplet Combustion Appartatus (MDCA)",
+      "evidence_location": "METADATA (PSI-69), Hardware"
+    },
+    "fuel_type": {
+      "value": [
+        "Methanol",
+        "Heptane"
+      ],
+      "unit": null,
+      "status": "extracted",
+      "evidence_quote": "Methanol, Heptane",
+      "evidence_location": "CSV: PSI-69_Experimental table_FLEX.csv"
+    },
+    "fuel_state": {
+      "value": "liquid",
+      "unit": null,
+      "status": "extracted",
+      "evidence_quote": "map the flammability limits of liquid fuels in microgravity environments",
+      "evidence_location": "METADATA (PSI-69), Objective"
+    },
+    "sample_shape": {
+      "value": "droplet",
+      "unit": null,
+      "status": "extracted",
+      "evidence_quote": "igniting and observing the burning behavior of relatively large droplets.",
+      "evidence_location": "METADATA (PSI-69), Approach"
+    },
+    "sample_size": {
+      "value": "1.1 - 4.67",
+      "unit": "mm",
+      "status": "extracted",
+      "evidence_quote": "Droplet initial diameter; mm: min=1.1, max=4.67",
+      "evidence_location": "CSV: PSI-69_Experimental table_FLEX.csv, Numeric column ranges across all rows"
+    },
+    "oxygen_percent_min": {
+      "value": 12.0,
+      "unit": "%",
+      "status": "extracted",
+      "evidence_quote": "O initial ambient composition; mole fraction: min=0.12, max=0.34",
+      "evidence_location": "CSV: PSI-69_Experimental table_FLEX.csv, Numeric column ranges across all rows"
+    },
+    "oxygen_percent_max": {
+      "value": 34.0,
+      "unit": "%",
+      "status": "extracted",
+      "evidence_quote": "O initial ambient composition; mole fraction: min=0.12, max=0.34",
+      "evidence_location": "CSV: PSI-69_Experimental table_FLEX.csv, Numeric column ranges across all rows"
+    },
+    "pressure_psi": {
+      "value": "0.0 - 44.86",
+      "unit": "psi",
+      "status": "extracted",
+      "evidence_quote": "Ambient pressure; mmHg: min=0.0, max=2319.9",
+      "evidence_location": "CSV: PSI-69_Experimental table_FLEX.csv, Numeric column ranges across all rows"
+    },
+    "airflow_speed_min": {
+      "value": null,
+      "unit": null,
+      "status": "unavailable",
+      "evidence_quote": null,
+      "evidence_location": null
+    },
+    "airflow_speed_max": {
+      "value": null,
+      "unit": null,
+      "status": "unavailable",
+      "evidence_quote": null,
+      "evidence_location": null
+    },
+    "diluents": {
+      "value": [
+        "CO2",
+        "He",
+        "SF6",
+        "N2"
+      ],
+      "unit": null,
+      "status": "extracted",
+      "evidence_quote": "measure the effectiveness of various gaseous fire suppressants such as CO2, He, and SF6",
+      "evidence_location": "METADATA (PSI-69), Objective"
+    },
+    "gravity_condition": {
+      "value": "microgravity",
+      "unit": null,
+      "status": "extracted",
+      "evidence_quote": "map the flammability limits of liquid fuels in microgravity environments",
+      "evidence_location": "METADATA (PSI-69), Objective"
+    },
+    "sensors_and_measurements": {
+      "value": [
+        "droplet burning rates",
+        "flame extinction behavior",
+        "heat radiation",
+        "soot levels",
+        "temperature profiles"
+      ],
+      "unit": null,
+      "status": "extracted",
+      "evidence_quote": "obtaining high-resolution measurements of droplet burning rates, flame extinction behavior, heat radiation, soot levels, and temperature profiles",
+      "evidence_location": "METADATA (PSI-69), Objective"
+    },
+    "safety_category": {
+      "value": [
+        "suppression"
+      ],
+      "unit": null,
+      "status": "inferred",
+      "evidence_quote": "Flame Extinguishment Experiment investigation aims to map the flammability limits of liquid fuels in microgravity environments, measure the effectiveness of various gaseous fire suppressants. Category inferred as suppression because the research focuses on evaluating gaseous fire suppressants and extinguishment limits.",
+      "evidence_location": "METADATA (PSI-69), Objective"
+    }
+  },
+  {
+    "investigation_id": "PSI-98",
+    "title": "Spacecraft Fire Safety Experiment-I",
+    "acronym": "SAFFIRE-I",
+    "doi": "10.60555/0t15-1z43",
+    "source_url": "https://psi.nasa.gov/investigations/PSI-98",
+    "objective": {
+      "value": "Determine how rapidly a large scale fire grows in low-gravity and investigate the low-g flammability limits compared to normal gravity material flammability screening tests.",
+      "unit": null,
+      "status": "extracted",
+      "evidence_quote": "(1) determine how rapidly a large scale fire grows in low-gravity and (2) investigate the low-g flammability limits compared to those obtained in NASA’s normal gravity material flammability screening test.",
+      "evidence_location": "[Objective]"
+    },
+    "hardware": {
+      "value": "Saffire 1 enclosure in Cygnus",
+      "unit": null,
+      "status": "extracted",
+      "evidence_quote": "Saffire 1 enclosure in Cygnus",
+      "evidence_location": "[Hardware]"
+    },
+    "fuel_type": {
+      "value": "SIBAL Fabric",
+      "unit": null,
+      "status": "extracted",
+      "evidence_quote": "The sample material for Saffire-I is a composite fabric called Sibal consisting of cotton on a fiberglass substrate (75% cotton, 25% fiberglass by weight).",
+      "evidence_location": "[Approach]"
+    },
+    "fuel_state": {
+      "value": "solid",
+      "unit": null,
+      "status": "inferred",
+      "evidence_quote": "The sample material for Saffire-I is a composite fabric called Sibal",
+      "evidence_location": "[Approach]"
+    },
+    "sample_shape": {
+      "value": "fabric",
+      "unit": null,
+      "status": "extracted",
+      "evidence_quote": "The sample material for Saffire-I is a composite fabric called Sibal",
+      "evidence_location": "[Approach]"
+    },
+    "sample_size": {
+      "value": "40.6 cm x 94 cm x 0.37 cm",
+      "unit": "cm",
+      "status": "extracted",
+      "evidence_quote": "S1, SIBAL Fabric, 0.37, 40.6, 94",
+      "evidence_location": "PSI-98_Experimental table_SAFFIRE-1.csv"
+    },
+    "oxygen_percent_min": {
+      "value": 21.5,
+      "unit": "%",
+      "status": "extracted",
+      "evidence_quote": "21.5 - 21.7",
+      "evidence_location": "PSI-98_Experimental table_SAFFIRE-1.csv"
+    },
+    "oxygen_percent_max": {
+      "value": 21.7,
+      "unit": "%",
+      "status": "extracted",
+      "evidence_quote": "21.5 - 21.7",
+      "evidence_location": "PSI-98_Experimental table_SAFFIRE-1.csv"
+    },
+    "pressure_psi": {
+      "value": null,
+      "unit": null,
+      "status": "unavailable",
+      "evidence_quote": null,
+      "evidence_location": null
+    },
+    "airflow_speed_min": {
+      "value": 20,
+      "unit": "cm/s",
+      "status": "extracted",
+      "evidence_quote": "Saffire-I was conducted at an air flow velocity of 20 cm/s.",
+      "evidence_location": "[Approach]"
+    },
+    "airflow_speed_max": {
+      "value": 20,
+      "unit": "cm/s",
+      "status": "extracted",
+      "evidence_quote": "Saffire-I was conducted at an air flow velocity of 20 cm/s.",
+      "evidence_location": "[Approach]"
+    },
+    "diluents": {
+      "value": null,
+      "unit": null,
+      "status": "unavailable",
+      "evidence_quote": null,
+      "evidence_location": null
+    },
+    "gravity_condition": {
+      "value": "microgravity",
+      "unit": null,
+      "status": "extracted",
+      "evidence_quote": "Results determine microgravity flammability limits for several spacecraft materials",
+      "evidence_location": "[Research Impacts]"
+    },
+    "sensors_and_measurements": {
+      "value": [
+        "thermocouples (flow, flame, plume temperatures)",
+        "radiometers (flame radiation)",
+        "solid state sensors (pressure, CO2, O2 mole fraction)",
+        "anemometers (flow velocity)",
+        "cameras (flame images)"
+      ],
+      "unit": null,
+      "status": "extracted",
+      "evidence_quote": "thermocouples provided flow, flame, and plume temperatures, two radiometers recorded flame radiation, solid state sensors were used to measure pressure, CO2 and O2 mole faction, and two anemometer tracked flow velocity.",
+      "evidence_location": "[Approach]"
+    },
+    "safety_category": {
+      "value": [
+        "prevention"
+      ],
+      "unit": null,
+      "status": "inferred",
+      "evidence_quote": "Results determine microgravity flammability limits for several spacecraft materials, help to validate NASA’s material selection criteria",
+      "evidence_location": "[Research Impacts]"
+    }
+  },
+  {
+    "investigation_id": "PSI-99",
+    "title": "Spacecraft Fire Experiment-II",
+    "acronym": "SAFFIRE-II",
+    "doi": "10.60555/2chp-m469",
+    "source_url": "https://psi.nasa.gov/investigations/PSI-99",
+    "objective": {
+      "value": "The objectives of SAFFIRE-II are to determine how rapidly a large scale fire grows in low-gravity and to investigate the low-g flammability limits compared to those obtained in NASA’s normal gravity material flammability screening test.",
+      "unit": null,
+      "status": "extracted",
+      "evidence_quote": "The objectives of SAFFIRE-II are to determine how rapidly a large scale fire grows in low-gravity and to investigate the low-g flammability limits compared to those obtained in NASA’s normal gravity material flammability screening test.",
+      "evidence_location": "Metadata > [Objective]"
+    },
+    "hardware": {
+      "value": [
+        "Cygnus Pressurized Cargo Module",
+        "SAFFIRE"
+      ],
+      "unit": null,
+      "status": "extracted",
+      "evidence_quote": "Cygnus Pressurized Cargo Module, SAFFIRE",
+      "evidence_location": "Metadata > [Hardware]"
+    },
+    "fuel_type": {
+      "value": [
+        "SIBAL",
+        "silicone",
+        "structure PMMA",
+        "flat PMMA",
+        "PMMA with Nomex"
+      ],
+      "unit": null,
+      "status": "extracted",
+      "evidence_quote": "added more samples including SIBAL, silicone, structure PMMA, flat PMMA, and PMMA with Nomex.",
+      "evidence_location": "Metadata > [Approach]"
+    },
+    "fuel_state": {
+      "value": "solid",
+      "unit": null,
+      "status": "inferred",
+      "evidence_quote": "added more samples including SIBAL, silicone, structure PMMA, flat PMMA, and PMMA with Nomex.",
+      "evidence_location": "Metadata > [Approach]"
+    },
+    "sample_shape": {
+      "value": null,
+      "unit": null,
+      "status": "unavailable",
+      "evidence_quote": null,
+      "evidence_location": null
+    },
+    "sample_size": {
+      "value": "5 cm x 29 cm",
+      "unit": "cm",
+      "status": "extracted",
+      "evidence_quote": "Saffire-II has a sample card that contains 9 samples, each 5 cm x 29 cm.",
+      "evidence_location": "Metadata > [Approach]"
+    },
+    "oxygen_percent_min": {
+      "value": 21.5,
+      "unit": "%",
+      "status": "extracted",
+      "evidence_quote": "~ 21.5",
+      "evidence_location": "CSV: PSI-99_Experimental table_SAFFIRE-2.csv > Row 2-1"
+    },
+    "oxygen_percent_max": {
+      "value": 22.1,
+      "unit": "%",
+      "status": "extracted",
+      "evidence_quote": "~ 22.1",
+      "evidence_location": "CSV: PSI-99_Experimental table_SAFFIRE-2.csv > Row 2-2"
+    },
+    "pressure_psi": {
+      "value": null,
+      "unit": null,
+      "status": "unavailable",
+      "evidence_quote": null,
+      "evidence_location": null
+    },
+    "airflow_speed_min": {
+      "value": 20,
+      "unit": "cm/s",
+      "status": "extracted",
+      "evidence_quote": "air flow velocity of either 20 or 30 cm/s",
+      "evidence_location": "Metadata > [Approach]"
+    },
+    "airflow_speed_max": {
+      "value": 30,
+      "unit": "cm/s",
+      "status": "extracted",
+      "evidence_quote": "air flow velocity of either 20 or 30 cm/s",
+      "evidence_location": "Metadata > [Approach]"
+    },
+    "diluents": {
+      "value": null,
+      "unit": null,
+      "status": "unavailable",
+      "evidence_quote": null,
+      "evidence_location": null
+    },
+    "gravity_condition": {
+      "value": "microgravity",
+      "unit": null,
+      "status": "extracted",
+      "evidence_quote": "determine how rapidly a large scale fire grows in low-gravity",
+      "evidence_location": "Metadata > [Objective]"
+    },
+    "sensors_and_measurements": {
+      "value": [
+        "cameras",
+        "thermocouples",
+        "radiometers",
+        "solid state sensors (pressure, CO2, O2 mole fraction)",
+        "anemometers"
+      ],
+      "unit": null,
+      "status": "extracted",
+      "evidence_quote": "thermocouples provided flow, flame, and plume temperatures, two radiometers recorded flame radiation, solid state sensors were used to measure pressure, CO2 and O2 mole faction, and two anemometer tracked flow velocity.",
+      "evidence_location": "Metadata > [Approach]"
+    },
+    "safety_category": {
+      "value": [
+        "prevention"
+      ],
+      "unit": null,
+      "status": "inferred",
+      "evidence_quote": "Results determine microgravity flammability limits for several spacecraft materials, help to validate NASA’s material selection criteria",
+      "evidence_location": "Metadata > [Research Impacts]"
+    }
+  }
+]

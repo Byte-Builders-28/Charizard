@@ -1,0 +1,125 @@
+{
+  "investigation_id": "PSI-102",
+  "title": "Smoke and Aerosol Measurement Experiment",
+  "acronym": "SAME",
+  "doi": "10.60555/gd4k-8h62",
+  "source_url": "https://psi.nasa.gov/investigations/PSI-102",
+  "objective": {
+    "value": "Quantify the sizes that liquid smoke particulate achieves in low gravity and relate droplet size distribution to smoke generation and transport conditions.",
+    "unit": null,
+    "status": "extracted",
+    "evidence_quote": "One of the major goals of this investigation was to quantify the sizes that the liquid smoke particulate achieves in low gravity and to relate the droplet size distribution to the smoke generation and smoke transport conditions in the experiment.",
+    "evidence_location": "METADATA (PSI-102) -> Objective"
+  },
+  "hardware": {
+    "value": "Comparitive Soot Diagnostic Hardware",
+    "unit": null,
+    "status": "extracted",
+    "evidence_quote": "Comparitive Soot Diagnostic Hardware",
+    "evidence_location": "METADATA (PSI-102) -> Hardware"
+  },
+  "fuel_type": {
+    "value": [
+      "Teflon",
+      "Kapton",
+      "Silicone Rubber",
+      "Lampwick",
+      "Dibutyl Phthalate"
+    ],
+    "unit": null,
+    "status": "extracted",
+    "evidence_quote": "1, Teflon... 5, Kapton... 6, Silicone Rubber... 7, Lampwick... 8, Dibutyl Phthalate",
+    "evidence_location": "CSV: PSI-102_Experimental table_SAME.csv"
+  },
+  "fuel_state": {
+    "value": "solid",
+    "unit": null,
+    "status": "inferred",
+    "evidence_quote": "Teflon, Kapton, Silicone Rubber, Lampwick",
+    "evidence_location": "CSV: PSI-102_Experimental table_SAME.csv"
+  },
+  "sample_shape": {
+    "value": null,
+    "unit": null,
+    "status": "unavailable",
+    "evidence_quote": null,
+    "evidence_location": null
+  },
+  "sample_size": {
+    "value": null,
+    "unit": null,
+    "status": "unavailable",
+    "evidence_quote": null,
+    "evidence_location": null
+  },
+  "oxygen_percent_min": {
+    "value": null,
+    "unit": null,
+    "status": "unavailable",
+    "evidence_quote": null,
+    "evidence_location": null
+  },
+  "oxygen_percent_max": {
+    "value": null,
+    "unit": null,
+    "status": "unavailable",
+    "evidence_quote": null,
+    "evidence_location": null
+  },
+  "pressure_psi": {
+    "value": null,
+    "unit": null,
+    "status": "unavailable",
+    "evidence_quote": null,
+    "evidence_location": null
+  },
+  "airflow_speed_min": {
+    "value": 5.0,
+    "unit": "cm/s",
+    "status": "extracted",
+    "evidence_quote": "Air Flow (cm/s): min=5.0, max=10.0",
+    "evidence_location": "CSV: PSI-102_Experimental table_SAME.csv"
+  },
+  "airflow_speed_max": {
+    "value": 10.0,
+    "unit": "cm/s",
+    "status": "extracted",
+    "evidence_quote": "Air Flow (cm/s): min=5.0, max=10.0",
+    "evidence_location": "CSV: PSI-102_Experimental table_SAME.csv"
+  },
+  "diluents": {
+    "value": null,
+    "unit": null,
+    "status": "unavailable",
+    "evidence_quote": null,
+    "evidence_location": null
+  },
+  "gravity_condition": {
+    "value": "microgravity",
+    "unit": null,
+    "status": "extracted",
+    "evidence_quote": "In a μg environment, with the absence of the strong buoyancy-induced flows",
+    "evidence_location": "METADATA (PSI-102) -> Hypothesis"
+  },
+  "sensors_and_measurements": {
+    "value": [
+      "video cameras",
+      "smoke detectors",
+      "thermophoretic soot samplers",
+      "Transmission Electron microscope (TEM)"
+    ],
+    "unit": null,
+    "status": "extracted",
+    "evidence_quote": "positioned the video cameras... diagnostic procedures on the two smoke detectors... initiated the thermophoretic soot samplers... analyzed using a Transmission Electron microscope (TEM)",
+    "evidence_location": "METADATA (PSI-102) -> Approach"
+  },
+  "safety_category": {
+    "value": [
+      "detection"
+    ],
+    "unit": null,
+    "status": "extracted",
+    "evidence_quote": "The SAME experiment will provide technology for an advanced fire detector for future spacecraft that will be used for long duration missions.",
+    "evidence_location": "METADATA (PSI-102) -> Research Impacts"
+  }
+}

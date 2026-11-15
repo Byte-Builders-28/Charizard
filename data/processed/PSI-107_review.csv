@@ -1,0 +1,16 @@
+field_name,value,unit,status,evidence_quote,evidence_location
+objective,Identify the laminar smoke-point properties of non-buoyant jet diffusion flames under various co-flow conditions in microgravity.,,extracted,(1) Identify the laminar smoke-point properties of non-buoyant jet diffusion flames under various co-flow conditions in microgravity.,METADATA (PSI-107) -> Objective
+hardware,Microgravity Science Glovebox,,extracted,Microgravity Science Glovebox (MSG),METADATA (PSI-107) -> Hardware
+fuel_type,"[""methane"", ""ethylene"", ""propane"", ""propylene""]",,extracted,"Fuels tested included methane, ethylene, propane, propylene, and propylene mixtures.",METADATA (PSI-107) -> Approach
+fuel_state,gas,,inferred,"Fuels tested included methane, ethylene, propane, propylene, and propylene mixtures.",METADATA (PSI-107) -> Approach
+sample_shape,,,unavailable,,
+sample_size,"[""0.41"", ""0.76"", ""1.6""]",mm,extracted,"burner diameters of 0.41 mm, 0.76 mm, and 1.6 mm",METADATA (PSI-107) -> Approach
+oxygen_percent_min,,,unavailable,,
+oxygen_percent_max,,,unavailable,,
+pressure_psi,,,unavailable,,
+airflow_speed_min,5.4,cm/s,extracted,co-flow velocities ranging from 5.4 cm/s to 65 cm/s,METADATA (PSI-107) -> Approach
+airflow_speed_max,65.0,cm/s,extracted,co-flow velocities ranging from 5.4 cm/s to 65 cm/s,METADATA (PSI-107) -> Approach
+diluents,,,unavailable,,
+gravity_condition,microgravity,,extracted,observing flames in a microgravity environment aboard the International Space Station (ISS),METADATA (PSI-107) -> Objective
+sensors_and_measurements,"[""flow duct with integrated nozzles"", ""cameras"", ""fuel delivery systems"", ""still and video cameras""]",,extracted,"flow duct with integrated nozzles, cameras, and fuel delivery systems.",METADATA (PSI-107) -> Approach
+safety_category,"[""prevention""]",,inferred,Will improve our understanding of soot formation mechanisms and help design safer spacecraft environments.,METADATA (PSI-107) -> Research Impacts

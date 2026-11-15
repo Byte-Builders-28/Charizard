@@ -1,0 +1,16 @@
+field_name,value,unit,status,evidence_quote,evidence_location
+objective,"Determine the conditions for which cool diffusion flames occur for propane, n-butane, and n-pentane; normal and inverse flames; and a broad range of Zst, Tad, and fluent flow rate.",,extracted,"Determine the conditions for which cool diffusion flames occur for propane, n-butane, and n-pentane; normal and inverse flames; and a broad range of Zst, Tad, and fluent flow rate.",metadata section [Objective]
+hardware,"[""ACME"", ""Combustion Integrated Rack (CIR)""]",,extracted,"[Hardware] ACME, Combustion Integrated Rack (CIR)",metadata section [Hardware]
+fuel_type,"[""propane"", ""n-butane"", ""n-pentane"", ""ethane""]",,extracted,"cool diffusion flames occur for propane, n-butane, and n-pentane",metadata section [Objective]
+fuel_state,gas,,extracted,Flames of Gaseous Fuels,metadata section [Sub-research Area]
+sample_shape,sphere,,extracted,spherical porous burners,metadata section [Hypothesis]
+sample_size,,,unavailable,,
+oxygen_percent_min,12,%,extracted,"XO2: min=0.12, max=0.85",CSV: PSI-159_Experimental table_CFI-G_Inverse Flames.csv
+oxygen_percent_max,85,%,extracted,"XO2: min=0.12, max=0.85",CSV: PSI-159_Experimental table_CFI-G_Inverse Flames.csv
+pressure_psi,,,unavailable,,
+airflow_speed_min,,,unavailable,,
+airflow_speed_max,,,unavailable,,
+diluents,,,unavailable,,
+gravity_condition,microgravity,,extracted,Advanced Combustion via Microgravity Experiments,metadata section [Title]
+sensors_and_measurements,"[""cameras"", ""radiometers"", ""photomultiplier tubes"", ""thermocouples""]",,extracted,"Observe the flames with a broad suite of cameras, radiometers, photomultiplier tubes, and thermocouples.",metadata section [Approach]
+safety_category,,,unavailable,,

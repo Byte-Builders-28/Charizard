@@ -1,0 +1,120 @@
+{
+  "investigation_id": "PSI-98",
+  "title": "Spacecraft Fire Safety Experiment-I",
+  "acronym": "SAFFIRE-I",
+  "doi": "10.60555/0t15-1z43",
+  "source_url": "https://psi.nasa.gov/investigations/PSI-98",
+  "objective": {
+    "value": "Determine how rapidly a large scale fire grows in low-gravity and investigate the low-g flammability limits compared to normal gravity material flammability screening tests.",
+    "unit": null,
+    "status": "extracted",
+    "evidence_quote": "(1) determine how rapidly a large scale fire grows in low-gravity and (2) investigate the low-g flammability limits compared to those obtained in NASA’s normal gravity material flammability screening test.",
+    "evidence_location": "[Objective]"
+  },
+  "hardware": {
+    "value": "Saffire 1 enclosure in Cygnus",
+    "unit": null,
+    "status": "extracted",
+    "evidence_quote": "Saffire 1 enclosure in Cygnus",
+    "evidence_location": "[Hardware]"
+  },
+  "fuel_type": {
+    "value": "SIBAL Fabric",
+    "unit": null,
+    "status": "extracted",
+    "evidence_quote": "The sample material for Saffire-I is a composite fabric called Sibal consisting of cotton on a fiberglass substrate (75% cotton, 25% fiberglass by weight).",
+    "evidence_location": "[Approach]"
+  },
+  "fuel_state": {
+    "value": "solid",
+    "unit": null,
+    "status": "inferred",
+    "evidence_quote": "The sample material for Saffire-I is a composite fabric called Sibal",
+    "evidence_location": "[Approach]"
+  },
+  "sample_shape": {
+    "value": "fabric",
+    "unit": null,
+    "status": "extracted",
+    "evidence_quote": "The sample material for Saffire-I is a composite fabric called Sibal",
+    "evidence_location": "[Approach]"
+  },
+  "sample_size": {
+    "value": "40.6 cm x 94 cm x 0.37 cm",
+    "unit": "cm",
+    "status": "extracted",
+    "evidence_quote": "S1, SIBAL Fabric, 0.37, 40.6, 94",
+    "evidence_location": "PSI-98_Experimental table_SAFFIRE-1.csv"
+  },
+  "oxygen_percent_min": {
+    "value": 21.5,
+    "unit": "%",
+    "status": "extracted",
+    "evidence_quote": "21.5 - 21.7",
+    "evidence_location": "PSI-98_Experimental table_SAFFIRE-1.csv"
+  },
+  "oxygen_percent_max": {
+    "value": 21.7,
+    "unit": "%",
+    "status": "extracted",
+    "evidence_quote": "21.5 - 21.7",
+    "evidence_location": "PSI-98_Experimental table_SAFFIRE-1.csv"
+  },
+  "pressure_psi": {
+    "value": null,
+    "unit": null,
+    "status": "unavailable",
+    "evidence_quote": null,
+    "evidence_location": null
+  },
+  "airflow_speed_min": {
+    "value": 20,
+    "unit": "cm/s",
+    "status": "extracted",
+    "evidence_quote": "Saffire-I was conducted at an air flow velocity of 20 cm/s.",
+    "evidence_location": "[Approach]"
+  },
+  "airflow_speed_max": {
+    "value": 20,
+    "unit": "cm/s",
+    "status": "extracted",
+    "evidence_quote": "Saffire-I was conducted at an air flow velocity of 20 cm/s.",
+    "evidence_location": "[Approach]"
+  },
+  "diluents": {
+    "value": null,
+    "unit": null,
+    "status": "unavailable",
+    "evidence_quote": null,
+    "evidence_location": null
+  },
+  "gravity_condition": {
+    "value": "microgravity",
+    "unit": null,
+    "status": "extracted",
+    "evidence_quote": "Results determine microgravity flammability limits for several spacecraft materials",
+    "evidence_location": "[Research Impacts]"
+  },
+  "sensors_and_measurements": {
+    "value": [
+      "thermocouples (flow, flame, plume temperatures)",
+      "radiometers (flame radiation)",
+      "solid state sensors (pressure, CO2, O2 mole fraction)",
+      "anemometers (flow velocity)",
+      "cameras (flame images)"
+    ],
+    "unit": null,
+    "status": "extracted",
+    "evidence_quote": "thermocouples provided flow, flame, and plume temperatures, two radiometers recorded flame radiation, solid state sensors were used to measure pressure, CO2 and O2 mole faction, and two anemometer tracked flow velocity.",
+    "evidence_location": "[Approach]"
+  },
+  "safety_category": {
+    "value": [
+      "prevention"
+    ],
+    "unit": null,
+    "status": "inferred",
+    "evidence_quote": "Results determine microgravity flammability limits for several spacecraft materials, help to validate NASA’s material selection criteria",
+    "evidence_location": "[Research Impacts]"
+  }
+}

@@ -1,0 +1,125 @@
+{
+  "investigation_id": "PSI-159",
+  "title": "Advanced Combustion via Microgravity Experiments / Cool Flames Investigation with Gases",
+  "acronym": "ACME CFI-G",
+  "doi": "10.60555/cyt1-kh64",
+  "source_url": "https://psi.nasa.gov/investigations/PSI-159",
+  "objective": {
+    "value": "Determine the conditions for which cool diffusion flames occur for propane, n-butane, and n-pentane; normal and inverse flames; and a broad range of Zst, Tad, and fluent flow rate.",
+    "unit": null,
+    "status": "extracted",
+    "evidence_quote": "Determine the conditions for which cool diffusion flames occur for propane, n-butane, and n-pentane; normal and inverse flames; and a broad range of Zst, Tad, and fluent flow rate.",
+    "evidence_location": "metadata section [Objective]"
+  },
+  "hardware": {
+    "value": [
+      "ACME",
+      "Combustion Integrated Rack (CIR)"
+    ],
+    "unit": null,
+    "status": "extracted",
+    "evidence_quote": "[Hardware] ACME, Combustion Integrated Rack (CIR)",
+    "evidence_location": "metadata section [Hardware]"
+  },
+  "fuel_type": {
+    "value": [
+      "propane",
+      "n-butane",
+      "n-pentane",
+      "ethane"
+    ],
+    "unit": null,
+    "status": "extracted",
+    "evidence_quote": "cool diffusion flames occur for propane, n-butane, and n-pentane",
+    "evidence_location": "metadata section [Objective]"
+  },
+  "fuel_state": {
+    "value": "gas",
+    "unit": null,
+    "status": "extracted",
+    "evidence_quote": "Flames of Gaseous Fuels",
+    "evidence_location": "metadata section [Sub-research Area]"
+  },
+  "sample_shape": {
+    "value": "sphere",
+    "unit": null,
+    "status": "extracted",
+    "evidence_quote": "spherical porous burners",
+    "evidence_location": "metadata section [Hypothesis]"
+  },
+  "sample_size": {
+    "value": null,
+    "unit": null,
+    "status": "unavailable",
+    "evidence_quote": null,
+    "evidence_location": null
+  },
+  "oxygen_percent_min": {
+    "value": 12,
+    "unit": "%",
+    "status": "extracted",
+    "evidence_quote": "XO2: min=0.12, max=0.85",
+    "evidence_location": "CSV: PSI-159_Experimental table_CFI-G_Inverse Flames.csv"
+  },
+  "oxygen_percent_max": {
+    "value": 85,
+    "unit": "%",
+    "status": "extracted",
+    "evidence_quote": "XO2: min=0.12, max=0.85",
+    "evidence_location": "CSV: PSI-159_Experimental table_CFI-G_Inverse Flames.csv"
+  },
+  "pressure_psi": {
+    "value": null,
+    "unit": null,
+    "status": "unavailable",
+    "evidence_quote": null,
+    "evidence_location": null
+  },
+  "airflow_speed_min": {
+    "value": null,
+    "unit": null,
+    "status": "unavailable",
+    "evidence_quote": null,
+    "evidence_location": null
+  },
+  "airflow_speed_max": {
+    "value": null,
+    "unit": null,
+    "status": "unavailable",
+    "evidence_quote": null,
+    "evidence_location": null
+  },
+  "diluents": {
+    "value": null,
+    "unit": null,
+    "status": "unavailable",
+    "evidence_quote": null,
+    "evidence_location": null
+  },
+  "gravity_condition": {
+    "value": "microgravity",
+    "unit": null,
+    "status": "extracted",
+    "evidence_quote": "Advanced Combustion via Microgravity Experiments",
+    "evidence_location": "metadata section [Title]"
+  },
+  "sensors_and_measurements": {
+    "value": [
+      "cameras",
+      "radiometers",
+      "photomultiplier tubes",
+      "thermocouples"
+    ],
+    "unit": null,
+    "status": "extracted",
+    "evidence_quote": "Observe the flames with a broad suite of cameras, radiometers, photomultiplier tubes, and thermocouples.",
+    "evidence_location": "metadata section [Approach]"
+  },
+  "safety_category": {
+    "value": null,
+    "unit": null,
+    "status": "unavailable",
+    "evidence_quote": null,
+    "evidence_location": null
+  }
+}

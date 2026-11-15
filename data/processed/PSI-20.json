@@ -1,0 +1,130 @@
+{
+  "investigation_id": "PSI-20",
+  "title": "Advanced Combustion via Microgravity Experiments - Burning Rate Emulator",
+  "acronym": "ACME BRE",
+  "doi": "10.60555/vb93-3y72",
+  "source_url": "https://psi.nasa.gov/investigations/PSI-20",
+  "objective": {
+    "value": "Establish burning conditions in a quiescent microgravity ambient in terms of material properties.",
+    "unit": null,
+    "status": "extracted",
+    "evidence_quote": "The BRE flight program seeks to establish the burning conditions in a quiescent microgravity ambient in terms of material properties.",
+    "evidence_location": "Objective"
+  },
+  "hardware": {
+    "value": "Combustion Integrated Rack (CIR), ACME",
+    "unit": null,
+    "status": "extracted",
+    "evidence_quote": "Combustion Integrated Rack (CIR), ACME",
+    "evidence_location": "Hardware"
+  },
+  "fuel_type": {
+    "value": [
+      "CH4",
+      "C2H4"
+    ],
+    "unit": null,
+    "status": "extracted",
+    "evidence_quote": "CH4/N2 and C2H4/N2mixtures",
+    "evidence_location": "Objective"
+  },
+  "fuel_state": {
+    "value": "gas",
+    "unit": null,
+    "status": "extracted",
+    "evidence_quote": "Flames of Gaseous Fuels",
+    "evidence_location": "Sub-research Area"
+  },
+  "sample_shape": {
+    "value": "circular",
+    "unit": null,
+    "status": "extracted",
+    "evidence_quote": "porous circular burners",
+    "evidence_location": "Objective"
+  },
+  "sample_size": {
+    "value": [
+      "25",
+      "50"
+    ],
+    "unit": "mm",
+    "status": "extracted",
+    "evidence_quote": "porous circular burners of 25  and 50 mm diameter.",
+    "evidence_location": "Objective"
+  },
+  "oxygen_percent_min": {
+    "value": 21.0,
+    "unit": "%",
+    "status": "extracted",
+    "evidence_quote": "14.7 psia, 21 % oxygen",
+    "evidence_location": "Objective"
+  },
+  "oxygen_percent_max": {
+    "value": 40.0,
+    "unit": "%",
+    "status": "extracted",
+    "evidence_quote": "21; 26.5; 40",
+    "evidence_location": "CSV: PSI-20_Experimental table_ACME BRE.csv"
+  },
+  "pressure_psi": {
+    "value": [
+      "8.2",
+      "10.2",
+      "14.7"
+    ],
+    "unit": "psia",
+    "status": "extracted",
+    "evidence_quote": "14.7 psia, 21 % oxygen: 10.2 psia, 26.5 %; and 8.2 psia, 34 % oxygen.",
+    "evidence_location": "Objective"
+  },
+  "airflow_speed_min": {
+    "value": 0.0,
+    "unit": "cm/s",
+    "status": "extracted",
+    "evidence_quote": "quiescent microgravity ambient",
+    "evidence_location": "Objective"
+  },
+  "airflow_speed_max": {
+    "value": 0.0,
+    "unit": "cm/s",
+    "status": "extracted",
+    "evidence_quote": "quiescent microgravity ambient",
+    "evidence_location": "Objective"
+  },
+  "diluents": {
+    "value": [
+      "N2",
+      "CO2"
+    ],
+    "unit": null,
+    "status": "extracted",
+    "evidence_quote": "CH4/N2 and C2H4/N2mixtures",
+    "evidence_location": "Objective"
+  },
+  "gravity_condition": {
+    "value": "microgravity",
+    "unit": null,
+    "status": "extracted",
+    "evidence_quote": "quiescent microgravity ambient",
+    "evidence_location": "Objective"
+  },
+  "sensors_and_measurements": {
+    "value": [
+      "burner surface temperature",
+      "heat flux sensor"
+    ],
+    "unit": null,
+    "status": "extracted",
+    "evidence_quote": "burner surface temperature and heat flux will vary",
+    "evidence_location": "Approach"
+  },
+  "safety_category": {
+    "value": [
+      "suppression"
+    ],
+    "unit": null,
+    "status": "inferred",
+    "evidence_quote": "cessation of ventilation is an established step in putting out spacecraft fires",
+    "evidence_location": "Research Impacts"
+  }
+}
