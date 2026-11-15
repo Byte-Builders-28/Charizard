@@ -1,6 +1,5 @@
 """
 FlameScope - Step 3  |  src/api/main.py
-=========================================
 
 FastAPI backend serving extracted NASA PSI combustion investigation data.
 
