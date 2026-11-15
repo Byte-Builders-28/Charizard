@@ -43,7 +43,7 @@ same dispenser parametrization.
 The residual gas flow seems to 
 significantly disturb the trapping by 
 rf plasma. 
-Copying – no issues. 
+Copying - no issues. 
 CRC errors during 
 verification. 
 2 15.06.2016 

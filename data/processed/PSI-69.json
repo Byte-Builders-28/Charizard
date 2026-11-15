@@ -1,0 +1,132 @@
+{
+  "investigation_id": "PSI-69",
+  "title": "Flame Extinguishment Experiment",
+  "acronym": "FLEX",
+  "doi": "10.60555/mbq8-0451",
+  "source_url": "https://psi.nasa.gov/investigations/PSI-69",
+  "objective": {
+    "value": "Map the flammability limits of liquid fuels in microgravity environments, measure the effectiveness of various gaseous fire suppressants such as CO2, He, and SF6, and develop reliable predictive models for combustion limits under reduced gravity conditions.",
+    "unit": null,
+    "status": "extracted",
+    "evidence_quote": "The FLEX (Flame Extinguishment Experiment) investigation aims to map the flammability limits of liquid fuels in microgravity environments, measure the effectiveness of various gaseous fire suppressants such as CO2, He, and SF6, and develop reliable predictive models for combustion limits under reduced gravity conditions.",
+    "evidence_location": "METADATA (PSI-69), Objective"
+  },
+  "hardware": {
+    "value": [
+      "Combustion Integrated Rack (CIR)",
+      "Fluids and Combustion Facility (FCF)",
+      "Multi-user Droplet Combustion Appartatus (MDCA)"
+    ],
+    "unit": null,
+    "status": "extracted",
+    "evidence_quote": "Combustion Integrated Rack (CIR)-Fluids and Combustion Facility (FCF), Multi-user Droplet Combustion Appartatus (MDCA)",
+    "evidence_location": "METADATA (PSI-69), Hardware"
+  },
+  "fuel_type": {
+    "value": [
+      "Methanol",
+      "Heptane"
+    ],
+    "unit": null,
+    "status": "extracted",
+    "evidence_quote": "Methanol, Heptane",
+    "evidence_location": "CSV: PSI-69_Experimental table_FLEX.csv"
+  },
+  "fuel_state": {
+    "value": "liquid",
+    "unit": null,
+    "status": "extracted",
+    "evidence_quote": "map the flammability limits of liquid fuels in microgravity environments",
+    "evidence_location": "METADATA (PSI-69), Objective"
+  },
+  "sample_shape": {
+    "value": "droplet",
+    "unit": null,
+    "status": "extracted",
+    "evidence_quote": "igniting and observing the burning behavior of relatively large droplets.",
+    "evidence_location": "METADATA (PSI-69), Approach"
+  },
+  "sample_size": {
+    "value": "1.1 - 4.67",
+    "unit": "mm",
+    "status": "extracted",
+    "evidence_quote": "Droplet initial diameter; mm: min=1.1, max=4.67",
+    "evidence_location": "CSV: PSI-69_Experimental table_FLEX.csv, Numeric column ranges across all rows"
+  },
+  "oxygen_percent_min": {
+    "value": 12.0,
+    "unit": "%",
+    "status": "extracted",
+    "evidence_quote": "O initial ambient composition; mole fraction: min=0.12, max=0.34",
+    "evidence_location": "CSV: PSI-69_Experimental table_FLEX.csv, Numeric column ranges across all rows"
+  },
+  "oxygen_percent_max": {
+    "value": 34.0,
+    "unit": "%",
+    "status": "extracted",
+    "evidence_quote": "O initial ambient composition; mole fraction: min=0.12, max=0.34",
+    "evidence_location": "CSV: PSI-69_Experimental table_FLEX.csv, Numeric column ranges across all rows"
+  },
+  "pressure_psi": {
+    "value": "0.0 - 44.86",
+    "unit": "psi",
+    "status": "extracted",
+    "evidence_quote": "Ambient pressure; mmHg: min=0.0, max=2319.9",
+    "evidence_location": "CSV: PSI-69_Experimental table_FLEX.csv, Numeric column ranges across all rows"
+  },
+  "airflow_speed_min": {
+    "value": null,
+    "unit": null,
+    "status": "unavailable",
+    "evidence_quote": null,
+    "evidence_location": null
+  },
+  "airflow_speed_max": {
+    "value": null,
+    "unit": null,
+    "status": "unavailable",
+    "evidence_quote": null,
+    "evidence_location": null
+  },
+  "diluents": {
+    "value": [
+      "CO2",
+      "He",
+      "SF6",
+      "N2"
+    ],
+    "unit": null,
+    "status": "extracted",
+    "evidence_quote": "measure the effectiveness of various gaseous fire suppressants such as CO2, He, and SF6",
+    "evidence_location": "METADATA (PSI-69), Objective"
+  },
+  "gravity_condition": {
+    "value": "microgravity",
+    "unit": null,
+    "status": "extracted",
+    "evidence_quote": "map the flammability limits of liquid fuels in microgravity environments",
+    "evidence_location": "METADATA (PSI-69), Objective"
+  },
+  "sensors_and_measurements": {
+    "value": [
+      "droplet burning rates",
+      "flame extinction behavior",
+      "heat radiation",
+      "soot levels",
+      "temperature profiles"
+    ],
+    "unit": null,
+    "status": "extracted",
+    "evidence_quote": "obtaining high-resolution measurements of droplet burning rates, flame extinction behavior, heat radiation, soot levels, and temperature profiles",
+    "evidence_location": "METADATA (PSI-69), Objective"
+  },
+  "safety_category": {
+    "value": [
+      "suppression"
+    ],
+    "unit": null,
+    "status": "inferred",
+    "evidence_quote": "Flame Extinguishment Experiment investigation aims to map the flammability limits of liquid fuels in microgravity environments, measure the effectiveness of various gaseous fire suppressants. Category inferred as suppression because the research focuses on evaluating gaseous fire suppressants and extinguishment limits.",
+    "evidence_location": "METADATA (PSI-69), Objective"
+  }
+}

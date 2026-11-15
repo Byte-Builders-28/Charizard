@@ -1,0 +1,85 @@
+# =============================================================================
+# FlameScope — .gitignore
+# =============================================================================
+
+# --- Python ---
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+parts/
+var/
+sdist/
+develop-eggs/
+.installed_cache
+*.egg-info/
+*.egg
+MANIFEST
+.pytest_cache/
+.coverage
+htmlcov/
+.tox/
+.nox/
+coverage.xml
+*.cover
+*.pyc
+
+# --- Virtual environments ---
+.venv/
+venv/
+ENV/
+env/
+.venv*/
+env*/
+.python-version
+pyvenv.cfg
+
+# --- Environment variables & secrets (API keys, etc.) ---
+.env
+.env.*
+!.env.example
+.env.local
+.env.*.local
+
+# --- Logs ---
+*.log
+ingest.log
+extraction_failures.log
+
+# # --- Data (generated / downloaded, regenerable) ---
+# data/raw/
+# data/processed/
+# data/combustion/
+# data/flamescope.db
+# data/*.db
+# data/*.sqlite
+# data/*.sqlite3
+
+# Root-level generated artifacts
+inventory.csv
+
+# --- Scratch / exploration (temporary) ---
+scratch/
+
+# --- IDE ---
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+Thumbs.db
+
+# --- Jupyter ---
+.ipynb_checkpoints/
+*.ipynb
+
+# --- OS ---
+*.lnk

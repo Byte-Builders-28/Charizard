@@ -1,0 +1,136 @@
+{
+  "investigation_id": "PSI-26",
+  "title": "Burning and Suppression of Solids",
+  "acronym": "BASS",
+  "doi": "10.60555/58h4-dy80",
+  "source_url": "https://psi.nasa.gov/investigations/PSI-26",
+  "objective": {
+    "value": "Begin to bridge the gap between normal gravity NASA-STD-6001 Test#1 method, ground-based microgravity tests, and actual material flammability in microgravity, and assess the effectiveness of an inert, gaseous extinguishing agent in putting out flames over different materials, geometries, preheating, and flow.",
+    "unit": null,
+    "status": "extracted",
+    "evidence_quote": "The two main objectives for BASS are to: 1.) Begin to bridge the gap between the normal gravity NASA-STD-6001 Test#1 method, ground-based microgravity tests, and actual material flammability in microgravity... 2.) Assess the effectiveness of an inert, gaseous extinguishing agent (similar to that used on ISS) in putting out flames over different materials, geometries, preheating, and flow.",
+    "evidence_location": "METADATA (PSI-26), Objective"
+  },
+  "hardware": {
+    "value": "Microgravity Science Glovebox",
+    "unit": null,
+    "status": "extracted",
+    "evidence_quote": "The experiment was conducted aboard the International Space Station (ISS) inside the Microgravity Glove Box (MSG).",
+    "evidence_location": "METADATA (PSI-26), Approach"
+  },
+  "fuel_type": {
+    "value": [
+      "cotton",
+      "fiberglass",
+      "Nomex fabric",
+      "Ultem",
+      "SIBAL",
+      "PMMA"
+    ],
+    "unit": null,
+    "status": "extracted",
+    "evidence_quote": "Custom-made fabric samples consisting of 75% cotton and 25% fiberglass (by mass) measuring were used as a fuel source as well as Nomex fabric and Ultem.",
+    "evidence_location": "METADATA (PSI-26), Approach"
+  },
+  "fuel_state": {
+    "value": "solid",
+    "unit": null,
+    "status": "extracted",
+    "evidence_quote": "Burning and Suppression of Solids",
+    "evidence_location": "METADATA (PSI-26), Title"
+  },
+  "sample_shape": {
+    "value": [
+      "fabric",
+      "spheres",
+      "cylinders"
+    ],
+    "unit": null,
+    "status": "extracted",
+    "evidence_quote": "Other sample shapes were utilized as well including spheres and cylinders.",
+    "evidence_location": "METADATA (PSI-26), Approach"
+  },
+  "sample_size": {
+    "value": [
+      "1",
+      "2"
+    ],
+    "unit": "cm",
+    "status": "extracted",
+    "evidence_quote": "PMMA sphere 1 cm",
+    "evidence_location": "CSV: PSI-26_Experimental table_BASS.csv, Sample rows"
+  },
+  "oxygen_percent_min": {
+    "value": null,
+    "unit": null,
+    "status": "unavailable",
+    "evidence_quote": null,
+    "evidence_location": null
+  },
+  "oxygen_percent_max": {
+    "value": null,
+    "unit": null,
+    "status": "unavailable",
+    "evidence_quote": null,
+    "evidence_location": null
+  },
+  "pressure_psi": {
+    "value": null,
+    "unit": null,
+    "status": "unavailable",
+    "evidence_quote": null,
+    "evidence_location": null
+  },
+  "airflow_speed_min": {
+    "value": null,
+    "unit": null,
+    "status": "unavailable",
+    "evidence_quote": null,
+    "evidence_location": null
+  },
+  "airflow_speed_max": {
+    "value": 40,
+    "unit": "cm/s",
+    "status": "extracted",
+    "evidence_quote": "airflow speeds reaching as high as 40 cm/s.",
+    "evidence_location": "METADATA (PSI-26), Approach"
+  },
+  "diluents": {
+    "value": [
+      "nitrogen"
+    ],
+    "unit": null,
+    "status": "extracted",
+    "evidence_quote": "Using nitrogen as a flame suppressant in microgravity provides a direct link to current and planned extinguishment techniques.",
+    "evidence_location": "METADATA (PSI-26), Research Impacts"
+  },
+  "gravity_condition": {
+    "value": "microgravity",
+    "unit": null,
+    "status": "extracted",
+    "evidence_quote": "The experiment was conducted aboard the International Space Station (ISS) inside the Microgravity Glove Box (MSG).",
+    "evidence_location": "METADATA (PSI-26), Approach"
+  },
+  "sensors_and_measurements": {
+    "value": [
+      "flame size",
+      "flame shape",
+      "flame color",
+      "spread rate",
+      "flame quenching"
+    ],
+    "unit": null,
+    "status": "extracted",
+    "evidence_quote": "data was collected on flame size, shape, color, spread rate, and potential flame quenching.",
+    "evidence_location": "METADATA (PSI-26), Approach"
+  },
+  "safety_category": {
+    "value": [
+      "suppression"
+    ],
+    "unit": null,
+    "status": "extracted",
+    "evidence_quote": "Assess the effectiveness of an inert, gaseous extinguishing agent (similar to that used on ISS) in putting out flames over different materials, geometries, preheating, and flow.",
+    "evidence_location": "METADATA (PSI-26), Objective"
+  }
+}

@@ -1,0 +1,16 @@
+field_name,value,unit,status,evidence_quote,evidence_location
+objective,"Study the ignition, flame growth, flame spread, and extinction limits for solid fuels burning in low-velocity forced flows in microgravity.",,extracted,"Study the ignition, flame growth, flame spread, and extinction limits for solid fuels burning in low-velocity forced flows in microgravity.",Metadata -> Objective -> Item 1
+hardware,Microgravity Science Glovebox (MSG),,extracted,Microgravity Science Glovebox (MSG),Metadata -> Hardware
+fuel_type,PMMA,,extracted,100 micron PMMA film   2 cm wide,CSV -> Fuel Sample Material column
+fuel_state,solid,,extracted,solid fuels,Metadata -> Objective -> Item 1
+sample_shape,"[""slabs"", ""cylinders"", ""spherical sections"", ""rods"", ""films"", ""fabric sheets""]",,extracted,"slabs, cylinders, and spherical sections",Metadata -> Objective -> Item 4
+sample_size,2,cm,extracted,2 cm wide,CSV -> Fuel Sample Material column
+oxygen_percent_min,13.6,%,extracted,"Calibrated  initial O2 % by vol : min=13.6, max=22.2",CSV -> Numeric column ranges
+oxygen_percent_max,22.2,%,extracted,"Calibrated  initial O2 % by vol : min=13.6, max=22.2",CSV -> Numeric column ranges
+pressure_psi,,,unavailable,,
+airflow_speed_min,,,unavailable,,
+airflow_speed_max,40,cm/s,extracted,impose airflow speeds up to 40 cm/s.,Metadata -> Approach
+diluents,"[""nitrogen""]",,extracted,oxygen varied below 21% by adding nitrogen,Metadata -> Approach
+gravity_condition,microgravity,,extracted,microgravity combustion tests were performed aboard the International Space Station.,Metadata -> Approach
+sensors_and_measurements,"[""radiometer"", ""imaging"", ""oxygen concentration sensor"", ""carbon dioxide concentration sensor"", ""carbon monoxide concentration sensor""]",,extracted,"Radiometer gain   (1000   250   50   10), Total Frames Shot, Calibrated  initial O2 % by vol , Calibrated final O2 % by vol, Initial CO2 % by vol, Final CO2 % by vol, Initial CO (ppm), Final CO (ppm)",CSV -> Header
+safety_category,"[""prevention"", ""detection"", ""suppression""]",,inferred,BASS-II results contribute to the combustion computational models used in the design of fire detection and suppression systems in microgravity and on Earth.,Metadata -> Objective

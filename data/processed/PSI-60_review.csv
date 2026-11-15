@@ -1,0 +1,16 @@
+field_name,value,unit,status,evidence_quote,evidence_location
+objective,Integrate computational and experimental methods to derive temperature distributions and soot volume fractions from Smoke Point in Coflow Experiment (SPICE) data to improve understanding of soot formation in microgravity and normal gravity flames.,,extracted,The objective of this investigation was to integrate computational and experimental methods to derive temperature distributions and soot volume fractions from the Smoke Point in Coflow Experiment (SPICE) data available in PSI.,[Objective]
+hardware,Yale and ACME burner configurations,,extracted,Simulations were performed for both Yale and ACME burner configurations under normal and microgravity conditions.,[Approach]
+fuel_type,,,unavailable,,
+fuel_state,gas,,extracted,[Sub-research Area] Gaseous,[Sub-research Area]
+sample_shape,,,unavailable,,
+sample_size,,,unavailable,,
+oxygen_percent_min,,,unavailable,,
+oxygen_percent_max,,,unavailable,,
+pressure_psi,,,unavailable,,
+airflow_speed_min,,,unavailable,,
+airflow_speed_max,,,unavailable,,
+diluents,,,unavailable,,
+gravity_condition,microgravity,,extracted,Simulations were performed for both Yale and ACME burner configurations under normal and microgravity conditions.,[Approach]
+sensors_and_measurements,"[""DSLR camera"", ""color-ratio pyrometry"", ""soot temperature fields"", ""soot volume fractions""]",,extracted,Raw Nikon NEF images were decoded into three color channels and analyzed using color-ratio pyrometry to extract soot temperature fields. Absolute light calibration from SPICE was then used to calculate soot volume fractions.,[Approach]
+safety_category,"[""detection"", ""suppression""]",,extracted,"For space applications, the results support safer fire detection, suppression, and cleaner combustion technologies critical for long-duration missions.",[Research Impacts]

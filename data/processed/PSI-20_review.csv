@@ -1,0 +1,16 @@
+field_name,value,unit,status,evidence_quote,evidence_location
+objective,Establish burning conditions in a quiescent microgravity ambient in terms of material properties.,,extracted,The BRE flight program seeks to establish the burning conditions in a quiescent microgravity ambient in terms of material properties.,Objective
+hardware,"Combustion Integrated Rack (CIR), ACME",,extracted,"Combustion Integrated Rack (CIR), ACME",Hardware
+fuel_type,"[""CH4"", ""C2H4""]",,extracted,CH4/N2 and C2H4/N2mixtures,Objective
+fuel_state,gas,,extracted,Flames of Gaseous Fuels,Sub-research Area
+sample_shape,circular,,extracted,porous circular burners,Objective
+sample_size,"[""25"", ""50""]",mm,extracted,porous circular burners of 25  and 50 mm diameter.,Objective
+oxygen_percent_min,21.0,%,extracted,"14.7 psia, 21 % oxygen",Objective
+oxygen_percent_max,40.0,%,extracted,21; 26.5; 40,CSV: PSI-20_Experimental table_ACME BRE.csv
+pressure_psi,"[""8.2"", ""10.2"", ""14.7""]",psia,extracted,"14.7 psia, 21 % oxygen: 10.2 psia, 26.5 %; and 8.2 psia, 34 % oxygen.",Objective
+airflow_speed_min,0.0,cm/s,extracted,quiescent microgravity ambient,Objective
+airflow_speed_max,0.0,cm/s,extracted,quiescent microgravity ambient,Objective
+diluents,"[""N2"", ""CO2""]",,extracted,CH4/N2 and C2H4/N2mixtures,Objective
+gravity_condition,microgravity,,extracted,quiescent microgravity ambient,Objective
+sensors_and_measurements,"[""burner surface temperature"", ""heat flux sensor""]",,extracted,burner surface temperature and heat flux will vary,Approach
+safety_category,"[""suppression""]",,inferred,cessation of ventilation is an established step in putting out spacecraft fires,Research Impacts

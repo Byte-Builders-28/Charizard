@@ -1,5 +1,5 @@
 """
-FlameScope – Step 2 Pydantic Schema
+FlameScope - Step 2 Pydantic Schema
 Defines the validated data model for each extracted NASA PSI investigation.
 """
 

@@ -1,0 +1,120 @@
+{
+  "investigation_id": "PSI-60",
+  "title": "Computational and Experimental Analysis of SPICE Data Sets",
+  "acronym": "",
+  "doi": "10.60555/mzjm-yv57",
+  "source_url": "https://psi.nasa.gov/investigations/PSI-60",
+  "objective": {
+    "value": "Integrate computational and experimental methods to derive temperature distributions and soot volume fractions from Smoke Point in Coflow Experiment (SPICE) data to improve understanding of soot formation in microgravity and normal gravity flames.",
+    "unit": null,
+    "status": "extracted",
+    "evidence_quote": "The objective of this investigation was to integrate computational and experimental methods to derive temperature distributions and soot volume fractions from the Smoke Point in Coflow Experiment (SPICE) data available in PSI.",
+    "evidence_location": "[Objective]"
+  },
+  "hardware": {
+    "value": "Yale and ACME burner configurations",
+    "unit": null,
+    "status": "extracted",
+    "evidence_quote": "Simulations were performed for both Yale and ACME burner configurations under normal and microgravity conditions.",
+    "evidence_location": "[Approach]"
+  },
+  "fuel_type": {
+    "value": null,
+    "unit": null,
+    "status": "unavailable",
+    "evidence_quote": null,
+    "evidence_location": null
+  },
+  "fuel_state": {
+    "value": "gas",
+    "unit": null,
+    "status": "extracted",
+    "evidence_quote": "[Sub-research Area] Gaseous",
+    "evidence_location": "[Sub-research Area]"
+  },
+  "sample_shape": {
+    "value": null,
+    "unit": null,
+    "status": "unavailable",
+    "evidence_quote": null,
+    "evidence_location": null
+  },
+  "sample_size": {
+    "value": null,
+    "unit": null,
+    "status": "unavailable",
+    "evidence_quote": null,
+    "evidence_location": null
+  },
+  "oxygen_percent_min": {
+    "value": null,
+    "unit": null,
+    "status": "unavailable",
+    "evidence_quote": null,
+    "evidence_location": null
+  },
+  "oxygen_percent_max": {
+    "value": null,
+    "unit": null,
+    "status": "unavailable",
+    "evidence_quote": null,
+    "evidence_location": null
+  },
+  "pressure_psi": {
+    "value": null,
+    "unit": null,
+    "status": "unavailable",
+    "evidence_quote": null,
+    "evidence_location": null
+  },
+  "airflow_speed_min": {
+    "value": null,
+    "unit": null,
+    "status": "unavailable",
+    "evidence_quote": null,
+    "evidence_location": null
+  },
+  "airflow_speed_max": {
+    "value": null,
+    "unit": null,
+    "status": "unavailable",
+    "evidence_quote": null,
+    "evidence_location": null
+  },
+  "diluents": {
+    "value": null,
+    "unit": null,
+    "status": "unavailable",
+    "evidence_quote": null,
+    "evidence_location": null
+  },
+  "gravity_condition": {
+    "value": "microgravity",
+    "unit": null,
+    "status": "extracted",
+    "evidence_quote": "Simulations were performed for both Yale and ACME burner configurations under normal and microgravity conditions.",
+    "evidence_location": "[Approach]"
+  },
+  "sensors_and_measurements": {
+    "value": [
+      "DSLR camera",
+      "color-ratio pyrometry",
+      "soot temperature fields",
+      "soot volume fractions"
+    ],
+    "unit": null,
+    "status": "extracted",
+    "evidence_quote": "Raw Nikon NEF images were decoded into three color channels and analyzed using color-ratio pyrometry to extract soot temperature fields. Absolute light calibration from SPICE was then used to calculate soot volume fractions.",
+    "evidence_location": "[Approach]"
+  },
+  "safety_category": {
+    "value": [
+      "detection",
+      "suppression"
+    ],
+    "unit": null,
+    "status": "extracted",
+    "evidence_quote": "For space applications, the results support safer fire detection, suppression, and cleaner combustion technologies critical for long-duration missions.",
+    "evidence_location": "[Research Impacts]"
+  }
+}

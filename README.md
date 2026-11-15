@@ -63,7 +63,7 @@ Python 3.10+ is recommended with the following dependencies:
 pip install boto3 pypdf openpyxl pandas
 ```
 
-*Note: S3 bucket access uses anonymous/unsigned requests — **no AWS credentials or API keys are required**.*
+_Note: S3 bucket access uses anonymous/unsigned requests — **no AWS credentials or API keys are required**._
 
 ---
 
@@ -89,11 +89,11 @@ python src/ingest/s3_inventory.py --output data/raw/custom_inventory.csv
 
 ### Command Line Arguments
 
-| Argument | Description | Default |
-|---|---|---|
-| `--prefix` | S3 prefix to scan (can be specified multiple times). | Discovers all top-level prefixes (`DSI/`, `OASIS/`, `pk4/`) |
-| `--max-keys` | Maximum objects to list per prefix (useful for rate-limiting). | `None` (all keys) |
-| `--output` | Destination path for the inventory CSV file. | `inventory.csv` |
+| Argument     | Description                                                    | Default                                                     |
+| ------------ | -------------------------------------------------------------- | ----------------------------------------------------------- |
+| `--prefix`   | S3 prefix to scan (can be specified multiple times).           | Discovers all top-level prefixes (`DSI/`, `OASIS/`, `pk4/`) |
+| `--max-keys` | Maximum objects to list per prefix (useful for rate-limiting). | `None` (all keys)                                           |
+| `--output`   | Destination path for the inventory CSV file.                   | `inventory.csv`                                             |
 
 ### Safeguards
 
@@ -106,23 +106,23 @@ python src/ingest/s3_inventory.py --output data/raw/custom_inventory.csv
 
 A selection of 15 core microgravity combustion and spacecraft fire safety investigations cataloged from NASA PSI:
 
-| Investigation ID | Acronym | Title | Sub-Research Area | DOI | File Types |
-|---|---|---|---|---|---|
-| **PSI-69** | FLEX | Flame Extinguishment Experiment | Spacecraft Fire Safety | [10.60555/mbq8-0451](https://doi.org/10.60555/mbq8-0451) | CSV |
-| **PSI-68** | FLEX-2 | Flame Extinguishment Experiment - 2 | Spacecraft Fire Safety | [10.60555/byp8-h018](https://doi.org/10.60555/byp8-h018) | CSV |
-| **PSI-98** | SAFFIRE-I | Spacecraft Fire Safety Experiment-I | Spacecraft Fire, Smoke Distribution | [10.60555/0t15-1z43](https://doi.org/10.60555/0t15-1z43) | CSV |
-| **PSI-99** | SAFFIRE-II | Spacecraft Fire Experiment-II | Surface Combustion | [10.60555/2chp-m469](https://doi.org/10.60555/2chp-m469) | CSV |
-| **PSI-100** | SAFFIRE-III | Spacecraft Fire Experiment-III | Spacecraft Fire Safety | [10.60555/040q-4h36](https://doi.org/10.60555/040q-4h36) | CSV |
-| **PSI-25** | BASS-II | Burning and Suppression of Solids - II | Spacecraft Fire Safety | [10.60555/4qc4-de67](https://doi.org/10.60555/4qc4-de67) | CSV |
-| **PSI-26** | BASS | Burning and Suppression of Solids | Spacecraft Fire Safety | [10.60555/58h4-dy80](https://doi.org/10.60555/58h4-dy80) | CSV |
-| **PSI-60** | SPICE-Analysis | Computational and Experimental Analysis of SPICE Data Sets | Gaseous Combustion | [10.60555/mzjm-yv57](https://doi.org/10.60555/mzjm-yv57) | CSV, PDF, TXT |
-| **PSI-107** | SPICE | Smoke Point In Co-flow Experiment | Fire Safety | [10.60555/9kbh-e962](https://doi.org/10.60555/9kbh-e962) | CSV |
-| **PSI-101** | SAME-R | Smoke Aerosol Measurement Experiment-Reflight | Spacecraft Fire Safety | [10.60555/2np7-jv14](https://doi.org/10.60555/2np7-jv14) | CSV |
-| **PSI-102** | SAME | Smoke and Aerosol Measurement Experiment | Spacecraft Fire Safety | [10.60555/gd4k-8h62](https://doi.org/10.60555/gd4k-8h62) | CSV |
-| **PSI-115** | SAME-Sim | Advanced Modeling & Simulation of Smoke Generation | Smoke Aerosol Simulation | [10.60555/q0v5-1v28](https://doi.org/10.60555/q0v5-1v28) | CSV, PDF, TXT |
-| **PSI-159** | ACME CFI-G | Cool Flames Investigation with Gases | Flames of Gaseous Fuels | [10.60555/cyt1-kh64](https://doi.org/10.60555/cyt1-kh64) | CSV |
-| **PSI-10** | ACME Flame Design | ACME / Flame Design | Flames of Gaseous Fuels | [10.60555/w4zy-bt45](https://doi.org/10.60555/w4zy-bt45) | CSV |
-| **PSI-20** | ACME BRE | ACME - Burning Rate Emulator | Flames of Gaseous Fuels | [10.60555/vb93-3y72](https://doi.org/10.60555/vb93-3y72) | CSV |
+| Investigation ID | Acronym           | Title                                                      | Sub-Research Area                   | DOI                                                      | File Types    |
+| ---------------- | ----------------- | ---------------------------------------------------------- | ----------------------------------- | -------------------------------------------------------- | ------------- |
+| **PSI-69**       | FLEX              | Flame Extinguishment Experiment                            | Spacecraft Fire Safety              | [10.60555/mbq8-0451](https://doi.org/10.60555/mbq8-0451) | CSV           |
+| **PSI-68**       | FLEX-2            | Flame Extinguishment Experiment - 2                        | Spacecraft Fire Safety              | [10.60555/byp8-h018](https://doi.org/10.60555/byp8-h018) | CSV           |
+| **PSI-98**       | SAFFIRE-I         | Spacecraft Fire Safety Experiment-I                        | Spacecraft Fire, Smoke Distribution | [10.60555/0t15-1z43](https://doi.org/10.60555/0t15-1z43) | CSV           |
+| **PSI-99**       | SAFFIRE-II        | Spacecraft Fire Experiment-II                              | Surface Combustion                  | [10.60555/2chp-m469](https://doi.org/10.60555/2chp-m469) | CSV           |
+| **PSI-100**      | SAFFIRE-III       | Spacecraft Fire Experiment-III                             | Spacecraft Fire Safety              | [10.60555/040q-4h36](https://doi.org/10.60555/040q-4h36) | CSV           |
+| **PSI-25**       | BASS-II           | Burning and Suppression of Solids - II                     | Spacecraft Fire Safety              | [10.60555/4qc4-de67](https://doi.org/10.60555/4qc4-de67) | CSV           |
+| **PSI-26**       | BASS              | Burning and Suppression of Solids                          | Spacecraft Fire Safety              | [10.60555/58h4-dy80](https://doi.org/10.60555/58h4-dy80) | CSV           |
+| **PSI-60**       | SPICE-Analysis    | Computational and Experimental Analysis of SPICE Data Sets | Gaseous Combustion                  | [10.60555/mzjm-yv57](https://doi.org/10.60555/mzjm-yv57) | CSV, PDF, TXT |
+| **PSI-107**      | SPICE             | Smoke Point In Co-flow Experiment                          | Fire Safety                         | [10.60555/9kbh-e962](https://doi.org/10.60555/9kbh-e962) | CSV           |
+| **PSI-101**      | SAME-R            | Smoke Aerosol Measurement Experiment-Reflight              | Spacecraft Fire Safety              | [10.60555/2np7-jv14](https://doi.org/10.60555/2np7-jv14) | CSV           |
+| **PSI-102**      | SAME              | Smoke and Aerosol Measurement Experiment                   | Spacecraft Fire Safety              | [10.60555/gd4k-8h62](https://doi.org/10.60555/gd4k-8h62) | CSV           |
+| **PSI-115**      | SAME-Sim          | Advanced Modeling & Simulation of Smoke Generation         | Smoke Aerosol Simulation            | [10.60555/q0v5-1v28](https://doi.org/10.60555/q0v5-1v28) | CSV, PDF, TXT |
+| **PSI-159**      | ACME CFI-G        | Cool Flames Investigation with Gases                       | Flames of Gaseous Fuels             | [10.60555/cyt1-kh64](https://doi.org/10.60555/cyt1-kh64) | CSV           |
+| **PSI-10**       | ACME Flame Design | ACME / Flame Design                                        | Flames of Gaseous Fuels             | [10.60555/w4zy-bt45](https://doi.org/10.60555/w4zy-bt45) | CSV           |
+| **PSI-20**       | ACME BRE          | ACME - Burning Rate Emulator                               | Flames of Gaseous Fuels             | [10.60555/vb93-3y72](https://doi.org/10.60555/vb93-3y72) | CSV           |
 
 ---
 
@@ -180,11 +180,11 @@ python src/ingest/ingest_psi.py --s3-prefixes pk4/To_NASA_team/Campaign_Reports/
 - **Provenance Tracking:** Every downloaded item is registered in `data/raw/<PSI-ID>/manifest.json` with:
   ```json
   {
-    "source_url": "https://psi-repo-prod.s3.amazonaws.com/...",
-    "retrieved_at": "2026-11-14T09:17:04.945600+00:00",
-    "size_bytes": 24776,
-    "sha256": "37c88ce8ae9391b7544ff630a45ce87543d04d317cdbfbed104fe7d5c27e1b96",
-    "category": "experimental_table"
+  	"source_url": "https://psi-repo-prod.s3.amazonaws.com/...",
+  	"retrieved_at": "2026-11-14T09:17:04.945600+00:00",
+  	"size_bytes": 24776,
+  	"sha256": "37c88ce8ae9391b7544ff630a45ce87543d04d317cdbfbed104fe7d5c27e1b96",
+  	"category": "experimental_table"
   }
   ```
 - **Idempotency:** Re-running the script detects existing files matching file size and checksum, preventing redundant downloads.
@@ -198,14 +198,13 @@ python src/ingest/ingest_psi.py --s3-prefixes pk4/To_NASA_team/Campaign_Reports/
 
 Apache License 2.0. Open-access NASA microgravity research data.
 
-
 ---
 
 ## 🧬 Step 2: Scientific Extraction Pipeline (`src/extract/extract_investigations.py`)
 
 Reads every `data/raw/<PSI-ID>/` folder, builds structured text chunks, and
 calls the **Gemini LLM** to populate a strict, Pydantic-validated JSON schema
-per investigation.  Results land in `data/processed/`.
+per investigation. Results land in `data/processed/`.
 
 ### Pre-requisite: API Key
 
@@ -237,13 +236,13 @@ python src/extract/extract_investigations.py --model gemini-2.0-flash
 
 ### Output Files
 
-| File | Description |
-|------|-------------|
-| `data/processed/<PSI-ID>.json` | Validated `InvestigationExtracted` record |
-| `data/processed/<PSI-ID>_review.csv` | Human-review sheet — one row per field with value, unit, status, quote, location |
-| `data/processed/investigations.json` | Combined array of all extracted records |
-| `data/processed/<PSI-ID>.REVIEW_NEEDED.json` | Raw LLM output + error for records that failed both parse attempts |
-| `extraction_failures.log` | Timestamped failure log |
+| File                                         | Description                                                                      |
+| -------------------------------------------- | -------------------------------------------------------------------------------- |
+| `data/processed/<PSI-ID>.json`               | Validated `InvestigationExtracted` record                                        |
+| `data/processed/<PSI-ID>_review.csv`         | Human-review sheet — one row per field with value, unit, status, quote, location |
+| `data/processed/investigations.json`         | Combined array of all extracted records                                          |
+| `data/processed/<PSI-ID>.REVIEW_NEEDED.json` | Raw LLM output + error for records that failed both parse attempts               |
+| `extraction_failures.log`                    | Timestamped failure log                                                          |
 
 ### Extracted Schema (per investigation)
 
@@ -251,36 +250,36 @@ Every field (except the five identity fields) is a **FieldValue** object:
 
 ```json
 {
-  "value": "methanol",
-  "unit": null,
-  "status": "extracted",
-  "evidence_quote": "Fuel: Methanol",
-  "evidence_location": "CSV header row, PSI-69_Experimental table_FLEX.csv"
+	"value": "methanol",
+	"unit": null,
+	"status": "extracted",
+	"evidence_quote": "Fuel: Methanol",
+	"evidence_location": "CSV header row, PSI-69_Experimental table_FLEX.csv"
 }
 ```
 
-| Field | Type | Enum / Rule |
-|-------|------|-------------|
-| `investigation_id` | string | — |
-| `title` | string | — |
-| `acronym` | string \| null | — |
-| `doi` | string \| null | — |
-| `source_url` | string | — |
-| `objective` | FieldValue | — |
-| `hardware` | FieldValue | — |
-| `fuel_type` | FieldValue | list if multiple fuels |
-| `fuel_state` | FieldValue | **solid \| liquid \| gas** |
-| `sample_shape` | FieldValue | — |
-| `sample_size` | FieldValue | unit: mm or cm |
-| `oxygen_percent_min` | FieldValue | **0–100**; mole fractions × 100 |
-| `oxygen_percent_max` | FieldValue | **0–100** |
-| `pressure_psi` | FieldValue | mmHg ÷ 51.715 |
-| `airflow_speed_min` | FieldValue | unit: cm/s |
-| `airflow_speed_max` | FieldValue | unit: cm/s |
-| `diluents` | FieldValue | list: He, CO₂, SF₆ … |
-| `gravity_condition` | FieldValue | **microgravity \| normal_gravity \| partial_gravity** |
-| `sensors_and_measurements` | FieldValue | — |
-| `safety_category` | FieldValue | list from: **prevention \| detection \| suppression** |
+| Field                      | Type           | Enum / Rule                                           |
+| -------------------------- | -------------- | ----------------------------------------------------- |
+| `investigation_id`         | string         | —                                                     |
+| `title`                    | string         | —                                                     |
+| `acronym`                  | string \| null | —                                                     |
+| `doi`                      | string \| null | —                                                     |
+| `source_url`               | string         | —                                                     |
+| `objective`                | FieldValue     | —                                                     |
+| `hardware`                 | FieldValue     | —                                                     |
+| `fuel_type`                | FieldValue     | list if multiple fuels                                |
+| `fuel_state`               | FieldValue     | **solid \| liquid \| gas**                            |
+| `sample_shape`             | FieldValue     | —                                                     |
+| `sample_size`              | FieldValue     | unit: mm or cm                                        |
+| `oxygen_percent_min`       | FieldValue     | **0-100**; mole fractions × 100                       |
+| `oxygen_percent_max`       | FieldValue     | **0-100**                                             |
+| `pressure_psi`             | FieldValue     | mmHg ÷ 51.715                                         |
+| `airflow_speed_min`        | FieldValue     | unit: cm/s                                            |
+| `airflow_speed_max`        | FieldValue     | unit: cm/s                                            |
+| `diluents`                 | FieldValue     | list: He, CO₂, SF₆ …                                  |
+| `gravity_condition`        | FieldValue     | **microgravity \| normal_gravity \| partial_gravity** |
+| `sensors_and_measurements` | FieldValue     | —                                                     |
+| `safety_category`          | FieldValue     | list from: **prevention \| detection \| suppression** |
 
 ### Key Engineering Features
 
@@ -298,4 +297,3 @@ Every field (except the five identity fields) is a **FieldValue** object:
 ## 📄 License
 
 Apache License 2.0. Open-access NASA microgravity research data.
-
