@@ -1,0 +1,1227 @@
+---
+import MainLayout from '../../layouts/MainLayout.astro';
+---
+
+<MainLayout
+  title="Investigations Catalog | CHARIZARD"
+  description="Browse and query spacecraft combustion investigations, experimental conditions, fuel types, and telemetry datasets."
+>
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 py-8 md:py-12">
+    <!-- Header Section -->
+    <div class="mb-8 border-b border-[#D8D5CC] pb-6">
+      <div class="flex items-center gap-2 text-xs font-mono text-[#666B64] mb-3 uppercase tracking-wider">
+        <a href="/" class="hover:text-[#202421]">Home</a>
+        <span>/</span>
+        <span class="text-[#202421] font-semibold">Investigations Catalog</span>
+      </div>
+
+      <div class="flex flex-col md:flex-row md:items-end justify-between gap-4">
+        <div>
+          <div class="inline-flex items-center gap-2 px-2 py-0.5 mb-2 border border-[#D8D5CC] bg-[#FFFFFF] font-mono text-[10px] uppercase tracking-wider text-[#666B64]">
+            <span class="w-1.5 h-1.5 bg-[#D85A32]"></span>
+            <span>Microgravity Data Repository</span>
+          </div>
+          <h1 class="font-serif-heading text-3xl sm:text-4xl text-[#202421] tracking-tight">
+            Combustion Investigations
+          </h1>
+          <p class="text-sm text-[#666B64] mt-1.5 max-w-2xl font-sans leading-relaxed">
+            Query flight experiments and ground microgravity campaigns. Filter across fuel states, gravity conditions, atmospheric compositions, and telemetry availability.
+          </p>
+        </div>
+
+        <div id="catalog-badge" class="inline-flex items-center gap-2 px-3 py-2 border border-[#D8D5CC] bg-[#FFFFFF] font-mono text-xs">
+          <span class="w-2 h-2 rounded-full bg-[#526B55]"></span>
+          <span id="total-count-label" class="text-[#202421] font-medium">Connecting...</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Search & Filter Control Bar -->
+    <div class="bg-[#FFFFFF] border border-[#D8D5CC] mb-6">
+      <div class="p-4 sm:p-5">
+        <form id="search-form" class="flex flex-col sm:flex-row items-stretch gap-2.5">
+          <!-- Text Search Input -->
+          <div class="relative flex-1">
+            <div class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-[#666B64]">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+              </svg>
+            </div>
+            <input
+              type="text"
+              id="search-input"
+              name="q"
+              placeholder="Search keyword, fuel, apparatus (e.g. droplet, smoke, methane, CIR)..."
+              class="w-full pl-10 pr-10 py-2.5 text-xs font-mono bg-[#FFFFFF] border border-[#D8D5CC] focus:border-[#D85A32] focus:ring-1 focus:ring-[#D85A32] outline-none text-[#202421]"
+            />
+            <button
+              type="button"
+              id="clear-search-btn"
+              class="hidden absolute inset-y-0 right-0 pr-3 flex items-center text-[#666B64] hover:text-[#202421]"
+              aria-label="Clear search"
+            >
+              <span class="font-mono text-sm">&times;</span>
+            </button>
+          </div>
+
+          <!-- Submit Search Button -->
+          <button
+            type="submit"
+            class="px-5 py-2.5 bg-[#D85A32] hover:bg-[#b84823] text-[#FFFFFF] text-xs font-mono font-bold uppercase tracking-wider transition-colors border border-[#D85A32]"
+          >
+            Search
+          </button>
+
+          <!-- Toggle Filter Panel Button -->
+          <button
+            type="button"
+            id="filter-toggle-btn"
+            aria-expanded="false"
+            aria-controls="filter-panel"
+            class="px-4 py-2.5 bg-[#F3F0E8] hover:bg-[#ECE8DE] text-[#202421] text-xs font-mono font-semibold uppercase tracking-wider transition-colors border border-[#D8D5CC] flex items-center justify-center gap-2"
+          >
+            <svg class="w-3.5 h-3.5 text-[#666B64]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 4a1 1 0 011-1h16a1 1 0 011 1v2.586a1 1 0 01-.293.707l-6.414 6.414a1 1 0 00-.293.707V17l-4 4v-6.586a1 1 0 00-.293-.707L3.293 7.293A1 1 0 013 6.586V4z" />
+            </svg>
+            <span>Filters</span>
+            <span id="active-filter-count" class="hidden px-1.5 py-0.5 bg-[#202421] text-white text-[10px] font-mono leading-none">0</span>
+            <span id="toggle-arrow" class="font-mono text-xs text-[#666B64]">&darr;</span>
+          </button>
+        </form>
+
+        <!-- Collapsible Filter Panel -->
+        <div id="filter-panel" class="hidden mt-5 pt-5 border-t border-[#D8D5CC]">
+          <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
+            <!-- Group 1: Fuel Parameters -->
+            <div class="space-y-3">
+              <div class="text-[11px] font-mono font-bold uppercase tracking-wider text-[#202421] border-b border-[#D8D5CC] pb-1">
+                1. Fuel Parameters
+              </div>
+              <div>
+                <label for="filter-fuel-state" class="block text-[11px] font-mono text-[#666B64] uppercase tracking-wider mb-1">
+                  Fuel State
+                </label>
+                <select
+                  id="filter-fuel-state"
+                  name="fuel_state"
+                  class="w-full px-2.5 py-2 text-xs font-mono bg-[#FFFFFF] border border-[#D8D5CC] focus:border-[#D85A32] outline-none text-[#202421]"
+                >
+                  <option value="">All States</option>
+                  <option value="solid">Solid</option>
+                  <option value="liquid">Liquid</option>
+                  <option value="gas">Gas</option>
+                </select>
+              </div>
+              <div>
+                <label for="filter-fuel-type" class="block text-[11px] font-mono text-[#666B64] uppercase tracking-wider mb-1">
+                  Fuel Type Substring
+                </label>
+                <input
+                  type="text"
+                  id="filter-fuel-type"
+                  name="fuel_type"
+                  placeholder="e.g. methanol, PMMA"
+                  class="w-full px-2.5 py-2 text-xs font-mono bg-[#FFFFFF] border border-[#D8D5CC] focus:border-[#D85A32] outline-none text-[#202421]"
+                />
+              </div>
+            </div>
+
+            <!-- Group 2: Gravity & Atmosphere -->
+            <div class="space-y-3">
+              <div class="text-[11px] font-mono font-bold uppercase tracking-wider text-[#202421] border-b border-[#D8D5CC] pb-1">
+                2. Gravity &amp; Gas
+              </div>
+              <div>
+                <label for="filter-gravity" class="block text-[11px] font-mono text-[#666B64] uppercase tracking-wider mb-1">
+                  Gravity Condition
+                </label>
+                <select
+                  id="filter-gravity"
+                  name="gravity_condition"
+                  class="w-full px-2.5 py-2 text-xs font-mono bg-[#FFFFFF] border border-[#D8D5CC] focus:border-[#D85A32] outline-none text-[#202421]"
+                >
+                  <option value="">All Gravities</option>
+                  <option value="microgravity">Microgravity</option>
+                  <option value="normal_gravity">Normal Gravity</option>
+                  <option value="partial_gravity">Partial Gravity</option>
+                </select>
+              </div>
+              <div>
+                <label for="filter-diluents" class="block text-[11px] font-mono text-[#666B64] uppercase tracking-wider mb-1">
+                  Diluents Substring
+                </label>
+                <input
+                  type="text"
+                  id="filter-diluents"
+                  name="diluents"
+                  placeholder="e.g. nitrogen, CO2"
+                  class="w-full px-2.5 py-2 text-xs font-mono bg-[#FFFFFF] border border-[#D8D5CC] focus:border-[#D85A32] outline-none text-[#202421]"
+                />
+              </div>
+            </div>
+
+            <!-- Group 3: Environmental Range -->
+            <div class="space-y-3">
+              <div class="text-[11px] font-mono font-bold uppercase tracking-wider text-[#202421] border-b border-[#D8D5CC] pb-1">
+                3. Environmental Limits
+              </div>
+              <div>
+                <label class="block text-[11px] font-mono text-[#666B64] uppercase tracking-wider mb-1">
+                  Oxygen Range (%)
+                </label>
+                <div class="flex items-center gap-1.5">
+                  <input
+                    type="number"
+                    step="any"
+                    id="filter-oxygen-min"
+                    name="oxygen_min"
+                    placeholder="Min"
+                    class="w-1/2 px-2 py-2 text-xs font-mono bg-[#FFFFFF] border border-[#D8D5CC] focus:border-[#D85A32] outline-none text-[#202421]"
+                  />
+                  <span class="text-[#666B64] font-mono text-xs">-</span>
+                  <input
+                    type="number"
+                    step="any"
+                    id="filter-oxygen-max"
+                    name="oxygen_max"
+                    placeholder="Max"
+                    class="w-1/2 px-2 py-2 text-xs font-mono bg-[#FFFFFF] border border-[#D8D5CC] focus:border-[#D85A32] outline-none text-[#202421]"
+                  />
+                </div>
+              </div>
+              <div>
+                <label class="block text-[11px] font-mono text-[#666B64] uppercase tracking-wider mb-1">
+                  Pressure Range (psi)
+                </label>
+                <div class="flex items-center gap-1.5">
+                  <input
+                    type="number"
+                    step="any"
+                    id="filter-pressure-min"
+                    name="pressure_min"
+                    placeholder="Min"
+                    class="w-1/2 px-2 py-2 text-xs font-mono bg-[#FFFFFF] border border-[#D8D5CC] focus:border-[#D85A32] outline-none text-[#202421]"
+                  />
+                  <span class="text-[#666B64] font-mono text-xs">-</span>
+                  <input
+                    type="number"
+                    step="any"
+                    id="filter-pressure-max"
+                    name="pressure_max"
+                    placeholder="Max"
+                    class="w-1/2 px-2 py-2 text-xs font-mono bg-[#FFFFFF] border border-[#D8D5CC] focus:border-[#D85A32] outline-none text-[#202421]"
+                  />
+                </div>
+              </div>
+            </div>
+
+            <!-- Group 4: Apparatus & Safety -->
+            <div class="space-y-3">
+              <div class="text-[11px] font-mono font-bold uppercase tracking-wider text-[#202421] border-b border-[#D8D5CC] pb-1">
+                4. Hardware &amp; Safety
+              </div>
+              <div>
+                <label for="filter-hardware" class="block text-[11px] font-mono text-[#666B64] uppercase tracking-wider mb-1">
+                  Hardware Substring
+                </label>
+                <input
+                  type="text"
+                  id="filter-hardware"
+                  name="hardware"
+                  placeholder="e.g. CIR, MDCA"
+                  class="w-full px-2.5 py-2 text-xs font-mono bg-[#FFFFFF] border border-[#D8D5CC] focus:border-[#D85A32] outline-none text-[#202421]"
+                />
+              </div>
+              <div>
+                <label for="filter-safety" class="block text-[11px] font-mono text-[#666B64] uppercase tracking-wider mb-1">
+                  Safety Category
+                </label>
+                <input
+                  type="text"
+                  id="filter-safety"
+                  name="safety_category"
+                  placeholder="e.g. prevention, suppression"
+                  class="w-full px-2.5 py-2 text-xs font-mono bg-[#FFFFFF] border border-[#D8D5CC] focus:border-[#D85A32] outline-none text-[#202421]"
+                />
+              </div>
+            </div>
+          </div>
+
+          <!-- Filter Panel Action Buttons -->
+          <div class="mt-6 pt-4 border-t border-[#D8D5CC] flex items-center justify-between">
+            <button
+              type="button"
+              id="reset-filters-btn"
+              class="text-xs font-mono uppercase tracking-wider text-[#666B64] hover:text-[#202421] underline"
+            >
+              Clear Filter Values
+            </button>
+            <div class="flex items-center gap-3">
+              <button
+                type="button"
+                id="apply-filters-btn"
+                class="px-5 py-2 bg-[#202421] hover:bg-[#343a35] text-[#FFFFFF] text-xs font-mono uppercase tracking-wider transition-colors font-medium"
+              >
+                Apply Selected Filters
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Active Criteria Chips Bar -->
+        <div id="active-filters-bar" class="hidden mt-4 pt-3 border-t border-[#D8D5CC] flex flex-wrap items-center gap-2 text-xs font-mono">
+          <span class="text-[#666B64] text-[11px] uppercase tracking-wider mr-1">Active Criteria:</span>
+          <div id="active-chips" class="flex flex-wrap items-center gap-1.5"></div>
+          <button
+            type="button"
+            id="clear-all-criteria-btn"
+            class="ml-auto text-[11px] uppercase tracking-wider text-[#D85A32] hover:underline font-semibold"
+          >
+            Clear All
+          </button>
+        </div>
+      </div>
+
+      <!-- Results Toolbar (Count & View Switcher) -->
+      <div class="bg-[#F3F0E8] border-t border-[#D8D5CC] px-4 py-2.5 flex flex-col sm:flex-row sm:items-center justify-between gap-2 text-xs font-mono">
+        <div class="flex items-center gap-3">
+          <span id="results-count-text" class="text-[#202421] font-medium">
+            Querying API...
+          </span>
+          <span class="text-[#D8D5CC]">|</span>
+          <span id="results-mode-badge" class="uppercase tracking-wider text-[#526B55] font-semibold text-[11px]">
+            Listing Mode
+          </span>
+        </div>
+
+        <!-- View Switcher (Cards Grid vs Dense Scientific Table) -->
+        <div class="flex items-center gap-1 bg-[#FFFFFF] border border-[#D8D5CC] p-0.5">
+          <button
+            type="button"
+            id="view-grid-btn"
+            class="px-2.5 py-1 text-xs font-mono uppercase tracking-wider bg-[#F3F0E8] text-[#202421] font-semibold border-b-2 border-[#D85A32]"
+            aria-pressed="true"
+          >
+            Grid Cards
+          </button>
+          <button
+            type="button"
+            id="view-table-btn"
+            class="px-2.5 py-1 text-xs font-mono uppercase tracking-wider text-[#666B64] hover:text-[#202421]"
+            aria-pressed="false"
+          >
+            Dense Table
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Loading State -->
+    <div id="loading-state" class="py-16 text-center border border-[#D8D5CC] bg-[#FFFFFF]">
+      <div class="inline-block w-6 h-6 border-2 border-[#D85A32] border-t-transparent animate-spin mb-3"></div>
+      <p class="font-mono text-xs uppercase tracking-wider text-[#666B64]">
+        Fetching investigations from FastAPI backend...
+      </p>
+    </div>
+
+    <!-- Error State -->
+    <div id="error-state" class="hidden p-6 border border-[#D85A32] bg-[#FFFFFF] text-left">
+      <div class="flex items-start gap-3">
+        <span class="text-[#D85A32] font-mono text-base font-bold">&times;</span>
+        <div class="flex-1">
+          <h3 class="font-mono text-xs uppercase font-bold text-[#D85A32] tracking-wider mb-1">
+            API Request Failed
+          </h3>
+          <p id="error-message" class="font-mono text-xs text-[#202421] mb-4">
+            Unable to communicate with the investigation service.
+          </p>
+          <button
+            type="button"
+            id="retry-btn"
+            class="px-4 py-2 bg-[#D85A32] text-white font-mono text-xs uppercase tracking-wider hover:bg-[#b84823]"
+          >
+            Retry Connection
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Empty State -->
+    <div id="empty-state" class="hidden py-16 px-4 text-center border border-[#D8D5CC] bg-[#FFFFFF]">
+      <div class="font-mono text-xs uppercase tracking-widest text-[#666B64] mb-2">
+        0 Investigations Matched
+      </div>
+      <h3 class="font-serif-heading text-2xl text-[#202421] mb-3">
+        No records found matching current query or filters
+      </h3>
+      <p class="text-xs text-[#666B64] max-w-md mx-auto mb-6 font-sans">
+        Try broadening your search term or clearing applied filters to view other combustion records in the catalog.
+      </p>
+      <button
+        type="button"
+        id="empty-reset-btn"
+        class="px-5 py-2.5 bg-[#202421] text-white font-mono text-xs uppercase tracking-wider hover:bg-[#343a35]"
+      >
+        Clear All Search &amp; Filters
+      </button>
+    </div>
+
+    <!-- 1. Grid Cards View -->
+    <div id="investigations-grid" class="hidden grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+      <!-- Populated dynamically via client-side JavaScript -->
+    </div>
+
+    <!-- 2. Dense Scientific Table View -->
+    <div id="investigations-table-view" class="hidden border border-[#D8D5CC] bg-[#FFFFFF] overflow-x-auto">
+      <table class="w-full text-left text-xs font-mono border-collapse">
+        <thead id="investigations-table-head">
+          <tr class="bg-[#F3F0E8] border-b border-[#D8D5CC] text-[#666B64] uppercase text-[11px] tracking-wider">
+            <th class="py-3 px-4">ID</th>
+            <th class="py-3 px-4">Acronym</th>
+            <th class="py-3 px-4 min-w-[220px]">Title</th>
+            <th class="py-3 px-4">State</th>
+            <th class="py-3 px-4">Fuel Type</th>
+            <th class="py-3 px-4">Gravity</th>
+            <th class="py-3 px-4">Oxygen Range</th>
+            <th class="py-3 px-4 text-right">Actions</th>
+          </tr>
+        </thead>
+        <tbody id="investigations-table-body" class="divide-y divide-[#D8D5CC]">
+          <!-- Populated dynamically -->
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Pagination Controls -->
+    <div id="pagination-wrapper" class="hidden mt-8 pt-4 border-t border-[#D8D5CC] flex items-center justify-between text-xs font-mono">
+      <button
+        type="button"
+        id="prev-page-btn"
+        disabled
+        class="px-3 py-1.5 border border-[#D8D5CC] bg-[#FFFFFF] text-[#202421] disabled:opacity-40 disabled:cursor-not-allowed hover:bg-[#F3F0E8]"
+      >
+        &larr; Previous
+      </button>
+      <span id="pagination-info" class="text-[#666B64]">
+        Page 1
+      </span>
+      <button
+        type="button"
+        id="next-page-btn"
+        disabled
+        class="px-3 py-1.5 border border-[#D8D5CC] bg-[#FFFFFF] text-[#202421] disabled:opacity-40 disabled:cursor-not-allowed hover:bg-[#F3F0E8]"
+      >
+        Next &rarr;
+      </button>
+    </div>
+  </div>
+</MainLayout>
+
+<script>
+  import { getInvestigations, searchInvestigations } from '../../lib/api.js';
+
+  interface FilterState {
+    q: string;
+    fuel_state: string;
+    gravity_condition: string;
+    fuel_type: string;
+    safety_category: string;
+    oxygen_min: string;
+    oxygen_max: string;
+    pressure_min: string;
+    pressure_max: string;
+    hardware: string;
+    diluents: string;
+    limit: number;
+    offset: number;
+    viewMode: 'grid' | 'table';
+  }
+
+  const state: FilterState = {
+    q: '',
+    fuel_state: '',
+    gravity_condition: '',
+    fuel_type: '',
+    safety_category: '',
+    oxygen_min: '',
+    oxygen_max: '',
+    pressure_min: '',
+    pressure_max: '',
+    hardware: '',
+    diluents: '',
+    limit: 50,
+    offset: 0,
+    viewMode: 'grid'
+  };
+
+  // DOM Elements
+  const searchForm = document.getElementById('search-form') as HTMLFormElement;
+  const searchInput = document.getElementById('search-input') as HTMLInputElement;
+  const clearSearchBtn = document.getElementById('clear-search-btn') as HTMLButtonElement;
+  const filterToggleBtn = document.getElementById('filter-toggle-btn') as HTMLButtonElement;
+  const filterPanel = document.getElementById('filter-panel') as HTMLDivElement;
+  const toggleArrow = document.getElementById('toggle-arrow') as HTMLSpanElement;
+  const activeFilterCountBadge = document.getElementById('active-filter-count') as HTMLSpanElement;
+  const activeFiltersBar = document.getElementById('active-filters-bar') as HTMLDivElement;
+  const activeChipsContainer = document.getElementById('active-chips') as HTMLDivElement;
+  const clearAllCriteriaBtn = document.getElementById('clear-all-criteria-btn') as HTMLButtonElement;
+  const applyFiltersBtn = document.getElementById('apply-filters-btn') as HTMLButtonElement;
+  const resetFiltersBtn = document.getElementById('reset-filters-btn') as HTMLButtonElement;
+  const emptyResetBtn = document.getElementById('empty-reset-btn') as HTMLButtonElement;
+  const retryBtn = document.getElementById('retry-btn') as HTMLButtonElement;
+
+  const totalCountLabel = document.getElementById('total-count-label') as HTMLSpanElement;
+  const resultsCountText = document.getElementById('results-count-text') as HTMLDivElement;
+  const resultsModeBadge = document.getElementById('results-mode-badge') as HTMLDivElement;
+  const loadingState = document.getElementById('loading-state') as HTMLDivElement;
+  const errorState = document.getElementById('error-state') as HTMLDivElement;
+  const errorMessage = document.getElementById('error-message') as HTMLParagraphElement;
+  const emptyState = document.getElementById('empty-state') as HTMLDivElement;
+
+  const gridContainer = document.getElementById('investigations-grid') as HTMLDivElement;
+  const tableView = document.getElementById('investigations-table-view') as HTMLDivElement;
+  const tableHead = document.getElementById('investigations-table-head') as HTMLTableSectionElement;
+  const tableBody = document.getElementById('investigations-table-body') as HTMLTableSectionElement;
+  const viewGridBtn = document.getElementById('view-grid-btn') as HTMLButtonElement;
+  const viewTableBtn = document.getElementById('view-table-btn') as HTMLButtonElement;
+
+  const paginationWrapper = document.getElementById('pagination-wrapper') as HTMLDivElement;
+  const prevPageBtn = document.getElementById('prev-page-btn') as HTMLButtonElement;
+  const nextPageBtn = document.getElementById('next-page-btn') as HTMLButtonElement;
+  const paginationInfo = document.getElementById('pagination-info') as HTMLSpanElement;
+
+  // Filter Form Controls
+  const fuelStateSelect = document.getElementById('filter-fuel-state') as HTMLSelectElement;
+  const gravitySelect = document.getElementById('filter-gravity') as HTMLSelectElement;
+  const fuelTypeInput = document.getElementById('filter-fuel-type') as HTMLInputElement;
+  const safetyInput = document.getElementById('filter-safety') as HTMLInputElement;
+  const oxygenMinInput = document.getElementById('filter-oxygen-min') as HTMLInputElement;
+  const oxygenMaxInput = document.getElementById('filter-oxygen-max') as HTMLInputElement;
+  const pressureMinInput = document.getElementById('filter-pressure-min') as HTMLInputElement;
+  const pressureMaxInput = document.getElementById('filter-pressure-max') as HTMLInputElement;
+  const hardwareInput = document.getElementById('filter-hardware') as HTMLInputElement;
+  const diluentsInput = document.getElementById('filter-diluents') as HTMLInputElement;
+
+  // Stored items for re-rendering on view mode switch
+  let currentItems: any[] = [];
+  let isCurrentSearch = false;
+
+  // Sync with URL parameters
+  function parseUrlParams() {
+    const params = new URLSearchParams(window.location.search);
+    state.q = params.get('q') || '';
+    state.fuel_state = params.get('fuel_state') || '';
+    state.gravity_condition = params.get('gravity_condition') || '';
+    state.fuel_type = params.get('fuel_type') || '';
+    state.safety_category = params.get('safety_category') || '';
+    state.oxygen_min = params.get('oxygen_min') || '';
+    state.oxygen_max = params.get('oxygen_max') || '';
+    state.pressure_min = params.get('pressure_min') || '';
+    state.pressure_max = params.get('pressure_max') || '';
+    state.hardware = params.get('hardware') || '';
+    state.diluents = params.get('diluents') || '';
+    state.offset = parseInt(params.get('offset') || '0', 10);
+    const mode = params.get('view');
+    if (mode === 'table' || mode === 'grid') {
+      state.viewMode = mode;
+    }
+
+    if (searchInput) searchInput.value = state.q;
+    if (fuelStateSelect) fuelStateSelect.value = state.fuel_state;
+    if (gravitySelect) gravitySelect.value = state.gravity_condition;
+    if (fuelTypeInput) fuelTypeInput.value = state.fuel_type;
+    if (safetyInput) safetyInput.value = state.safety_category;
+    if (oxygenMinInput) oxygenMinInput.value = state.oxygen_min;
+    if (oxygenMaxInput) oxygenMaxInput.value = state.oxygen_max;
+    if (pressureMinInput) pressureMinInput.value = state.pressure_min;
+    if (pressureMaxInput) pressureMaxInput.value = state.pressure_max;
+    if (hardwareInput) hardwareInput.value = state.hardware;
+    if (diluentsInput) diluentsInput.value = state.diluents;
+
+    if (clearSearchBtn) {
+      if (state.q) clearSearchBtn.classList.remove('hidden');
+      else clearSearchBtn.classList.add('hidden');
+    }
+
+    updateViewModeButtons();
+  }
+
+  function updateUrl() {
+    const params = new URLSearchParams();
+    if (state.q) params.set('q', state.q);
+    if (state.fuel_state) params.set('fuel_state', state.fuel_state);
+    if (state.gravity_condition) params.set('gravity_condition', state.gravity_condition);
+    if (state.fuel_type) params.set('fuel_type', state.fuel_type);
+    if (state.safety_category) params.set('safety_category', state.safety_category);
+    if (state.oxygen_min) params.set('oxygen_min', state.oxygen_min);
+    if (state.oxygen_max) params.set('oxygen_max', state.oxygen_max);
+    if (state.pressure_min) params.set('pressure_min', state.pressure_min);
+    if (state.pressure_max) params.set('pressure_max', state.pressure_max);
+    if (state.hardware) params.set('hardware', state.hardware);
+    if (state.diluents) params.set('diluents', state.diluents);
+    if (state.offset > 0) params.set('offset', String(state.offset));
+    if (state.viewMode !== 'grid') params.set('view', state.viewMode);
+
+    const newUrl = `${window.location.pathname}${params.toString() ? `?${params.toString()}` : ''}`;
+    window.history.replaceState({}, '', newUrl);
+  }
+
+  function countActiveFilters(): number {
+    let count = 0;
+    if (state.fuel_state) count++;
+    if (state.gravity_condition) count++;
+    if (state.fuel_type) count++;
+    if (state.safety_category) count++;
+    if (state.oxygen_min || state.oxygen_max) count++;
+    if (state.pressure_min || state.pressure_max) count++;
+    if (state.hardware) count++;
+    if (state.diluents) count++;
+    return count;
+  }
+
+  function renderActiveFilterChips() {
+    const filterCount = countActiveFilters();
+    if (filterCount > 0) {
+      activeFilterCountBadge.textContent = String(filterCount);
+      activeFilterCountBadge.classList.remove('hidden');
+    } else {
+      activeFilterCountBadge.classList.add('hidden');
+    }
+
+    const hasAnyCriteria = filterCount > 0 || state.q.trim().length > 0;
+    if (!hasAnyCriteria) {
+      activeFiltersBar.classList.add('hidden');
+      activeChipsContainer.innerHTML = '';
+      return;
+    }
+
+    activeFiltersBar.classList.remove('hidden');
+    activeChipsContainer.innerHTML = '';
+
+    const addChip = (label: string, onRemove: () => void) => {
+      const chip = document.createElement('span');
+      chip.className = 'inline-flex items-center gap-1.5 px-2 py-0.5 bg-[#FFFFFF] border border-[#D8D5CC] text-[11px] text-[#202421]';
+      chip.innerHTML = `<span>${label}</span><button type="button" class="text-[#666B64] hover:text-[#D85A32] font-bold">&times;</button>`;
+      const btn = chip.querySelector('button');
+      btn?.addEventListener('click', onRemove);
+      activeChipsContainer.appendChild(chip);
+    };
+
+    if (state.q) {
+      addChip(`Search: "${state.q}"`, () => {
+        state.q = '';
+        if (searchInput) searchInput.value = '';
+        if (clearSearchBtn) clearSearchBtn.classList.add('hidden');
+        state.offset = 0;
+        fetchData();
+      });
+    }
+
+    if (state.fuel_state) {
+      addChip(`State: ${state.fuel_state}`, () => {
+        state.fuel_state = '';
+        if (fuelStateSelect) fuelStateSelect.value = '';
+        state.offset = 0;
+        fetchData();
+      });
+    }
+
+    if (state.gravity_condition) {
+      addChip(`Gravity: ${state.gravity_condition}`, () => {
+        state.gravity_condition = '';
+        if (gravitySelect) gravitySelect.value = '';
+        state.offset = 0;
+        fetchData();
+      });
+    }
+
+    if (state.fuel_type) {
+      addChip(`Fuel: ${state.fuel_type}`, () => {
+        state.fuel_type = '';
+        if (fuelTypeInput) fuelTypeInput.value = '';
+        state.offset = 0;
+        fetchData();
+      });
+    }
+
+    if (state.safety_category) {
+      addChip(`Safety: ${state.safety_category}`, () => {
+        state.safety_category = '';
+        if (safetyInput) safetyInput.value = '';
+        state.offset = 0;
+        fetchData();
+      });
+    }
+
+    if (state.oxygen_min || state.oxygen_max) {
+      addChip(`O₂: ${state.oxygen_min || '0'}% - ${state.oxygen_max || '100'}%`, () => {
+        state.oxygen_min = '';
+        state.oxygen_max = '';
+        if (oxygenMinInput) oxygenMinInput.value = '';
+        if (oxygenMaxInput) oxygenMaxInput.value = '';
+        state.offset = 0;
+        fetchData();
+      });
+    }
+
+    if (state.pressure_min || state.pressure_max) {
+      addChip(`Pressure: ${state.pressure_min || '0'} - ${state.pressure_max || 'max'} psi`, () => {
+        state.pressure_min = '';
+        state.pressure_max = '';
+        if (pressureMinInput) pressureMinInput.value = '';
+        if (pressureMaxInput) pressureMaxInput.value = '';
+        state.offset = 0;
+        fetchData();
+      });
+    }
+
+    if (state.hardware) {
+      addChip(`Hardware: ${state.hardware}`, () => {
+        state.hardware = '';
+        if (hardwareInput) hardwareInput.value = '';
+        state.offset = 0;
+        fetchData();
+      });
+    }
+
+    if (state.diluents) {
+      addChip(`Diluents: ${state.diluents}`, () => {
+        state.diluents = '';
+        if (diluentsInput) diluentsInput.value = '';
+        state.offset = 0;
+        fetchData();
+      });
+    }
+  }
+
+  function formatFuelType(fuel: string | null): string {
+    if (!fuel) return '—';
+    try {
+      if (fuel.startsWith('[') && fuel.endsWith(']')) {
+        const parsed = JSON.parse(fuel);
+        if (Array.isArray(parsed)) {
+          return parsed.join(', ');
+        }
+      }
+    } catch {
+      // Fallback
+    }
+    return fuel;
+  }
+
+  function parseCategories(cat: string | null): string[] {
+    if (!cat) return [];
+    try {
+      if (cat.startsWith('[') && cat.endsWith(']')) {
+        const parsed = JSON.parse(cat);
+        if (Array.isArray(parsed)) return parsed;
+      }
+    } catch {
+      // Fallback
+    }
+    return [cat];
+  }
+
+  function updateViewModeButtons() {
+    if (state.viewMode === 'grid') {
+      viewGridBtn.className = 'px-2.5 py-1 text-xs font-mono uppercase tracking-wider bg-[#F3F0E8] text-[#202421] font-semibold border-b-2 border-[#D85A32]';
+      viewGridBtn.setAttribute('aria-pressed', 'true');
+      viewTableBtn.className = 'px-2.5 py-1 text-xs font-mono uppercase tracking-wider text-[#666B64] hover:text-[#202421]';
+      viewTableBtn.setAttribute('aria-pressed', 'false');
+
+      if (currentItems.length > 0) {
+        gridContainer.classList.remove('hidden');
+        tableView.classList.add('hidden');
+      }
+    } else {
+      viewTableBtn.className = 'px-2.5 py-1 text-xs font-mono uppercase tracking-wider bg-[#F3F0E8] text-[#202421] font-semibold border-b-2 border-[#D85A32]';
+      viewTableBtn.setAttribute('aria-pressed', 'true');
+      viewGridBtn.className = 'px-2.5 py-1 text-xs font-mono uppercase tracking-wider text-[#666B64] hover:text-[#202421]';
+      viewGridBtn.setAttribute('aria-pressed', 'false');
+
+      if (currentItems.length > 0) {
+        tableView.classList.remove('hidden');
+        gridContainer.classList.add('hidden');
+      }
+    }
+  }
+
+  // Render both Grid Cards and Scientific Dense Table
+  function renderView(items: any[], isSearch: boolean) {
+    currentItems = items;
+    isCurrentSearch = isSearch;
+
+    gridContainer.innerHTML = '';
+    tableBody.innerHTML = '';
+
+    // 1. Dynamic Table Header (Search vs Regular Listing)
+    if (tableHead) {
+      if (isSearch) {
+        tableHead.innerHTML = `
+          <tr class="bg-[#F3F0E8] border-b border-[#D8D5CC] text-[#666B64] uppercase text-[11px] tracking-wider">
+            <th class="py-3 px-4">ID</th>
+            <th class="py-3 px-4 min-w-[280px]">Investigation Title</th>
+            <th class="py-3 px-4">Relevance Match</th>
+            <th class="py-3 px-4">Matched Terms</th>
+            <th class="py-3 px-4 text-right">Actions</th>
+          </tr>
+        `;
+      } else {
+        tableHead.innerHTML = `
+          <tr class="bg-[#F3F0E8] border-b border-[#D8D5CC] text-[#666B64] uppercase text-[11px] tracking-wider">
+            <th class="py-3 px-4">ID</th>
+            <th class="py-3 px-4">Acronym</th>
+            <th class="py-3 px-4 min-w-[220px]">Title</th>
+            <th class="py-3 px-4">State</th>
+            <th class="py-3 px-4">Fuel Type</th>
+            <th class="py-3 px-4">Gravity</th>
+            <th class="py-3 px-4">Oxygen Range</th>
+            <th class="py-3 px-4 text-right">Actions</th>
+          </tr>
+        `;
+      }
+    }
+
+    items.forEach((item) => {
+      if (isSearch) {
+        // ==========================================
+        // DEDICATED SEARCH RESULT CARD (LIGHTWEIGHT API)
+        // ==========================================
+        const card = document.createElement('article');
+        card.className = 'border border-[#D8D5CC] bg-[#FFFFFF] flex flex-col justify-between hover:border-[#202421] transition-colors border-l-4 border-l-[#D85A32]';
+
+        const relevancePercent = item.relevance != null ? (item.relevance * 100).toFixed(0) : '100';
+        const matchedTermsList = Array.isArray(item.matched_terms) ? item.matched_terms : [];
+
+        card.innerHTML = `
+          <div class="p-5 flex-1 flex flex-col">
+            <!-- Top Row: Investigation ID & Search Match Badge -->
+            <div class="flex items-center justify-between gap-2 mb-3 pb-2.5 border-b border-[#D8D5CC]">
+              <span class="font-mono text-xs font-bold text-[#D85A32] bg-[#F3F0E8] px-2 py-0.5 border border-[#D8D5CC]">
+                ${item.investigation_id}
+              </span>
+              <span class="font-mono text-[10px] uppercase tracking-wider text-[#526B55] bg-[#F3F0E8] px-2 py-0.5 border border-[#D8D5CC] font-semibold">
+                ${relevancePercent}% Relevance Match
+              </span>
+            </div>
+
+            <!-- Title -->
+            <h2 class="font-serif-heading text-lg font-medium text-[#202421] leading-snug mb-3">
+              <a href="/investigations/${item.investigation_id}" class="hover:text-[#D85A32]">
+                ${item.title || item.investigation_id}
+              </a>
+            </h2>
+
+            <!-- Matched Keywords Box -->
+            <div class="mt-2 mb-4 bg-[#F3F0E8] p-3 border border-[#D8D5CC]">
+              <div class="text-[10px] font-mono text-[#666B64] uppercase tracking-wider mb-1.5 font-bold">
+                Matched Search Query
+              </div>
+              <div class="flex flex-wrap gap-1.5">
+                ${matchedTermsList.length > 0
+                  ? matchedTermsList.map((t: string) => `<span class="px-2 py-0.5 bg-[#FFFFFF] border border-[#D8D5CC] font-mono text-xs text-[#D85A32] font-semibold">${t}</span>`).join('')
+                  : `<span class="font-mono text-xs text-[#666B64]">Title &amp; keyword relevance</span>`
+                }
+              </div>
+            </div>
+
+            <!-- Context Note -->
+            <p class="text-[11px] text-[#666B64] font-mono mt-auto border-t border-[#D8D5CC] pt-3">
+              Full flight parameters, telemetry tables, and scientific quotes available in record dossier.
+            </p>
+          </div>
+
+          <!-- Footer Actions -->
+          <div class="p-3 bg-[#F3F0E8] border-t border-[#D8D5CC] flex items-center justify-between text-xs font-mono">
+            <a
+              href="/investigations/${item.investigation_id}"
+              class="uppercase tracking-wider text-[#202421] hover:text-[#D85A32] font-semibold inline-flex items-center gap-1"
+            >
+              <span>Inspect Full Record</span>
+              <span>&rarr;</span>
+            </a>
+            <a
+              href="/compare?id=${item.investigation_id}"
+              class="text-[11px] uppercase text-[#666B64] hover:text-[#202421]"
+              title="Add to comparison"
+            >
+              + Compare
+            </a>
+          </div>
+        `;
+        gridContainer.appendChild(card);
+
+        // Search Result Table Row
+        const tr = document.createElement('tr');
+        tr.className = 'hover:bg-[#F3F0E8] transition-colors';
+        tr.innerHTML = `
+          <td class="py-3 px-4 font-bold text-[#D85A32]">
+            <a href="/investigations/${item.investigation_id}" class="hover:underline">${item.investigation_id}</a>
+          </td>
+          <td class="py-3 px-4 font-serif-heading text-sm text-[#202421]">
+            <a href="/investigations/${item.investigation_id}" class="hover:text-[#D85A32]">${item.title || item.investigation_id}</a>
+          </td>
+          <td class="py-3 px-4 font-mono">
+            <span class="inline-flex items-center px-2 py-0.5 bg-[#F3F0E8] border border-[#D8D5CC] text-[#526B55] text-xs font-semibold">
+              ${relevancePercent}%
+            </span>
+          </td>
+          <td class="py-3 px-4 font-mono text-xs">
+            ${matchedTermsList.map((t: string) => `<span class="inline-block bg-[#F3F0E8] px-1.5 py-0.5 border border-[#D8D5CC] text-[#D85A32] mr-1">${t}</span>`).join('')}
+          </td>
+          <td class="py-3 px-4 text-right whitespace-nowrap font-mono text-xs">
+            <a href="/investigations/${item.investigation_id}" class="text-[#202421] hover:text-[#D85A32] font-semibold mr-3">Inspect &rarr;</a>
+            <a href="/compare?id=${item.investigation_id}" class="text-[#666B64] hover:text-[#202421]">+ Compare</a>
+          </td>
+        `;
+        tableBody.appendChild(tr);
+
+      } else {
+        // ==========================================
+        // REGULAR INVESTIGATION CARD (FULL METADATA)
+        // ==========================================
+        const fuelFormatted = formatFuelType(item.fuel_type);
+        const categories = parseCategories(item.safety_category);
+
+        let oxygenRange = '—';
+        if (item.oxygen_percent_min != null && item.oxygen_percent_max != null) {
+          oxygenRange = `${item.oxygen_percent_min}% – ${item.oxygen_percent_max}%`;
+        } else if (item.oxygen_percent_min != null) {
+          oxygenRange = `≥ ${item.oxygen_percent_min}%`;
+        } else if (item.oxygen_percent_max != null) {
+          oxygenRange = `≤ ${item.oxygen_percent_max}%`;
+        }
+
+        const card = document.createElement('article');
+        card.className = 'border border-[#D8D5CC] bg-[#FFFFFF] flex flex-col justify-between hover:border-[#202421] transition-colors';
+
+        card.innerHTML = `
+          <div class="p-5 flex-1 flex flex-col">
+            <!-- Top Row Badges -->
+            <div class="flex items-center justify-between gap-2 mb-3 pb-2.5 border-b border-[#D8D5CC]">
+              <div class="flex items-center gap-2">
+                <span class="font-mono text-xs font-bold text-[#D85A32] bg-[#F3F0E8] px-2 py-0.5 border border-[#D8D5CC]">
+                  ${item.investigation_id}
+                </span>
+                ${item.acronym ? `<span class="font-mono text-xs font-semibold text-[#202421]">${item.acronym}</span>` : ''}
+              </div>
+              <span class="font-mono text-[10px] uppercase tracking-wider text-[#526B55] bg-[#F3F0E8] px-2 py-0.5 border border-[#D8D5CC]">
+                ${item.gravity_condition || 'microgravity'}
+              </span>
+            </div>
+
+            <!-- Title -->
+            <h2 class="font-serif-heading text-base font-medium text-[#202421] leading-snug mb-3">
+              <a href="/investigations/${item.investigation_id}" class="hover:text-[#D85A32]">
+                ${item.title || item.investigation_id}
+              </a>
+            </h2>
+
+            <!-- Metadata List -->
+            <dl class="space-y-2 text-xs font-mono border-t border-[#D8D5CC] pt-3 mt-auto">
+              <div class="flex items-center justify-between">
+                <dt class="text-[#666B64] uppercase text-[10px] tracking-wider">State</dt>
+                <dd class="text-[#202421] capitalize font-medium">${item.fuel_state || '—'}</dd>
+              </div>
+              <div class="flex items-center justify-between">
+                <dt class="text-[#666B64] uppercase text-[10px] tracking-wider">Oxygen</dt>
+                <dd class="text-[#202421] font-medium">${oxygenRange}</dd>
+              </div>
+              <div>
+                <dt class="text-[#666B64] uppercase text-[10px] tracking-wider mb-0.5">Fuel Type</dt>
+                <dd class="text-[#202421] truncate font-medium" title="${fuelFormatted}">${fuelFormatted}</dd>
+              </div>
+              ${item.hardware ? `
+              <div>
+                <dt class="text-[#666B64] uppercase text-[10px] tracking-wider mb-0.5">Hardware</dt>
+                <dd class="text-[#202421] truncate font-medium" title="${item.hardware}">${item.hardware}</dd>
+              </div>` : ''}
+            </dl>
+
+            <!-- Category Tags -->
+            ${categories.length > 0 ? `
+            <div class="mt-3 pt-2.5 border-t border-[#D8D5CC] flex flex-wrap items-center gap-1">
+              ${categories.map((c: string) => `<span class="font-mono text-[9px] uppercase text-[#526B55] bg-[#F3F0E8] px-1.5 py-0.5 border border-[#D8D5CC]">${c}</span>`).join('')}
+            </div>` : ''}
+          </div>
+
+          <!-- Footer Actions -->
+          <div class="p-3 bg-[#F3F0E8] border-t border-[#D8D5CC] flex items-center justify-between text-xs font-mono">
+            <a
+              href="/investigations/${item.investigation_id}"
+              class="uppercase tracking-wider text-[#202421] hover:text-[#D85A32] font-semibold inline-flex items-center gap-1"
+            >
+              <span>Inspect Record</span>
+              <span>&rarr;</span>
+            </a>
+            <a
+              href="/compare?id=${item.investigation_id}"
+              class="text-[11px] uppercase text-[#666B64] hover:text-[#202421]"
+              title="Add to comparison"
+            >
+              + Compare
+            </a>
+          </div>
+        `;
+        gridContainer.appendChild(card);
+
+        // Regular Table Row
+        const tr = document.createElement('tr');
+        tr.className = 'hover:bg-[#F3F0E8] transition-colors';
+        tr.innerHTML = `
+          <td class="py-3 px-4 font-bold text-[#D85A32]">
+            <a href="/investigations/${item.investigation_id}" class="hover:underline">${item.investigation_id}</a>
+          </td>
+          <td class="py-3 px-4 font-semibold text-[#202421]">${item.acronym || '—'}</td>
+          <td class="py-3 px-4 font-serif-heading text-sm text-[#202421]">
+            <a href="/investigations/${item.investigation_id}" class="hover:text-[#D85A32]">${item.title || item.investigation_id}</a>
+          </td>
+          <td class="py-3 px-4 capitalize">${item.fuel_state || '—'}</td>
+          <td class="py-3 px-4 max-w-[180px] truncate" title="${fuelFormatted}">${fuelFormatted}</td>
+          <td class="py-3 px-4 text-[#526B55] text-[11px] uppercase">${item.gravity_condition || 'microgravity'}</td>
+          <td class="py-3 px-4">${oxygenRange}</td>
+          <td class="py-3 px-4 text-right whitespace-nowrap">
+            <a href="/investigations/${item.investigation_id}" class="text-[#202421] hover:text-[#D85A32] font-semibold mr-3">Inspect &rarr;</a>
+            <a href="/compare?id=${item.investigation_id}" class="text-[#666B64] hover:text-[#202421]">+ Compare</a>
+          </td>
+        `;
+        tableBody.appendChild(tr);
+      }
+    });
+
+    updateViewModeButtons();
+  }
+
+  // Main data fetch routine
+  async function fetchData() {
+    updateUrl();
+    renderActiveFilterChips();
+
+    loadingState.classList.remove('hidden');
+    errorState.classList.add('hidden');
+    emptyState.classList.add('hidden');
+    gridContainer.classList.add('hidden');
+    tableView.classList.add('hidden');
+    paginationWrapper.classList.add('hidden');
+
+    try {
+      if (state.q.trim().length > 0) {
+        resultsModeBadge.textContent = 'Search Mode';
+        resultsCountText.textContent = `Searching catalog for "${state.q}"...`;
+
+        const searchParams: Record<string, any> = {
+          q: state.q.trim()
+        };
+        if (state.fuel_type) searchParams.fuel_type = state.fuel_type;
+        if (state.fuel_state) searchParams.fuel_state = state.fuel_state;
+        if (state.gravity_condition) searchParams.gravity_condition = state.gravity_condition;
+        if (state.safety_category) searchParams.safety_category = state.safety_category;
+
+        const searchResult = await searchInvestigations(searchParams);
+        loadingState.classList.add('hidden');
+
+        const matches = searchResult?.matches || [];
+        const count = searchResult?.count ?? matches.length;
+
+        if (count === 0) {
+          emptyState.classList.remove('hidden');
+          resultsCountText.textContent = `0 matches for "${state.q}"`;
+          return;
+        }
+
+        resultsCountText.textContent = `Found ${count} ${count === 1 ? 'investigation' : 'investigations'} matching query "${state.q}"`;
+        renderView(matches, true);
+
+      } else {
+        resultsModeBadge.textContent = 'Listing Mode';
+        resultsCountText.textContent = 'Fetching investigations...';
+
+        const listParams: Record<string, any> = {
+          limit: state.limit,
+          offset: state.offset
+        };
+        if (state.fuel_state) listParams.fuel_state = state.fuel_state;
+        if (state.gravity_condition) listParams.gravity_condition = state.gravity_condition;
+        if (state.fuel_type) listParams.fuel_type = state.fuel_type;
+        if (state.safety_category) listParams.safety_category = state.safety_category;
+        if (state.oxygen_min) listParams.oxygen_min = state.oxygen_min;
+        if (state.oxygen_max) listParams.oxygen_max = state.oxygen_max;
+        if (state.pressure_min) listParams.pressure_min = state.pressure_min;
+        if (state.pressure_max) listParams.pressure_max = state.pressure_max;
+        if (state.hardware) listParams.hardware = state.hardware;
+        if (state.diluents) listParams.diluents = state.diluents;
+
+        const response = await getInvestigations(listParams);
+        loadingState.classList.add('hidden');
+
+        const results = response?.results || [];
+        const totalCount = response?.count ?? results.length;
+
+        totalCountLabel.textContent = `${totalCount} Records Cataloged`;
+
+        if (results.length === 0) {
+          emptyState.classList.remove('hidden');
+          resultsCountText.textContent = '0 investigations found matching criteria';
+          return;
+        }
+
+        resultsCountText.textContent = `Displaying ${results.length} of ${totalCount} ${totalCount === 1 ? 'investigation' : 'investigations'}`;
+        renderView(results, false);
+
+        if (totalCount > state.limit) {
+          paginationWrapper.classList.remove('hidden');
+          const currentPage = Math.floor(state.offset / state.limit) + 1;
+          const totalPages = Math.ceil(totalCount / state.limit);
+          paginationInfo.textContent = `Page ${currentPage} of ${totalPages} (${totalCount} total)`;
+
+          prevPageBtn.disabled = state.offset === 0;
+          nextPageBtn.disabled = state.offset + state.limit >= totalCount;
+        }
+      }
+    } catch (err: any) {
+      loadingState.classList.add('hidden');
+      errorState.classList.remove('hidden');
+      errorMessage.textContent = err?.message || 'Error occurred while loading investigations from backend.';
+      resultsCountText.textContent = 'Error querying catalog';
+    }
+  }
+
+  // Event Listeners
+  // View Switchers
+  viewGridBtn?.addEventListener('click', () => {
+    state.viewMode = 'grid';
+    updateUrl();
+    updateViewModeButtons();
+  });
+
+  viewTableBtn?.addEventListener('click', () => {
+    state.viewMode = 'table';
+    updateUrl();
+    updateViewModeButtons();
+  });
+
+  // Filter Toggle
+  filterToggleBtn?.addEventListener('click', () => {
+    const isExpanded = filterToggleBtn.getAttribute('aria-expanded') === 'true';
+    filterToggleBtn.setAttribute('aria-expanded', String(!isExpanded));
+    filterPanel.classList.toggle('hidden');
+    if (toggleArrow) {
+      toggleArrow.innerHTML = isExpanded ? '&darr;' : '&uarr;';
+    }
+  });
+
+  // Search Form Submit
+  searchForm?.addEventListener('submit', (e) => {
+    e.preventDefault();
+    state.q = searchInput.value.trim();
+    state.offset = 0;
+    if (clearSearchBtn) {
+      if (state.q) clearSearchBtn.classList.remove('hidden');
+      else clearSearchBtn.classList.add('hidden');
+    }
+    fetchData();
+  });
+
+  // Clear Search Button
+  clearSearchBtn?.addEventListener('click', () => {
+    state.q = '';
+    searchInput.value = '';
+    clearSearchBtn.classList.add('hidden');
+    state.offset = 0;
+    fetchData();
+  });
+
+  // Apply Filters
+  applyFiltersBtn?.addEventListener('click', () => {
+    state.fuel_state = fuelStateSelect.value;
+    state.gravity_condition = gravitySelect.value;
+    state.fuel_type = fuelTypeInput.value.trim();
+    state.safety_category = safetyInput.value.trim();
+    state.oxygen_min = oxygenMinInput.value.trim();
+    state.oxygen_max = oxygenMaxInput.value.trim();
+    state.pressure_min = pressureMinInput.value.trim();
+    state.pressure_max = pressureMaxInput.value.trim();
+    state.hardware = hardwareInput.value.trim();
+    state.diluents = diluentsInput.value.trim();
+    state.offset = 0;
+    fetchData();
+  });
+
+  // Reset Filters in Panel
+  resetFiltersBtn?.addEventListener('click', () => {
+    fuelStateSelect.value = '';
+    gravitySelect.value = '';
+    fuelTypeInput.value = '';
+    safetyInput.value = '';
+    oxygenMinInput.value = '';
+    oxygenMaxInput.value = '';
+    pressureMinInput.value = '';
+    pressureMaxInput.value = '';
+    hardwareInput.value = '';
+    diluentsInput.value = '';
+
+    state.fuel_state = '';
+    state.gravity_condition = '';
+    state.fuel_type = '';
+    state.safety_category = '';
+    state.oxygen_min = '';
+    state.oxygen_max = '';
+    state.pressure_min = '';
+    state.pressure_max = '';
+    state.hardware = '';
+    state.diluents = '';
+    state.offset = 0;
+    fetchData();
+  });
+
+  // Reset All Criteria (Search + Filters)
+  const resetAll = () => {
+    if (searchInput) searchInput.value = '';
+    if (clearSearchBtn) clearSearchBtn.classList.add('hidden');
+    fuelStateSelect.value = '';
+    gravitySelect.value = '';
+    fuelTypeInput.value = '';
+    safetyInput.value = '';
+    oxygenMinInput.value = '';
+    oxygenMaxInput.value = '';
+    pressureMinInput.value = '';
+    pressureMaxInput.value = '';
+    hardwareInput.value = '';
+    diluentsInput.value = '';
+
+    state.q = '';
+    state.fuel_state = '';
+    state.gravity_condition = '';
+    state.fuel_type = '';
+    state.safety_category = '';
+    state.oxygen_min = '';
+    state.oxygen_max = '';
+    state.pressure_min = '';
+    state.pressure_max = '';
+    state.hardware = '';
+    state.diluents = '';
+    state.offset = 0;
+    fetchData();
+  };
+
+  clearAllCriteriaBtn?.addEventListener('click', resetAll);
+  emptyResetBtn?.addEventListener('click', resetAll);
+  retryBtn?.addEventListener('click', fetchData);
+
+  // Pagination clicks
+  prevPageBtn?.addEventListener('click', () => {
+    if (state.offset >= state.limit) {
+      state.offset -= state.limit;
+      fetchData();
+    }
+  });
+
+  nextPageBtn?.addEventListener('click', () => {
+    state.offset += state.limit;
+    fetchData();
+  });
+
+  // Initialize
+  parseUrlParams();
+  fetchData();
+</script>

@@ -1,0 +1,598 @@
+---
+import MainLayout from '../../layouts/MainLayout.astro';
+
+export function getStaticPaths() {
+  const ids = [
+    'PSI-102', 'PSI-107', 'PSI-159', 'PSI-20', 'PSI-25',
+    'PSI-26', 'PSI-60', 'PSI-68', 'PSI-69', 'PSI-98', 'PSI-99'
+  ];
+  return ids.map((id) => ({ params: { id } }));
+}
+
+const { id } = Astro.params;
+---
+
+<MainLayout
+  title={`${id} Investigation Dossier | CHARIZARD`}
+  description={`Complete scientific record, experimental parameters, apparatus, and telemetry observations for combustion investigation ${id}.`}
+>
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 py-8 md:py-12">
+    <!-- Top Action Bar & Breadcrumbs -->
+    <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6 pb-4 border-b border-[#D8D5CC]">
+      <div class="flex items-center gap-2 text-xs font-mono text-[#666B64] uppercase tracking-wider">
+        <a href="/" class="hover:text-[#202421]">Home</a>
+        <span>/</span>
+        <a href="/investigations" class="hover:text-[#202421]">Investigations</a>
+        <span>/</span>
+        <span class="text-[#202421] font-semibold">{id}</span>
+      </div>
+
+      <div class="flex flex-wrap items-center gap-2 text-xs font-mono">
+        <a
+          href="/investigations"
+          class="px-3.5 py-1.5 border border-[#D8D5CC] bg-[#FFFFFF] text-[#202421] hover:bg-[#F3F0E8] transition-colors font-medium flex items-center gap-1.5"
+        >
+          <span>&larr;</span>
+          <span>Back to Catalog</span>
+        </a>
+        <a
+          href={`/compare?id=${id}`}
+          class="px-3.5 py-1.5 border border-[#D8D5CC] bg-[#FFFFFF] text-[#202421] hover:bg-[#F3F0E8] transition-colors font-medium flex items-center gap-1.5"
+          title={`Add ${id} to comparison`}
+        >
+          <span>+</span>
+          <span>Compare</span>
+        </a>
+        <a
+          href={`/agent?prompt=Tell me about ${id}`}
+          class="px-3.5 py-1.5 bg-[#D85A32] hover:bg-[#b84823] text-white transition-colors font-medium flex items-center gap-1.5"
+          title={`Ask Research Agent about ${id}`}
+        >
+          <span class="w-1.5 h-1.5 rounded-full bg-white animate-pulse"></span>
+          <span>Ask Agent</span>
+        </a>
+      </div>
+    </div>
+
+    <!-- Loading State -->
+    <div id="detail-loading" class="py-24 text-center border border-[#D8D5CC] bg-[#FFFFFF]">
+      <div class="inline-block w-6 h-6 border-2 border-[#D85A32] border-t-transparent animate-spin mb-3"></div>
+      <p class="font-mono text-xs uppercase tracking-wider text-[#666B64]">
+        Loading scientific dossier for {id} from FastAPI backend...
+      </p>
+    </div>
+
+    <!-- Error State -->
+    <div id="detail-error" class="hidden p-6 border border-[#D85A32] bg-[#FFFFFF] text-left mb-8">
+      <div class="flex items-start gap-3">
+        <span class="text-[#D85A32] font-mono text-base font-bold">&times;</span>
+        <div class="flex-1">
+          <h2 class="font-mono text-xs uppercase font-bold text-[#D85A32] tracking-wider mb-1">
+            Failed to Retrieve Investigation Dossier
+          </h2>
+          <p id="detail-error-message" class="font-mono text-xs text-[#202421] mb-4">
+            Record {id} could not be retrieved from the backend API.
+          </p>
+          <div class="flex items-center gap-3">
+            <button
+              type="button"
+              id="detail-retry-btn"
+              class="px-4 py-2 bg-[#D85A32] text-white font-mono text-xs uppercase tracking-wider hover:bg-[#b84823]"
+            >
+              Retry Connection
+            </button>
+            <a href="/investigations" class="text-xs font-mono text-[#666B64] hover:underline">
+              Return to Catalog Explorer
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Main Dossier Content -->
+    <div id="detail-content" class="hidden space-y-8">
+      <!-- 1. Header Hero Banner -->
+      <header class="border border-[#D8D5CC] bg-[#FFFFFF] p-6 sm:p-8">
+        <div class="flex flex-wrap items-center gap-2 mb-3.5">
+          <span class="font-mono text-xs font-bold text-[#D85A32] bg-[#F3F0E8] px-2.5 py-1 border border-[#D8D5CC]">
+            {id}
+          </span>
+          <span id="detail-acronym" class="font-mono text-xs font-bold text-[#202421] bg-[#F3F0E8] px-2.5 py-1 border border-[#D8D5CC]">
+            <!-- Acronym -->
+          </span>
+          <span id="detail-gravity-badge" class="font-mono text-xs uppercase tracking-wider text-[#526B55] bg-[#ECE8DE] px-2.5 py-1 border border-[#D8D5CC] font-semibold">
+            <!-- Gravity -->
+          </span>
+          <span id="detail-telemetry-status-pill" class="font-mono text-[11px] text-[#666B64] bg-[#FFFFFF] px-2 py-0.5 border border-[#D8D5CC]">
+            Checking telemetry...
+          </span>
+        </div>
+
+        <h1 id="detail-title" class="font-serif-heading text-3xl sm:text-4xl text-[#202421] tracking-tight leading-snug mb-4">
+          <!-- Investigation Title -->
+        </h1>
+
+        <!-- Provenance & Identifiers Strip -->
+        <div class="flex flex-wrap items-center gap-4 text-xs font-mono text-[#666B64] pt-4 border-t border-[#D8D5CC]">
+          <div id="detail-doi-container" class="flex items-center gap-1.5">
+            <span class="text-[#202421] font-semibold">DOI:</span>
+            <a id="detail-doi-link" href="#" target="_blank" rel="noopener noreferrer" class="text-[#D85A32] hover:underline"></a>
+          </div>
+          <span class="text-[#D8D5CC]">|</span>
+          <div id="detail-source-container" class="flex items-center gap-1.5">
+            <span class="text-[#202421] font-semibold">NASA Repository:</span>
+            <a id="detail-source-link" href="#" target="_blank" rel="noopener noreferrer" class="text-[#526B55] hover:underline flex items-center gap-1">
+              <span>PSI NASA Record</span>
+              <span>&nearr;</span>
+            </a>
+          </div>
+        </div>
+      </header>
+
+      <!-- 2. Scientific Objective & Purpose -->
+      <section class="border border-[#D8D5CC] bg-[#FFFFFF] p-6 sm:p-8">
+        <div class="flex items-center justify-between gap-2 mb-3 pb-2.5 border-b border-[#D8D5CC]">
+          <h2 class="text-xs font-mono uppercase tracking-widest text-[#666B64] font-semibold">
+            Scientific Objective &amp; Approach
+          </h2>
+          <span id="status-objective"></span>
+        </div>
+        <p id="value-objective" class="text-base text-[#202421] leading-relaxed font-sans mb-4">
+          <!-- Objective text -->
+        </p>
+        <div id="evidence-objective" class="hidden p-4 bg-[#F3F0E8] border border-[#D8D5CC] text-xs font-mono">
+          <div class="flex items-center gap-2 text-[10px] uppercase text-[#666B64] font-bold mb-1.5 tracking-wider">
+            <span class="w-1.5 h-1.5 bg-[#D85A32]"></span>
+            <span>Documented Evidence Quote</span>
+          </div>
+          <blockquote id="quote-objective" class="italic text-[#202421] mb-2 leading-relaxed pl-2 border-l-2 border-[#D85A32]"></blockquote>
+          <div id="location-objective" class="text-[11px] text-[#526B55] font-semibold"></div>
+        </div>
+      </section>
+
+      <!-- 3. Scientific Fields 3-Column Grid -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <!-- Column 1: Fuel Specifications -->
+        <section class="border border-[#D8D5CC] bg-[#FFFFFF] p-6 flex flex-col justify-between">
+          <div>
+            <h2 class="text-xs font-mono uppercase tracking-widest text-[#202421] font-bold border-b border-[#D8D5CC] pb-2.5 mb-4">
+              1. Fuel Specifications
+            </h2>
+            <div class="space-y-4">
+              <div id="field-fuel-type" class="scientific-field"></div>
+              <div id="field-fuel-state" class="scientific-field"></div>
+              <div id="field-sample-shape" class="scientific-field"></div>
+              <div id="field-sample-size" class="scientific-field"></div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Column 2: Atmospheric & Environmental Limits -->
+        <section class="border border-[#D8D5CC] bg-[#FFFFFF] p-6 flex flex-col justify-between">
+          <div>
+            <h2 class="text-xs font-mono uppercase tracking-widest text-[#202421] font-bold border-b border-[#D8D5CC] pb-2.5 mb-4">
+              2. Environmental Limits
+            </h2>
+            <div class="space-y-4">
+              <div id="field-gravity" class="scientific-field"></div>
+              <div id="field-oxygen-min" class="scientific-field"></div>
+              <div id="field-oxygen-max" class="scientific-field"></div>
+              <div id="field-pressure" class="scientific-field"></div>
+              <div id="field-airflow-speed" class="scientific-field"></div>
+              <div id="field-diluents" class="scientific-field"></div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Column 3: Apparatus, Safety & Data Integrity -->
+        <section class="border border-[#D8D5CC] bg-[#FFFFFF] p-6 flex flex-col justify-between">
+          <div>
+            <h2 class="text-xs font-mono uppercase tracking-widest text-[#202421] font-bold border-b border-[#D8D5CC] pb-2.5 mb-4">
+              3. Apparatus &amp; Safety
+            </h2>
+            <div class="space-y-4">
+              <div id="field-hardware" class="scientific-field"></div>
+              <div id="field-sensors" class="scientific-field"></div>
+              <div id="field-safety-category" class="scientific-field"></div>
+            </div>
+          </div>
+
+          <div class="mt-6 pt-4 border-t border-[#D8D5CC] bg-[#F3F0E8] p-3 text-[11px] font-mono text-[#666B64]">
+            <span class="text-[#202421] font-semibold">Provenance:</span> NASA Physical Science Informatics (PSI).
+          </div>
+        </section>
+      </div>
+
+      <!-- 4. TELEMETRY OBSERVATIONS (FULL WIDTH AT THE VERY LAST) -->
+      <section class="border border-[#D8D5CC] bg-[#FFFFFF] p-6 sm:p-8">
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-6 pb-4 border-b border-[#D8D5CC]">
+          <div>
+            <div class="inline-flex items-center gap-1.5 px-2 py-0.5 mb-1.5 border border-[#D8D5CC] bg-[#F3F0E8] font-mono text-[10px] uppercase text-[#666B64]">
+              <span class="w-1.5 h-1.5 bg-[#526B55]"></span>
+              <span>Time-Series Sensor Observations &bull; Full Width View</span>
+            </div>
+            <h2 class="font-serif-heading text-2xl text-[#202421]">
+              Telemetry Dataset
+            </h2>
+          </div>
+
+          <div id="telemetry-badge-container" class="font-mono text-xs">
+            <span id="telemetry-file-count" class="px-3 py-1 bg-[#F3F0E8] border border-[#D8D5CC] text-[#202421] font-medium">
+              Loading telemetry...
+            </span>
+          </div>
+        </div>
+
+        <!-- Telemetry Loading Indicator -->
+        <div id="telemetry-loading" class="py-14 text-center bg-[#F3F0E8] border border-[#D8D5CC]">
+          <div class="inline-block w-5 h-5 border-2 border-[#D85A32] border-t-transparent animate-spin mb-2"></div>
+          <p class="font-mono text-xs uppercase text-[#666B64]">Retrieving telemetry tables...</p>
+        </div>
+
+        <!-- Telemetry Empty / Metadata Only -->
+        <div id="telemetry-empty" class="hidden py-12 px-4 text-center bg-[#F3F0E8] border border-[#D8D5CC]">
+          <div class="font-mono text-xs uppercase text-[#666B64] font-semibold mb-1">
+            Metadata-Only Investigation
+          </div>
+          <p class="text-sm text-[#202421] max-w-md mx-auto font-sans leading-relaxed">
+            No CSV sensor telemetry tables were cataloged for {id}. Experimental conditions and scientific measurements are fully documented in the specification sections above.
+          </p>
+        </div>
+
+        <!-- Active Telemetry Table View -->
+        <div id="telemetry-data-view" class="hidden space-y-4">
+          <!-- Multiple Files Switcher Tabs (e.g. PSI-159) -->
+          <div id="telemetry-tabs-wrapper" class="hidden flex flex-wrap items-center gap-2 border-b border-[#D8D5CC] pb-3">
+            <span class="text-xs font-mono text-[#666B64] uppercase mr-1">Telemetry File:</span>
+            <div id="telemetry-tabs" class="flex flex-wrap items-center gap-1.5"></div>
+          </div>
+
+          <!-- Table Controls Toolbar -->
+          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 bg-[#F3F0E8] p-3.5 border border-[#D8D5CC] text-xs font-mono">
+            <div class="flex items-center gap-2 text-[#202421] truncate">
+              <span class="font-bold truncate" id="active-file-name">filename.csv</span>
+              <span class="text-[#D8D5CC]">|</span>
+              <span id="active-file-stats" class="text-[#666B64] whitespace-nowrap">0 columns &bull; 0 rows</span>
+            </div>
+
+            <div class="flex items-center gap-3 whitespace-nowrap">
+              <label for="telemetry-row-limit" class="text-[#666B64] uppercase text-[10px]">Display Rows:</label>
+              <select
+                id="telemetry-row-limit"
+                class="px-2.5 py-1 bg-[#FFFFFF] border border-[#D8D5CC] text-xs font-mono text-[#202421] outline-none"
+              >
+                <option value="10">10 rows</option>
+                <option value="25" selected>25 rows</option>
+                <option value="50">50 rows</option>
+                <option value="100">100 rows</option>
+                <option value="500">All available</option>
+              </select>
+            </div>
+          </div>
+
+          <!-- Full Width Scrollable Monospace Telemetry Table -->
+          <div class="border border-[#D8D5CC] bg-[#FFFFFF] overflow-x-auto max-h-[580px]">
+            <table class="w-full text-left text-xs font-mono border-collapse whitespace-nowrap">
+              <thead class="sticky top-0 bg-[#F3F0E8] border-b border-[#D8D5CC] text-[#666B64] uppercase text-[10px] tracking-wider z-10">
+                <tr id="telemetry-table-header"></tr>
+              </thead>
+              <tbody id="telemetry-table-body" class="divide-y divide-[#D8D5CC]"></tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+    </div>
+  </div>
+</MainLayout>
+
+<script>
+  import { getInvestigation, getInvestigationTelemetry } from '../../lib/api.js';
+
+  const investigationId = window.location.pathname.split('/').filter(Boolean).pop() || '';
+
+  // UI Container Elements
+  const loadingContainer = document.getElementById('detail-loading') as HTMLDivElement;
+  const errorContainer = document.getElementById('detail-error') as HTMLDivElement;
+  const errorMessage = document.getElementById('detail-error-message') as HTMLParagraphElement;
+  const contentContainer = document.getElementById('detail-content') as HTMLDivElement;
+  const retryBtn = document.getElementById('detail-retry-btn') as HTMLButtonElement;
+
+  // Header Elements
+  const titleEl = document.getElementById('detail-title') as HTMLHeadingElement;
+  const acronymEl = document.getElementById('detail-acronym') as HTMLSpanElement;
+  const gravityBadgeEl = document.getElementById('detail-gravity-badge') as HTMLSpanElement;
+  const telemetryStatusPill = document.getElementById('detail-telemetry-status-pill') as HTMLSpanElement;
+  const doiContainer = document.getElementById('detail-doi-container') as HTMLDivElement;
+  const doiLink = document.getElementById('detail-doi-link') as HTMLAnchorElement;
+  const sourceContainer = document.getElementById('detail-source-container') as HTMLDivElement;
+  const sourceLink = document.getElementById('detail-source-link') as HTMLAnchorElement;
+
+  // Objective Elements
+  const objectiveVal = document.getElementById('value-objective') as HTMLParagraphElement;
+  const objectiveStatus = document.getElementById('status-objective') as HTMLSpanElement;
+  const objectiveEvidence = document.getElementById('evidence-objective') as HTMLDivElement;
+  const objectiveQuote = document.getElementById('quote-objective') as HTMLElement;
+  const objectiveLocation = document.getElementById('location-objective') as HTMLDivElement;
+
+  // Telemetry Elements
+  const telemetryLoading = document.getElementById('telemetry-loading') as HTMLDivElement;
+  const telemetryEmpty = document.getElementById('telemetry-empty') as HTMLDivElement;
+  const telemetryDataView = document.getElementById('telemetry-data-view') as HTMLDivElement;
+  const telemetryTabsWrapper = document.getElementById('telemetry-tabs-wrapper') as HTMLDivElement;
+  const telemetryTabs = document.getElementById('telemetry-tabs') as HTMLDivElement;
+  const telemetryFileCount = document.getElementById('telemetry-file-count') as HTMLSpanElement;
+  const activeFileName = document.getElementById('active-file-name') as HTMLSpanElement;
+  const activeFileStats = document.getElementById('active-file-stats') as HTMLSpanElement;
+  const rowLimitSelect = document.getElementById('telemetry-row-limit') as HTMLSelectElement;
+  const telemetryTableHeader = document.getElementById('telemetry-table-header') as HTMLTableRowElement;
+  const telemetryTableBody = document.getElementById('telemetry-table-body') as HTMLTableSectionElement;
+
+  let telemetryFiles: any[] = [];
+  let selectedFileIndex = 0;
+
+  // Helper: Status badge styling
+  function getStatusBadge(status: string | null) {
+    if (!status) return '';
+    const st = status.toLowerCase();
+    let bg = 'bg-[#F3F0E8] text-[#666B64] border-[#D8D5CC]';
+    if (st === 'extracted') bg = 'bg-[#ECE8DE] text-[#526B55] border-[#526B55] font-semibold';
+    else if (st === 'inferred') bg = 'bg-[#F3F0E8] text-[#D85A32] border-[#D85A32] font-semibold';
+    else if (st === 'unavailable') bg = 'bg-[#FFFFFF] text-[#A3A8A0] border-[#D8D5CC]';
+
+    return `<span class="font-mono text-[9px] uppercase tracking-wider px-1.5 py-0.5 border ${bg}">${status}</span>`;
+  }
+
+  // Render a scientific FieldValue with a real, distinctive button for citations
+  function renderField(containerId: string, label: string, field: any) {
+    const el = document.getElementById(containerId);
+    if (!el) return;
+
+    if (!field) {
+      el.innerHTML = `
+        <div class="text-[11px] font-mono text-[#666B64] uppercase tracking-wider mb-1">${label}</div>
+        <div class="text-xs font-mono text-[#A3A8A0] italic">Unavailable</div>
+      `;
+      return;
+    }
+
+    const { value, unit, status, evidence_quote, evidence_location } = field;
+
+    let displayValue = 'Unavailable';
+    if (value !== null && value !== undefined && value !== '') {
+      if (Array.isArray(value)) {
+        displayValue = value.join(', ');
+      } else {
+        displayValue = String(value);
+      }
+      if (unit) {
+        displayValue += ` ${unit}`;
+      }
+    }
+
+    const isUnavailable = status === 'unavailable' || displayValue === 'Unavailable';
+
+    // Distinct Citation Button with clear affordance and styling
+    let evidenceHtml = '';
+    if (evidence_quote) {
+      evidenceHtml = `
+        <details class="mt-2 text-xs font-mono group">
+          <summary class="cursor-pointer inline-flex items-center gap-1.5 px-2.5 py-1 bg-[#F3F0E8] hover:bg-[#ECE8DE] border border-[#D8D5CC] text-[10px] font-mono text-[#202421] font-semibold transition-colors select-none">
+            <span class="text-[#D85A32] font-serif font-bold">&ldquo;</span>
+            <span>View Citation &amp; Source</span>
+            <span class="text-[#666B64] text-[9px] group-open:rotate-180 transition-transform">&darr;</span>
+          </summary>
+          <div class="mt-2 p-3 bg-[#F3F0E8] border border-[#D8D5CC] text-[11px] shadow-xs">
+            <div class="text-[9px] font-mono uppercase tracking-wider text-[#666B64] font-bold mb-1">Source Quote:</div>
+            <p class="italic text-[#202421] mb-2 leading-relaxed">"${evidence_quote}"</p>
+            ${evidence_location ? `<div class="text-[10px] text-[#526B55] font-semibold border-t border-[#D8D5CC] pt-1">Location: ${evidence_location}</div>` : ''}
+          </div>
+        </details>
+      `;
+    }
+
+    el.innerHTML = `
+      <div class="flex items-center justify-between gap-1.5 mb-1">
+        <span class="text-[11px] font-mono text-[#666B64] uppercase tracking-wider">${label}</span>
+        ${getStatusBadge(status)}
+      </div>
+      <div class="text-xs font-mono font-medium ${isUnavailable ? 'text-[#A3A8A0] italic' : 'text-[#202421]'} break-words">
+        ${displayValue}
+      </div>
+      ${evidenceHtml}
+    `;
+  }
+
+  // Populate Investigation Metadata
+  function populateInvestigation(inv: any) {
+    titleEl.textContent = inv.title || inv.investigation_id;
+
+    if (inv.acronym) {
+      acronymEl.textContent = inv.acronym;
+      acronymEl.classList.remove('hidden');
+    } else {
+      acronymEl.classList.add('hidden');
+    }
+
+    if (inv.gravity_condition?.value) {
+      gravityBadgeEl.textContent = String(inv.gravity_condition.value);
+    } else {
+      gravityBadgeEl.textContent = 'microgravity';
+    }
+
+    // DOI link
+    if (inv.doi) {
+      doiLink.textContent = inv.doi;
+      doiLink.href = `https://doi.org/${inv.doi}`;
+      doiContainer.classList.remove('hidden');
+    } else {
+      doiContainer.classList.add('hidden');
+    }
+
+    // NASA PSI Source Link
+    if (inv.source_url) {
+      sourceLink.href = inv.source_url;
+      sourceContainer.classList.remove('hidden');
+    } else {
+      sourceContainer.classList.add('hidden');
+    }
+
+    // Objective
+    if (inv.objective) {
+      objectiveVal.textContent = inv.objective.value || 'Objective description unavailable.';
+      objectiveStatus.innerHTML = getStatusBadge(inv.objective.status);
+      if (inv.objective.evidence_quote) {
+        objectiveQuote.textContent = `"${inv.objective.evidence_quote}"`;
+        if (inv.objective.evidence_location) {
+          objectiveLocation.textContent = `Source: ${inv.objective.evidence_location}`;
+        }
+        objectiveEvidence.classList.remove('hidden');
+      }
+    }
+
+    // Column 1: Fuel
+    renderField('field-fuel-type', 'Fuel Type', inv.fuel_type);
+    renderField('field-fuel-state', 'Fuel State', inv.fuel_state);
+    renderField('field-sample-shape', 'Sample Shape', inv.sample_shape);
+    renderField('field-sample-size', 'Sample Size', inv.sample_size);
+
+    // Column 2: Environment
+    renderField('field-gravity', 'Gravity Condition', inv.gravity_condition);
+    renderField('field-oxygen-min', 'Minimum Oxygen', inv.oxygen_percent_min);
+    renderField('field-oxygen-max', 'Maximum Oxygen', inv.oxygen_percent_max);
+    renderField('field-pressure', 'Ambient Pressure', inv.pressure_psi);
+    renderField('field-airflow-speed', 'Airflow Speed', inv.airflow_speed_min || inv.airflow_speed_max);
+    renderField('field-diluents', 'Diluents', inv.diluents);
+
+    // Column 3: Hardware & Safety
+    renderField('field-hardware', 'Experiment Hardware', inv.hardware);
+    renderField('field-sensors', 'Sensors & Measurements', inv.sensors_and_measurements);
+    renderField('field-safety-category', 'Safety Category', inv.safety_category);
+  }
+
+  // Render Telemetry Table
+  function renderTelemetryTable() {
+    if (!telemetryFiles || telemetryFiles.length === 0) {
+      telemetryLoading.classList.add('hidden');
+      telemetryEmpty.classList.remove('hidden');
+      telemetryDataView.classList.add('hidden');
+      telemetryFileCount.textContent = '0 Telemetry Files';
+      telemetryStatusPill.textContent = 'Metadata Only (No CSV)';
+      return;
+    }
+
+    const currentFile = telemetryFiles[selectedFileIndex] || telemetryFiles[0];
+    if (!currentFile) return;
+
+    telemetryLoading.classList.add('hidden');
+    telemetryEmpty.classList.add('hidden');
+    telemetryDataView.classList.remove('hidden');
+
+    const totalRows = currentFile.row_count ?? (currentFile.data ? currentFile.data.length : 0);
+    const cols = currentFile.columns || (currentFile.data && currentFile.data[0] ? Object.keys(currentFile.data[0]) : []);
+
+    telemetryFileCount.textContent = `${telemetryFiles.length} CSV ${telemetryFiles.length === 1 ? 'File' : 'Files'}`;
+    telemetryStatusPill.innerHTML = `<span class="text-[#526B55] font-semibold">${telemetryFiles.length} CSV Attached (${totalRows} Rows)</span>`;
+    activeFileName.textContent = currentFile.filename;
+    activeFileStats.textContent = `${cols.length} columns • ${totalRows} total rows`;
+
+    // Multi-file tabs
+    if (telemetryFiles.length > 1) {
+      telemetryTabsWrapper.classList.remove('hidden');
+      telemetryTabs.innerHTML = '';
+      telemetryFiles.forEach((file, idx) => {
+        const btn = document.createElement('button');
+        btn.type = 'button';
+        const isSelected = idx === selectedFileIndex;
+        btn.className = `px-3.5 py-1.5 text-xs font-mono transition-colors border ${
+          isSelected
+            ? 'bg-[#202421] text-white border-[#202421] font-semibold shadow-xs'
+            : 'bg-[#FFFFFF] text-[#666B64] border-[#D8D5CC] hover:text-[#202421] hover:bg-[#F3F0E8]'
+        }`;
+        btn.textContent = file.filename.replace(/^PSI-\d+_/, '');
+        btn.addEventListener('click', () => {
+          selectedFileIndex = idx;
+          renderTelemetryTable();
+        });
+        telemetryTabs.appendChild(btn);
+      });
+    } else {
+      telemetryTabsWrapper.classList.add('hidden');
+    }
+
+    // Render Table Headers
+    telemetryTableHeader.innerHTML = '';
+    cols.forEach((col: string) => {
+      const th = document.createElement('th');
+      th.className = 'py-3 px-3.5 border-r border-[#D8D5CC] font-bold text-[#202421]';
+      th.textContent = col;
+      telemetryTableHeader.appendChild(th);
+    });
+
+    // Render Table Rows
+    telemetryTableBody.innerHTML = '';
+    const rows = currentFile.data || [];
+    const limit = parseInt(rowLimitSelect.value, 10);
+    const displayRows = rows.slice(0, limit);
+
+    displayRows.forEach((row: any) => {
+      const tr = document.createElement('tr');
+      tr.className = 'hover:bg-[#F3F0E8] transition-colors';
+
+      cols.forEach((col: string) => {
+        const td = document.createElement('td');
+        td.className = 'py-2.5 px-3.5 border-r border-[#D8D5CC] text-[#202421]';
+        const val = row[col];
+        if (val === null || val === undefined || val === '') {
+          td.innerHTML = '<span class="text-[#A3A8A0] italic">null</span>';
+        } else {
+          td.textContent = String(val);
+        }
+        tr.appendChild(td);
+      });
+
+      telemetryTableBody.appendChild(tr);
+    });
+  }
+
+  // Main load routine
+  async function loadData() {
+    if (!investigationId) return;
+
+    loadingContainer.classList.remove('hidden');
+    errorContainer.classList.add('hidden');
+    contentContainer.classList.add('hidden');
+
+    try {
+      // 1. Fetch Investigation metadata
+      const investigation = await getInvestigation(investigationId);
+      populateInvestigation(investigation);
+
+      loadingContainer.classList.add('hidden');
+      contentContainer.classList.remove('hidden');
+
+      // 2. Fetch Telemetry records
+      try {
+        const telemetryRes = await getInvestigationTelemetry(investigationId, 500);
+        telemetryFiles = telemetryRes?.files || [];
+        renderTelemetryTable();
+      } catch (telemetryErr) {
+        telemetryLoading.classList.add('hidden');
+        telemetryEmpty.classList.remove('hidden');
+        telemetryFileCount.textContent = 'Telemetry Unavailable';
+        telemetryStatusPill.textContent = 'Metadata Only';
+      }
+
+    } catch (err: any) {
+      loadingContainer.classList.add('hidden');
+      errorContainer.classList.remove('hidden');
+      errorMessage.textContent = err?.message || `Unable to load record ${investigationId} from server.`;
+    }
+  }
+
+  retryBtn?.addEventListener('click', loadData);
+  rowLimitSelect?.addEventListener('change', () => {
+    renderTelemetryTable();
+  });
+
+  loadData();
+</script>

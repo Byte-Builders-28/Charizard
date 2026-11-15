@@ -1,0 +1,357 @@
+---
+import MainLayout from '../layouts/MainLayout.astro';
+---
+
+<MainLayout
+  title="Research Agent | CHARIZARD"
+  description="Natural language scientific research agent for querying spacecraft combustion investigations, experimental parameters, and telemetry observations."
+>
+  <div class="max-w-4xl mx-auto px-4 sm:px-6 py-8 md:py-12 flex-1 flex flex-col min-h-[calc(100vh-16rem)]">
+    <!-- Header -->
+    <div class="mb-6 border-b border-[#D8D5CC] pb-5">
+      <div class="flex items-center gap-2 text-xs font-mono text-[#666B64] mb-2 uppercase tracking-wider">
+        <a href="/" class="hover:text-[#202421]">Home</a>
+        <span>/</span>
+        <span class="text-[#202421] font-semibold">Research Agent</span>
+      </div>
+
+      <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-3">
+        <div>
+          <div class="inline-flex items-center gap-2 px-2 py-0.5 mb-2 border border-[#D8D5CC] bg-[#FFFFFF] font-mono text-[10px] uppercase tracking-wider text-[#666B64]">
+            <span class="w-1.5 h-1.5 rounded-full bg-[#526B55] animate-pulse"></span>
+            <span>FastAPI NL Research Service</span>
+          </div>
+          <h1 class="font-serif-heading text-3xl sm:text-4xl text-[#202421] tracking-tight">
+            Combustion Research Agent
+          </h1>
+        </div>
+
+        <button
+          type="button"
+          id="clear-chat-btn"
+          class="hidden sm:inline-flex items-center gap-1.5 text-xs font-mono uppercase tracking-wider text-[#666B64] hover:text-[#D85A32] underline"
+        >
+          <span>Reset Session</span>
+        </button>
+      </div>
+      <p class="text-sm text-[#666B64] mt-2 font-sans max-w-2xl">
+        Query the microgravity combustion knowledge base in natural language. Ask about specific investigation IDs (case-sensitive, e.g., <code class="font-mono text-xs bg-[#FFFFFF] px-1.5 py-0.5 border border-[#D8D5CC] text-[#D85A32]">PSI-69</code>), experimental limits, fuel types, or flammability observations.
+      </p>
+    </div>
+
+    <!-- Suggested Quick Queries -->
+    <div id="suggested-queries-bar" class="mb-5 flex flex-wrap items-center gap-2 text-xs font-mono">
+      <span class="text-[11px] text-[#666B64] uppercase mr-1">Suggested:</span>
+      <button
+        type="button"
+        class="quick-prompt-btn px-2.5 py-1 bg-[#FFFFFF] border border-[#D8D5CC] text-[#202421] hover:border-[#D85A32] hover:text-[#D85A32] transition-colors"
+        data-prompt="Tell me about PSI-69"
+      >
+        Tell me about PSI-69
+      </button>
+      <button
+        type="button"
+        class="quick-prompt-btn px-2.5 py-1 bg-[#FFFFFF] border border-[#D8D5CC] text-[#202421] hover:border-[#D85A32] hover:text-[#D85A32] transition-colors"
+        data-prompt="What was the objective of PSI-159?"
+      >
+        What was the objective of PSI-159?
+      </button>
+      <button
+        type="button"
+        class="quick-prompt-btn px-2.5 py-1 bg-[#FFFFFF] border border-[#D8D5CC] text-[#202421] hover:border-[#D85A32] hover:text-[#D85A32] transition-colors"
+        data-prompt="Search for liquid fuel experiments in microgravity"
+      >
+        Liquid fuel experiments in microgravity
+      </button>
+      <button
+        type="button"
+        class="quick-prompt-btn px-2.5 py-1 bg-[#FFFFFF] border border-[#D8D5CC] text-[#202421] hover:border-[#D85A32] hover:text-[#D85A32] transition-colors"
+        data-prompt="What fuels were tested in PSI-102?"
+      >
+        What fuels were tested in PSI-102?
+      </button>
+    </div>
+
+    <!-- Chat Messages Stream Container -->
+    <div
+      id="chat-stream"
+      class="flex-1 bg-[#FFFFFF] border border-[#D8D5CC] p-4 sm:p-6 mb-5 space-y-6 overflow-y-auto max-h-[580px] min-h-[380px]"
+    >
+      <!-- Initial Welcome State -->
+      <div id="welcome-message" class="text-center py-12 px-4 max-w-lg mx-auto">
+        <div class="inline-flex items-center justify-center w-10 h-10 border border-[#D8D5CC] bg-[#F3F0E8] font-mono text-sm font-bold text-[#D85A32] mb-3">
+          AI
+        </div>
+        <h2 class="font-serif-heading text-xl text-[#202421] mb-2">
+          CHARIZARD Research Assistant Ready
+        </h2>
+        <p class="text-xs text-[#666B64] font-sans leading-relaxed mb-4">
+          Ask any question about the 11 spacecraft combustion investigations, fuel types, gravity parameters, or sensor telemetry. Type your inquiry below or click a suggested prompt.
+        </p>
+        <div class="text-[11px] font-mono text-[#666B64] bg-[#F3F0E8] p-2 border border-[#D8D5CC]">
+          Tip: Investigation identifiers like <span class="font-bold text-[#202421]">PSI-69</span>, <span class="font-bold text-[#202421]">PSI-98</span>, and <span class="font-bold text-[#202421]">PSI-159</span> are case-sensitive.
+        </div>
+      </div>
+    </div>
+
+    <!-- Agent Input Bar Form -->
+    <form id="agent-form" class="bg-[#FFFFFF] border border-[#D8D5CC] p-3 sm:p-4 shadow-xs">
+      <div class="flex flex-col sm:flex-row items-stretch gap-2.5">
+        <div class="relative flex-1">
+          <input
+            type="text"
+            id="agent-input"
+            name="msg"
+            placeholder="Ask agent about an investigation (e.g., 'Tell me about PSI-69', 'What was observed in PSI-98?')..."
+            autocomplete="off"
+            class="w-full px-4 py-3 text-xs font-mono bg-[#FFFFFF] border border-[#D8D5CC] focus:border-[#D85A32] focus:ring-1 focus:ring-[#D85A32] outline-none text-[#202421]"
+          />
+        </div>
+
+        <button
+          type="submit"
+          id="agent-send-btn"
+          class="px-6 py-3 bg-[#D85A32] hover:bg-[#b84823] text-white font-mono text-xs font-bold uppercase tracking-wider transition-colors disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2 whitespace-nowrap"
+        >
+          <span id="btn-text">Send Query</span>
+          <span id="btn-spinner" class="hidden w-3.5 h-3.5 border-2 border-white border-t-transparent animate-spin"></span>
+        </button>
+      </div>
+
+      <div class="flex items-center justify-between text-[11px] font-mono text-[#666B64] mt-2.5 pt-2 border-t border-[#D8D5CC]">
+        <div class="flex items-center gap-2">
+          <span>Session:</span>
+          <span id="session-user-id" class="text-[#202421] font-semibold">Loading...</span>
+        </div>
+        <div class="hidden sm:block">
+          FastAPI /chat endpoint integration &bull; Strict scientific context
+        </div>
+      </div>
+    </form>
+  </div>
+</MainLayout>
+
+<script>
+  import { sendAgentMessage } from '../lib/api.js';
+  import { marked } from 'marked';
+
+  // Configure marked: GitHub Flavored Markdown, line breaks on single newlines
+  marked.setOptions({ breaks: true, gfm: true });
+
+  // Session ID Management (persists across page reloads during current browser session)
+  let userId = sessionStorage.getItem('charizard_agent_user');
+  if (!userId) {
+    userId = `researcher-${Math.random().toString(36).substring(2, 10)}`;
+    sessionStorage.setItem('charizard_agent_user', userId);
+  }
+
+  const sessionUserIdEl = document.getElementById('session-user-id') as HTMLSpanElement;
+  if (sessionUserIdEl) sessionUserIdEl.textContent = userId;
+
+  // DOM Elements
+  const chatStream = document.getElementById('chat-stream') as HTMLDivElement;
+  const welcomeMessage = document.getElementById('welcome-message') as HTMLDivElement;
+  const agentForm = document.getElementById('agent-form') as HTMLFormElement;
+  const agentInput = document.getElementById('agent-input') as HTMLInputElement;
+  const agentSendBtn = document.getElementById('agent-send-btn') as HTMLButtonElement;
+  const btnText = document.getElementById('btn-text') as HTMLSpanElement;
+  const btnSpinner = document.getElementById('btn-spinner') as HTMLSpanElement;
+  const clearChatBtn = document.getElementById('clear-chat-btn') as HTMLButtonElement;
+  const quickPromptBtns = document.querySelectorAll('.quick-prompt-btn');
+
+  let isSending = false;
+
+  // Format response: parse markdown then linkify PSI IDs
+  function formatAgentResponse(rawText: string): string {
+    // Parse markdown to HTML (marked output is trusted scientific text)
+    let html = marked.parse(rawText) as string;
+
+    // Linkify PSI-xxx identifiers (avoid double-wrapping already-linked ones)
+    html = html.replace(/(?<![/"'>])\b(PSI-\d+)\b/g, (match) => {
+      return `<a href="/investigations/${match}" class="text-[#D85A32] font-bold hover:underline" target="_blank" title="Inspect ${match} Dossier">${match}</a>`;
+    });
+
+    return html;
+  }
+
+  // Append a user message to stream
+  function appendUserMessage(text: string) {
+    if (welcomeMessage) welcomeMessage.classList.add('hidden');
+    if (clearChatBtn) clearChatBtn.classList.remove('hidden');
+
+    const msgBox = document.createElement('div');
+    msgBox.className = 'flex flex-col items-end';
+
+    const timestamp = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', second: '2-digit' });
+
+    msgBox.innerHTML = `
+      <div class="flex items-center gap-2 mb-1.5 text-[10px] font-mono uppercase text-[#666B64]">
+        <span>You</span>
+        <span>&bull;</span>
+        <span>${timestamp}</span>
+      </div>
+      <div class="bg-[#202421] text-white p-3.5 max-w-2xl text-xs font-mono leading-relaxed border border-[#202421]">
+        ${text}
+      </div>
+    `;
+
+    chatStream.appendChild(msgBox);
+    chatStream.scrollTop = chatStream.scrollHeight;
+  }
+
+  // Append an agent message to stream
+  function appendAgentMessage(rawText: string) {
+    const msgBox = document.createElement('div');
+    msgBox.className = 'flex flex-col items-start';
+
+    const timestamp = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', second: '2-digit' });
+    const formattedHtml = formatAgentResponse(rawText);
+
+    msgBox.innerHTML = `
+      <div class="flex items-center gap-2 mb-1.5 text-[10px] font-mono uppercase text-[#666B64]">
+        <span class="w-1.5 h-1.5 bg-[#D85A32]"></span>
+        <span class="font-bold text-[#D85A32]">Research Agent</span>
+        <span>&bull;</span>
+        <span>${timestamp}</span>
+      </div>
+      <div class="bg-[#FFFFFF] text-[#202421] p-4 max-w-2xl border border-[#D8D5CC] border-l-4 border-l-[#D85A32] shadow-xs markdown-body">
+        ${formattedHtml}
+      </div>
+    `;
+
+    chatStream.appendChild(msgBox);
+    chatStream.scrollTop = chatStream.scrollHeight;
+  }
+
+  // Append an error message to stream
+  function appendErrorMessage(errorText: string) {
+    const msgBox = document.createElement('div');
+    msgBox.className = 'flex flex-col items-start';
+
+    msgBox.innerHTML = `
+      <div class="flex items-center gap-1.5 mb-1.5 text-[10px] font-mono uppercase text-[#D85A32] font-bold">
+        <span>&times; Agent Request Error</span>
+      </div>
+      <div class="bg-[#F3F0E8] text-[#D85A32] p-3 max-w-2xl text-xs font-mono border border-[#D85A32]">
+        ${errorText}
+      </div>
+    `;
+
+    chatStream.appendChild(msgBox);
+    chatStream.scrollTop = chatStream.scrollHeight;
+  }
+
+  // Append a temporary loading message
+  let loadingMsgBox: HTMLElement | null = null;
+  function showAgentLoading() {
+    loadingMsgBox = document.createElement('div');
+    loadingMsgBox.className = 'flex flex-col items-start';
+    loadingMsgBox.innerHTML = `
+      <div class="flex items-center gap-2 mb-1 text-[10px] font-mono uppercase text-[#666B64]">
+        <span class="w-1.5 h-1.5 rounded-full bg-[#D85A32] animate-ping"></span>
+        <span>Research Agent Analyzing...</span>
+      </div>
+      <div class="bg-[#F3F0E8] text-[#666B64] p-3 max-w-md text-xs font-mono border border-[#D8D5CC] flex items-center gap-2">
+        <span class="w-3.5 h-3.5 border-2 border-[#D85A32] border-t-transparent animate-spin"></span>
+        <span>Querying knowledge base...</span>
+      </div>
+    `;
+    chatStream.appendChild(loadingMsgBox);
+    chatStream.scrollTop = chatStream.scrollHeight;
+  }
+
+  function hideAgentLoading() {
+    if (loadingMsgBox && loadingMsgBox.parentNode) {
+      loadingMsgBox.parentNode.removeChild(loadingMsgBox);
+      loadingMsgBox = null;
+    }
+  }
+
+  // Send message routine
+  async function submitQuery(query: string) {
+    const text = query.trim();
+    if (!text || isSending) return;
+
+    isSending = true;
+    agentSendBtn.disabled = true;
+    agentInput.disabled = true;
+    btnText.textContent = 'Analyzing...';
+    btnSpinner.classList.remove('hidden');
+
+    appendUserMessage(text);
+    showAgentLoading();
+
+    try {
+      // Call centralized API client
+      const result = await sendAgentMessage(text, userId);
+      hideAgentLoading();
+
+      if (result && result.response) {
+        appendAgentMessage(result.response);
+      } else if (result && result.detail) {
+        appendErrorMessage(typeof result.detail === 'string' ? result.detail : JSON.stringify(result.detail));
+      } else {
+        appendErrorMessage('Agent responded with an empty or unrecognizable payload.');
+      }
+    } catch (err: any) {
+      hideAgentLoading();
+      appendErrorMessage(err?.message || 'Network failure communicating with research agent.');
+    } finally {
+      isSending = false;
+      agentSendBtn.disabled = false;
+      agentInput.disabled = false;
+      btnText.textContent = 'Send Query';
+      btnSpinner.classList.add('hidden');
+      agentInput.focus();
+    }
+  }
+
+  // Form submission
+  agentForm?.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const val = agentInput.value;
+    agentInput.value = '';
+    submitQuery(val);
+  });
+
+  // Suggested prompt clicks
+  quickPromptBtns.forEach((btn) => {
+    btn.addEventListener('click', () => {
+      const prompt = btn.getAttribute('data-prompt');
+      if (prompt) {
+        agentInput.value = prompt;
+        submitQuery(prompt);
+      }
+    });
+  });
+
+  // Reset Session
+  clearChatBtn?.addEventListener('click', () => {
+    // Generate new session user ID
+    userId = `researcher-${Math.random().toString(36).substring(2, 10)}`;
+    sessionStorage.setItem('charizard_agent_user', userId);
+    if (sessionUserIdEl) sessionUserIdEl.textContent = userId;
+
+    chatStream.innerHTML = '';
+    if (welcomeMessage) {
+      chatStream.appendChild(welcomeMessage);
+      welcomeMessage.classList.remove('hidden');
+    }
+    clearChatBtn.classList.add('hidden');
+    agentInput.value = '';
+  });
+
+  // Check URL parameters for prefilled message
+  // Supports: ?prompt=... or ?msg=... or ?q=...
+  function checkUrlPreFill() {
+    const params = new URLSearchParams(window.location.search);
+    const prefill = params.get('prompt') || params.get('msg') || params.get('q');
+    if (prefill && prefill.trim()) {
+      agentInput.value = prefill.trim();
+      // Automatically send the prefilled query immediately
+      submitQuery(prefill.trim());
+    }
+  }
+
+  checkUrlPreFill();
+</script>

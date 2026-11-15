@@ -1,0 +1,165 @@
+---
+import MainLayout from '../layouts/MainLayout.astro';
+---
+
+<MainLayout
+  title="About | CHARIZARD"
+  description="About the CHARIZARD microgravity combustion research data explorer — project scope, dataset provenance, and known limitations."
+>
+  <div class="max-w-4xl mx-auto px-4 sm:px-6 py-8 md:py-12">
+    <!-- Breadcrumb -->
+    <div class="flex items-center gap-2 text-xs font-mono text-[#666B64] mb-6 uppercase tracking-wider">
+      <a href="/" class="hover:text-[#202421]">Home</a>
+      <span>/</span>
+      <span class="text-[#202421] font-semibold">About</span>
+    </div>
+
+    <!-- Header -->
+    <div class="mb-10 border-b border-[#D8D5CC] pb-6">
+      <div class="inline-flex items-center gap-2 px-2 py-0.5 mb-2 border border-[#D8D5CC] bg-[#FFFFFF] font-mono text-[10px] uppercase tracking-wider text-[#666B64]">
+        <span class="w-1.5 h-1.5 bg-[#526B55]"></span>
+        <span>Project Information</span>
+      </div>
+      <h1 class="font-serif-heading text-3xl sm:text-4xl text-[#202421] tracking-tight mb-2">
+        About CHARIZARD
+      </h1>
+      <p class="text-sm text-[#666B64] max-w-2xl font-sans leading-relaxed">
+        A research data explorer for spacecraft microgravity combustion investigations. Designed for structured access to experimental metadata, parameter records, and sensor telemetry.
+      </p>
+    </div>
+
+    <!-- Main content -->
+    <div class="space-y-8">
+
+      <!-- Project -->
+      <section class="bg-[#FFFFFF] border border-[#D8D5CC]">
+        <div class="px-6 py-4 border-b border-[#D8D5CC] bg-[#F3F0E8]">
+          <h2 class="font-mono text-xs font-bold uppercase tracking-wider text-[#202421]">01 — Project</h2>
+        </div>
+        <div class="px-6 py-5 space-y-3 font-sans text-sm text-[#202421] leading-relaxed">
+          <p>
+            CHARIZARD provides a structured interface to a curated collection of spacecraft combustion investigations conducted under microgravity, normal-gravity, and partial-gravity conditions.
+          </p>
+          <p>
+            The application allows researchers and analysts to browse investigation records, inspect extracted scientific metadata, compare experimental parameters across investigations, explore associated telemetry, and query the dataset through a natural-language research agent.
+          </p>
+          <p>
+            The backend is a FastAPI service that exposes the processed investigation records and coordinates a language-model-powered research agent. The frontend is a static Astro application that communicates exclusively with the FastAPI backend.
+          </p>
+        </div>
+      </section>
+
+      <!-- Research Scope -->
+      <section class="bg-[#FFFFFF] border border-[#D8D5CC]">
+        <div class="px-6 py-4 border-b border-[#D8D5CC] bg-[#F3F0E8]">
+          <h2 class="font-mono text-xs font-bold uppercase tracking-wider text-[#202421]">02 — Research Scope</h2>
+        </div>
+        <div class="px-6 py-5 space-y-4">
+          <div class="font-sans text-sm text-[#202421] leading-relaxed space-y-3">
+            <p>
+              Microgravity combustion research examines how fire behaves in the absence of buoyancy-driven convection. Without buoyancy, flame structure, burning rates, ignition thresholds, and extinction limits differ substantially from terrestrial conditions.
+            </p>
+            <p>
+              Understanding these phenomena is relevant to spacecraft fire safety, propulsion efficiency, and fundamental combustion science.
+            </p>
+          </div>
+          <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 mt-2">
+            <div class="border border-[#D8D5CC] p-4">
+              <div class="font-mono text-[10px] uppercase tracking-wider text-[#666B64] mb-1">Environment</div>
+              <div class="font-mono text-xs text-[#202421]">ISS, drop towers, aircraft parabolic flights</div>
+            </div>
+            <div class="border border-[#D8D5CC] p-4">
+              <div class="font-mono text-[10px] uppercase tracking-wider text-[#666B64] mb-1">Fuel Types</div>
+              <div class="font-mono text-xs text-[#202421]">Gas, liquid, solid — multiple fuel species</div>
+            </div>
+            <div class="border border-[#D8D5CC] p-4">
+              <div class="font-mono text-[10px] uppercase tracking-wider text-[#666B64] mb-1">Parameters</div>
+              <div class="font-mono text-xs text-[#202421]">Oxygen %, pressure, flow velocity, temperature</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Dataset Provenance -->
+      <section class="bg-[#FFFFFF] border border-[#D8D5CC]">
+        <div class="px-6 py-4 border-b border-[#D8D5CC] bg-[#F3F0E8]">
+          <h2 class="font-mono text-xs font-bold uppercase tracking-wider text-[#202421]">03 — Dataset Provenance</h2>
+        </div>
+        <div class="px-6 py-5 space-y-3 font-sans text-sm text-[#202421] leading-relaxed">
+          <p>
+            The dataset contains 11 investigation records sourced from documented spacecraft combustion research programs. Each record includes structured metadata covering investigative objectives, experimental conditions, hardware configurations, fuel specifications, sensor types, and safety classifications.
+          </p>
+          <p>
+            Scientific field values carry extraction status tags — <code class="font-mono text-[11px] bg-[#F3F0E8] border border-[#D8D5CC] px-1.5 py-0.5 text-[#D85A32]">extracted</code>, <code class="font-mono text-[11px] bg-[#F3F0E8] border border-[#D8D5CC] px-1.5 py-0.5 text-[#D85A32]">inferred</code>, or <code class="font-mono text-[11px] bg-[#F3F0E8] border border-[#D8D5CC] px-1.5 py-0.5 text-[#D85A32]">unavailable</code> — which indicate how each value was obtained. Evidence quotes and document locations are preserved where available.
+          </p>
+          <p>
+            Ten of the eleven investigations include associated telemetry in CSV format. PSI-159 provides two separate telemetry files. PSI-60 is a metadata-only record with no associated CSV data.
+          </p>
+        </div>
+      </section>
+
+      <!-- Limitations -->
+      <section class="bg-[#FFFFFF] border border-[#D8D5CC]">
+        <div class="px-6 py-4 border-b border-[#D8D5CC] bg-[#F3F0E8]">
+          <h2 class="font-mono text-xs font-bold uppercase tracking-wider text-[#202421]">04 — Known Limitations</h2>
+        </div>
+        <ul class="divide-y divide-[#D8D5CC]">
+          <li class="px-6 py-4 font-mono text-[11px] text-[#202421] flex gap-3 items-start">
+            <span class="text-[#D85A32] font-bold shrink-0 mt-0.5">→</span>
+            <span>The dataset covers 11 investigations only. It does not represent the complete body of microgravity combustion research literature.</span>
+          </li>
+          <li class="px-6 py-4 font-mono text-[11px] text-[#202421] flex gap-3 items-start">
+            <span class="text-[#D85A32] font-bold shrink-0 mt-0.5">→</span>
+            <span>Telemetry schemas are not uniform across investigations. Column names, units, and row counts vary between CSV files.</span>
+          </li>
+          <li class="px-6 py-4 font-mono text-[11px] text-[#202421] flex gap-3 items-start">
+            <span class="text-[#D85A32] font-bold shrink-0 mt-0.5">→</span>
+            <span>Some scientific metadata fields carry <code class="bg-[#F3F0E8] border border-[#D8D5CC] px-1 text-[#666B64]">unavailable</code> status where values were not recoverable from the source documents.</span>
+          </li>
+          <li class="px-6 py-4 font-mono text-[11px] text-[#202421] flex gap-3 items-start">
+            <span class="text-[#D85A32] font-bold shrink-0 mt-0.5">→</span>
+            <span>The research agent responds based on the indexed investigation records. It does not access external scientific literature, databases, or real-time sources.</span>
+          </li>
+          <li class="px-6 py-4 font-mono text-[11px] text-[#202421] flex gap-3 items-start">
+            <span class="text-[#D85A32] font-bold shrink-0 mt-0.5">→</span>
+            <span>Telemetry data is not streaming or live. All CSV files represent static snapshots from the documented investigation records.</span>
+          </li>
+          <li class="px-6 py-4 font-mono text-[11px] text-[#202421] flex gap-3 items-start">
+            <span class="text-[#D85A32] font-bold shrink-0 mt-0.5">→</span>
+            <span>Investigation IDs (e.g., <code class="bg-[#F3F0E8] border border-[#D8D5CC] px-1 text-[#D85A32] font-bold">PSI-69</code>) are case-sensitive throughout the application and API.</span>
+          </li>
+        </ul>
+      </section>
+
+      <!-- Tech Stack -->
+      <section class="bg-[#FFFFFF] border border-[#D8D5CC]">
+        <div class="px-6 py-4 border-b border-[#D8D5CC] bg-[#F3F0E8]">
+          <h2 class="font-mono text-xs font-bold uppercase tracking-wider text-[#202421]">05 — Technology</h2>
+        </div>
+        <div class="px-6 py-5 grid grid-cols-2 md:grid-cols-4 gap-4">
+          <div>
+            <div class="font-mono text-[10px] uppercase tracking-wider text-[#666B64] mb-1">Frontend</div>
+            <div class="font-mono text-xs text-[#202421]">Astro</div>
+          </div>
+          <div>
+            <div class="font-mono text-[10px] uppercase tracking-wider text-[#666B64] mb-1">Styling</div>
+            <div class="font-mono text-xs text-[#202421]">Tailwind CSS v4</div>
+          </div>
+          <div>
+            <div class="font-mono text-[10px] uppercase tracking-wider text-[#666B64] mb-1">Backend</div>
+            <div class="font-mono text-xs text-[#202421]">FastAPI / SQLite</div>
+          </div>
+          <div>
+            <div class="font-mono text-[10px] uppercase tracking-wider text-[#666B64] mb-1">Interactions</div>
+            <div class="font-mono text-xs text-[#202421]">Vanilla JS (ES modules)</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Footer note -->
+      <p class="font-mono text-[11px] text-[#666B64] text-center pb-6">
+        CHARIZARD is a research data tool. No scientific conclusions presented here constitute peer-reviewed findings.
+      </p>
+    </div>
+  </div>
+</MainLayout>
