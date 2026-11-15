@@ -1,5 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import charizardLogo from '../assets/charizard.png'
 import {
   Rocket,
   Search,
@@ -98,7 +99,7 @@ export default function Landing() {
               <div className="absolute inset-0 bg-gradient-to-r from-flame-500 to-amber-500 rounded-3xl blur-2xl opacity-30 group-hover:opacity-50 transition-opacity" />
               <div className="relative bg-space-950 p-6 rounded-2xl border-2 border-space-700 shadow-2xl flex flex-col items-center">
                 <img
-                  src="/charizard.png"
+                  src={charizardLogo}
                   alt="Charizard Mission Emblem"
                   className="w-64 h-64 object-contain filter drop-shadow-[0_0_20px_rgba(249,115,22,0.6)] transform group-hover:scale-105 transition-transform duration-300"
                 />

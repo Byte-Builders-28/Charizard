@@ -4,6 +4,7 @@ import Plot from 'react-plotly.js'
 import { getInvestigations, getAllMockInvestigations } from '../api/client.js'
 import InvestigationCard from '../components/InvestigationCard.jsx'
 import LoadingSpinner from '../components/LoadingSpinner.jsx'
+import charizardLogo from '../assets/charizard.png'
 import { AlertTriangle, FlaskConical, Layers, Activity, Search } from 'lucide-react'
 
 const FEATURED_IDS = ['PSI-69', 'PSI-98', 'PSI-159']
@@ -56,7 +57,7 @@ export default function Overview() {
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-space-800 pb-4">
         <div>
           <div className="flex items-center gap-3">
-            <img src="/charizard.png" alt="Charizard" className="w-8 h-8 object-contain" />
+            <img src={charizardLogo} alt="Charizard" className="w-8 h-8 object-contain" />
             <h1 className="text-3xl font-display font-bold text-white tracking-tight">Mission Control Console</h1>
           </div>
           <p className="text-gray-400 text-sm mt-1">Charizard Microgravity Combustion & Spacecraft Fire Safety Operations</p>

@@ -1,5 +1,6 @@
 import React from 'react'
 import { NavLink } from 'react-router-dom'
+import charizardLogo from '../assets/charizard.png'
 import {
   Home,
   LayoutDashboard,
@@ -35,7 +36,7 @@ export default function Sidebar() {
       >
         <div className="relative">
           <img
-            src="/charizard.png"
+            src={charizardLogo}
             alt="Charizard Emblem"
             className="w-10 h-10 object-contain drop-shadow-[0_0_12px_rgba(255,107,26,0.5)] group-hover:scale-105 transition-transform"
           />

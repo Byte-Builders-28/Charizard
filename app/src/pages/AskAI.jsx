@@ -1,5 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react'
 import { askQuestion } from '../api/client.js'
+import charizardLogo from '../assets/charizard.png'
 import { Bot, Send, User, Sparkles, BookOpen, Quote, AlertCircle } from 'lucide-react'
 
 const STARTER_QUESTIONS = [
@@ -67,7 +68,7 @@ export default function AskAI() {
       {/* Header */}
       <div className="mb-4">
         <h1 className="text-3xl font-display font-bold text-white flex items-center gap-3">
-          <img src="/charizard.png" alt="Charizard" className="w-9 h-9 object-contain drop-shadow-[0_0_12px_rgba(249,115,22,0.6)]" />
+          <img src={charizardLogo} alt="Charizard" className="w-9 h-9 object-contain drop-shadow-[0_0_12px_rgba(249,115,22,0.6)]" />
           Charizard Scientific QA
         </h1>
         <p className="text-gray-400 text-sm mt-1">
@@ -92,7 +93,7 @@ export default function AskAI() {
           >
             {m.role === 'assistant' && (
               <div className="w-9 h-9 rounded-lg bg-space-900 border border-flame-500/40 p-1 flex items-center justify-center flex-shrink-0 shadow-md">
-                <img src="/charizard.png" alt="Charizard" className="w-7 h-7 object-contain" />
+                <img src={charizardLogo} alt="Charizard" className="w-7 h-7 object-contain" />
               </div>
             )}
 
@@ -153,7 +154,7 @@ export default function AskAI() {
         {loading && (
           <div className="flex items-start gap-3">
             <div className="w-9 h-9 rounded-lg bg-space-900 border border-flame-500/40 p-1 flex items-center justify-center shadow-md">
-              <img src="/charizard.png" alt="Charizard" className="w-7 h-7 object-contain animate-pulse" />
+              <img src={charizardLogo} alt="Charizard" className="w-7 h-7 object-contain animate-pulse" />
             </div>
             <div className="bg-space-900 text-gray-300 rounded-xl p-4 border border-space-700 text-sm flex items-center gap-3">
               <span className="animate-bounce">🔥</span>
