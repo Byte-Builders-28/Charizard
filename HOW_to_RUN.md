@@ -1,6 +1,6 @@
-# 🔥 FlameScope — How to Run Guide
+# 🔥 Charizard — How to Run Guide
 
-FlameScope is an open-science research workspace for NASA microgravity combustion science and spacecraft fire safety investigations.
+**Charizard** is an open-science research workspace and intelligence platform for NASA microgravity combustion science and spacecraft fire safety investigations.
 
 ---
 
@@ -69,11 +69,12 @@ python src/extract/extract_investigations.py --dry-run
 
 | Page | Path | Key Capabilities |
 |------|------|------------------|
-| **Mission Control (Overview)** | `/` | Metric tiles, safety donut chart, research area breakdown, featured experiments |
+| **Charizard Landing Page** | `/` | Hero section, official Charizard mission emblem & retro card, architecture blueprint, featured highlights |
+| **Mission Control (Overview)** | `/overview` | Metric tiles, safety donut chart, research area breakdown, featured experiments |
 | **Investigation Explorer** | `/explorer` | Live search, filter chips (safety category, fuel state, gravity, telemetry) |
 | **Investigation Details** | `/investigation/:id` | 15 FieldValue cards with status badges (verified, extracted, inferred, unavailable), source quotes, telemetry table |
-| **Comparative Analysis** | `/compare` | Side-by-side 2–3 investigation matrix, divergent parameter highlights, Plotly radar chart |
-| **Scenario Analysis** | `/scenario` | Mission context scoring (ISS, Lunar Base, Mars Habitat, Rover) with transparent reason breakdown |
-| **Scientific QA (Ask AI)** | `/ask` | Evidence-grounded conversational agent with exact investigation citations and starter prompts |
+| **Comparative Lab** | `/compare` | Side-by-side 2–3 investigation matrix, divergent parameter highlights, Plotly radar chart |
+| **Scenario Engine** | `/scenario` | Mission context scoring (ISS, Lunar Base, Mars Habitat, Rover) with transparent reason breakdown |
+| **Ask Charizard AI** | `/ask` | Evidence-grounded conversational agent with exact investigation citations and starter prompts |
 | **Research Gaps & Frontiers** | `/gaps` | Oxygen vs. Airflow scatter envelope, lunar/Mars partial-gravity gap alert, field coverage bars |
 | **Data Export Gateway** | `/export` | Field selection, flat vs. nested JSON toggle, instant CSV / JSON downloads |

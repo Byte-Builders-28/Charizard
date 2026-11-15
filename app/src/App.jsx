@@ -1,6 +1,7 @@
 import React from 'react'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import Layout from './components/Layout.jsx'
+import Landing from './pages/Landing.jsx'
 import Overview from './pages/Overview.jsx'
 import Explorer from './pages/Explorer.jsx'
 import InvestigationDetail from './pages/InvestigationDetail.jsx'
@@ -16,7 +17,8 @@ export default function App() {
       <div className="dark">
         <Layout>
           <Routes>
-            <Route path="/" element={<Overview />} />
+            <Route path="/" element={<Landing />} />
+            <Route path="/overview" element={<Overview />} />
             <Route path="/explorer" element={<Explorer />} />
             <Route path="/investigation/:id" element={<InvestigationDetail />} />
             <Route path="/compare" element={<Compare />} />

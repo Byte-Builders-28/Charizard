@@ -63,8 +63,8 @@ export default function InvestigationCard({ investigation }) {
             </span>
           ))}
           {inv.has_telemetry && (
-            <span className="text-xs px-1.5 py-0.5 rounded bg-space-700 text-gray-300">
-              {inv.telemetry_rows} rows
+            <span className="text-xs px-1.5 py-0.5 rounded bg-space-700 text-gray-300 font-mono">
+              {inv.telemetry_rows || inv.telemetry_row_count || 0} rows
             </span>
           )}
         </div>

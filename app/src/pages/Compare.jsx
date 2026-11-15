@@ -28,7 +28,7 @@ export default function Compare() {
   const [loading, setLoading] = useState(true)
 
   useEffect(() => {
-    document.title = 'FlameScope | Compare'
+    document.title = 'Charizard | Compare'
     getInvestigations().then(data => {
       const items = data.investigations || data
       setAllInvestigations(items)

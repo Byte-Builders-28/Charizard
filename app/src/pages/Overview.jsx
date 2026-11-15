@@ -4,7 +4,7 @@ import Plot from 'react-plotly.js'
 import { getInvestigations, getAllMockInvestigations } from '../api/client.js'
 import InvestigationCard from '../components/InvestigationCard.jsx'
 import LoadingSpinner from '../components/LoadingSpinner.jsx'
-import { AlertTriangle, FlaskConical, Layers, Activity } from 'lucide-react'
+import { AlertTriangle, FlaskConical, Layers, Activity, Search } from 'lucide-react'
 
 const FEATURED_IDS = ['PSI-69', 'PSI-98', 'PSI-159']
 const DARK_PLOT = { plot_bgcolor: '#111827', paper_bgcolor: '#111827' }
@@ -14,7 +14,7 @@ export default function Overview() {
   const [loading, setLoading] = useState(true)
 
   useEffect(() => {
-    document.title = 'FlameScope | Overview'
+    document.title = 'Charizard | Mission Control'
     getInvestigations()
       .then(d => setInvestigations(d.investigations || d))
       .catch(() => setInvestigations(getAllMockInvestigations()))
@@ -53,9 +53,24 @@ export default function Overview() {
   return (
     <div className="space-y-8">
       {/* Page header */}
-      <div>
-        <h1 className="text-3xl font-bold text-white">Mission Control</h1>
-        <p className="text-gray-400 mt-1">NASA Microgravity Combustion Science Platform</p>
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-space-800 pb-4">
+        <div>
+          <div className="flex items-center gap-3">
+            <img src="/charizard.png" alt="Charizard" className="w-8 h-8 object-contain" />
+            <h1 className="text-3xl font-display font-bold text-white tracking-tight">Mission Control Console</h1>
+          </div>
+          <p className="text-gray-400 text-sm mt-1">Charizard Microgravity Combustion & Spacecraft Fire Safety Operations</p>
+        </div>
+        <div className="flex items-center gap-2">
+          <Link to="/explorer" className="px-3.5 py-1.5 rounded-lg bg-space-800 hover:bg-space-700 text-xs font-semibold text-gray-200 border border-space-700 flex items-center gap-1.5 transition-colors">
+            <Search className="w-3.5 h-3.5 text-flame-400" />
+            <span>Explorer</span>
+          </Link>
+          <Link to="/gaps" className="px-3.5 py-1.5 rounded-lg bg-space-800 hover:bg-space-700 text-xs font-semibold text-gray-200 border border-space-700 flex items-center gap-1.5 transition-colors">
+            <AlertTriangle className="w-3.5 h-3.5 text-ember-400" />
+            <span>Gap Matrix</span>
+          </Link>
+        </div>
       </div>
 
       {/* Stats bar */}

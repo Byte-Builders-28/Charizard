@@ -22,7 +22,7 @@ export default function InvestigationDetail() {
   const [error, setError] = useState(null)
 
   useEffect(() => {
-    document.title = `FlameScope | ${id}`
+    document.title = `Charizard | ${id}`
     setLoading(true)
     Promise.all([
       getInvestigation(id),

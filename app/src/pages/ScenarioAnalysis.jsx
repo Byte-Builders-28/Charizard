@@ -40,7 +40,7 @@ export default function ScenarioAnalysis() {
   const [loading, setLoading] = useState(true)
 
   useEffect(() => {
-    document.title = 'FlameScope | Scenario Analysis'
+    document.title = 'Charizard | Scenario Analysis'
   }, [])
 
   useEffect(() => {

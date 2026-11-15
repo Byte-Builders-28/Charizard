@@ -23,7 +23,7 @@ export default function Explorer() {
     has_telemetry: 'all',
   })
 
-  useEffect(() => { document.title = 'FlameScope | Explorer' }, [])
+  useEffect(() => { document.title = 'Charizard | Explorer' }, [])
 
   const fetchData = useCallback(async () => {
     setLoading(true)

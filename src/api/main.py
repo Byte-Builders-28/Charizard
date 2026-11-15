@@ -242,8 +242,8 @@ def _load_all_data() -> None:
 # ---------------------------------------------------------------------------
 
 app = FastAPI(
-    title="FlameScope API",
-    description="NASA Microgravity Combustion Science Data Platform",
+    title="Charizard API",
+    description="NASA Microgravity Combustion Science & Spacecraft Fire Safety Platform",
     version="1.0.0",
 )
 

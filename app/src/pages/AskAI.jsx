@@ -13,7 +13,7 @@ export default function AskAI() {
   const [messages, setMessages] = useState([
     {
       role: 'assistant',
-      text: 'Hello, I am the FlameScope AI research assistant. Ask me anything about NASA microgravity combustion science experiments, fuel flammability, oxygen extinction limits, or spacecraft fire safety data.',
+      text: 'Hello, I am Charizard, your NASA microgravity combustion intelligence agent. Ask me anything about microgravity combustion flight experiments, fuel flammability, droplet extinction limits, or spacecraft fire safety.',
       citations: [],
     },
   ])
@@ -22,7 +22,7 @@ export default function AskAI() {
   const messagesEndRef = useRef(null)
 
   useEffect(() => {
-    document.title = 'FlameScope | Ask AI'
+    document.title = 'Charizard | Ask AI'
   }, [])
 
   useEffect(() => {
@@ -66,12 +66,12 @@ export default function AskAI() {
     <div className="flex flex-col h-[calc(100vh-8rem)]">
       {/* Header */}
       <div className="mb-4">
-        <h1 className="text-3xl font-bold text-white flex items-center gap-3">
-          <Bot className="text-flame-500 w-8 h-8" />
-          FlameScope Scientific QA
+        <h1 className="text-3xl font-display font-bold text-white flex items-center gap-3">
+          <img src="/charizard.png" alt="Charizard" className="w-9 h-9 object-contain drop-shadow-[0_0_12px_rgba(249,115,22,0.6)]" />
+          Charizard Scientific QA
         </h1>
         <p className="text-gray-400 text-sm mt-1">
-          Evidence-grounded conversational agent querying NASA PSI metadata, telemetry logs, and flight reports
+          Evidence-grounded conversational agent querying NASA PSI flight metadata, telemetry logs, and experiment reports
         </p>
       </div>
 
@@ -91,8 +91,8 @@ export default function AskAI() {
             className={`flex items-start gap-3 ${m.role === 'user' ? 'justify-end' : 'justify-start'}`}
           >
             {m.role === 'assistant' && (
-              <div className="w-8 h-8 rounded-lg bg-flame-500/20 text-flame-400 flex items-center justify-center flex-shrink-0 border border-flame-500/30">
-                <Bot className="w-5 h-5" />
+              <div className="w-9 h-9 rounded-lg bg-space-900 border border-flame-500/40 p-1 flex items-center justify-center flex-shrink-0 shadow-md">
+                <img src="/charizard.png" alt="Charizard" className="w-7 h-7 object-contain" />
               </div>
             )}
 
@@ -152,12 +152,12 @@ export default function AskAI() {
 
         {loading && (
           <div className="flex items-start gap-3">
-            <div className="w-8 h-8 rounded-lg bg-flame-500/20 text-flame-400 flex items-center justify-center border border-flame-500/30">
-              <Bot className="w-5 h-5" />
+            <div className="w-9 h-9 rounded-lg bg-space-900 border border-flame-500/40 p-1 flex items-center justify-center shadow-md">
+              <img src="/charizard.png" alt="Charizard" className="w-7 h-7 object-contain animate-pulse" />
             </div>
             <div className="bg-space-900 text-gray-300 rounded-xl p-4 border border-space-700 text-sm flex items-center gap-3">
               <span className="animate-bounce">🔥</span>
-              <span>Analyzing flight data and synthesizing scientific answer...</span>
+              <span>Charizard is analyzing flight tables and synthesizing grounded answers...</span>
             </div>
           </div>
         )}

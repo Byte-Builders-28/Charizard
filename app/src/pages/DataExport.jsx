@@ -31,7 +31,7 @@ export default function DataExport() {
   const [exporting, setExporting] = useState(false)
 
   useEffect(() => {
-    document.title = 'FlameScope | Data Export'
+    document.title = 'Charizard | Data Export'
     getInvestigations()
       .then(data => {
         const items = data.investigations || data
@@ -82,7 +82,7 @@ export default function DataExport() {
         const dataStr = 'data:text/json;charset=utf-8,' + encodeURIComponent(JSON.stringify(exportPayload, null, 2))
         const dlAnchor = document.createElement('a')
         dlAnchor.setAttribute('href', dataStr)
-        dlAnchor.setAttribute('download', `flamescope_export_${Date.now()}.json`)
+        dlAnchor.setAttribute('download', `charizard_export_${Date.now()}.json`)
         document.body.appendChild(dlAnchor)
         dlAnchor.click()
         dlAnchor.remove()
@@ -100,7 +100,7 @@ export default function DataExport() {
         const csvContent = 'data:text/csv;charset=utf-8,' + encodeURIComponent([headers, ...rows].join('\n'))
         const dlAnchor = document.createElement('a')
         dlAnchor.setAttribute('href', csvContent)
-        dlAnchor.setAttribute('download', `flamescope_export_${Date.now()}.csv`)
+        dlAnchor.setAttribute('download', `charizard_export_${Date.now()}.csv`)
         document.body.appendChild(dlAnchor)
         dlAnchor.click()
         dlAnchor.remove()

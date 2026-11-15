@@ -11,7 +11,7 @@ export default function ResearchGaps() {
   const [loading, setLoading] = useState(true)
 
   useEffect(() => {
-    document.title = 'FlameScope | Research Gaps'
+    document.title = 'Charizard | Research Gaps'
     getGaps()
       .then(data => setGapsData(data))
       .finally(() => setLoading(false))

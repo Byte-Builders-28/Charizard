@@ -241,7 +241,7 @@ function generateMockAnswer(question) {
       { investigation_id: 'PSI-25', title: 'BASS-II', quote: 'Minimum oxygen concentration 15% tested', source: 'telemetry' }
     ]
   } else if (q.includes('fuel') || q.includes('material')) {
-    answer = 'The FlameScope investigations used a diverse range of fuels: liquid droplets (heptane/methanol in FLEX), solid composite materials (SIBAL fabric in SAFFIRE-I, PMMA/cotton/polymers in BASS-II), and gaseous fuels (dimethyl ether/n-heptane in ACME CFI-G). This range covers the primary spacecraft material categories.'
+    answer = 'The Charizard investigations used a diverse range of fuels: liquid droplets (heptane/methanol in FLEX), solid composite materials (SIBAL fabric in SAFFIRE-I, PMMA/cotton/polymers in BASS-II), and gaseous fuels (dimethyl ether/n-heptane in ACME CFI-G). This range covers the primary spacecraft material categories.'
     citations = [
       { investigation_id: 'PSI-69', title: 'FLEX', quote: 'Heptane and methanol droplets were tested', source: 'objective' },
       { investigation_id: 'PSI-98', title: 'SAFFIRE-I', quote: 'Solid Inflammability Boundary At Low-Speed composite fabric', source: 'description' },
@@ -257,7 +257,7 @@ function generateMockAnswer(question) {
     answer = 'This is the most critical gap in the current investigation portfolio. Zero of the 11 current investigations test partial-gravity conditions (Moon at 1/6g, Mars at 1/3g). All existing experiments are conducted in full microgravity (≈0g) aboard the ISS. Partial-gravity conditions fundamentally alter buoyancy-driven airflow, flame shape, and extinction limits — meaning current ISS data may not directly apply to future lunar or Martian habitat fire safety design.'
     citations = []
   } else {
-    answer = 'The FlameScope database contains investigations covering combustion science and spacecraft fire safety aboard the ISS. Key experiments include FLEX (droplet combustion), SAFFIRE-I (large-scale fire experiment), BASS-II (solid material flammability), and ACME CFI-G (cool-flame phenomena). All experiments were conducted in microgravity. The most significant research gap is the absence of partial-gravity experiments relevant to Moon and Mars habitats.'
+    answer = 'The Charizard database contains investigations covering combustion science and spacecraft fire safety aboard the ISS. Key experiments include FLEX (droplet combustion), SAFFIRE-I (large-scale fire experiment), BASS-II (solid material flammability), and ACME CFI-G (cool-flame phenomena). All experiments were conducted in microgravity. The most significant research gap is the absence of partial-gravity experiments relevant to Moon and Mars habitats.'
     citations = [
       { investigation_id: 'PSI-69', title: 'FLEX', quote: 'ISS microgravity environment, droplet combustion', source: 'description' },
       { investigation_id: 'PSI-98', title: 'SAFFIRE-I', quote: 'Large-scale spacecraft fire experiment', source: 'objective' },
