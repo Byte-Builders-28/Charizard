@@ -64,35 +64,74 @@ def get_connection(db_path: Path = DB_PATH) -> sqlite3.Connection:
     return conn
 
 
+def _migrate_existing_db(conn: sqlite3.Connection) -> None:
+    """Add new columns to existing databases that were created before Step 4 field expansion."""
+    existing_columns = {row["name"] for row in conn.execute("PRAGMA table_info(investigations)").fetchall()}
+    new_columns = {
+        "sample_shape": "TEXT",
+        "sample_size": "TEXT",
+        "diluents": "TEXT",
+        "hardware": "TEXT",
+        "sensors_and_measurements": "TEXT",
+        "objective": "TEXT",
+    }
+    for col, col_type in new_columns.items():
+        if col not in existing_columns:
+            conn.execute(f"ALTER TABLE investigations ADD COLUMN {col} {col_type}")
+            log.info("Added column %s to investigations table", col)
+
+
+_INDEX_STATEMENTS = [
+    "CREATE INDEX IF NOT EXISTS idx_inv_fuel_state   ON investigations(fuel_state)",
+    "CREATE INDEX IF NOT EXISTS idx_inv_gravity      ON investigations(gravity_condition)",
+    "CREATE INDEX IF NOT EXISTS idx_inv_safety       ON investigations(safety_category)",
+    "CREATE INDEX IF NOT EXISTS idx_inv_fuel_type    ON investigations(fuel_type)",
+    "CREATE INDEX IF NOT EXISTS idx_inv_sample_shape ON investigations(sample_shape)",
+    "CREATE INDEX IF NOT EXISTS idx_inv_sample_size  ON investigations(sample_size)",
+    "CREATE INDEX IF NOT EXISTS idx_inv_diluents     ON investigations(diluents)",
+    "CREATE INDEX IF NOT EXISTS idx_inv_hardware     ON investigations(hardware)",
+    "CREATE INDEX IF NOT EXISTS idx_inv_sensors      ON investigations(sensors_and_measurements)",
+    "CREATE INDEX IF NOT EXISTS idx_inv_objective    ON investigations(objective)",
+]
+
+_TABLE_DDL = """
+CREATE TABLE IF NOT EXISTS investigations (
+    investigation_id   TEXT PRIMARY KEY,
+    title              TEXT NOT NULL,
+    acronym            TEXT,
+    doi                TEXT,
+    source_url         TEXT,
+    fuel_type          TEXT,
+    fuel_state         TEXT,
+    gravity_condition  TEXT,
+    oxygen_percent_min REAL,
+    oxygen_percent_max REAL,
+    pressure_psi       REAL,
+    airflow_speed_min  REAL,
+    airflow_speed_max  REAL,
+    safety_category    TEXT,
+    sample_shape       TEXT,
+    sample_size        TEXT,
+    diluents           TEXT,
+    hardware           TEXT,
+    sensors_and_measurements TEXT,
+    objective          TEXT,
+    record_json        TEXT NOT NULL,
+    created_at         TEXT DEFAULT (datetime('now'))
+)
+"""
+
+
 def init_db(db_path: Path = DB_PATH) -> None:
     conn = get_connection(db_path)
     try:
-        conn.executescript(
-            """
-            CREATE TABLE IF NOT EXISTS investigations (
-                investigation_id   TEXT PRIMARY KEY,
-                title              TEXT NOT NULL,
-                acronym            TEXT,
-                doi                TEXT,
-                source_url         TEXT,
-                fuel_type          TEXT,
-                fuel_state         TEXT,
-                gravity_condition  TEXT,
-                oxygen_percent_min REAL,
-                oxygen_percent_max REAL,
-                pressure_psi       REAL,
-                airflow_speed_min  REAL,
-                airflow_speed_max  REAL,
-                safety_category    TEXT,
-                record_json        TEXT NOT NULL,
-                created_at         TEXT DEFAULT (datetime('now'))
-            );
-            CREATE INDEX IF NOT EXISTS idx_inv_fuel_state   ON investigations(fuel_state);
-            CREATE INDEX IF NOT EXISTS idx_inv_gravity      ON investigations(gravity_condition);
-            CREATE INDEX IF NOT EXISTS idx_inv_safety       ON investigations(safety_category);
-            CREATE INDEX IF NOT EXISTS idx_inv_fuel_type    ON investigations(fuel_type);
-            """
-        )
+        conn.execute(_TABLE_DDL)
+        _migrate_existing_db(conn)
+        for stmt in _INDEX_STATEMENTS:
+            try:
+                conn.execute(stmt)
+            except sqlite3.OperationalError as exc:
+                log.warning("Could not create index: %s — %s", stmt, exc)
         conn.commit()
     finally:
         conn.close()
@@ -144,6 +183,12 @@ def _extract_filter_columns(record: InvestigationExtracted) -> Dict[str, Any]:
             if isinstance(_fv_value(record.safety_category), list)
             else None
         ),
+        "sample_shape": _as_scalar(_fv_value(record.sample_shape)),
+        "sample_size": _as_scalar(_fv_value(record.sample_size)),
+        "diluents": _as_scalar(_fv_value(record.diluents)),
+        "hardware": _as_scalar(_fv_value(record.hardware)),
+        "sensors_and_measurements": _as_scalar(_fv_value(record.sensors_and_measurements)),
+        "objective": _as_scalar(_fv_value(record.objective)),
         "record_json": record.model_dump_json(),
     }
 
@@ -206,6 +251,12 @@ def list_investigations(
     oxygen_max: Optional[float] = None,
     pressure_min: Optional[float] = None,
     pressure_max: Optional[float] = None,
+    sample_shape: Optional[str] = None,
+    sample_size: Optional[str] = None,
+    diluents: Optional[str] = None,
+    hardware: Optional[str] = None,
+    sensors_and_measurements: Optional[str] = None,
+    objective: Optional[str] = None,
     limit: int = 50,
     offset: int = 0,
 ) -> Tuple[List[dict], int]:
@@ -238,6 +289,24 @@ def list_investigations(
         if pressure_max is not None:
             where.append("pressure_psi <= :pressure_max")
             params["pressure_max"] = pressure_max
+        if sample_shape:
+            where.append("sample_shape LIKE :sample_shape")
+            params["sample_shape"] = f"%{sample_shape}%"
+        if sample_size:
+            where.append("sample_size LIKE :sample_size")
+            params["sample_size"] = f"%{sample_size}%"
+        if diluents:
+            where.append("diluents LIKE :diluents")
+            params["diluents"] = f"%{diluents}%"
+        if hardware:
+            where.append("hardware LIKE :hardware")
+            params["hardware"] = f"%{hardware}%"
+        if sensors_and_measurements:
+            where.append("sensors_and_measurements LIKE :sensors_and_measurements")
+            params["sensors_and_measurements"] = f"%{sensors_and_measurements}%"
+        if objective:
+            where.append("objective LIKE :objective")
+            params["objective"] = f"%{objective}%"
 
         where_sql = f"WHERE {' AND '.join(where)}" if where else ""
 
@@ -252,7 +321,9 @@ def list_investigations(
             SELECT investigation_id, title, acronym, doi, source_url,
                    fuel_type, fuel_state, gravity_condition,
                    oxygen_percent_min, oxygen_percent_max, pressure_psi,
-                   airflow_speed_min, airflow_speed_max, safety_category
+                   airflow_speed_min, airflow_speed_max, safety_category,
+                   sample_shape, sample_size, diluents, hardware,
+                   sensors_and_measurements, objective
             FROM investigations {where_sql}
             ORDER BY investigation_id
             LIMIT :limit OFFSET :offset

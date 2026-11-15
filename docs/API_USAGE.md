@@ -72,7 +72,7 @@ Health check. Returns API status and the number of investigation records loaded 
 
 Returns a filterable, paginated list of investigations. Each item is lightweight (identity fields + denormalized filter columns only — no full `FieldValue` objects).
 
-**Query parameters:**
+**Query parameters (all optional):**
 
 | Parameter | Type | Description | Example |
 |-----------|------|-------------|---------|
@@ -84,6 +84,12 @@ Returns a filterable, paginated list of investigations. Each item is lightweight
 | `oxygen_max` | number | Max O₂ percent (inclusive) | `?oxygen_max=21` |
 | `pressure_min` | number | Min pressure in psi (inclusive) | `?pressure_min=10` |
 | `pressure_max` | number | Max pressure in psi (inclusive) | `?pressure_max=15` |
+| `sample_shape` | string | Substring match on sample shape | `?sample_shape=droplet` |
+| `sample_size` | string | Substring match on sample size | `?sample_size=1.1` |
+| `diluents` | string | Substring match on diluent names | `?diluents=He` |
+| `hardware` | string | Substring match on experiment hardware | `?hardware=CIR` |
+| `sensors_and_measurements` | string | Substring match on sensor types | `?sensors_and_measurements=temperature` |
+| `objective` | string | Substring match on investigation objective | `?objective=flammability` |
 | `limit` | int | Page size (1–500, default 50) | `?limit=10` |
 | `offset` | int | Page offset (default 0) | `?offset=20` |
 
@@ -103,16 +109,231 @@ Returns a filterable, paginated list of investigations. Each item is lightweight
       "fuel_type": "methanol",
       "fuel_state": "liquid",
       "gravity_condition": "microgravity",
-      "oxygen_percent_min": 0.0,
-      "oxygen_percent_max": 0.0,
+      "oxygen_percent_min": 12.0,
+      "oxygen_percent_max": 34.0,
       "pressure_psi": 14.7,
       "airflow_speed_min": null,
       "airflow_speed_max": null,
-      "safety_category": null
+      "safety_category": null,
+      "sample_shape": "droplet",
+      "sample_size": "1.1 - 4.67",
+      "diluents": ["CO2", "He", "SF6", "N2"],
+      "hardware": ["Combustion Integrated Rack (CIR)", ...],
+      "sensors_and_measurements": ["droplet burning rates", ...],
+      "objective": "Map the flammability limits of liquid fuels..."
     }
   ]
 }
 ```
+
+---
+
+### `GET /investigations/{investigation_id}`
+
+Returns the **full** investigation record, including all 20 fields and every `FieldValue` object (with `value`, `unit`, `status`, `evidence_quote`, `evidence_location`).
+
+**Path parameter:**
+
+| Parameter | Type | Description |
+|-----------|------|-------------|
+| `investigation_id` | string | Investigation ID (e.g. `PSI-69`) |
+
+**Response:**
+```json
+{
+  "investigation_id": "PSI-69",
+  "title": "Flame Extinguishment Experiment",
+  "acronym": "FLEX",
+  "doi": "10.60555/mbq8-0451",
+  "source_url": "https://psi.nasa.gov/investigations/PSI-69",
+  "objective": {
+    "value": "...",
+    "unit": null,
+    "status": "extracted",
+    "evidence_quote": "...",
+    "evidence_location": "..."
+  },
+  "hardware": { ... },
+  "fuel_type": { ... },
+  "fuel_state": { ... },
+  "sample_shape": { ... },
+  "sample_size": { ... },
+  "oxygen_percent_min": { ... },
+  "oxygen_percent_max": { ... },
+  "pressure_psi": { ... },
+  "airflow_speed_min": { ... },
+  "airflow_speed_max": { ... },
+  "diluents": { ... },
+  "gravity_condition": { ... },
+  "sensors_and_measurements": { ... },
+  "safety_category": { ... }
+}
+```
+
+**404** if the investigation ID does not exist.
+
+---
+
+### `GET /investigations/{investigation_id}/telemetry`
+
+Returns raw telemetry CSV rows as JSON for a given investigation. Filenames are resolved via `data/combustion/summary_report.json` with a glob fallback.
+
+**Query parameters:**
+
+| Parameter | Type | Description |
+|-----------|------|-------------|
+| `limit` | int | Max rows per CSV file (optional) |
+
+**Response:**
+```json
+{
+  "investigation_id": "PSI-69",
+  "files": [
+    {
+      "filename": "PSI-69_Experimental table_FLEX.csv",
+      "columns": ["FLEX Test #", "Fuel", "Ambient pressure", ...],
+      "row_count": 274,
+      "data": [
+        { "FLEX Test #": "1", "Fuel": "Methanol", "Ambient pressure": "757.7", ... },
+        { "FLEX Test #": "2", "Fuel": "Methanol", "Ambient pressure": "758.1", ... }
+      ]
+    }
+  ]
+}
+```
+
+- **PSI-159** returns two files (Normal Flames + Inverse Flames).
+- **PSI-60** returns `"files": []` (metadata-only investigation, no CSV).
+- Empty strings in CSV cells are converted to `null`.
+
+---
+
+### `POST /compare`
+
+Compares 2–3 investigations side by side, returning aligned attributes plus what varied and what stayed the same.
+
+**Request body:**
+```json
+{
+  "investigation_ids": ["PSI-69", "PSI-98"]
+}
+```
+
+**Constraints:** Must provide between 2 and 3 investigation IDs. All IDs must exist.
+
+**Response:**
+```json
+{
+  "investigations": [ {full record 1}, {full record 2} ],
+  "aligned_table": [
+    { "investigation_id": "PSI-69", "title": "...", "fuel_type": "...", ... },
+    { "investigation_id": "PSI-98", "title": "...", "fuel_type": "...", ... }
+  ],
+  "what_varied": ["fuel_type", "oxygen_percent_min", "gravity_condition", ...],
+  "what_stayed_same": ["acronym", "doi"],
+  "telemetry_summary": [
+    { "investigation_id": "PSI-69", "columns": { "Fuel": "likely varies", ... } },
+    { "investigation_id": "PSI-98", "columns": { ... } }
+  ]
+}
+```
+
+- `aligned_table` includes all 20 schema fields with `value`, `unit`, and `status` sub-columns.
+- `what_varied` lists attributes that differ across the selected investigations.
+- `what_stayed_same` lists attributes identical across all selected investigations.
+- `telemetry_summary` lists which telemetry columns likely vary row-to-row for each investigation.
+
+**422** if fewer than 2 or more than 3 IDs provided.  
+**404** if any investigation ID is not found.
+
+---
+
+### `GET /search`
+
+Lightweight text search across investigation fields, with optional structured filters.
+
+**Query parameters:**
+
+| Parameter | Type | Description | Example |
+|-----------|------|-------------|---------|
+| `q` | string | **Required.** Text search query (space-separated terms) | `?q=liquid oxygen microgravity` |
+| `fuel_type` | string | Substring match on fuel type | `&fuel_type=methanol` |
+| `fuel_state` | string | Exact match: `solid`, `liquid`, or `gas` | `&fuel_state=liquid` |
+| `gravity_condition` | string | Exact match: `microgravity`, `normal_gravity`, or `partial_gravity` | `&gravity_condition=microgravity` |
+| `safety_category` | string | Exact match on safety category item | `&safety_category=suppression` |
+| `limit` | int | Max results (1–50, default 10) | `&limit=5` |
+
+**How scoring works:**
+1. The query is split into lowercase terms (e.g. `"liquid oxygen"` → `["liquid", "oxygen"]`).
+2. For each investigation, a text blob is built from: `title`, `acronym`, `doi`, `source_url`, `objective`, `hardware`, `fuel_type`, `fuel_state`, `gravity_condition`, `safety_category`, `sample_shape`, `sample_size`, `diluents`, `pressure_psi`, `sensors_and_measurements`, `airflow_speed_min`, `airflow_speed_max`.
+3. Relevance = (matched terms) / (total terms). Investigations with 0 matches are excluded.
+4. Structured filters are applied on top.
+5. Results sorted by relevance descending.
+
+**Response:**
+```json
+{
+  "query": "liquid oxygen microgravity",
+  "matches": [
+    {
+      "investigation_id": "PSI-69",
+      "title": "Flame Extinguishment Experiment",
+      "relevance": 1.0,
+      "matched_terms": ["liquid", "oxygen", "microgravity"]
+    }
+  ],
+  "count": 1
+}
+```
+
+### `POST /chat`
+
+Natural language research assistant bot translating user queries into FlameScope API calls via Gemini agent with minimal per-user context tracking.
+
+**Query parameters:**
+
+| Parameter | Type | Description | Example |
+|-----------|------|-------------|---------|
+| `user` | string | **Required.** Per-user identifier (1-100 characters) | `?user=researcher_01` |
+
+**Request body:**
+```json
+{
+  "msg": "search liquid oxygen experiments"
+}
+```
+
+**Response:**
+```json
+{
+  "status": "success",
+  "response": "Found 5 experiments involving liquid oxygen: PSI-69 (Flame Extinguishment Experiment)... Would you like details on any?"
+}
+```
+
+For complete bot behavior, context isolation, and tool calling documentation, see [docs/CHAT_BOT.md](file:///D:/CODE/byte_builders/Charizard/docs/CHAT_BOT.md).
+
+---
+
+### `POST /reload`
+
+Re-loads all records from `data/processed/investigations.json` into SQLite without restarting the server. Useful after re-running Step 2 extraction.
+
+**Response:**
+```json
+{
+  "status": "reloaded",
+  "records": 11
+}
+```
+
+**404** if `data/processed/investigations.json` does not exist.
+
+---
+
+### `GET /docs` / `GET /redoc`
+
+Interactive API documentation (Swagger UI / ReDoc). Try any endpoint directly from the browser.
 
 ---
 
