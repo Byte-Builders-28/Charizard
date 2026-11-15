@@ -1,0 +1,486 @@
+---
+import MainLayout from '../layouts/MainLayout.astro';
+---
+
+<MainLayout
+  title="Compare Investigations | CHARIZARD"
+  description="Side-by-side comparison of two or three spacecraft combustion investigations."
+>
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 py-8 md:py-12">
+
+    <!-- Header -->
+    <div class="mb-8 border-b border-[#D8D5CC] pb-6">
+      <div class="flex items-center gap-2 text-xs font-mono text-[#666B64] mb-3 uppercase tracking-wider">
+        <a href="/" class="hover:text-[#202421]">Home</a>
+        <span>/</span>
+        <span class="text-[#202421] font-semibold">Compare</span>
+      </div>
+      <div class="inline-flex items-center gap-2 px-2 py-0.5 mb-2 border border-[#D8D5CC] bg-[#FFFFFF] font-mono text-[10px] uppercase tracking-wider text-[#666B64]">
+        <span class="w-1.5 h-1.5 bg-[#D85A32]"></span>
+        <span>Comparative Analysis</span>
+      </div>
+      <h1 class="font-serif-heading text-3xl sm:text-4xl text-[#202421] tracking-tight">
+        Investigation Comparison
+      </h1>
+      <p class="text-sm text-[#666B64] mt-1.5 max-w-2xl font-sans leading-relaxed">
+        Select two or three investigation IDs. The backend identifies what varied, what stayed constant, and returns telemetry column summaries.
+      </p>
+    </div>
+
+    <!-- Selection Panel -->
+    <div class="bg-[#FFFFFF] border border-[#D8D5CC] p-5 mb-6">
+      <h2 class="font-mono text-xs font-bold uppercase tracking-wider text-[#202421] mb-4 pb-3 border-b border-[#D8D5CC]">
+        Select Investigations (2–3)
+      </h2>
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-5">
+        <div class="flex flex-col gap-1">
+          <label for="inv-1" class="font-mono text-[10px] uppercase tracking-wider text-[#666B64]">Investigation A</label>
+          <select id="inv-1" class="compare-select px-3 py-2 bg-[#FFFFFF] border border-[#D8D5CC] font-mono text-xs text-[#202421] focus:border-[#D85A32] focus:ring-1 focus:ring-[#D85A32] outline-none">
+            <option value="">— Select ID —</option>
+          </select>
+        </div>
+        <div class="flex flex-col gap-1">
+          <label for="inv-2" class="font-mono text-[10px] uppercase tracking-wider text-[#666B64]">Investigation B</label>
+          <select id="inv-2" class="compare-select px-3 py-2 bg-[#FFFFFF] border border-[#D8D5CC] font-mono text-xs text-[#202421] focus:border-[#D85A32] focus:ring-1 focus:ring-[#D85A32] outline-none">
+            <option value="">— Select ID —</option>
+          </select>
+        </div>
+        <div class="flex flex-col gap-1">
+          <label for="inv-3" class="font-mono text-[10px] uppercase tracking-wider text-[#666B64]">Investigation C <span class="text-[#D8D5CC]">(optional)</span></label>
+          <select id="inv-3" class="compare-select px-3 py-2 bg-[#FFFFFF] border border-[#D8D5CC] font-mono text-xs text-[#202421] focus:border-[#D85A32] focus:ring-1 focus:ring-[#D85A32] outline-none">
+            <option value="">— None —</option>
+          </select>
+        </div>
+      </div>
+      <div class="flex items-center gap-3 flex-wrap">
+        <button id="compare-btn" type="button" disabled
+          class="px-5 py-2.5 bg-[#D85A32] hover:bg-[#b84823] text-white font-mono text-xs font-bold uppercase tracking-wider transition-colors disabled:opacity-40 disabled:cursor-not-allowed flex items-center gap-2">
+          <span id="compare-btn-text">Run Comparison</span>
+          <span id="compare-btn-spinner" class="hidden w-3.5 h-3.5 border-2 border-white border-t-transparent animate-spin"></span>
+        </button>
+        <button id="ask-agent-btn" type="button" disabled
+          class="px-4 py-2.5 bg-[#FFFFFF] border border-[#D85A32] text-[#D85A32] hover:bg-[#D85A32] hover:text-white font-mono text-xs font-bold uppercase tracking-wider transition-colors disabled:opacity-40 disabled:cursor-not-allowed flex items-center gap-1.5"
+          title="Instruct the research agent to run its comparison tool on these investigations">
+          <span class="w-1.5 h-1.5 rounded-full bg-[#D85A32]"></span>
+          <span>Ask Agent to Compare</span>
+          <span>&rarr;</span>
+        </button>
+        <button id="clear-compare-btn" type="button"
+          class="px-4 py-2.5 border border-[#D8D5CC] text-[#666B64] hover:text-[#202421] hover:border-[#202421] font-mono text-xs uppercase tracking-wider transition-colors">
+          Clear
+        </button>
+        <span id="selection-status" class="font-mono text-[11px] text-[#666B64]">Select at least 2 investigations.</span>
+      </div>
+    </div>
+
+    <!-- Results -->
+    <div id="compare-results" class="space-y-5">
+
+      <!-- Agent Deep-Dive Banner -->
+      <div id="compare-agent-banner" class="hidden bg-[#FFFFFF] border border-[#D8D5CC] border-l-4 border-l-[#D85A32] p-4 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 shadow-xs">
+        <div>
+          <div class="font-mono text-xs font-bold text-[#202421] flex items-center gap-2">
+            <span class="w-2 h-2 rounded-full bg-[#D85A32] animate-pulse"></span>
+            <span>Consult Research Agent for Comparative Synthesis</span>
+          </div>
+          <div class="font-mono text-[11px] text-[#666B64] mt-0.5">
+            Instruct the research agent to run its comparison tool and interpret flame dynamics, parameter variances, and telemetry.
+          </div>
+        </div>
+        <button
+          id="banner-agent-compare-btn"
+          type="button"
+          class="shrink-0 px-4 py-2 bg-[#D85A32] hover:bg-[#b84823] text-white font-mono text-xs font-bold uppercase tracking-wider transition-colors flex items-center gap-2"
+        >
+          <span>Ask Agent to Compare</span>
+          <span>&rarr;</span>
+        </button>
+      </div>
+
+      <!-- Error -->
+      <div id="compare-error" class="hidden bg-[#FFFFFF] border border-[#D85A32] p-5">
+        <p class="font-mono text-xs font-bold text-[#D85A32] uppercase mb-1">Comparison failed</p>
+        <p id="compare-error-msg" class="font-mono text-xs text-[#666B64] mt-1"></p>
+        <button id="compare-retry-btn" class="mt-3 font-mono text-xs uppercase tracking-wider text-[#D85A32] hover:underline">↺ Retry</button>
+      </div>
+
+      <!-- Loading -->
+      <div id="compare-loading" class="hidden bg-[#FFFFFF] border border-[#D8D5CC] p-10 flex flex-col items-center gap-3">
+        <span class="w-5 h-5 border-2 border-[#D85A32] border-t-transparent animate-spin"></span>
+        <span class="font-mono text-xs text-[#666B64]">Running comparison analysis…</span>
+      </div>
+
+      <!-- Varied / Same -->
+      <div id="compare-diffs" class="hidden grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div class="bg-[#FFFFFF] border border-[#D8D5CC]">
+          <div class="px-5 py-3 border-b border-[#D8D5CC] bg-[#F3F0E8] flex items-center gap-2">
+            <span class="w-2 h-2 bg-[#D85A32]"></span>
+            <h3 class="font-mono text-xs font-bold uppercase tracking-wider text-[#202421]">What Varied</h3>
+          </div>
+          <ul id="what-varied-list" class="divide-y divide-[#D8D5CC] max-h-64 overflow-y-auto"></ul>
+        </div>
+        <div class="bg-[#FFFFFF] border border-[#D8D5CC]">
+          <div class="px-5 py-3 border-b border-[#D8D5CC] bg-[#F3F0E8] flex items-center gap-2">
+            <span class="w-2 h-2 bg-[#526B55]"></span>
+            <h3 class="font-mono text-xs font-bold uppercase tracking-wider text-[#202421]">What Stayed the Same</h3>
+          </div>
+          <ul id="what-same-list" class="divide-y divide-[#D8D5CC]"></ul>
+        </div>
+      </div>
+
+      <!-- Aligned Parameters Table (built from investigations[]) -->
+      <div id="compare-table-wrap" class="hidden bg-[#FFFFFF] border border-[#D8D5CC]">
+        <div class="px-5 py-3 border-b border-[#D8D5CC] bg-[#F3F0E8] flex items-center justify-between">
+          <h3 class="font-mono text-xs font-bold uppercase tracking-wider text-[#202421]">Aligned Parameters</h3>
+          <span class="font-mono text-[10px] text-[#666B64]">Extracted field values side-by-side</span>
+        </div>
+        <div class="overflow-x-auto">
+          <table class="w-full text-xs font-mono">
+            <thead id="compare-table-head" class="bg-[#F3F0E8]"></thead>
+            <tbody id="compare-table-body" class="divide-y divide-[#D8D5CC]"></tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Telemetry column summary -->
+      <div id="compare-telemetry-wrap" class="hidden bg-[#FFFFFF] border border-[#D8D5CC]">
+        <div class="px-5 py-3 border-b border-[#D8D5CC] bg-[#F3F0E8]">
+          <h3 class="font-mono text-xs font-bold uppercase tracking-wider text-[#202421]">Telemetry Columns</h3>
+        </div>
+        <div id="compare-telemetry-body" class="divide-y divide-[#D8D5CC]"></div>
+      </div>
+
+    </div>
+  </div>
+</MainLayout>
+
+<script>
+  import { getInvestigations, compareInvestigations } from '../lib/api.js';
+
+  const selects = [
+    document.getElementById('inv-1') as HTMLSelectElement,
+    document.getElementById('inv-2') as HTMLSelectElement,
+    document.getElementById('inv-3') as HTMLSelectElement,
+  ];
+  const compareBtn     = document.getElementById('compare-btn') as HTMLButtonElement;
+  const compareBtnText = document.getElementById('compare-btn-text') as HTMLSpanElement;
+  const compareBtnSpinner = document.getElementById('compare-btn-spinner') as HTMLSpanElement;
+  const askAgentBtn       = document.getElementById('ask-agent-btn') as HTMLButtonElement;
+  const agentBanner       = document.getElementById('compare-agent-banner') as HTMLDivElement;
+  const bannerAgentBtn    = document.getElementById('banner-agent-compare-btn') as HTMLButtonElement;
+  const clearBtn          = document.getElementById('clear-compare-btn') as HTMLButtonElement;
+  const selectionStatus   = document.getElementById('selection-status') as HTMLSpanElement;
+
+  const loadingDiv    = document.getElementById('compare-loading') as HTMLDivElement;
+  const errorDiv      = document.getElementById('compare-error') as HTMLDivElement;
+  const errorMsg      = document.getElementById('compare-error-msg') as HTMLParagraphElement;
+  const retryBtn      = document.getElementById('compare-retry-btn') as HTMLButtonElement;
+  const diffsDiv      = document.getElementById('compare-diffs') as HTMLDivElement;
+  const variedList    = document.getElementById('what-varied-list') as HTMLUListElement;
+  const sameList      = document.getElementById('what-same-list') as HTMLUListElement;
+  const tableWrap     = document.getElementById('compare-table-wrap') as HTMLDivElement;
+  const tableHead     = document.getElementById('compare-table-head') as HTMLTableSectionElement;
+  const tableBody     = document.getElementById('compare-table-body') as HTMLTableSectionElement;
+  const telemetryWrap = document.getElementById('compare-telemetry-wrap') as HTMLDivElement;
+  const telemetryBody = document.getElementById('compare-telemetry-body') as HTMLDivElement;
+
+  // Field label mapping for display
+  const FIELD_LABELS: Record<string, string> = {
+    investigation_id: 'ID',
+    title: 'Title',
+    acronym: 'Acronym',
+    doi: 'DOI',
+    fuel_type: 'Fuel Type',
+    fuel_state: 'Fuel State',
+    oxygen_percent_min: 'O₂ % Min',
+    oxygen_percent_max: 'O₂ % Max',
+    pressure_psi: 'Pressure (psi)',
+    airflow_speed_min: 'Airflow Min',
+    airflow_speed_max: 'Airflow Max',
+    gravity_condition: 'Gravity Condition',
+    safety_category: 'Safety Category',
+    sample_shape: 'Sample Shape',
+    sample_size: 'Sample Size',
+    diluents: 'Diluents',
+    hardware: 'Hardware',
+    sensors_and_measurements: 'Sensors & Measurements',
+    objective: 'Objective',
+  };
+
+  // Fields shown in the aligned table (top-level flat values from the flat aligned row in compare response)
+  const DISPLAY_FIELDS = [
+    'fuel_type','fuel_state','gravity_condition','oxygen_percent_min','oxygen_percent_max',
+    'pressure_psi','airflow_speed_min','airflow_speed_max','sample_shape','sample_size',
+    'diluents','hardware','sensors_and_measurements','safety_category','objective',
+  ];
+
+  function getSelectedIds(): string[] {
+    return selects.map(s => s.value.trim()).filter(v => v !== '');
+  }
+
+  function validateSelection() {
+    const ids = getSelectedIds();
+    const unique = [...new Set(ids)];
+    if (unique.length < 2) {
+      compareBtn.disabled = true;
+      if (askAgentBtn) askAgentBtn.disabled = true;
+      selectionStatus.textContent = `Select at least 2 investigations. (${unique.length} selected)`;
+    } else if (unique.length !== ids.length) {
+      compareBtn.disabled = true;
+      if (askAgentBtn) askAgentBtn.disabled = true;
+      selectionStatus.textContent = 'Each investigation must be selected only once.';
+    } else {
+      compareBtn.disabled = false;
+      if (askAgentBtn) askAgentBtn.disabled = false;
+      selectionStatus.textContent = `${unique.length} selected — ready to compare.`;
+    }
+  }
+
+  selects.forEach(sel => sel.addEventListener('change', validateSelection));
+
+  clearBtn.addEventListener('click', () => {
+    selects.forEach(sel => { sel.selectedIndex = 0; });
+    validateSelection();
+    hideAll();
+  });
+
+  function hideAll() {
+    [loadingDiv, errorDiv, diffsDiv, tableWrap, telemetryWrap, agentBanner].forEach(el => el?.classList.add('hidden'));
+  }
+
+  function showLoading() {
+    hideAll();
+    loadingDiv.classList.remove('hidden');
+  }
+
+  function showError(msg: string) {
+    hideAll();
+    errorDiv.classList.remove('hidden');
+    errorMsg.textContent = msg;
+  }
+
+  // Render what_varied / what_stayed_same (arrays of field name strings)
+  function renderTagList(el: HTMLUListElement, fields: string[], highlight: boolean) {
+    el.innerHTML = '';
+    if (!fields || fields.length === 0) {
+      el.innerHTML = '<li class="px-5 py-3 font-mono text-[11px] text-[#666B64] italic">None.</li>';
+      return;
+    }
+    fields.forEach(field => {
+      const label = FIELD_LABELS[field] || field.replace(/_/g, ' ');
+      const li = document.createElement('li');
+      li.className = 'px-5 py-2.5 font-mono text-[11px] flex items-center gap-2';
+      li.innerHTML = `
+        <span class="w-1.5 h-1.5 shrink-0 ${highlight ? 'bg-[#D85A32]' : 'bg-[#526B55]'}"></span>
+        <span class="text-[#202421]">${label}</span>
+        <span class="text-[#D8D5CC] text-[10px]">${field}</span>
+      `;
+      el.appendChild(li);
+    });
+  }
+
+  // Extract a display value from a flat or nested investigation row
+  function extractValue(inv: any, field: string): string {
+    let raw = inv[field];
+    let unit = inv[`${field}_unit`];
+
+    // Handle nested FieldValue object { value, unit, status } if present
+    if (raw && typeof raw === 'object' && !Array.isArray(raw) && ('value' in raw || 'status' in raw)) {
+      unit = raw.unit || unit;
+      raw = raw.value;
+    }
+
+    if (raw === null || raw === undefined) return '—';
+    let str = '';
+    if (Array.isArray(raw)) {
+      str = raw.join(', ');
+    } else {
+      str = String(raw);
+    }
+    if (unit && str !== '—') str += ` ${unit}`;
+    return str || '—';
+  }
+
+  function renderAlignedTable(investigations: any[]) {
+    if (!investigations || investigations.length === 0) {
+      tableWrap.classList.add('hidden');
+      return;
+    }
+
+    const ids = investigations.map((inv: any) => inv.investigation_id);
+
+    // Header row
+    tableHead.innerHTML = '';
+    const tr = document.createElement('tr');
+    const thLabel = document.createElement('th');
+    thLabel.className = 'px-4 py-2.5 text-left font-mono text-[10px] uppercase tracking-wider text-[#202421] border-b border-r border-[#D8D5CC] whitespace-nowrap bg-[#F3F0E8]';
+    thLabel.textContent = 'Parameter';
+    tr.appendChild(thLabel);
+    ids.forEach((id: string) => {
+      const th = document.createElement('th');
+      th.className = 'px-4 py-2.5 text-left font-mono text-[10px] uppercase tracking-wider text-[#D85A32] border-b border-[#D8D5CC] whitespace-nowrap bg-[#F3F0E8]';
+      th.textContent = id;
+      tr.appendChild(th);
+    });
+    tableHead.appendChild(tr);
+
+    // Data rows
+    tableBody.innerHTML = '';
+    DISPLAY_FIELDS.forEach(field => {
+      const values = investigations.map((inv: any) => extractValue(inv, field));
+      // Skip rows where all values are '—'
+      if (values.every(v => v === '—')) return;
+
+      const row = document.createElement('tr');
+      row.className = 'hover:bg-[#F3F0E8] transition-colors';
+
+      const tdLabel = document.createElement('td');
+      tdLabel.className = 'px-4 py-2.5 font-mono text-[11px] font-bold text-[#202421] whitespace-nowrap border-r border-[#D8D5CC] align-top';
+      tdLabel.textContent = FIELD_LABELS[field] || field;
+      row.appendChild(tdLabel);
+
+      values.forEach((val: string) => {
+        const td = document.createElement('td');
+        td.className = 'px-4 py-2.5 font-mono text-[11px] text-[#202421] align-top max-w-xs';
+        if (val === '—') {
+          td.innerHTML = '<span class="text-[#D8D5CC]">—</span>';
+        } else {
+          // Truncate long values with expand
+          if (val.length > 120) {
+            td.innerHTML = `<span class="line-clamp-3 cursor-pointer hover:line-clamp-none" title="${val.replace(/"/g, '&quot;')}">${val}</span>`;
+          } else {
+            td.textContent = val;
+          }
+        }
+        row.appendChild(td);
+      });
+
+      tableBody.appendChild(row);
+    });
+
+    tableWrap.classList.remove('hidden');
+  }
+
+  // Render telemetry_summary: array of {investigation_id, columns: {col: "likely varies"}}
+  function renderTelemetry(summary: any[]) {
+    if (!summary || summary.length === 0) {
+      telemetryWrap.classList.add('hidden');
+      return;
+    }
+    telemetryBody.innerHTML = '';
+    summary.forEach((entry: any) => {
+      const id = entry.investigation_id;
+      const cols = entry.columns ? Object.keys(entry.columns) : [];
+      const block = document.createElement('div');
+      block.className = 'px-5 py-4';
+      if (cols.length === 0) {
+        block.innerHTML = `
+          <div class="font-mono text-[11px] font-bold text-[#D85A32] mb-1">${id}</div>
+          <div class="font-mono text-[11px] text-[#666B64]">No telemetry columns available.</div>`;
+      } else {
+        block.innerHTML = `
+          <div class="font-mono text-[11px] font-bold text-[#D85A32] mb-2">${id} — ${cols.length} column${cols.length !== 1 ? 's' : ''}</div>
+          <div class="flex flex-wrap gap-1.5">
+            ${cols.map(c => `<span class="inline-block px-2 py-0.5 bg-[#F3F0E8] border border-[#D8D5CC] font-mono text-[10px] text-[#202421]">${c}</span>`).join('')}
+          </div>`;
+      }
+      telemetryBody.appendChild(block);
+    });
+    telemetryWrap.classList.remove('hidden');
+  }
+
+  async function runComparison() {
+    const ids = [...new Set(getSelectedIds())];
+    if (ids.length < 2) return;
+
+    showLoading();
+    compareBtn.disabled = true;
+    compareBtnText.textContent = 'Comparing…';
+    compareBtnSpinner.classList.remove('hidden');
+
+    try {
+      const data = await compareInvestigations(ids);
+      hideAll();
+
+      // Varied / Same (arrays of field name strings)
+      renderTagList(variedList, data.what_varied || [], true);
+      renderTagList(sameList, data.what_stayed_same || [], false);
+      diffsDiv.classList.remove('hidden');
+
+      // Aligned table from aligned_table or investigations array
+      renderAlignedTable(data.aligned_table || data.investigations || []);
+
+      // Telemetry column summary
+      renderTelemetry(data.telemetry_summary || []);
+
+      // Show Agent Deep-Dive banner
+      agentBanner?.classList.remove('hidden');
+
+    } catch (err: any) {
+      showError(err?.message || 'Comparison request failed. Verify that the backend is running and the IDs are valid.');
+    } finally {
+      compareBtn.disabled = false;
+      compareBtnText.textContent = 'Run Comparison';
+      compareBtnSpinner.classList.add('hidden');
+      validateSelection();
+    }
+  }
+
+  compareBtn.addEventListener('click', runComparison);
+  retryBtn.addEventListener('click', runComparison);
+
+  // Ask agent to run comparison tool
+  function askAgentToCompare() {
+    const ids = [...new Set(getSelectedIds())];
+    if (ids.length < 2) return;
+
+    // Direct the agent to run its comparison tool rather than sending a huge payload
+    const prompt = `Compare investigations ${ids.join(' and ')}. Please run your comparison tool to analyze what experimental parameters varied, what stayed constant, and how their combustion physics and flame behavior differ.`;
+
+    window.location.href = `/agent?prompt=${encodeURIComponent(prompt)}`;
+  }
+
+  askAgentBtn?.addEventListener('click', askAgentToCompare);
+  bannerAgentBtn?.addEventListener('click', askAgentToCompare);
+
+  // Load all investigation IDs into selects
+  async function loadInvestigationList() {
+    try {
+      const data = await getInvestigations({ limit: 500 });
+      const investigations = (data?.results || []) as any[];
+      investigations.forEach((inv: any) => {
+        const short = `${inv.investigation_id}${inv.acronym ? ' — ' + inv.acronym : ''}`;
+        selects.forEach((sel, i) => {
+          const opt = document.createElement('option');
+          opt.value = inv.investigation_id;
+          opt.textContent = short;
+          sel.appendChild(opt);
+        });
+      });
+    } catch {
+      selectionStatus.textContent = 'Could not load investigation list from API.';
+    }
+  }
+
+  // Pre-select from URL: ?id=PSI-69 or ?ids=PSI-69,PSI-98
+  function checkUrlParams() {
+    const params = new URLSearchParams(window.location.search);
+    const idParam = params.get('ids') || params.get('id');
+    if (!idParam) return;
+    const preIds = idParam.split(',').map(s => s.trim()).filter(Boolean);
+    preIds.slice(0, 3).forEach((id, i) => {
+      // Options are loaded; set value directly
+      selects[i].value = id;
+    });
+    validateSelection();
+    // Auto-run if 2+ are pre-selected
+    if ([...new Set(preIds)].length >= 2) {
+      runComparison();
+    }
+  }
+
+  loadInvestigationList().then(() => {
+    validateSelection();
+    checkUrlParams();
+  });
+</script>

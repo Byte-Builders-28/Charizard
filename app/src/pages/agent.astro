@@ -133,6 +133,10 @@ import MainLayout from '../layouts/MainLayout.astro';
 
 <script>
   import { sendAgentMessage } from '../lib/api.js';
+  import { marked } from 'marked';
+
+  // Configure marked: GitHub Flavored Markdown, line breaks on single newlines
+  marked.setOptions({ breaks: true, gfm: true });
 
   // Session ID Management (persists across page reloads during current browser session)
   let userId = sessionStorage.getItem('charizard_agent_user');
@@ -157,19 +161,17 @@ import MainLayout from '../layouts/MainLayout.astro';
 
   let isSending = false;
 
-  // Format response text to turn PSI IDs into clickable links
+  // Format response: parse markdown then linkify PSI IDs
   function formatAgentResponse(rawText: string): string {
-    // Escape HTML first
-    const div = document.createElement('div');
-    div.textContent = rawText;
-    let safe = div.innerHTML;
+    // Parse markdown to HTML (marked output is trusted scientific text)
+    let html = marked.parse(rawText) as string;
 
-    // Replace PSI-xxx with clickable link
-    safe = safe.replace(/\b(PSI-\d+)\b/g, (match) => {
+    // Linkify PSI-xxx identifiers (avoid double-wrapping already-linked ones)
+    html = html.replace(/(?<![/"'>])\b(PSI-\d+)\b/g, (match) => {
       return `<a href="/investigations/${match}" class="text-[#D85A32] font-bold hover:underline" target="_blank" title="Inspect ${match} Dossier">${match}</a>`;
     });
 
-    return safe;
+    return html;
   }
 
   // Append a user message to stream
@@ -212,7 +214,7 @@ import MainLayout from '../layouts/MainLayout.astro';
         <span>&bull;</span>
         <span>${timestamp}</span>
       </div>
-      <div class="bg-[#FFFFFF] text-[#202421] p-4 max-w-2xl text-xs font-mono leading-relaxed border border-[#D8D5CC] border-l-4 border-l-[#D85A32] shadow-xs whitespace-pre-wrap">
+      <div class="bg-[#FFFFFF] text-[#202421] p-4 max-w-2xl border border-[#D8D5CC] border-l-4 border-l-[#D85A32] shadow-xs markdown-body">
         ${formattedHtml}
       </div>
     `;

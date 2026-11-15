@@ -1,0 +1,267 @@
+---
+import MainLayout from '../layouts/MainLayout.astro';
+
+const scenarios = [
+  {
+    id: 'liquid-flammability',
+    tag: 'Liquid Fuels',
+    tagColor: '#D85A32',
+    title: 'Mapping Flammability Limits of Liquid Droplets',
+    summary: 'PSI-69 (FLEX) placed burning liquid droplets in microgravity to map extinction limits under varying atmospheric compositions and suppressant gases. How did fuel type and droplet size affect the flammability boundary?',
+    prompt: 'I want to understand PSI-69 (FLEX). What were the flammability limits observed for liquid droplet combustion in microgravity? How did oxygen concentration and suppressants like CO2 and SF6 affect flame extinction? What does the telemetry reveal about burning rates and droplet diameters at extinction?',
+    investigations: ['PSI-69'],
+  },
+  {
+    id: 'spacecraft-fire-safety',
+    tag: 'Fire Safety',
+    tagColor: '#526B55',
+    title: 'Large-Scale Fire Growth in a Retired Spacecraft',
+    summary: 'PSI-98 (SAFFIRE-I) burned a large fabric sample inside a decommissioned Cygnus capsule returning from the ISS — the largest combustion experiment ever conducted in space. What do the results tell us about fire safety requirements for crewed vehicles?',
+    prompt: 'Tell me about PSI-98 (SAFFIRE-I). What was the scale of the fire experiment, what materials were burned, and what did the thermocouples, radiometers, and cameras record? How does low-gravity fire spread compare to normal-gravity flammability screening tests? What are the implications for spacecraft fire safety standards?',
+    investigations: ['PSI-98'],
+  },
+  {
+    id: 'cool-flames',
+    tag: 'Cool Flames',
+    tagColor: '#D85A32',
+    title: 'Cool Flame Combustion with Gaseous Fuels',
+    summary: 'PSI-159 (ACME CFI-G) investigated low-temperature "cool flames" — a combustion regime nearly impossible to observe in normal gravity due to buoyancy-driven convection. What conditions sustain a cool flame, and why does microgravity matter?',
+    prompt: 'Explain PSI-159 (ACME CFI-G) and the concept of cool flames. What gaseous fuels were used, what oxygen and pressure conditions were tested, and what did the two telemetry files record? Why is microgravity essential for observing cool flame combustion, and what are the practical applications of this research?',
+    investigations: ['PSI-159'],
+  },
+  {
+    id: 'solid-fabric-combustion',
+    tag: 'Solid Fuels',
+    tagColor: '#526B55',
+    title: 'Fabric and Solid Sample Flammability on the ISS',
+    summary: 'BASS-II (PSI-25) tested the burning behavior of various solid materials aboard the ISS using a small handheld flame. How do solid fuel combustion characteristics change in microgravity compared to normal gravity?',
+    prompt: 'Describe the PSI-25 (BASS-II) investigation. What solid fuel samples were tested, what were the experimental conditions, and what measurements were collected? How did flame spread rate, extinction behavior, and sample geometry differ in microgravity? What practical lessons does this provide for spacecraft material selection?',
+    investigations: ['PSI-25'],
+  },
+  {
+    id: 'compare-flex-saffire',
+    tag: 'Cross-Investigation',
+    tagColor: '#202421',
+    title: 'Liquid Droplets vs. Large Fabric — Comparing Two Microgravity Fire Regimes',
+    summary: 'PSI-69 (FLEX) studied microscale droplet combustion; PSI-98 (SAFFIRE-I) studied macroscale fabric fires. Both operated in microgravity. What experimental design choices explain the contrast in scale, and what do their results together reveal about microgravity fire behavior across regimes?',
+    prompt: 'Compare PSI-69 (FLEX) and PSI-98 (SAFFIRE-I). Both are microgravity combustion experiments but at opposite scales — a millimeter-scale droplet versus a meter-scale fabric fire. What were the key experimental parameters, hardware, sensor packages, and results for each? What do they together reveal about microgravity combustion physics, and how do their findings complement each other for spacecraft fire safety design?',
+    investigations: ['PSI-69', 'PSI-98'],
+  },
+  {
+    id: 'smoke-soot',
+    tag: 'Aerosols',
+    tagColor: '#526B55',
+    title: 'Smoke Aerosol Measurement in Microgravity',
+    summary: 'PSI-102 (SAME) characterized smoke and aerosol particles produced by various fuels in microgravity to improve spacecraft smoke detector design. What particle properties were measured and how do they differ from ground-based smoke?',
+    prompt: 'Tell me about PSI-102 (SAME — Smoke and Aerosol Measurement Experiment). What fuels were burned, what aerosol properties were measured, and what instruments were used? How do microgravity smoke particles differ from normal-gravity particles in terms of size, density, and optical properties? How do the findings inform spacecraft smoke detection system design?',
+    investigations: ['PSI-102'],
+  },
+];
+---
+
+<MainLayout
+  title="Research Scenarios | CHARIZARD"
+  description="Guided research scenarios for exploring spacecraft combustion investigations through the CHARIZARD research agent."
+>
+  <div class="max-w-5xl mx-auto px-4 sm:px-6 py-8 md:py-12">
+
+    <!-- Header -->
+    <div class="mb-8 border-b border-[#D8D5CC] pb-6">
+      <div class="flex items-center gap-2 text-xs font-mono text-[#666B64] mb-3 uppercase tracking-wider">
+        <a href="/" class="hover:text-[#202421]">Home</a>
+        <span>/</span>
+        <span class="text-[#202421] font-semibold">Scenarios</span>
+      </div>
+      <div class="inline-flex items-center gap-2 px-2 py-0.5 mb-2 border border-[#D8D5CC] bg-[#FFFFFF] font-mono text-[10px] uppercase tracking-wider text-[#666B64]">
+        <span class="w-1.5 h-1.5 bg-[#526B55]"></span>
+        <span>Guided Research Scenarios</span>
+      </div>
+      <h1 class="font-serif-heading text-3xl sm:text-4xl text-[#202421] tracking-tight mb-2">
+        Example Research Scenarios
+      </h1>
+      <p class="text-sm text-[#666B64] max-w-2xl font-sans leading-relaxed">
+        Select a pre-configured research inquiry or compose a custom experimental hypothesis. Click <strong class="text-[#202421]">Send to Agent</strong> to dispatch the scenario directly into the natural-language research session.
+      </p>
+    </div>
+
+    <!-- Custom Scenario Composer -->
+    <div class="bg-[#FFFFFF] border-2 border-[#202421] p-5 sm:p-6 mb-10 shadow-sm">
+      <div class="flex items-center justify-between pb-3 mb-4 border-b border-[#D8D5CC]">
+        <div class="flex items-center gap-2">
+          <span class="w-2.5 h-2.5 bg-[#D85A32]"></span>
+          <h2 class="font-mono text-xs font-bold uppercase tracking-wider text-[#202421]">
+            Custom Scenario Builder
+          </h2>
+        </div>
+        <span class="font-mono text-[10px] text-[#666B64] uppercase">Live Agent Dispatch</span>
+      </div>
+
+      <p class="text-xs text-[#666B64] font-sans mb-3">
+        Formulate your own custom experimental condition, flammability scenario, or cross-investigation question to analyze:
+      </p>
+
+      <!-- Quick Template Chips -->
+      <div class="flex flex-wrap items-center gap-1.5 mb-3 text-[11px] font-mono">
+        <span class="text-[#666B64] text-[10px] uppercase mr-1">Templates:</span>
+        <button
+          type="button"
+          class="template-chip px-2.5 py-1 bg-[#F3F0E8] border border-[#D8D5CC] hover:border-[#D85A32] text-[#202421] transition-colors"
+          data-text="What happens if the ambient oxygen concentration drops below 15% in PSI-69 (FLEX) droplet combustion tests? Does extinction occur prematurely?"
+        >
+          Extinction at Low O₂
+        </button>
+        <button
+          type="button"
+          class="template-chip px-2.5 py-1 bg-[#F3F0E8] border border-[#D8D5CC] hover:border-[#D85A32] text-[#202421] transition-colors"
+          data-text="Evaluate the fire prevention and detection implications when comparing PSI-98 (SAFFIRE-I) fabric fire growth with PSI-102 (SAME) smoke aerosol signatures."
+        >
+          SAFFIRE vs SAME Detection
+        </button>
+        <button
+          type="button"
+          class="template-chip px-2.5 py-1 bg-[#F3F0E8] border border-[#D8D5CC] hover:border-[#D85A32] text-[#202421] transition-colors"
+          data-text="Identify all investigations that tested liquid fuels in microgravity. What diluents or suppressants were effective in stopping combustion?"
+        >
+          Liquid Fuel Suppressants
+        </button>
+      </div>
+
+      <!-- Textarea -->
+      <div class="mb-4">
+        <label for="custom-scenario-input" class="sr-only">Custom Scenario Prompt</label>
+        <textarea
+          id="custom-scenario-input"
+          rows="3"
+          class="w-full p-3 font-mono text-xs text-[#202421] bg-[#F3F0E8] border border-[#D8D5CC] focus:border-[#D85A32] focus:ring-1 focus:ring-[#D85A32] outline-none resize-y"
+          placeholder="Compose a custom research scenario or question (e.g. 'How does forced airflow in PSI-98 influence the boundary layer and burning rate of solid materials?')..."
+        ></textarea>
+      </div>
+
+      <div class="flex items-center justify-between gap-4 flex-wrap">
+        <div class="text-[11px] font-mono text-[#666B64]">
+          Case-sensitive IDs (e.g. <span class="font-bold text-[#202421]">PSI-69</span>, <span class="font-bold text-[#202421]">PSI-98</span>, <span class="font-bold text-[#202421]">PSI-159</span>) are automatically recognized.
+        </div>
+        <button
+          id="dispatch-custom-btn"
+          type="button"
+          class="px-5 py-2.5 bg-[#D85A32] hover:bg-[#b84823] text-white font-mono text-xs font-bold uppercase tracking-wider transition-colors flex items-center gap-2"
+        >
+          <span>Send Scenario to Agent</span>
+          <span>&rarr;</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Predefined Scenarios Title -->
+    <div class="flex items-center justify-between pb-3 mb-6 border-b border-[#D8D5CC]">
+      <h2 class="font-mono text-xs font-bold uppercase tracking-wider text-[#202421]">
+        Predefined Reference Scenarios (6)
+      </h2>
+      <span class="font-mono text-[10px] text-[#666B64]">Click Ask Agent to test</span>
+    </div>
+
+    <!-- Scenario grid -->
+    <div class="space-y-5">
+      {scenarios.map((s) => (
+        <article class="bg-[#FFFFFF] border border-[#D8D5CC] hover:border-[#202421] transition-colors">
+          <div class="p-5 sm:p-6">
+            <!-- Tag + IDs -->
+            <div class="flex flex-wrap items-center gap-2 mb-3">
+              <span
+                class="inline-block px-2 py-0.5 font-mono text-[10px] uppercase tracking-wider text-white"
+                style={`background-color: ${s.tagColor};`}
+              >
+                {s.tag}
+              </span>
+              {s.investigations.map((id) => (
+                <a
+                  href={`/investigations/${id}`}
+                  class="inline-block px-2 py-0.5 font-mono text-[10px] uppercase tracking-wider border border-[#D8D5CC] text-[#D85A32] hover:border-[#D85A32] transition-colors"
+                >
+                  {id}
+                </a>
+              ))}
+            </div>
+
+            <!-- Title -->
+            <h2 class="font-serif-heading text-lg sm:text-xl text-[#202421] mb-2 leading-snug">
+              {s.title}
+            </h2>
+
+            <!-- Summary -->
+            <p class="text-sm text-[#666B64] font-sans leading-relaxed mb-4">
+              {s.summary}
+            </p>
+
+            <!-- Prompt preview -->
+            <div class="bg-[#F3F0E8] border border-[#D8D5CC] border-l-4 border-l-[#D85A32] p-3 mb-4">
+              <div class="font-mono text-[10px] uppercase tracking-wider text-[#666B64] mb-1.5">Agent Prompt Preview</div>
+              <p class="font-mono text-[11px] text-[#202421] leading-relaxed line-clamp-3">
+                {s.prompt}
+              </p>
+            </div>
+
+            <!-- Actions -->
+            <div class="flex flex-wrap items-center gap-3">
+              <a
+                href={`/agent?prompt=${encodeURIComponent(s.prompt)}`}
+                class="inline-flex items-center gap-2 px-4 py-2 bg-[#D85A32] hover:bg-[#b84823] text-white font-mono text-xs font-bold uppercase tracking-wider transition-colors"
+              >
+                <span>Ask Agent</span>
+                <span>→</span>
+              </a>
+
+              {s.investigations.length >= 2 && (
+                <a
+                  href={`/compare?ids=${s.investigations.join(',')}`}
+                  class="inline-flex items-center gap-2 px-4 py-2 border border-[#D8D5CC] text-[#202421] hover:border-[#202421] font-mono text-xs uppercase tracking-wider transition-colors"
+                >
+                  Compare
+                </a>
+              )}
+
+              {s.investigations.map((id) => (
+                <a
+                  href={`/investigations/${id}`}
+                  class="inline-flex items-center gap-1.5 font-mono text-[11px] text-[#666B64] hover:text-[#D85A32] uppercase tracking-wider transition-colors"
+                >
+                  View {id} →
+                </a>
+              ))}
+            </div>
+          </div>
+        </article>
+      ))}
+    </div>
+
+    <!-- Footer note -->
+    <p class="font-mono text-[11px] text-[#666B64] text-center mt-10 pt-6 border-t border-[#D8D5CC]">
+      Prompts are sent verbatim to the research agent. The agent queries the CHARIZARD knowledge base — it does not access external scientific literature.
+    </p>
+  </div>
+</MainLayout>
+
+<script>
+  const customInput = document.getElementById('custom-scenario-input') as HTMLTextAreaElement;
+  const dispatchBtn = document.getElementById('dispatch-custom-btn') as HTMLButtonElement;
+  const templateChips = document.querySelectorAll('.template-chip');
+
+  templateChips.forEach((chip) => {
+    chip.addEventListener('click', () => {
+      const text = chip.getAttribute('data-text');
+      if (text && customInput) {
+        customInput.value = text;
+        customInput.focus();
+      }
+    });
+  });
+
+  dispatchBtn?.addEventListener('click', () => {
+    const prompt = customInput?.value.trim();
+    if (!prompt) {
+      customInput?.focus();
+      return;
+    }
+    window.location.href = `/agent?prompt=${encodeURIComponent(prompt)}`;
+  });
+</script>

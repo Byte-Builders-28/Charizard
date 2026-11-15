@@ -130,9 +130,10 @@ export async function compareInvestigations(ids) {
   if (!Array.isArray(ids) || ids.length < 2 || ids.length > 3) {
     throw new Error('Comparison requires an array of 2 to 3 investigation IDs');
   }
+  // API expects a plain JSON array, not a wrapped object
   return request('/compare', {
     method: 'POST',
-    body: { investigation_ids: ids }
+    body: ids
   });
 }
 

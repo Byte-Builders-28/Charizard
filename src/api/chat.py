@@ -8,8 +8,9 @@ into FlameScope API calls via Gemini agent with minimal context tracking.
 
 from __future__ import annotations
 
-import json
+import sys
 import logging
+import json
 import os
 import re
 from dataclasses import dataclass
@@ -21,10 +22,16 @@ from pydantic import BaseModel, Field
 
 from api.db import DB_PATH, get_investigation, list_investigations
 
+# Logging configuration: log to stdout
+logging.basicConfig(
+    level=logging.INFO,
+    format="%(message)s",
+    stream=sys.stdout,
+)
 log = logging.getLogger("flamescope.api.chat")
 
 # Available Gemini models in priority order for fallback
-DEFAULT_GEMINI_MODEL = os.environ.get("GEMINI_MODEL", "gemini-2.5-flash-lite")
+DEFAULT_GEMINI_MODEL = os.environ.get("GEMINI_MODEL", "gemini-3.5-flash-lite")
 FALLBACK_MODELS = [
     DEFAULT_GEMINI_MODEL,
     "gemini-3.5-flash-lite",
@@ -78,6 +85,10 @@ def tool_search_investigations(
         limit_val = max(1, min(50, int(limit)))
     except (ValueError, TypeError):
         limit_val = 10
+    
+    # Log tool usage (for monitoring and audit purposes)
+    log.info("tool_usage|search_investigations|q=%s|limit=%d", q[:100], limit_val)
+
     return search_investigations(
         q=q,
         fuel_type=fuel_type,
@@ -94,6 +105,9 @@ def tool_get_investigation(investigation_id: str) -> Dict[str, Any]:
     rec = get_investigation(DB_PATH, inv_id)
     if rec is None:
         return {"error": f"Investigation {inv_id} not found in database."}
+    
+    # Log tool usage (for monitoring and audit purposes)
+    log.info("tool_usage|get_investigation|investigation_id=%s", inv_id)
     return rec
 
 
@@ -122,6 +136,9 @@ def tool_get_telemetry(
         return {"error": f"Investigation {inv_id} not found in database."}
 
     res = get_telemetry_endpoint(investigation_id=inv_id, limit=effective_limit)
+    
+    # Log tool usage (for monitoring and audit purposes)
+    log.info("tool_usage|get_telemetry|investigation_id=%s|limit=%d", inv_id, effective_limit)
     return res
 
 
@@ -133,6 +150,9 @@ def tool_compare_investigations(investigation_ids: List[str]) -> Dict[str, Any]:
     if len(investigation_ids) < 2 or len(investigation_ids) > 3:
         return {"error": "Must provide between 2 and 3 investigation IDs for comparison."}
 
+    # Log tool usage (for monitoring and audit purposes)
+    log.info("tool_usage|compare_investigations|ids=%s", json.dumps([str(i) for i in investigation_ids]))
+    
     try:
         return compare_investigations(investigation_ids=investigation_ids)
     except HTTPException as exc:
@@ -167,6 +187,9 @@ def tool_list_investigations(
         limit=limit,
         offset=offset,
     )
+    
+    # Log tool usage (for monitoring and audit purposes)
+    log.info("tool_usage|list_investigations|limit=%d|offset=%d|count=%d", limit, offset, total)
     return {"count": total, "offset": offset, "limit": limit, "results": rows}
 
 
